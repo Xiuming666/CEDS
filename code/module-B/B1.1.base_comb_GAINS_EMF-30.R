@@ -137,8 +137,8 @@
     hardcoal <- c( "Anthracite", "Other.bituminous.coal" )
     mult_hardcoal <- calc_heat_content( conversion, hardcoal )
 
-    lightoil <- c( "Motor.gasoline", "Aviation.gasoline", "Gasoline.type.jet.fuel",
-                   "Kerosene.type.jet.fuel", "Other.kerosene" )
+    lightoil <- c( "Motor.gasoline.excl..biofuels", "Aviation.gasoline", "Gasoline.type.jet.fuel",
+                   "Kerosene.type.jet.fuel.excl..biofuels", "Other.kerosene" )
     mult_lightoil <- calc_heat_content( conversion, lightoil )
 
     heavy_oil <- c( "Crude.oil", "Fuel.oil" )
@@ -153,7 +153,7 @@
     mult_NaturalGas <- sum( conversion[ , NaturalGas ], na.rm = T ) /
                        length( na.omit( conversion[ , NaturalGas ] ) )
 
-    Diesel <- c( "Gas.diesel.oil" )
+    Diesel <- c( "Gas.diesel.oil.excl..biofuels" )
     mult_Diesel <- sum( conversion[ , Diesel ], na.rm = T ) /
                    length( na.omit( conversion[ , Diesel ] ) )
 
