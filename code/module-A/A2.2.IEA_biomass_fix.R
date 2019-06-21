@@ -182,8 +182,8 @@ initialize( script_name, log_msg, headers )
 # Diagnostics: Decide whether to use IEA or Fernandes for countries in iso_Eur
     diag_Eur <- filter( biomass_1, iso %in% iso_Eur ) %>%
       select( iso, year, pop2, IEA, Eur, Fern, IEA_pc, Eur_pc, Fern_pc )
-    # Resolution: Use Fern for aze, rus, svk, ukr; use IEA for geo, irl, mda, swe
-    iso_Fern <- c( iso_Fern, "aze", "rus", "svk", "ukr" )
+    # Resolution: Use Fern for aze, rus, svk, ukr; use IEA for geo, irl, mda, swe # EEM: Updated to use Fern for hrv, hun, ita, and nld ** CHECK **
+    iso_Fern <- c( iso_Fern, "aze", "rus", "svk", "ukr", "hrv", "hun", "ita", "nld")
     iso_IEA <- c( iso_IEA, "geo", "irl", "mda", "swe" )
     rm( iso_Eur, iso_rest )
 
