@@ -2,7 +2,7 @@ iso,final_data_flag,IEAName,IEA_Fert_reg,BPName,Country_Name,OECD_flag,FAO_Count
 abw,1,Other Non-OECD Americas,Latin America,Other S. & Cent. America,Aruba,NonOECD,0,Aruba,Latin America,Central and South America,Latin America,,AW,,high-income,separated from Netherlands Antilles in 1986
 afg,1,Other Asia,Other Asia,Other Asia Pacific,Afghanistan,NonOECD,2,Afghanistan,Asia,Other Asia,Other Asia/Pacific,,AF,,,
 afg,1,Other non-OECD Asia,Other Asia,Other Asia Pacific,Afghanistan,NonOECD,2,Afghanistan,Asia,Other Asia,Other Asia/Pacific,,AF,,,
-ago,1,Angola,Africa,Other Africa,Angola,NonOECD,7,Angola,Africa,Africa,Africa,,AO,Angola,,
+ago,1,Angola,Africa,Other Africa,Angolia,NonOECD,7,Angola,Africa,Africa,Africa,,AO,Angola,,
 alb,1,Albania,Central European countries,Other Europe & Eurasia,Albania,NonOECD,3,Albania,Eastern Europe,Eastern Europe,Europe,AL,AL,,,
 ant,0,Netherlands Antilles,Latin America,Other S. & Cent. America,Netherlands Antilles,NonOECD,0,Netherlands Antilles,Latin America,Central and South America,Latin America,,AN,,,historical
 are,1,United Arab Emirates,Middle East,United Arab Emirates,United Arab Emirates,NonOECD,225,United Arab Emirates,Middle East,Middle East,Other Asia/Pacific,,AE,United Arab Emirates,high-income,
@@ -45,7 +45,8 @@ chl,1,Chile,Latin America,Chile,Chile,OECD,40,Chile,Latin America,Central and So
 chn,1,Peoples Republic of China,China,China,China,NonOECD,41,China,Asia,China,China,,CN,China,,
 civ,1,Cote dIvoire,Africa,Other Africa,Cote dIvoire,NonOECD,107,Cote dIvoire,Africa,Africa,Africa,,CI,,,
 cmr,1,Cameroon,Africa,Other Africa,Cameroon,NonOECD,32,Cameroon,Africa,Africa,Africa,,CM,,,
-cod,1,Democratic Republic of Congo,Africa,Other Africa,Democratic Republic of Congo,NonOECD,250,Democratic Republic of Congo,Africa,Africa,Africa,,CD,,,
+cod,1,Democratic Republic of Congo,Africa,Other Africa,Democratic Republic of Congo,NonOECD,250,Democratic Republic of Congo,Africa,Africa,Africa,,CD,Rep. of Congo (Brazzaville),,
+cod,1,Dem. Republic of the Congo,Africa,Other Africa,Democratic Republic of Congo,NonOECD,250,Democratic Republic of Congo,Africa,Africa,Africa,,CD,Republic of Congo,added for change in BP name,
 cod,1,Dem. Republic of the Congo,Africa,Other Africa,Democratic Republic of Congo,NonOECD,250,Democratic Republic of Congo,Africa,Africa,Africa,,CD,Rep. of Congo (Brazzaville),,
 cog,1,Congo,Africa,Other Africa,Congo,NonOECD,46,Congo,Africa,Africa,Africa,,CG,,,
 cog,1,Republic of the Congo,Africa,Other Africa,Congo,NonOECD,46,Congo,Africa,Africa,Africa,,CG,,,
@@ -113,7 +114,7 @@ hun,1,Hungary,Central European countries,Hungary,Hungary,OECD,97,Hungary,Eastern
 idn,1,Indonesia,Other Asia,Indonesia,Indonesia,NonOECD,101,Indonesia,Asia,South East Asia and Aust/NZ,Other Asia/Pacific,,ID,Indonesia,,
 ind,1,India,India,India,India,NonOECD,100,India,Asia,Other Asia,Other Asia/Pacific,,IN,India,,
 irl,1,Ireland,Western Europe,Republic of Ireland,Ireland,OECD,104,Ireland,Western Europe,Western Europe,Europe,IE,IE,,high-income,
-irl,1,Ireland,Western Europe,Ireland,Ireland,OECD,104,Ireland,Western Europe,Western Europe,Europe,IE,IE,Duplicate line added to account for alternative country name used in latest version of BP energy data,high-income,
+irl,1,Ireland,Western Europe,Ireland,Ireland,OECD,104,Ireland,Western Europe,Western Europe,Europe,IE,IE,,high-income,Duplicate line added to account for alternative country name used in latest version of BP energy data
 irn,1,Islamic Republic of Iran,Middle East,Iran,Islamic Republic of Iran,NonOECD,102,Islamic Republic of Iran,Middle East,Middle East,Other Asia/Pacific,,IR,Iran,,
 irq,1,Iraq,Middle East,Other Middle East,Iraq,NonOECD,103,Iraq,Middle East,Middle East,Other Asia/Pacific,,IQ,Iraq,,
 isl,1,Iceland,Western Europe,Other Europe & Eurasia,Iceland,OECD,99,Iceland,Western Europe,Western Europe,Europe,IS,IS,,high-income,
