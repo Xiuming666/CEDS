@@ -119,7 +119,11 @@ proxy_files <- list( primary = list.files( proxy_dir ), backup = list.files( pro
 
 printLog( paste( 'Start', VOC_em, 'gridding for each year' ) )
 
+pb <- txtProgressBar(min = 0, max = length(year_list), style = 3)
+
 for ( year in year_list ) {
+  setTxtProgressBar(pb, year - min(year_list))
+
   # grid one years emissions for subVOCs
   int_grids_list <- grid_one_year( year, em, grid_resolution, gridding_emissions, location_index,
                                    proxy_mapping, proxy_substitution_mapping, proxy_files )
@@ -131,6 +135,7 @@ for ( year in year_list ) {
                                   VOC_em = VOC_em, VOC_names, sector_name_mapping, seasonality_mapping )
 }
 
+close(pb)
 
 # -----------------------------------------------------------------------------
 # 4. Diagnostic: checksum
