@@ -106,11 +106,11 @@ pb <- txtProgressBar(min = 0, max = length(year_list), style = 3)
 
 for ( year in year_list ) {
   setTxtProgressBar(pb, year - min(year_list))
-  
+
   # grid one years emissions
   int_grids_list <- grid_one_year( year, em, grid_resolution, gridding_emissions, location_index,
                                    proxy_mapping, proxy_substitution_mapping, proxy_files )
-  
+
   # generate nc file for gridded one years emissions,
   # a checksum file is also generated along with the nc file
   # which summarize the emissions in mass by sector by month.

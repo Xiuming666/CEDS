@@ -87,6 +87,7 @@ emissions: $(FINAL_OUT)/current-versions/CEDS_$(EM)_emissions_by_country_sector_
 
 gridded-emissions: $(FINAL_OUT)/gridded-emissions/$(EM)-em-anthro* \
 	$(FINAL_OUT)/gridded-emissions/$(EM)-em-SOLID-BIOFUEL-anthro* \
+	$(FINAL_OUT)/gridded-emissions/$(EM)-em-TOTAL-COALFUEL-anthro* \
 	$(FINAL_OUT)/gridded-emissions/$(EM)-em-AIR-anthro*
 
 
@@ -209,6 +210,7 @@ clean-BC:
 
 clean-gridding:
 	rm -fv $(MED_OUT)/gridded-emissions/*.csv
+	rm -fv $(MED_OUT)/gridded-emissions/*.nc
 
 
 # --------------------------------------------------------------
@@ -971,6 +973,21 @@ $(FINAL_OUT)/gridded-emissions/$(EM)-em-SOLID-BIOFUEL-anthro*: \
 	Rscript $< $(EM) --nosave --no-restore
 
 
+# Total Coalfuel emissions
+$(MED_OUT)/gridded-emissions/CEDS_$(EM)_coalfuel_anthro_%.csv: \
+	$(MOD_G)/G1.5.grid_coalfuel_emissions.R \
+	$(PARAMS)/gridding_functions.R \
+	$(PARAMS)/nc_generation_functions.R \
+	$(MED_OUT)/$(EM)_total_CEDS_emissions.csv
+	Rscript $< $(EM) --nosave --no-restore
+
+$(FINAL_OUT)/gridded-emissions/$(EM)-em-TOTAL-COALFUEL-anthro*: \
+	$(MOD_G)/G2.5.chunk_coalfuel_emissions.R \
+	$(MED_OUT)/gridded-emissions/CEDS_$(EM)_coalfuel_anthro_*.csv
+#	rm -fv $(FINAL_OUT)/gridded-emissions/$(EM)-em-TOTAL-COALFUEL-anthro*
+	Rscript $< $(EM) --nosave --no-restore
+
+
 # Aircraft emissions
 $(MED_OUT)/gridded-emissions/CEDS_$(EM)_AIR_anthro_%.csv: \
 	$(MOD_G)/G1.3.grid_aircraft_emissions.R \
@@ -982,7 +999,7 @@ $(MED_OUT)/gridded-emissions/CEDS_$(EM)_AIR_anthro_%.csv: \
 $(FINAL_OUT)/gridded-emissions/$(EM)-em-AIR-anthro*: \
 	$(MOD_G)/G2.3.chunk_aircraft_emissions.R \
 	$(MED_OUT)/gridded-emissions/CEDS_$(EM)_AIR_anthro_*.csv
-	rm -fv $(FINAL_OUT)/gridded-emissions/$(EM)-em-AIR-anthro*
+#	rm -fv $(FINAL_OUT)/gridded-emissions/$(EM)-em-AIR-anthro*
 	Rscript $< $(EM) --nosave --no-restore
 
 
@@ -1006,12 +1023,12 @@ $(MED_OUT)/gridded-emissions/CEDS_CH4_anthro_%.csv: \
 $(FINAL_OUT)/gridded-emissions/CH4-em-anthro*: \
 	$(MOD_G)/G3.3.chunk_CH4_extended_bulk_emissions.R \
 	$(MED_OUT)/gridded-emissions/CEDS_CH4_anthro_*.csv
-	rm -fv $(FINAL_OUT)/gridded-emissions/CH4-em-anthro*
+#	rm -fv $(FINAL_OUT)/gridded-emissions/CH4-em-anthro*
 	Rscript $< $(EM) --nosave --no-restore
 
 $(FINAL_OUT)/gridded-emissions/CH4-em-AIR-anthro*: \
 	$(MOD_G)/G3.4.chunk_CH4_extended_aircraft_emissions.R \
 	$(MED_OUT)/gridded-emissions/CEDS_CH4_AIR_anthro_*.csv
-	rm -fv $(FINAL_OUT)/gridded-emissions/CH4-em-AIR-anthro*
+#	rm -fv $(FINAL_OUT)/gridded-emissions/CH4-em-AIR-anthro*
 	Rscript $< $(EM) --nosave --no-restore
 endif

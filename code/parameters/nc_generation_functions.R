@@ -1225,6 +1225,8 @@ singleVarChunking_subVOCemissions <- function( VOC_em,
   nc_new <- nc_create( nc_file_name, variable_list, force_v4 = T )
 
   # put nc variables into the nc file
+  printLog( paste( 'Writing', nc_file_name ) )
+
   ncvar_put( nc_new, flat_var, flat_array )
   ncvar_put( nc_new, lon_bnds, t( lon_bnds_data ) )
   ncvar_put( nc_new, lat_bnds, t( lat_bnds_data ) )
@@ -1443,6 +1445,8 @@ singleVarChunking_solidbiofuelemissions <- function( em,
   nc_new <- nc_create( nc_file_name, variable_list, force_v4 = T )
 
   # put nc variables into the nc file
+  printLog( paste( 'Writing', nc_file_name ) )
+
   ncvar_put( nc_new, flat_var, flat_array )
   ncvar_put( nc_new, lon_bnds, t( lon_bnds_data ) )
   ncvar_put( nc_new, lat_bnds, t( lat_bnds_data ) )
@@ -1660,6 +1664,8 @@ singleVarChunking_coalfuelemissions <- function( em,
     nc_new <- nc_create( nc_file_name, variable_list, force_v4 = T )
 
     # put nc variables into the nc file
+    printLog( paste( 'Writing', nc_file_name ) )
+
     ncvar_put( nc_new, flat_var, flat_array )
     ncvar_put( nc_new, lon_bnds, t( lon_bnds_data ) )
     ncvar_put( nc_new, lat_bnds, t( lat_bnds_data ) )
@@ -1821,6 +1827,8 @@ singleVarChunking_aircraftemissions <- function( em,
   nc_new <- nc_create( nc_file_name, variable_list, force_v4 = T )
 
   # put nc variables into the nc file
+  printLog( paste( 'Writing', nc_file_name ) )
+
   # There is a 2GB limit for writing (perhaps because of an older rCPP version
   # in ncdf4), so the values need to be written in chunks of time-steps
   write_chunk_size <- floor((2^31 - 1) / (prod(AIR_array[1:3]) * 8))
@@ -2048,6 +2056,8 @@ singleVarChunking_extendedCH4bulk <- function( em,
   nc_new <- nc_create( nc_file_name, variable_list, force_v4 = T )
 
   # put nc variables into the nc file
+  printLog( paste( 'Writing', nc_file_name ) )
+
   ncvar_put( nc_new, flat_var, flat_array )
   ncvar_put( nc_new, lon_bnds, t( lon_bnds_data ) )
   ncvar_put( nc_new, lat_bnds, t( lat_bnds_data ) )
@@ -2219,6 +2229,8 @@ singleVarChunking_extendedCH4air <- function( em,
   nc_new <- nc_create( nc_file_name, variable_list, force_v4 = T )
 
   # put nc variables into the nc file
+  printLog( paste( 'Writing', nc_file_name ) )
+
   # There is a 2GB limit for writing (perhaps because of an older rCPP version
   # in ncdf4), so the values need to be written in chunks of time-steps
   write_chunk_size <- floor((2^31 - 1) / (prod(array_dim[1:3]) * 8))
@@ -2678,7 +2690,7 @@ chunk_emissions <- function(singleVarChunkingFun, em, ... ) {
     # Chunking variables
     grid_resolution <- 0.5
     start_year <- 1750
-    end_year <- 1850
+    end_year <- 2014
     chunk_years <- 50
 
     # basic start year/end year check
