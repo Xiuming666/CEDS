@@ -18,7 +18,7 @@ CEDS_working_sector,CEDS_int_gridding_sector,CEDS_int_gridding_sector_short,CEDS
 1A2g_Ind-Comb-other,Industrial combustion,INDC,Industrial Sector,IND
 1A3ai_International-aviation,Aircraft,AIR,Aircraft,AIR
 1A3aii_Domestic-aviation,Aircraft,AIR,Aircraft,AIR
-1A3b_Road,Road transportation,ROAD,Transportation Sector,TRA
+1A3b_Road,Road transportation,ROAD,Road Transportation,ROAD
 1A3c_Rail,Non-road Transportation,NRTR,Transportation Sector,TRA
 1A3di_International-shipping,International shipping,SHP,International shipping,SHP
 1A3di_Oil_Tanker_Loading,Tanker Loading,TANK,International Shipping,SHP

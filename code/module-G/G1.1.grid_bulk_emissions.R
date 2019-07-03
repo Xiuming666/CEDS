@@ -115,6 +115,7 @@ printLog( paste( 'Gridding', em, 'emissions for each year...' ) )
 pb <- txtProgressBar(min = 0, max = length(year_list), style = 3)
 
 for ( year in year_list ) {
+
   setTxtProgressBar(pb, year - min(year_list))
 
   # grid one years emissions
@@ -188,3 +189,4 @@ out_name <- paste0( 'G.', em, '_bulk_emissions_checksum_comparison_per' )
 writeData( diag_per_df, "DIAG_OUT", out_name )
 
 logStop()
+
