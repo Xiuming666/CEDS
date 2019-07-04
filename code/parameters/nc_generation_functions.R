@@ -210,7 +210,8 @@ generate_final_grids_nc_subVOC <- function( int_grids_list,
   AGR_proc_grid <- int_grids_list$AGR_int_grid
   ENE_proc_grid <- int_grids_list$ELEC_int_grid + int_grids_list$ETRN_int_grid + int_grids_list$FFFI_int_grid + int_grids_list$FLR_int_grid
   IND_proc_grid <- int_grids_list$INDC_int_grid + int_grids_list$INPU_int_grid
-  TRA_proc_grid <- int_grids_list$NRTR_int_grid + int_grids_list$ROAD_int_grid
+  TRA_proc_grid <- int_grids_list$NRTR_int_grid #+ int_grids_list$ROAD_int_grid
+  ROAD_proc_grid <- int_grids_list$ROAD_int_grid
   RCORC_proc_grid <- int_grids_list$RCORC_int_grid
   RCOO_proc_grid <- int_grids_list$RCOO_int_grid
   SLV_proc_grid <- int_grids_list$SLV_int_grid
@@ -222,6 +223,7 @@ generate_final_grids_nc_subVOC <- function( int_grids_list,
   ENE_fin_grid <- add_seasonality( ENE_proc_grid, em, 'ENE', year, days_in_month, grid_resolution, seasonality_mapping )
   IND_fin_grid <- add_seasonality( IND_proc_grid, em, 'IND', year, days_in_month, grid_resolution, seasonality_mapping )
   TRA_fin_grid <- add_seasonality( TRA_proc_grid, em, 'TRA', year, days_in_month, grid_resolution, seasonality_mapping )
+  ROAD_fin_grid <- add_seasonality( ROAD_proc_grid, em, 'ROAD', year, days_in_month, grid_resolution, seasonality_mapping )
   SLV_fin_grid <- add_seasonality( SLV_proc_grid, em, 'SLV', year, days_in_month, grid_resolution, seasonality_mapping )
   WST_fin_grid <- add_seasonality( WST_proc_grid, em, 'WST', year, days_in_month, grid_resolution, seasonality_mapping )
   SHP_fin_grid <- add_seasonality( SHP_proc_grid, em, 'SHP', year, days_in_month, grid_resolution, seasonality_mapping )
@@ -235,6 +237,7 @@ generate_final_grids_nc_subVOC <- function( int_grids_list,
   ENE_month_em <- sum_monthly_em( ENE_fin_grid, em, 'ENE', year, days_in_month, global_grid_area, seasonality_mapping )
   IND_month_em <- sum_monthly_em( IND_fin_grid, em, 'IND', year, days_in_month, global_grid_area, seasonality_mapping )
   TRA_month_em <- sum_monthly_em( TRA_fin_grid, em, 'TRA', year, days_in_month, global_grid_area, seasonality_mapping )
+  ROAD_month_em <- sum_monthly_em( ROAD_fin_grid, em, 'ROAD', year, days_in_month, global_grid_area, seasonality_mapping )
   SLV_month_em <- sum_monthly_em( SLV_fin_grid, em, 'SLV', year, days_in_month, global_grid_area, seasonality_mapping )
   WST_month_em <- sum_monthly_em( WST_fin_grid, em, 'WST', year, days_in_month, global_grid_area, seasonality_mapping )
   SHP_month_em <- sum_monthly_em( SHP_fin_grid, em, 'SHP', year, days_in_month, global_grid_area, seasonality_mapping )
@@ -243,11 +246,11 @@ generate_final_grids_nc_subVOC <- function( int_grids_list,
 
   RCO_month_em <- data.frame( em = VOC_em, sector = 'RCO', year = year, month = 1 : 12, units = 'kt',
                               value = RCORC_month_em$value + RCOO_month_em$value, stringsAsFactors = F )
-  total_month_em <- rbind( AGR_month_em, ENE_month_em, IND_month_em, TRA_month_em,
+  total_month_em <- rbind( AGR_month_em, ENE_month_em, IND_month_em, TRA_month_em, ROAD_month_em,
                            SLV_month_em, WST_month_em, SHP_month_em, RCO_month_em )
 
   # NetCDF generation starts here
-  fin_sector_list <- c( 'AGR', 'ENE', 'IND', 'TRA', 'SLV', 'WST', 'SHP', 'RCO' )
+  fin_sector_list <- c( 'AGR', 'ENE', 'IND', 'TRA', 'ROAD', 'SLV', 'WST', 'SHP', 'RCO' )
 
   lons <- seq( -180 + grid_resolution / 2, 180 - grid_resolution / 2, grid_resolution )
   lats <- seq( -90 + grid_resolution / 2, 90 - grid_resolution / 2, grid_resolution )
@@ -278,6 +281,7 @@ generate_final_grids_nc_subVOC <- function( int_grids_list,
   ENE <- ncvar_def( 'ENE', data_unit, dim_list, missval = missing_value, longname = sector_name_mapping[ sector_name_mapping$CEDS_fin_sector_short == 'ENE', 'CEDS_fin_sector' ], prec = 'float', compression = 5 )
   IND <- ncvar_def( 'IND', data_unit, dim_list, missval = missing_value, longname = sector_name_mapping[ sector_name_mapping$CEDS_fin_sector_short == 'IND', 'CEDS_fin_sector' ], prec = 'float', compression = 5 )
   TRA <- ncvar_def( 'TRA', data_unit, dim_list, missval = missing_value, longname = sector_name_mapping[ sector_name_mapping$CEDS_fin_sector_short == 'TRA', 'CEDS_fin_sector' ], prec = 'float', compression = 5 )
+  ROAD <- ncvar_def( 'ROAD', data_unit, dim_list, missval = missing_value, longname = sector_name_mapping[ sector_name_mapping$CEDS_fin_sector_short == 'ROAD', 'CEDS_fin_sector' ], prec = 'float', compression = 5 )
   SLV <- ncvar_def( 'SLV', data_unit, dim_list, missval = missing_value, longname = sector_name_mapping[ sector_name_mapping$CEDS_fin_sector_short == 'SLV', 'CEDS_fin_sector' ], prec = 'float', compression = 5 )
   WST <- ncvar_def( 'WST', data_unit, dim_list, missval = missing_value, longname = sector_name_mapping[ sector_name_mapping$CEDS_fin_sector_short == 'WST', 'CEDS_fin_sector' ], prec = 'float', compression = 5 )
   SHP <- ncvar_def( 'SHP', data_unit, dim_list, missval = missing_value, longname = sector_name_mapping[ sector_name_mapping$CEDS_fin_sector_short == 'SHP', 'CEDS_fin_sector' ], prec = 'float', compression = 5 )
@@ -288,10 +292,10 @@ generate_final_grids_nc_subVOC <- function( int_grids_list,
 
   # generate nc file name
   # object version stamp is from global environment
-  nc_file_name <- paste0( 'CEDS_', VOC_em, '_anthro_', year, '_', grid_resolution, '_', version_stamp, '.nc' )
+  nc_file_name <- paste0( 'CEDS_', VOC_em, '_anthro_', year, '_', grid_resolution, '.nc' )
 
   # generate the var_list
-  variable_list <- list( AGR, ENE, IND, TRA, SLV, WST, SHP, RCO, lat_bnds, lon_bnds, time_bnds )
+  variable_list <- list( AGR, ENE, IND, TRA, ROAD, SLV, WST, SHP, RCO, lat_bnds, lon_bnds, time_bnds )
 
   # create new nc file
   nc_new <- nc_create( paste0( output_dir, nc_file_name ), variable_list, force_v4 = T )
@@ -302,6 +306,7 @@ generate_final_grids_nc_subVOC <- function( int_grids_list,
   ncvar_put( nc_new, ENE, rotate_a_matrix( ENE_fin_grid[ , , i ] ), start = c( 1, 1, i ), count = c( -1, -1, 1 ) )
   ncvar_put( nc_new, IND, rotate_a_matrix( IND_fin_grid[ , , i ] ), start = c( 1, 1, i ), count = c( -1, -1, 1 ) )
   ncvar_put( nc_new, TRA, rotate_a_matrix( TRA_fin_grid[ , , i ] ), start = c( 1, 1, i ), count = c( -1, -1, 1 ) )
+  ncvar_put( nc_new, ROAD, rotate_a_matrix( ROAD_fin_grid[ , , i ] ), start = c( 1, 1, i ), count = c( -1, -1, 1 ) )
   ncvar_put( nc_new, SLV, rotate_a_matrix( SLV_fin_grid[ , , i ] ), start = c( 1, 1, i ), count = c( -1, -1, 1 ) )
   ncvar_put( nc_new, WST, rotate_a_matrix( WST_fin_grid[ , , i ] ), start = c( 1, 1, i ), count = c( -1, -1, 1 ) )
   ncvar_put( nc_new, SHP, rotate_a_matrix( SHP_fin_grid[ , , i ] ), start = c( 1, 1, i ), count = c( -1, -1, 1 ) )
@@ -409,7 +414,8 @@ generate_final_grids_nc_solidbiofuel <- function( int_grids_list,
   AGR_proc_grid <- AGR_int_grid
   ENE_proc_grid <- ELEC_int_grid + ETRN_int_grid + FFFI_int_grid + FLR_int_grid
   IND_proc_grid <- INDC_int_grid + INPU_int_grid
-  TRA_proc_grid <- NRTR_int_grid + ROAD_int_grid
+  TRA_proc_grid <- NRTR_int_grid #+ ROAD_int_grid
+  ROAD_proc_grid <- ROAD_int_grid
   RCORC_proc_grid <- RCORC_int_grid
   RCOO_proc_grid <- RCOO_int_grid
   SLV_proc_grid <- SLV_int_grid
@@ -421,6 +427,7 @@ generate_final_grids_nc_solidbiofuel <- function( int_grids_list,
   ENE_fin_grid <- add_seasonality( ENE_proc_grid, em, 'ENE', year, days_in_month, grid_resolution, seasonality_mapping )
   IND_fin_grid <- add_seasonality( IND_proc_grid, em, 'IND', year, days_in_month, grid_resolution, seasonality_mapping )
   TRA_fin_grid <- add_seasonality( TRA_proc_grid, em, 'TRA', year, days_in_month, grid_resolution, seasonality_mapping )
+  ROAD_fin_grid <- add_seasonality( ROAD_proc_grid, em, 'ROAD', year, days_in_month, grid_resolution, seasonality_mapping )
   SLV_fin_grid <- add_seasonality( SLV_proc_grid, em, 'SLV', year, days_in_month, grid_resolution, seasonality_mapping )
   WST_fin_grid <- add_seasonality( WST_proc_grid, em, 'WST', year, days_in_month, grid_resolution, seasonality_mapping )
   SHP_fin_grid <- add_seasonality( SHP_proc_grid, em, 'SHP', year, days_in_month, grid_resolution, seasonality_mapping )
@@ -434,6 +441,7 @@ generate_final_grids_nc_solidbiofuel <- function( int_grids_list,
   ENE_month_em <- sum_monthly_em( ENE_fin_grid, em, 'ENE', year, days_in_month, global_grid_area, seasonality_mapping )
   IND_month_em <- sum_monthly_em( IND_fin_grid, em, 'IND', year, days_in_month, global_grid_area, seasonality_mapping )
   TRA_month_em <- sum_monthly_em( TRA_fin_grid, em, 'TRA', year, days_in_month, global_grid_area, seasonality_mapping )
+  ROAD_month_em <- sum_monthly_em( ROAD_fin_grid, em, 'ROAD', year, days_in_month, global_grid_area, seasonality_mapping )
   SLV_month_em <- sum_monthly_em( SLV_fin_grid, em, 'SLV', year, days_in_month, global_grid_area, seasonality_mapping )
   WST_month_em <- sum_monthly_em( WST_fin_grid, em, 'WST', year, days_in_month, global_grid_area, seasonality_mapping )
   SHP_month_em <- sum_monthly_em( SHP_fin_grid, em, 'SHP', year, days_in_month, global_grid_area, seasonality_mapping )
@@ -442,11 +450,11 @@ generate_final_grids_nc_solidbiofuel <- function( int_grids_list,
 
   RCO_month_em <- data.frame( em = em, sector = 'RCO', year = year, month = 1 : 12, units = 'kt',
                               value = RCORC_month_em$value + RCOO_month_em$value, stringsAsFactors = F )
-  total_month_em <- rbind( AGR_month_em, ENE_month_em, IND_month_em, TRA_month_em,
+  total_month_em <- rbind( AGR_month_em, ENE_month_em, IND_month_em, TRA_month_em,ROAD_month_em,
                            SLV_month_em, WST_month_em, SHP_month_em, RCO_month_em )
 
   # NetCDF generation starts here
-  fin_sector_list <- c( 'AGR', 'ENE', 'IND', 'TRA', 'SLV', 'WST', 'SHP', 'RCO' )
+  fin_sector_list <- c( 'AGR', 'ENE', 'IND', 'TRA', 'ROAD', 'SLV', 'WST', 'SHP', 'RCO' )
 
   lons <- seq( -180 + grid_resolution / 2, 180 - grid_resolution / 2, grid_resolution )
   lats <- seq( -90 + grid_resolution / 2, 90 - grid_resolution / 2, grid_resolution )
@@ -477,6 +485,7 @@ generate_final_grids_nc_solidbiofuel <- function( int_grids_list,
   ENE <- ncvar_def( 'ENE', data_unit, dim_list, missval = missing_value, longname = sector_name_mapping[ sector_name_mapping$CEDS_fin_sector_short == 'ENE', 'CEDS_fin_sector' ], prec = 'float', compression = 5 )
   IND <- ncvar_def( 'IND', data_unit, dim_list, missval = missing_value, longname = sector_name_mapping[ sector_name_mapping$CEDS_fin_sector_short == 'IND', 'CEDS_fin_sector' ], prec = 'float', compression = 5 )
   TRA <- ncvar_def( 'TRA', data_unit, dim_list, missval = missing_value, longname = sector_name_mapping[ sector_name_mapping$CEDS_fin_sector_short == 'TRA', 'CEDS_fin_sector' ], prec = 'float', compression = 5 )
+  ROAD <- ncvar_def( 'ROAD', data_unit, dim_list, missval = missing_value, longname = sector_name_mapping[ sector_name_mapping$CEDS_fin_sector_short == 'ROAD', 'CEDS_fin_sector' ], prec = 'float', compression = 5 )
   SLV <- ncvar_def( 'SLV', data_unit, dim_list, missval = missing_value, longname = sector_name_mapping[ sector_name_mapping$CEDS_fin_sector_short == 'SLV', 'CEDS_fin_sector' ], prec = 'float', compression = 5 )
   WST <- ncvar_def( 'WST', data_unit, dim_list, missval = missing_value, longname = sector_name_mapping[ sector_name_mapping$CEDS_fin_sector_short == 'WST', 'CEDS_fin_sector' ], prec = 'float', compression = 5 )
   SHP <- ncvar_def( 'SHP', data_unit, dim_list, missval = missing_value, longname = sector_name_mapping[ sector_name_mapping$CEDS_fin_sector_short == 'SHP', 'CEDS_fin_sector' ], prec = 'float', compression = 5 )
@@ -489,7 +498,7 @@ generate_final_grids_nc_solidbiofuel <- function( int_grids_list,
   nc_file_name <- paste0( 'CEDS_', em, '_solidbiofuel_anthro_', year, '_', grid_resolution, '.nc' )
 
   # generate the var_list
-  variable_list <- list( AGR, ENE, IND, TRA, SLV, WST, SHP, RCO, lat_bnds, lon_bnds, time_bnds )
+  variable_list <- list( AGR, ENE, IND, TRA, ROAD, SLV, WST, SHP, RCO, lat_bnds, lon_bnds, time_bnds )
 
   # create new nc file
   nc_new <- nc_create( paste0( output_dir, nc_file_name ), variable_list, force_v4 = T )
@@ -500,6 +509,7 @@ generate_final_grids_nc_solidbiofuel <- function( int_grids_list,
   ncvar_put( nc_new, ENE, rotate_a_matrix( ENE_fin_grid[ , , i ] ), start = c( 1, 1, i ), count = c( -1, -1, 1 ) )
   ncvar_put( nc_new, IND, rotate_a_matrix( IND_fin_grid[ , , i ] ), start = c( 1, 1, i ), count = c( -1, -1, 1 ) )
   ncvar_put( nc_new, TRA, rotate_a_matrix( TRA_fin_grid[ , , i ] ), start = c( 1, 1, i ), count = c( -1, -1, 1 ) )
+  ncvar_put( nc_new, ROAD, rotate_a_matrix( ROAD_fin_grid[ , , i ] ), start = c( 1, 1, i ), count = c( -1, -1, 1 ) )
   ncvar_put( nc_new, SLV, rotate_a_matrix( SLV_fin_grid[ , , i ] ), start = c( 1, 1, i ), count = c( -1, -1, 1 ) )
   ncvar_put( nc_new, WST, rotate_a_matrix( WST_fin_grid[ , , i ] ), start = c( 1, 1, i ), count = c( -1, -1, 1 ) )
   ncvar_put( nc_new, SHP, rotate_a_matrix( SHP_fin_grid[ , , i ] ), start = c( 1, 1, i ), count = c( -1, -1, 1 ) )
@@ -601,7 +611,8 @@ generate_final_grids_nc_coalfuel <- function( int_grids_list,
     AGR_proc_grid <- AGR_int_grid
     ENE_proc_grid <- ELEC_int_grid + ETRN_int_grid + FFFI_int_grid + FLR_int_grid
     IND_proc_grid <- INDC_int_grid + INPU_int_grid
-    TRA_proc_grid <- NRTR_int_grid + ROAD_int_grid
+    TRA_proc_grid <- NRTR_int_grid #+ ROAD_int_grid
+    ROAD_proc_grid <- ROAD_int_grid
     RCORC_proc_grid <- RCORC_int_grid
     RCOO_proc_grid <- RCOO_int_grid
     SLV_proc_grid <- SLV_int_grid
@@ -613,6 +624,7 @@ generate_final_grids_nc_coalfuel <- function( int_grids_list,
     ENE_fin_grid <- add_seasonality( ENE_proc_grid, em, 'ENE', year, days_in_month, grid_resolution, seasonality_mapping )
     IND_fin_grid <- add_seasonality( IND_proc_grid, em, 'IND', year, days_in_month, grid_resolution, seasonality_mapping )
     TRA_fin_grid <- add_seasonality( TRA_proc_grid, em, 'TRA', year, days_in_month, grid_resolution, seasonality_mapping )
+    ROAD_fin_grid <- add_seasonality( ROAD_proc_grid, em, 'ROAD', year, days_in_month, grid_resolution, seasonality_mapping )
     SLV_fin_grid <- add_seasonality( SLV_proc_grid, em, 'SLV', year, days_in_month, grid_resolution, seasonality_mapping )
     WST_fin_grid <- add_seasonality( WST_proc_grid, em, 'WST', year, days_in_month, grid_resolution, seasonality_mapping )
     SHP_fin_grid <- add_seasonality( SHP_proc_grid, em, 'SHP', year, days_in_month, grid_resolution, seasonality_mapping )
@@ -626,6 +638,7 @@ generate_final_grids_nc_coalfuel <- function( int_grids_list,
     ENE_month_em <- sum_monthly_em( ENE_fin_grid, em, 'ENE', year, days_in_month, global_grid_area, seasonality_mapping )
     IND_month_em <- sum_monthly_em( IND_fin_grid, em, 'IND', year, days_in_month, global_grid_area, seasonality_mapping )
     TRA_month_em <- sum_monthly_em( TRA_fin_grid, em, 'TRA', year, days_in_month, global_grid_area, seasonality_mapping )
+    ROAD_month_em <- sum_monthly_em( ROAD_fin_grid, em, 'ROAD', year, days_in_month, global_grid_area, seasonality_mapping )
     SLV_month_em <- sum_monthly_em( SLV_fin_grid, em, 'SLV', year, days_in_month, global_grid_area, seasonality_mapping )
     WST_month_em <- sum_monthly_em( WST_fin_grid, em, 'WST', year, days_in_month, global_grid_area, seasonality_mapping )
     SHP_month_em <- sum_monthly_em( SHP_fin_grid, em, 'SHP', year, days_in_month, global_grid_area, seasonality_mapping )
@@ -634,11 +647,11 @@ generate_final_grids_nc_coalfuel <- function( int_grids_list,
 
     RCO_month_em <- data.frame( em = em, sector = 'RCO', year = year, month = 1 : 12, units = 'kt',
                                 value = RCORC_month_em$value + RCOO_month_em$value, stringsAsFactors = F )
-    total_month_em <- rbind( AGR_month_em, ENE_month_em, IND_month_em, TRA_month_em,
+    total_month_em <- rbind( AGR_month_em, ENE_month_em, IND_month_em, TRA_month_em, ROAD_month_em,
                              SLV_month_em, WST_month_em, SHP_month_em, RCO_month_em )
 
     # NetCDF generation starts here
-    fin_sector_list <- c( 'AGR', 'ENE', 'IND', 'TRA', 'SLV', 'WST', 'SHP', 'RCO' )
+    fin_sector_list <- c( 'AGR', 'ENE', 'IND', 'TRA', 'ROAD', 'SLV', 'WST', 'SHP', 'RCO' )
 
     lons <- seq( -180 + grid_resolution / 2, 180 - grid_resolution / 2, grid_resolution )
     lats <- seq( -90 + grid_resolution / 2, 90 - grid_resolution / 2, grid_resolution )
@@ -669,6 +682,7 @@ generate_final_grids_nc_coalfuel <- function( int_grids_list,
     ENE <- ncvar_def( 'ENE', data_unit, dim_list, missval = missing_value, longname = sector_name_mapping[ sector_name_mapping$CEDS_fin_sector_short == 'ENE', 'CEDS_fin_sector' ], prec = 'float', compression = 5 )
     IND <- ncvar_def( 'IND', data_unit, dim_list, missval = missing_value, longname = sector_name_mapping[ sector_name_mapping$CEDS_fin_sector_short == 'IND', 'CEDS_fin_sector' ], prec = 'float', compression = 5 )
     TRA <- ncvar_def( 'TRA', data_unit, dim_list, missval = missing_value, longname = sector_name_mapping[ sector_name_mapping$CEDS_fin_sector_short == 'TRA', 'CEDS_fin_sector' ], prec = 'float', compression = 5 )
+    ROAD <- ncvar_def( 'ROAD', data_unit, dim_list, missval = missing_value, longname = sector_name_mapping[ sector_name_mapping$CEDS_fin_sector_short == 'ROAD', 'CEDS_fin_sector' ], prec = 'float', compression = 5 )
     SLV <- ncvar_def( 'SLV', data_unit, dim_list, missval = missing_value, longname = sector_name_mapping[ sector_name_mapping$CEDS_fin_sector_short == 'SLV', 'CEDS_fin_sector' ], prec = 'float', compression = 5 )
     WST <- ncvar_def( 'WST', data_unit, dim_list, missval = missing_value, longname = sector_name_mapping[ sector_name_mapping$CEDS_fin_sector_short == 'WST', 'CEDS_fin_sector' ], prec = 'float', compression = 5 )
     SHP <- ncvar_def( 'SHP', data_unit, dim_list, missval = missing_value, longname = sector_name_mapping[ sector_name_mapping$CEDS_fin_sector_short == 'SHP', 'CEDS_fin_sector' ], prec = 'float', compression = 5 )
@@ -681,7 +695,7 @@ generate_final_grids_nc_coalfuel <- function( int_grids_list,
     nc_file_name <- paste0( 'CEDS_', em, '_coalfuel_anthro_', year, '_', grid_resolution, '.nc' )
 
     # generate the var_list
-    variable_list <- list( AGR, ENE, IND, TRA, SLV, WST, SHP, RCO, lat_bnds, lon_bnds, time_bnds )
+    variable_list <- list( AGR, ENE, IND, TRA, ROAD, SLV, WST, SHP, RCO, lat_bnds, lon_bnds, time_bnds )
 
     # create new nc file
     nc_new <- nc_create( paste0( output_dir, nc_file_name ), variable_list, force_v4 = T )
@@ -692,6 +706,7 @@ generate_final_grids_nc_coalfuel <- function( int_grids_list,
         ncvar_put( nc_new, ENE, rotate_a_matrix( ENE_fin_grid[ , , i ] ), start = c( 1, 1, i ), count = c( -1, -1, 1 ) )
         ncvar_put( nc_new, IND, rotate_a_matrix( IND_fin_grid[ , , i ] ), start = c( 1, 1, i ), count = c( -1, -1, 1 ) )
         ncvar_put( nc_new, TRA, rotate_a_matrix( TRA_fin_grid[ , , i ] ), start = c( 1, 1, i ), count = c( -1, -1, 1 ) )
+        ncvar_put( nc_new, ROAD, rotate_a_matrix( ROAD_fin_grid[ , , i ] ), start = c( 1, 1, i ), count = c( -1, -1, 1 ) )
         ncvar_put( nc_new, SLV, rotate_a_matrix( SLV_fin_grid[ , , i ] ), start = c( 1, 1, i ), count = c( -1, -1, 1 ) )
         ncvar_put( nc_new, WST, rotate_a_matrix( WST_fin_grid[ , , i ] ), start = c( 1, 1, i ), count = c( -1, -1, 1 ) )
         ncvar_put( nc_new, SHP, rotate_a_matrix( SHP_fin_grid[ , , i ] ), start = c( 1, 1, i ), count = c( -1, -1, 1 ) )
@@ -1080,7 +1095,7 @@ singleVarChunking_subVOCemissions <- function( VOC_em,
   # read in each nc file and extract variables
   # create empty arrays for storage
   # TODO: This way of growing arrays is slow and bad, re-write with array size set before the loop.
-  AGR_array <- ENE_array <- IND_array <- TRA_array <- RCO_array <- SLV_array <- WST_array <- SHP_array <- c( )
+  AGR_array <- ENE_array <- IND_array <- TRA_array <- ROAD_array <- RCO_array <- SLV_array <- WST_array <- SHP_array <- c( )
   time_array <- time_bnds_array <- c( )
 
   # go through each nc files, extract the variables and append to storage array
@@ -1092,6 +1107,7 @@ singleVarChunking_subVOCemissions <- function( VOC_em,
     ENE_fin_block <- ncvar_get( nc_temp, 'ENE' )
     IND_fin_block <- ncvar_get( nc_temp, 'IND' )
     TRA_fin_block <- ncvar_get( nc_temp, 'TRA' )
+    ROAD_fin_block <- ncvar_get( nc_temp, 'ROAD' )
     RCO_fin_block <- ncvar_get( nc_temp, 'RCO' )
     SLV_fin_block <- ncvar_get( nc_temp, 'SLV' )
     WST_fin_block <- ncvar_get( nc_temp, 'WST' )
@@ -1105,6 +1121,7 @@ singleVarChunking_subVOCemissions <- function( VOC_em,
     ENE_array <- c( ENE_array, ENE_fin_block )
     IND_array <- c( IND_array, IND_fin_block )
     TRA_array <- c( TRA_array, TRA_fin_block )
+    ROAD_array <- c( ROAD_array, ROAD_fin_block )
     RCO_array <- c( RCO_array, RCO_fin_block )
     SLV_array <- c( SLV_array, SLV_fin_block )
     WST_array <- c( WST_array, WST_fin_block )
@@ -1136,6 +1153,7 @@ singleVarChunking_subVOCemissions <- function( VOC_em,
   dim( ENE_array ) <- array_dim
   dim( IND_array ) <- array_dim
   dim( TRA_array ) <- array_dim
+  dim( ROAD_array ) <- array_dim
   dim( RCO_array ) <- array_dim
   dim( SLV_array ) <- array_dim
   dim( WST_array ) <- array_dim
@@ -1149,21 +1167,23 @@ singleVarChunking_subVOCemissions <- function( VOC_em,
   #  1: Energy Sector;
   #  2: Industrial Sector;
   #  3: Transportation Sector;
+  #  3b: ROAD
   #  4: Residential, Commercial, Other;
   #  5: Solvents production and application;
   #  6: Waste;
   #  7: International Shipping
 
-  flat_dim <- c( array_dim[ 1 ], array_dim[ 2 ], 8 , array_dim[ 3 ] )
+  flat_dim <- c( array_dim[ 1 ], array_dim[ 2 ], 9 , array_dim[ 3 ] )
   flat_array <- array( dim = flat_dim )
   flat_array[ , , 1 , ] <- AGR_array
   flat_array[ , , 2 , ] <- ENE_array
   flat_array[ , , 3 , ] <- IND_array
   flat_array[ , , 4 , ] <- TRA_array
-  flat_array[ , , 5 , ] <- RCO_array
-  flat_array[ , , 6 , ] <- SLV_array
-  flat_array[ , , 7 , ] <- WST_array
-  flat_array[ , , 8 , ] <- SHP_array
+  flat_array[ , , 5 , ] <- ROAD_array
+  flat_array[ , , 6 , ] <- RCO_array
+  flat_array[ , , 7 , ] <- SLV_array
+  flat_array[ , , 8 , ] <- WST_array
+  flat_array[ , , 9 , ] <- SHP_array
 
   # generate nc file
 
@@ -1171,7 +1191,7 @@ singleVarChunking_subVOCemissions <- function( VOC_em,
   lons <- seq( -180 + grid_resolution / 2, 180 - grid_resolution / 2, grid_resolution )
   lats <- seq( -90 + grid_resolution / 2, 90 - grid_resolution / 2, grid_resolution )
   time <- time_array
-  sectors <- 0 : 7
+  sectors <- 0 : 8
   londim <- ncdim_def( "lon", "degrees_east", as.double( lons ), longname = 'longitude' )
   latdim <- ncdim_def( "lat", "degrees_north", as.double( lats ), longname = 'latitude' )
   timedim <- ncdim_def( "time", paste0( "days since 1750-01-01 0:0:0" ), as.double( time ),
@@ -1185,8 +1205,8 @@ singleVarChunking_subVOCemissions <- function( VOC_em,
   bnds <- 1 : 2
   bndsdim <- ncdim_def( 'bound', '', as.integer( bnds ), longname = 'bound', create_dimvar = F )
   time_bnds_data <- time_bnds_array
-  sector_bnds_data <- cbind( seq( -0.5, 6.5, 1 ),
-                             seq( 0.5, 7.5, 1 ) )
+  sector_bnds_data <- cbind( seq( -0.5, 7.5, 1 ),
+                             seq( 0.5, 8.5, 1 ) )
 
   # generate nc file name
   filename_version_tag <- paste0( 'CEDS-', GRIDDING_VERSION )
@@ -1303,7 +1323,7 @@ singleVarChunking_solidbiofuelemissions <- function( em,
   # read in each nc file and extract variables
   # create empty arrays for storage
   # TODO: This way of growing arrays is slow and bad, re-write with array size set before the loop.
-  AGR_array <- ENE_array <- IND_array <- TRA_array <- RCO_array <- SLV_array <- WST_array <- SHP_array <- c( )
+  AGR_array <- ENE_array <- IND_array <- TRA_array <- ROAD_array <- RCO_array <- SLV_array <- WST_array <- SHP_array <- c( )
   time_array <- time_bnds_array <- c( )
 
   # go through each nc files, extract the variables and append to storage array
@@ -1315,6 +1335,7 @@ singleVarChunking_solidbiofuelemissions <- function( em,
     ENE_fin_block <- ncvar_get( nc_temp, 'ENE' )
     IND_fin_block <- ncvar_get( nc_temp, 'IND' )
     TRA_fin_block <- ncvar_get( nc_temp, 'TRA' )
+    ROAD_fin_block <- ncvar_get( nc_temp, 'ROAD' )
     RCO_fin_block <- ncvar_get( nc_temp, 'RCO' )
     SLV_fin_block <- ncvar_get( nc_temp, 'SLV' )
     WST_fin_block <- ncvar_get( nc_temp, 'WST' )
@@ -1328,6 +1349,7 @@ singleVarChunking_solidbiofuelemissions <- function( em,
     ENE_array <- c( ENE_array, ENE_fin_block )
     IND_array <- c( IND_array, IND_fin_block )
     TRA_array <- c( TRA_array, TRA_fin_block )
+    ROAD_array <- c( ROAD_array, ROAD_fin_block )
     RCO_array <- c( RCO_array, RCO_fin_block )
     SLV_array <- c( SLV_array, SLV_fin_block )
     WST_array <- c( WST_array, WST_fin_block )
@@ -1359,6 +1381,7 @@ singleVarChunking_solidbiofuelemissions <- function( em,
   dim( ENE_array ) <- array_dim
   dim( IND_array ) <- array_dim
   dim( TRA_array ) <- array_dim
+  dim( ROAD_array ) <- array_dim
   dim( RCO_array ) <- array_dim
   dim( SLV_array ) <- array_dim
   dim( WST_array ) <- array_dim
@@ -1372,21 +1395,23 @@ singleVarChunking_solidbiofuelemissions <- function( em,
   #  1: Energy Sector;
   #  2: Industrial Sector;
   #  3: Transportation Sector;
+  #  3b: ROAD
   #  4: Residential, Commercial, Other;
   #  5: Solvents production and application;
   #  6: Waste;
   #  7: International Shipping
 
-  flat_dim <- c( array_dim[ 1 ], array_dim[ 2 ], 8 , array_dim[ 3 ] )
+  flat_dim <- c( array_dim[ 1 ], array_dim[ 2 ], 9 , array_dim[ 3 ] )
   flat_array <- array( dim = flat_dim )
   flat_array[ , , 1 , ] <- AGR_array
   flat_array[ , , 2 , ] <- ENE_array
   flat_array[ , , 3 , ] <- IND_array
   flat_array[ , , 4 , ] <- TRA_array
-  flat_array[ , , 5 , ] <- RCO_array
-  flat_array[ , , 6 , ] <- SLV_array
-  flat_array[ , , 7 , ] <- WST_array
-  flat_array[ , , 8 , ] <- SHP_array
+  flat_array[ , , 5 , ] <- ROAD_array
+  flat_array[ , , 6 , ] <- RCO_array
+  flat_array[ , , 7 , ] <- SLV_array
+  flat_array[ , , 8 , ] <- WST_array
+  flat_array[ , , 9 , ] <- SHP_array
 
   # generate nc file
 
@@ -1394,7 +1419,7 @@ singleVarChunking_solidbiofuelemissions <- function( em,
   lons <- seq( -180 + grid_resolution / 2, 180 - grid_resolution / 2, grid_resolution )
   lats <- seq( -90 + grid_resolution / 2, 90 - grid_resolution / 2, grid_resolution )
   time <- time_array
-  sectors <- 0 : 7
+  sectors <- 0 : 8
   londim <- ncdim_def( "lon", "degrees_east", as.double( lons ), longname = 'longitude' )
   latdim <- ncdim_def( "lat", "degrees_north", as.double( lats ), longname = 'latitude' )
   timedim <- ncdim_def( "time", paste0( "days since 1750-01-01 0:0:0" ), as.double( time ),
@@ -1408,8 +1433,8 @@ singleVarChunking_solidbiofuelemissions <- function( em,
   bnds <- 1 : 2
   bndsdim <- ncdim_def( 'bound', '', as.integer( bnds ), longname = 'bound', create_dimvar = F )
   time_bnds_data <- time_bnds_array
-  sector_bnds_data <- cbind( seq( -0.5, 6.5, 1 ),
-                             seq( 0.5, 7.5, 1 ) )
+  sector_bnds_data <- cbind( seq( -0.5, 7.5, 1 ),
+                             seq( 0.5, 8.5, 1 ) )
 
   # generate nc file name
   filename_version_tag <- paste0( 'CEDS-', GRIDDING_VERSION )
@@ -1522,7 +1547,7 @@ singleVarChunking_coalfuelemissions <- function( em,
     # read in each nc file and extract variables
     # create empty arrays for storage
     # TODO: This way of growing arrays is slow and bad, re-write with array size set before the loop.
-    AGR_array <- ENE_array <- IND_array <- TRA_array <- RCO_array <- SLV_array <- WST_array <- SHP_array <- c( )
+    AGR_array <- ENE_array <- IND_array <- TRA_array <- ROAD_array <- RCO_array <- SLV_array <- WST_array <- SHP_array <- c( )
     time_array <- time_bnds_array <- c( )
 
     # go through each nc files, extract the variables and append to storage array
@@ -1534,6 +1559,7 @@ singleVarChunking_coalfuelemissions <- function( em,
         ENE_fin_block <- ncvar_get( nc_temp, 'ENE' )
         IND_fin_block <- ncvar_get( nc_temp, 'IND' )
         TRA_fin_block <- ncvar_get( nc_temp, 'TRA' )
+        ROAD_fin_block <- ncvar_get( nc_temp, 'ROAD' )
         RCO_fin_block <- ncvar_get( nc_temp, 'RCO' )
         SLV_fin_block <- ncvar_get( nc_temp, 'SLV' )
         WST_fin_block <- ncvar_get( nc_temp, 'WST' )
@@ -1547,6 +1573,7 @@ singleVarChunking_coalfuelemissions <- function( em,
         ENE_array <- c( ENE_array, ENE_fin_block )
         IND_array <- c( IND_array, IND_fin_block )
         TRA_array <- c( TRA_array, TRA_fin_block )
+        ROAD_array <- c( ROAD_array, ROAD_fin_block )
         RCO_array <- c( RCO_array, RCO_fin_block )
         SLV_array <- c( SLV_array, SLV_fin_block )
         WST_array <- c( WST_array, WST_fin_block )
@@ -1578,6 +1605,7 @@ singleVarChunking_coalfuelemissions <- function( em,
     dim( ENE_array ) <- array_dim
     dim( IND_array ) <- array_dim
     dim( TRA_array ) <- array_dim
+    dim( ROAD_array ) <- array_dim
     dim( RCO_array ) <- array_dim
     dim( SLV_array ) <- array_dim
     dim( WST_array ) <- array_dim
@@ -1591,21 +1619,23 @@ singleVarChunking_coalfuelemissions <- function( em,
     #  1: Energy Sector;
     #  2: Industrial Sector;
     #  3: Transportation Sector;
+    # 3b: ROAD
     #  4: Residential, Commercial, Other;
     #  5: Solvents production and application;
     #  6: Waste;
     #  7: International Shipping
 
-    flat_dim <- c( array_dim[ 1 ], array_dim[ 2 ], 8 , array_dim[ 3 ] )
+    flat_dim <- c( array_dim[ 1 ], array_dim[ 2 ], 9 , array_dim[ 3 ] )
     flat_array <- array( dim = flat_dim )
     flat_array[ , , 1 , ] <- AGR_array
     flat_array[ , , 2 , ] <- ENE_array
     flat_array[ , , 3 , ] <- IND_array
     flat_array[ , , 4 , ] <- TRA_array
-    flat_array[ , , 5 , ] <- RCO_array
-    flat_array[ , , 6 , ] <- SLV_array
-    flat_array[ , , 7 , ] <- WST_array
-    flat_array[ , , 8 , ] <- SHP_array
+    flat_array[ , , 5 , ] <- ROAD_array
+    flat_array[ , , 6 , ] <- RCO_array
+    flat_array[ , , 7 , ] <- SLV_array
+    flat_array[ , , 8 , ] <- WST_array
+    flat_array[ , , 9 , ] <- SHP_array
 
     # generate nc file
 
@@ -1613,7 +1643,7 @@ singleVarChunking_coalfuelemissions <- function( em,
     lons <- seq( -180 + grid_resolution / 2, 180 - grid_resolution / 2, grid_resolution )
     lats <- seq( -90 + grid_resolution / 2, 90 - grid_resolution / 2, grid_resolution )
     time <- time_array
-    sectors <- 0 : 7
+    sectors <- 0 : 8
     londim <- ncdim_def( "lon", "degrees_east", as.double( lons ), longname = 'longitude' )
     latdim <- ncdim_def( "lat", "degrees_north", as.double( lats ), longname = 'latitude' )
     timedim <- ncdim_def( "time", paste0( "days since 1750-01-01 0:0:0" ), as.double( time ),
@@ -1627,8 +1657,8 @@ singleVarChunking_coalfuelemissions <- function( em,
     bnds <- 1 : 2
     bndsdim <- ncdim_def( 'bound', '', as.integer( bnds ), longname = 'bound', create_dimvar = F )
     time_bnds_data <- time_bnds_array
-    sector_bnds_data <- cbind( seq( -0.5, 6.5, 1 ),
-                               seq( 0.5, 7.5, 1 ) )
+    sector_bnds_data <- cbind( seq( -0.5, 7.5, 1 ),
+                               seq( 0.5, 8.5, 1 ) )
 
     # generate nc file name
     filename_version_tag <- paste0( 'CEDS-', GRIDDING_VERSION )

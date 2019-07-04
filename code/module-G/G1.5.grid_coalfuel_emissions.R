@@ -30,7 +30,7 @@ initialize( "G1.5.grid_coalfuel_emissions.R", log_msg, headers )
 # Define emissions species variable
 args_from_makefile <- commandArgs( TRUE )
 em <- args_from_makefile[ 1 ]
-if ( is.na( em ) ) em <- "SO2"
+if ( is.na( em ) ) em <- "BC"
 
 # Set up directories
 output_dir          <- filePath( "MED_OUT",  "gridded-emissions/",     extension = "" )

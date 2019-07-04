@@ -159,7 +159,7 @@ gridding_emissions_fin <- ceds_gridding_mapping %>%
     dplyr::arrange( sector )
 
 # consolidate different checksum files to have total emissions by sector by year
-checksum_df <- list.files( output_dir, paste0( '_', em, '_anthro.*[.]csv' ), full.names = TRUE ) %>%
+checksum_df <- list.files( output_dir, paste0( '_', VOC_em, '_anthro.*[.]csv' ), full.names = TRUE ) %>%
     lapply( read.csv ) %>%
     dplyr::bind_rows() %>%
     dplyr::group_by( sector, year ) %>%
