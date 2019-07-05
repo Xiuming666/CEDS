@@ -512,7 +512,7 @@ add_seasonality <- function( annual_flux, em, sector, year, days_in_month, grid_
   if ( sector == 'ROAD' ) {
       sea_adj <- 365 / rowSums( sweep( sea_fracs, 3, days_in_month, `*`) * 12, dims = 2)
       storage_array <- sweep(sea_fracs, c(1, 2), annual_flux * sea_adj * 12, `*`)
-  } else if ( sector %in% c( 'AGR', 'ENE', 'IND', 'TRA', 'RCORC', 'RCOO', 'SLV', 'WST' ) ) {
+  } else if ( sector %in% c( 'AGR', 'ENE', 'IND', 'NRTR', 'RCORC', 'RCOO', 'SLV', 'WST' ) ) {
     sea_adj <- 365 / rowSums( sweep( sea_fracs, 3, days_in_month, `*`) * 12, dims = 2)
     storage_array <- sweep(sea_fracs, c(1, 2), annual_flux * sea_adj * 12, `*`)
   }
@@ -576,7 +576,7 @@ sum_monthly_em <- function( fin_grid, em, sector, year, days_in_month, global_gr
       } )
     monthly_em <- do.call( 'rbind', monthly_em_list )
   }
-  if ( sector %in% c( 'AGR', 'ENE', 'IND', 'TRA', 'RCORC', 'RCOO', 'SLV', 'WST' ) ) {
+  if ( sector %in% c( 'AGR', 'ENE', 'IND', 'NRTR', 'RCORC', 'RCOO', 'SLV', 'WST' ) ) {
     monthly_em_list <- lapply( 1 : 12, function( i ) {
       month_flux <- fin_grid[ , , i ]
       month_mass <- month_flux * global_grid_area * days_in_month[ i ] * 24 * 60 * 60

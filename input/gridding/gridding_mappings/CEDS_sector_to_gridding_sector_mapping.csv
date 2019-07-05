@@ -19,11 +19,11 @@ CEDS_working_sector,CEDS_int_gridding_sector,CEDS_int_gridding_sector_short,CEDS
 1A3ai_International-aviation,Aircraft,AIR,Aircraft,AIR
 1A3aii_Domestic-aviation,Aircraft,AIR,Aircraft,AIR
 1A3b_Road,Road transportation,ROAD,Road Transportation,ROAD
-1A3c_Rail,Non-road Transportation,NRTR,Transportation Sector,TRA
+1A3c_Rail,Non-road Transportation,NRTR,Non-road Transportation,NRTR
 1A3di_International-shipping,International shipping,SHP,International shipping,SHP
 1A3di_Oil_Tanker_Loading,Tanker Loading,TANK,International Shipping,SHP
-1A3dii_Domestic-navigation,Non-road Transportation,NRTR,Transportation Sector,TRA
-1A3eii_Other-transp,Non-road Transportation,NRTR,Transportation Sector,TRA
+1A3dii_Domestic-navigation,Non-road Transportation,NRTR,Non-road Transportation,NRTR
+1A3eii_Other-transp,Non-road Transportation,NRTR,Non-road Transportation,NRTR
 1A4a_Commercial-institutional,"Residential, Commercial, Other - Residential, Commercial",RCORC,"Residential, Commercial, Other",RCO
 1A4b_Residential,"Residential, Commercial, Other - Residential, Commercial",RCORC,"Residential, Commercial, Other",RCO
 1A4c_Agriculture-forestry-fishing,"Residential, Commercial, Other - Other",RCOO,"Residential, Commercial, Other",RCO
