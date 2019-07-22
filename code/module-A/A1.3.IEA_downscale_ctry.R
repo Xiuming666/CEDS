@@ -27,7 +27,7 @@
 # Define PARAM_DIR as the location of the CEDS "parameters" directory, relative
 # to the "input" directory.
     PARAM_DIR <- if("input" %in% dir()) "code/parameters/" else "../code/parameters/"
-
+    
 # Call standard script header function to read in universal header files -
 # provide logging, file support, and system functions - and start the script log.
     headers <- c( "data_functions.R", "timeframe_functions.R",
@@ -245,7 +245,7 @@
 	  A.IEAsingle <- subset( A.IEAfull, COUNTRY %in% IEA_single$IEAName )
 	  A.IEAsingle$iso <- IEA_single$iso[ match( A.IEAsingle$COUNTRY,
 	                                            IEA_single$IEAName ) ]
-
+    
 # ------------------------------------------------------------------------------
 # 4. First process FSU and former Yugoslavia
 
@@ -417,7 +417,7 @@
 # Replace NAs with 0.
 # Make sure that rows with NAs are not needed.
 	  A.USSR_Yug_ctry_stat[ is.na( A.USSR_Yug_ctry_stat ) ] <- 0
-
+	  
 # -----------------------------------------------------------------------------
 # 5. Fix scaling of Former Soviet Union (FSU) transformation sector
 
