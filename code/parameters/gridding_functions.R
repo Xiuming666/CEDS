@@ -249,7 +249,7 @@ grid_one_sector <- function( sector,
     global_em_spatial <- aggregate_all_isos( iso_list, iso_em_spatial_list, location_index, grid_resolution, flux_factor )
 
   } else {
-    stopifnot(sector %in% c( 'AGR', 'ELEC', 'ETRN', 'FFFI', 'FLR', 'INDC', 'INPU', 'NRTR', 'RCOO', 'RCORC', 'ROAD', 'SLV' ) )
+    stopifnot(sector %in% c( 'AGR', 'ELEC', 'ETRN', 'FFFI', 'FLR', 'INDC', 'INPU', 'NRTR', 'RCOO', 'RCOR', 'RCOC', 'ROAD', 'SLV' ) )
     iso_list <- gridding_emissions_sector$iso
 
     iso_em_spatial_list <- lapply( iso_list,
@@ -425,7 +425,12 @@ get_proxy <- function( em, year, sector, proxy_mapping, proxy_files, proxy_type 
   if ( proxy_type == 'primary' ) {
     file_name <- proxy_info$proxy_file
     proxy_root <- proxy_dir
-    proxy_file <- grep( file_name, proxy_files$primary, value = T )
+    if ( em == 'OC' ) {
+        file_name = paste0( '^', file_name ) #add wild card to ensure filename starts with OC, not NMVOC
+        proxy_file <- grep( file_name, proxy_files$primary, value = T )
+    } else {
+        proxy_file <- grep( file_name, proxy_files$primary, value = T )
+    }
   }
 
   # If we want a backup proxy, or the primary proxy file can't be found,
@@ -433,7 +438,12 @@ get_proxy <- function( em, year, sector, proxy_mapping, proxy_files, proxy_type 
   if ( proxy_type != 'primary' || length( proxy_file ) == 0 ) {
     file_name <- proxy_info$proxybackup_file
     proxy_root <- proxy_backup_dir
-    proxy_file <- grep( file_name, proxy_files$backup, value = T )
+    if ( em == 'OC' ) {
+        file_name = paste0( '^', file_name ) #add wild card to ensure filename starts with OC, not NMVOC
+        proxy_file <- grep( file_name, proxy_files$backup, value = T )
+        } else {
+        proxy_file <- grep( file_name, proxy_files$backup, value = T )
+    }
   }
 
   # Check that we found one, and exactly one, proxy file
@@ -512,7 +522,7 @@ add_seasonality <- function( annual_flux, em, sector, year, days_in_month, grid_
   if ( sector == 'ROAD' ) {
       sea_adj <- 365 / rowSums( sweep( sea_fracs, 3, days_in_month, `*`) * 12, dims = 2)
       storage_array <- sweep(sea_fracs, c(1, 2), annual_flux * sea_adj * 12, `*`)
-  } else if ( sector %in% c( 'AGR', 'ENE', 'IND', 'NRTR', 'RCORC', 'RCOO', 'SLV', 'WST' ) ) {
+  } else if ( sector %in% c( 'AGR', 'ENE', 'IND', 'NRTR', 'RCOR', 'RCOC', 'RCOO', 'SLV', 'WST' ) ) {
     sea_adj <- 365 / rowSums( sweep( sea_fracs, 3, days_in_month, `*`) * 12, dims = 2)
     storage_array <- sweep(sea_fracs, c(1, 2), annual_flux * sea_adj * 12, `*`)
   }
@@ -576,7 +586,7 @@ sum_monthly_em <- function( fin_grid, em, sector, year, days_in_month, global_gr
       } )
     monthly_em <- do.call( 'rbind', monthly_em_list )
   }
-  if ( sector %in% c( 'AGR', 'ENE', 'IND', 'NRTR', 'RCORC', 'RCOO', 'SLV', 'WST' ) ) {
+  if ( sector %in% c( 'AGR', 'ENE', 'IND', 'NRTR', 'RCOR', 'RCOC', 'RCOO', 'SLV', 'WST' ) ) {
     monthly_em_list <- lapply( 1 : 12, function( i ) {
       month_flux <- fin_grid[ , , i ]
       month_mass <- month_flux * global_grid_area * days_in_month[ i ] * 24 * 60 * 60

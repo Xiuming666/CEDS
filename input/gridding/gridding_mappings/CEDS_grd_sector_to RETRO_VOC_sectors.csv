@@ -4,7 +4,9 @@ Energy Sector,ENE,power,pow
 Industrial Sector,IND,industrial combustion and processes, inc
 Non-road Transportation,NRTR,transport, tra
 Road Transportation,ROAD,transport, tra
-"Residential, Commercial, Other",RCO,residentia, res
+"Residential, Commercial, Other - Residential",RCOR,residential, res
+"Residential, Commercial, Other - Commercial",RCOC,residential, res
+"Residential, Commercial, Other - Other",RCOO,residential, res
 Solvents production and application,SLV,solvents, sol
 Waste,WST,waste disposal, was
 Shipping,SHP,,

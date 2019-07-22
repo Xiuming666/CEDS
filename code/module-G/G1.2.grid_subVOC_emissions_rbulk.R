@@ -31,7 +31,7 @@ initialize( "G1.2.grid_subVOC_emissions_rbulk.R", log_msg, headers )
 # Define emissions species variable
 args_from_makefile <- commandArgs( TRUE )
 VOC_em <- args_from_makefile[ 1 ]
-if ( is.na( VOC_em ) ) VOC_em <- "VOC01"
+if ( is.na( VOC_em ) ) VOC_em <- "VOC25"
 
 em <- 'NMVOC'
 
@@ -45,8 +45,8 @@ final_emissions_dir <- filePath( "FIN_OUT",  "current-versions/",      extension
 
 # Initialize the gridding parameters
 gridding_initialize( grid_resolution = 0.5,
-                     start_year = 1750,
-                     end_year = 1750,
+                     start_year = 2014,
+                     end_year = 2014,
                      load_masks = T,
                      load_seasonality_profile = T )
 

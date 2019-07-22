@@ -35,7 +35,7 @@ initialize( "G1.1.grid_bulk_emissions.R", log_msg, headers )
 # Define emissions species variable
 args_from_makefile <- commandArgs( TRUE )
 em <- args_from_makefile[ 1 ]
-if ( is.na( em ) ) em <- "BC"
+if ( is.na( em ) ) em <- "NMVOC"
 
 # Set up directories
 output_dir          <- filePath( "MED_OUT",  "gridded-emissions/",     extension = "" )
@@ -48,8 +48,8 @@ final_emissions_dir <- filePath( "FIN_OUT",  "current-versions/",      extension
 
 # Initialize the gridding parameters
 gridding_initialize( grid_resolution = 0.5,
-                     start_year = 1750,
-                     end_year = 1750,
+                     start_year = 2014,
+                     end_year = 2014,
                      load_masks = T,
                      load_seasonality_profile = T )
 
