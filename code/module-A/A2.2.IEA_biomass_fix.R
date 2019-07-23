@@ -248,16 +248,26 @@ initialize( script_name, log_msg, headers )
 
 # For now, loop backwards from most recent years to fill in NA. The following
 # loop works because the 3 rightmost edge years are not NA
+# EEM: current IEA data dont have residential emissions for 2017, use previous years to calc this year's trend
     biomass_1a_IEA_iso <- unique( biomass_1a_IEA$iso )
     biomass_1a_IEA <- ddply( biomass_1a_IEA, .( iso ), function( df ){
-      for( i_year in seq_along( df$year ) ){
+      for( i_year in seq_along( df$year ) ) {
         if( is.na( df$IEA_pc_ext_a[[ i_year ]] ) ){
           df$flag_a[[ i_year ]] <- 1
-          df$IEA_pc_ext_a[[ i_year ]] <- df$Fern_pc[[ i_year ]] *
-            ( df$IEA_pc_ext_a[[ i_year - 1 ]] + df$IEA_pc_ext_a[[ i_year - 2 ]] +
+          if ( biomass_1a_IEA$year[[ i_year ]] > biomass_1a_IEA$year[[1]] - 3 ) { #final year - 3
+              df$IEA_pc_ext_a[[ i_year ]] <- df$Fern_pc[[ i_year ]] *
+                  ( df$IEA_pc_ext_a[[ i_year + 1 ]] + df$IEA_pc_ext_a[[ i_year + 2 ]] +
+                      df$IEA_pc_ext_a[[ i_year + 3 ]] ) /
+                  ( df$Fern_pc[[ i_year + 1 ]] + df$Fern_pc[[ i_year + 2 ]] +
+                      df$Fern_pc[[ i_year + 3 ]] )
+          } else {
+              #for all else, use future years as originally coded
+              df$IEA_pc_ext_a[[ i_year ]] <- df$Fern_pc[[ i_year ]] *
+              ( df$IEA_pc_ext_a[[ i_year - 1 ]] + df$IEA_pc_ext_a[[ i_year - 2 ]] +
                 df$IEA_pc_ext_a[[ i_year - 3 ]] ) /
-            ( df$Fern_pc[[ i_year - 1 ]] + df$Fern_pc[[ i_year - 2 ]] +
+              ( df$Fern_pc[[ i_year - 1 ]] + df$Fern_pc[[ i_year - 2 ]] +
                 df$Fern_pc[[ i_year - 3 ]] )
+          }
         }
       }
       return( df )
@@ -651,3 +661,4 @@ initialize( script_name, log_msg, headers )
     writeData( res_unspec_comp, "DIAG_OUT", "A.IEA_biomass_adjustment" )
 
 logStop()
+
