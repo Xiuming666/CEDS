@@ -3,7 +3,7 @@
 # Set of historical years for which the CEDS system has IEA data.
 
 # USER SET DATA - Set this to the last year of the IEA data used
-IEA_end_year  <- 2013  # Latest year of IEA data; used to compare BP and IEA
+IEA_end_year  <- 2016  # Latest year of IEA data; used to compare BP and IEA
 
 IEA_start_year  <- 1960
 X_IEA_end_year  <- paste0( "X", IEA_end_year  )
@@ -12,7 +12,7 @@ X_IEA_years <- paste0( "X", IEA_years)
 
 # USER SET DATA - Set this to the last year of the BP data used
 # The set of years for the BP data extendForwards further, and is used to augment the IEA.
-BP_last_year <- 2014 # Last years for BP data
+BP_last_year <- 2018 # Last years for BP data
 
 # USER SET DATA - Set this to point to the name of the BP statisical data, which should be
 # Located in the inputs/energy folder
@@ -61,7 +61,7 @@ cdiac_end_year_cement <- 2015
 
 # ---------------------------------
 # Conversion Factors
-conversionFactor_biomass_kt_TJ <- 16  # Biomass - For kt to TJ (multiply by kt to get TJ)    
+conversionFactor_biomass_kt_TJ <- 16  # Biomass - For kt to TJ (multiply by kt to get TJ)
 # conversionFactor_biomass_TJ_kt <- 0.0238846  # For kt to TJ (multiply by kt to get TJ)
 # conversionFactor_refinerygas_TJ_per_kt <- 48.5 # Refinery Gas TJ/kt. (Multiply by kt to get TJ)
 # 49.5 TJ/Gg- 2006 IPCC guidelines for National GHG inventories Vol 2 - Energy, Ch 1 - Intro Table 1.2

@@ -71,10 +71,10 @@
 # 1. Read in files and do preliminary setup
 
 # Read UN population and urban population data
-    UN_pop_raw <- readData( "GEN_IN", "WPP2015_POP_F01_1_TOTAL_POPULATION_BOTH_SEXES",
+    UN_pop_raw <- readData( "GEN_IN", "WPP2019_POP_F01_1_TOTAL_POPULATION_BOTH_SEXES",
                             ".xlsx", sheet_selection = "ALL", skip = 16 )
-    UN_urban_share_raw <- readData( "GEN_IN", "WUP2014-F21-Proportion_Urban_Annual",
-                                    ".xlsx", sheet_selection = "ANNUAL DATA",
+    UN_urban_share_raw <- readData( "GEN_IN", "WUP2018-F21-Proportion_Urban_Annual",
+                                    ".xlsx", sheet_selection = "Data",
                                     skip = 16 )
 
 # Read WB population and urban population data, either by pulling from the WDI API
@@ -96,27 +96,28 @@
     Master_Country_List <- readData( "MAPPINGS", "Master_Country_List" )
 
 # Read in UN, WB, HYDE iso maps
-    UN_pop_WB_HYDE_ext_iso_map <- readData ( "MAPPINGS", "UN_pop_WB_HYDE_ext_iso_map", ".xlsx",
+    UN_pop_WB_HYDE_ext_iso_map <- readData ( "MAPPINGS", "UN_pop_WB_HYDE_ext_iso_map_2019", ".xlsx",
                                              sheet_selection = "UN_pop_WB_HYDE_ext_iso_map" )
 
-    UN_pop_shares_WB_HYDE_ext_iso_map <- readData ( "MAPPINGS", "UN_pop_WB_HYDE_ext_iso_map", ".xlsx",
+    UN_pop_shares_WB_HYDE_ext_iso_map <- readData ( "MAPPINGS", "UN_pop_WB_HYDE_ext_iso_map_2019", ".xlsx",
                                                     sheet_selection = "UN_pop_shares_WB_HYDE_ext",
                                                     missing_value = "NA" )
 
-    WB_pop_UN_HYDE_ext_iso_map <- readData ( "MAPPINGS", "UN_pop_WB_HYDE_ext_iso_map", ".xlsx",
+    WB_pop_UN_HYDE_ext_iso_map <- readData ( "MAPPINGS", "UN_pop_WB_HYDE_ext_iso_map_2019", ".xlsx",
                                              sheet_selection = "WB_pop_UN_HYDE_ext_iso_map" )
 
-    HYDE_pop_UN_WB_ext_iso_map <- readData ( "MAPPINGS", "UN_pop_WB_HYDE_ext_iso_map", ".xlsx",
+    HYDE_pop_UN_WB_ext_iso_map <- readData ( "MAPPINGS", "UN_pop_WB_HYDE_ext_iso_map_2019", ".xlsx",
                                              sheet_selection = "HYDE_pop_UN_WB_ext_iso_map" )
 
 # Define standardized UN scenario names (check against Excel input)
     UN_scenarios_std <- c( "Estimates", "Medium fertility", "High fertility",
-                           "Low fertility", "Constant fertility", "Instant-replacement",
+                           "Low fertility", "Constant fertility", "Instant-replacement","Momentum",
+#                           "Low fertility", "Constant fertility", "Instant-replacement",
                            "Zero-migration", "Constant-mortality", "No change" )
 
 # Define UN population historical end year (last year of UN population "Estimates",
 # and the first year of other 'Variant' values of UN population data).
-    UN_POP_HISTORICAL_END_YEAR <- 2015
+    UN_POP_HISTORICAL_END_YEAR <- 2020
 
 # ------------------------------------------------------------------------------
 # 2. Clean up UN and WB population input
@@ -138,20 +139,33 @@
 
         out <- UN_pop_raw[[ i ]] %>%
             dplyr::left_join( UN_pop_WB_HYDE_ext_iso_map,
-                              by = c( "Index", "Major area, region, country or area *",
+                              by = c( "Index", "Region, subregion, country or area *",
                                       "Country code" ) ) %>%
-            dplyr::select( UN_CODE, ISO3_WB_CODE, "Major area, region, country or area *",
-                           UN_years ) %>%
-            dplyr::rename( UN_code = UN_CODE, iso = ISO3_WB_CODE, country = "Major area, region, country or area *" ) %>%
+            dplyr::select( UN_CODE, ISO3_WB_CODE, "Region, subregion, country or area *",
+                          UN_years ) %>%
+            dplyr::rename( UN_code = UN_CODE, iso = ISO3_WB_CODE, country = "Region, subregion, country or area *" ) %>%
+#            dplyr::left_join( UN_pop_WB_HYDE_ext_iso_map,
+#                             by = c( "Index", "Major area, region, country or area *",
+#                                     "Country code" ) ) %>%
+#            dplyr::select( UN_CODE, ISO3_WB_CODE, "Major area, region, country or area *",
+#                          UN_years ) %>%
+#            dplyr::rename( UN_code = UN_CODE, iso = ISO3_WB_CODE, country = "Major area, region, country or area *" ) %>%
             dplyr::mutate( scenario = UN_scenarios_std[[ i ]] ) %>%
+            #EEM: rename countries that have different names than urban UN file
+            #dplyr::mutate( country=replace( country, country == "Eswatini", "Swaziland" )) %>%
+            #dplyr::mutate( country=replace( country, country == "North Macedonia", "TFYR Macedonia")) %>%
+            #dplyr::mutate( country=replace( country, country == "Bonaire, Sint Eustatius and Saba", "Caribbean Netherlands" )) %>%
+            #EEM end
             tidyr::gather( key = year, value = value, UN_years ) %>%
             dplyr::select( UN_code, iso, scenario, country, year, value ) %>%
             dplyr::mutate( year = as.factor( year ) ) %>%
-            dplyr::rename( pop = value )
+            dplyr::rename( pop = value ) %>%
+            dplyr::mutate( pop = as.numeric( pop ) ) #EEM: added because data being saved as characters
 
         return( out )
 
     } )
+
 
     UN_pop_raw <- do.call( rbind, UN_pop_raw )
     UN_pop_raw$year <- as.numeric( as.character( UN_pop_raw$year ) )
@@ -163,8 +177,11 @@
 
     UN_urban_share_raw <- UN_urban_share_raw %>%
         dplyr::left_join( UN_pop_shares_WB_HYDE_ext_iso_map,
-                          by = c( "Index", "Major area, region, country or area",
-                                  "Country Code" ) ) %>%
+                          by = c( "Index", "Region, subregion, country or area",
+                                  "Country code" ) ) %>%
+   #     dplyr::left_join( UN_pop_shares_WB_HYDE_ext_iso_map,
+   #                      by = c( "Index", "Major area, region, country or area",
+   #                              "Country Code" ) ) %>%
         dplyr::select( UN_code = UN_CODE, iso = ISO3_WB_CODE, UN_years ) %>%
         dplyr::arrange( UN_code )
 
@@ -174,8 +191,8 @@
     names( UN_urban_share_raw )[ names( UN_urban_share_raw ) == "value" ] <- "urban_share"
     UN_urban_share_raw$urban_share <- UN_urban_share_raw$urban_share / 100  # percent to decimal
     UN_urban_share_raw$year <- as.numeric( as.character( UN_urban_share_raw$year ) )
-
-    # Assert that all countries with UN population have UN urban share
+    # Assert that all countries with UN population have UN urban share. #EEM: change "NA" to NA
+    UN_pop_raw$iso[UN_pop_raw$iso=="NA"] = NA
     stopifnot( length( setdiff( UN_pop_raw$iso, UN_urban_share_raw$iso ) ) == 0 )
 
     # Merge total population and urban share in one df and compute urban population
@@ -187,6 +204,8 @@
     # Taiwan gets pulled from "Other non-specified areas"
     UN_pop <- UN_pop %>%
         dplyr::filter( UN_code < 900 ) %>% # skip aggregated regions
+        dplyr::filter( country != "Saint-Martin (French part)" ) %>% #EEM: to remove two regions without iso codes
+        dplyr::filter( country != "Saint-Barthélemy" ) %>% #EEM: to remove two regions without iso codes
         dplyr::mutate( country = if_else( UN_code == 158, "Taiwan", country ) ) %>%
         dplyr::mutate( iso = tolower( iso ),
                        iso = if_else( UN_code == 156, "chn", iso ), # add ISO for China
