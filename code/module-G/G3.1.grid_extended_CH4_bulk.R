@@ -100,6 +100,7 @@ proxy_files <- list( primary = list.files( proxy_dir ), backup = list.files( pro
 proxy_mapping <- extendProxyMapping( proxy_mapping )
 seasonality_mapping <- extendSeasonalityMapping( seasonality_mapping )
 
+
 # ------------------------------------------------------------------------------
 # 3. Gridding and writing output data
 

@@ -122,7 +122,11 @@ seasonality_mapping <- extendSeasonalityMapping( seasonality_mapping )
 
 printLog( paste( 'Start', VOC_em, 'gridding for each year' ) )
 
+pb <- txtProgressBar(min = 0, max = length(year_list), style = 3)
+
 for ( year in year_list ) {
+  setTxtProgressBar(pb, year - min(year_list))
+
   # grid one years emissions for subVOCs
   int_grids_list <- grid_one_year( year, em, grid_resolution, gridding_emissions, location_index,
                                    proxy_mapping, proxy_substitution_mapping, proxy_files )
@@ -133,6 +137,8 @@ for ( year in year_list ) {
   generate_final_grids_nc_subVOC( int_grids_list, output_dir, grid_resolution, year, em = 'NMVOC',
                                   VOC_em = VOC_em, VOC_names, sector_name_mapping, seasonality_mapping )
 }
+
+close(pb)
 
 
 # -----------------------------------------------------------------------------
@@ -157,7 +163,8 @@ gridding_emissions_fin <- ceds_gridding_mapping %>%
     dplyr::arrange( sector )
 
 # consolidate different checksum files to have total emissions by sector by year
-checksum_df <- list.files( output_dir, paste0( '_', em, '_anthro.*[.]csv' ), full.names = TRUE ) %>%
+
+checksum_df <- list.files( output_dir, paste0( '_', VOC_em, '_anthro.*[.]csv' ), full.names = TRUE ) %>%
     lapply( read.csv ) %>%
     dplyr::bind_rows() %>%
     dplyr::group_by( sector, year ) %>%

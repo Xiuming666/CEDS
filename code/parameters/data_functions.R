@@ -590,7 +590,9 @@ verify_calculate_share_params <- function(input_data, id_columns, target_column,
                      paste(no_defaults, collapse = ", ") ) )
 
     return( list(same_id_target = same_id_target, id_columns = id_columns))
+
 }
+
 
 
 # -----------------------------------------------------------------------------

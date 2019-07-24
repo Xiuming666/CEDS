@@ -346,6 +346,7 @@ readData <- function( domain = NULL, file_name = NULL, extension = ".csv",
 	}
 
 	if( !mute & VERBOSE ) printLog( "Reading", full_file_path, "\n", cr=F )
+
 	if( !file.exists( full_file_path ) ) {
 		stop( "readData cannot read non-existent file: ", full_file_path )
 	}
@@ -357,6 +358,7 @@ readData <- function( domain = NULL, file_name = NULL, extension = ".csv",
     } else if( extension == ".xlsx" || extension == ".xls" ) {
         x <- readExcel( full_file_path, sheet_selection, missing_value, trim_ws,
                         guess_max, ... )
+
 
     } else if( extension == ".zip" ) {
 
@@ -916,6 +918,7 @@ savePlot <- function( domain, domain_ext, file_name, width, height, ext = '.pdf'
                       plot = last_plot() ) {
     fp <- filePath( domain, file_name, ext, domain_ext )
     ggsave( fp, plot, width = width, height = height )
+
 }
 
 
@@ -1030,7 +1033,7 @@ sumAggregateRegion <-function( a_data_sheet, region_column, region_list, sum_row
 
     # Sum acrross these isos to form a continous ussr time series
     region_sum <- a_data_sheet %>%
-#        dplyr::filter_at( 'iso', region_column %in% region_list ) %>% 
+#        dplyr::filter_at( 'iso', region_column %in% region_list ) %>%
 #        dplyr::mutate_at(  (!!sym(region_column)) = sum_row_name )  %>%
 #        dplyr::group_by( !! sym(region_column) ) %>%
 #        dplyr::summarise_all( funs( sum (., na.rm = TRUE ) ) )

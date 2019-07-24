@@ -108,7 +108,11 @@ seasonality_mapping <- extendSeasonalityMapping( seasonality_mapping )
 
 printLog( paste( 'Start', em, 'gridding for each year' ) )
 
+pb <- txtProgressBar(min = 0, max = length(year_list), style = 3)
+
 for ( year in year_list ) {
+  setTxtProgressBar(pb, year - min(year_list))
+
   # grid one years aircraft emissions
   AIR_grid <- grid_one_year_air( year, em, grid_resolution, gridding_emissions, proxy_mapping, proxy_files )
 
@@ -117,6 +121,8 @@ for ( year in year_list ) {
   # which summarize the emissions in mass by sector by month.
   generate_final_grids_nc_aircraft( AIR_grid, output_dir, grid_resolution, year, em, seasonality_mapping )
 }
+
+close(pb)
 
 # -----------------------------------------------------------------------------
 # 4. Diagnostic: checksum

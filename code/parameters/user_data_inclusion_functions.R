@@ -73,6 +73,7 @@ includeUserData <- function( usrdata, default_data, Xyears, keep_total_cols,
     return( list( all_data = all_activity_data, diagnostics = diagnostics ) )
 }
 
+
 # ----------------------------------------------------------------------------------
 
 # normalize
@@ -263,6 +264,7 @@ handleNanBreakdowns <- function( disagg_pct_breakdown, global_data, Xyears, agg_
 
     disagg_pct_breakdown <- update_join( disagg_pct_breakdown, nans_handled, by = non_year_columns )
 
+
     # specified breakdowns are currently not supported by the CEDS data system
     specified_breakdowns <- FALSE
 
@@ -318,6 +320,7 @@ handleNanBreakdowns <- function( disagg_pct_breakdown, global_data, Xyears, agg_
 }
 
 # ----------------------------------------------------------------------------------
+
 
 # generateWarnings
 #
@@ -495,6 +498,7 @@ addContinuityFactors <- function( activity, instructions, all_yrs, interval_len 
 #     breaking down (that is, the yearly sum of rows with matching id columns
 #     will be 1)
 breakdownFromGlobal <- function( pct_breakdown, global_data, Xyears, agg_id_cols ) {
+
     if( nrow( pct_breakdown ) == 0 ){
         return( pct_breakdown )
     }

@@ -3,7 +3,6 @@ The Community Emissions Data System (CEDS) produces consistent estimates of glob
 
 ***
 **Pre-release Version:** July 17, 2019. The current code and data in the repository is a pre-release version. Please feel free to explore, comment on this version and send us any questions. Note that we will be pushing several updates to the system over the few weeks leading up to the first public release. These will include updates to:
-
 * SO2, CO2, and CH4 emissions will be updated to better match the results from CMIP6 data release from Hoesly et al. (2018a). There will likely be some changes to other emission species as well.
 * Updates to waste burning emissions.
 * Several other updates to code and data files, including resolution of some current [open Issues](https://github.com/JGCRI/CEDS/issues).

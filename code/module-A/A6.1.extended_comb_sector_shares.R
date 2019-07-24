@@ -34,7 +34,7 @@ bond_sector_percentages <-
     readData( 'EXT_IN', 'CD.Bond_sector_percentages.csv' )
 
 ext_sector_breakdown_assumptions <-
-    readData( 'EXT_IN', 'ext_sector_breakdown_assumptions')
+    readData( 'EXT_IN', 'ext_sector_breakdown_assumptions.csv')
 
 ext_sector_percents_start_assumptions <-
     readData( 'EXT_IN', 'ext_sector_percents_start_assumptions', meta = F )

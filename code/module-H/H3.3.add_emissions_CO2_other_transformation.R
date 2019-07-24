@@ -289,8 +289,9 @@ if( em != 'CO2') {
   if ( any( extended_coke$iso != IEA_coke$iso ) ) { stop('Rows do not match for ') }
 
 
-  #**** extend IEA coke back to 1750, from 1960 for OECD countries and 1971 for Non-OECD 
+  #**** extend IEA coke back to 1750, from 1960 for OECD countries and 1971 for Non-OECD
   # countries and forward from last iea year
+
   iea_extended_coke_list = lapply(unique(iea_start$start_year), function(sy) {
 
 

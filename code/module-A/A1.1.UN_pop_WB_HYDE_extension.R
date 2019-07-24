@@ -181,7 +181,6 @@
                                   "Country code" ) ) %>%
    #     dplyr::left_join( UN_pop_shares_WB_HYDE_ext_iso_map,
    #                      by = c( "Index", "Major area, region, country or area",
-   #                              "Country Code" ) ) %>%
         dplyr::select( UN_code = UN_CODE, iso = ISO3_WB_CODE, UN_years ) %>%
         dplyr::arrange( UN_code )
 

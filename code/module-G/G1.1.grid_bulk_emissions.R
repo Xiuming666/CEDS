@@ -35,7 +35,7 @@ initialize( "G1.1.grid_bulk_emissions.R", log_msg, headers )
 # Define emissions species variable
 args_from_makefile <- commandArgs( TRUE )
 em <- args_from_makefile[ 1 ]
-if ( is.na( em ) ) em <- "BC"
+if ( is.na( em ) ) em <- "SO2"
 
 # Set up directories
 output_dir          <- filePath( "MED_OUT",  "gridded-emissions/",     extension = "" )
@@ -118,13 +118,15 @@ printLog( paste( 'Gridding', em, 'emissions for each year...' ) )
 pb <- txtProgressBar(min = 0, max = length(year_list), style = 3)
 
 for ( year in year_list ) {
+
   setTxtProgressBar(pb, year - min(year_list))
 
-  # grid one year's emissions
+  # grid one years emissions
   int_grids_list <- grid_one_year( year, em, grid_resolution, gridding_emissions, location_index,
                                    proxy_mapping, proxy_substitution_mapping, proxy_files )
 
-  # generate nc file for each year's gridded emissions,
+  # generate nc file for gridded one years emissions,
+
   # a checksum file is also generated along with the nc file
   # which summarize the emissions in mass by sector by month.
   generate_final_grids_nc( int_grids_list, output_dir, grid_resolution, year,
@@ -191,3 +193,4 @@ out_name <- paste0( 'G.', em, '_bulk_emissions_checksum_comparison_per' )
 writeData( diag_per_df, "DIAG_OUT", out_name )
 
 logStop()
+
