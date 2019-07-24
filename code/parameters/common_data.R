@@ -3,7 +3,7 @@
 # Set of historical years for which the CEDS system has IEA data.
 
 # USER SET DATA - Set this to the last year of the IEA data used
-IEA_end_year  <- 2017  # Latest year of IEA data; used to compare BP and IEA
+IEA_end_year  <- 2016  # Latest year of IEA data; used to compare BP and IEA
 
 IEA_start_year  <- 1960
 X_IEA_end_year  <- paste0( "X", IEA_end_year  )
