@@ -118,6 +118,8 @@
 # China
     if ( em %in% c( 'SO2', 'NOx', 'NH3', 'NMVOC', 'CO' ) ) scripts <-
               c( scripts, 'F1.1.China_scaling.R' )
+    if ( em %in% c( 'SO2', 'NOx', 'NH3', 'NMVOC', 'CO' ) ) scripts <-
+        c( scripts, 'F1.1.China_2017Update_scaling.R' )
 
 # Argentina
     if ( em %in% c( 'SO2', 'NOx', 'CO', 'NMVOC' ) ) scripts <-

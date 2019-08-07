@@ -1775,7 +1775,7 @@ singleVarChunking_bulkemissions <- function( em,
   #  5: Solvents production and application;
   #  6: Waste;
   #  7: International Shipping
-  sectors <- c( 'AGR', 'ENE', 'IND', 'NRTR', 'ROAD', 'RCOR', ,'RCOC', 'RCOO', 'SLV', 'WST', 'SHP' )
+  sectors <- c( 'AGR', 'ENE', 'IND', 'NRTR', 'ROAD', 'RCOR', 'RCOC', 'RCOO', 'SLV', 'WST', 'SHP' )
   n_chunk_years <- ( chunk_end_years - chunk_start_years + 1 )[ chunk_count_index ]
   n_months <- 12 * n_chunk_years
 
@@ -4568,8 +4568,8 @@ chunk_emissions <- function(singleVarChunkingFun, em, ... ) {
     # Chunking variables
     grid_resolution <- 0.5
 # If chunking years should be different than the full dataset specify that here
-#    start_year <- 1750
-#    end_year <- 1850
+    start_year <- 1750
+    end_year <- end_year
     chunk_years <- 50
 
     # basic start year/end year check

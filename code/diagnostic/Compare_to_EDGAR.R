@@ -8,7 +8,7 @@ for (k in seq_along(edgar_em_list)){
 # ------------------------------------------------------------------------------
 # Program Name: Compare_to_EDGAR.R
 # Author: Rachel Hoesly
-# Date Last Updated: 18 November 2016
+# Date Last Updated: 6 August 2019
 # Program Purpose:
 # Input Files: [em]_total_CEDS_emissions.csv
 #
@@ -50,9 +50,9 @@ library('gridExtra')
 # 0.5. Script Options
 
 edgar_start_year <- 1970
-edgar_end_year <- 2010
+edgar_end_year <- EDGAR_end_year
 ceds_start_year <- 1850
-ceds_end_year <- 2014
+ceds_end_year <- end_year
 
 edgar_years<- edgar_start_year : edgar_end_year
 x_edgar_years<- paste0( 'X', edgar_years )
@@ -188,8 +188,8 @@ if ( em %!in% c('SO2','NOx','NH3','NMVOC','BC','OC','CH4','CO','CO2') ) {
   plot <- ggplot( df, aes(x = year, y = emissions, color = sector, linetype = inventory))+
     geom_line(size = 1)+
     scale_x_continuous(limits = c(edgar_start_year,edgar_end_year ),
-                     breaks= seq(from=1970, to=2014, by=10),
-                     minor_breaks = seq(from=1970, to=2014, by=5)) +
+                     breaks= seq(from=1970, to=end_year, by=10),
+                     minor_breaks = seq(from=1970, to=end_year, by=5)) +
     scale_y_continuous(labels = comma)+
     ggtitle( paste('Global',em,'Inventories by Sector') )+
     labs(x= "" , y= paste(em ,'Emissions [Tg/yr]') )+
@@ -225,8 +225,8 @@ if ( em %!in% c('SO2','NOx','NH3','NMVOC','BC','OC','CH4','CO','CO2') ) {
     plot <- ggplot( df, aes(x = year, y = emissions, color = region, linetype = inventory))+
       geom_line(size = 1)+
       scale_x_continuous(limits = c(edgar_start_year,edgar_end_year ),
-                         breaks= seq(from=1970, to=2014, by=10),
-                         minor_breaks = seq(from=1970, to=2014, by=5)) +
+                         breaks= seq(from=1970, to=end_year, by=10),
+                         minor_breaks = seq(from=1970, to=end_year, by=5)) +
       scale_y_continuous(labels = comma)+
       ggtitle( paste(em,'Inventories by Region:',plot_sectors[i]) )+
       labs(x= "" , y= paste(em ,'Emissions [Tg/yr]') )+

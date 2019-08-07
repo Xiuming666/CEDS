@@ -88,6 +88,7 @@ emissions: $(FINAL_OUT)/current-versions/CEDS_$(EM)_emissions_by_country_sector_
 gridded-emissions: $(FINAL_OUT)/gridded-emissions/$(EM)-em-anthro* \
 	$(FINAL_OUT)/gridded-emissions/$(EM)-em-SOLID-BIOFUEL-anthro* \
 	$(FINAL_OUT)/gridded-emissions/$(EM)-em-TOTAL-COALFUEL-anthro* \
+	$(FINAL_OUT)/gridded-emissions/$(EM)-em-ranthro* \
 	$(FINAL_OUT)/gridded-emissions/$(EM)-em-AIR-anthro*
 
 
@@ -700,6 +701,7 @@ $(MED_OUT)/C.$(EM)_NC_emissions.csv: \
 	$(MED_OUT)/E.$(EM)_CAN_inventory.csv \
 	$(MED_OUT)/E.$(EM)_CAN_to2011_inventory.csv \
 	$(MED_OUT)/E.$(EM)_CHN_inventory.csv \
+        $(MED_OUT)/E.$(EM)_CHN_2_inventory.csv \
 	$(MED_OUT)/E.$(EM)_EMEP_NFR09_inventory.csv \
 	$(MED_OUT)/E.$(EM)_EMEP_NFR14_inventory.csv \
 	$(MED_OUT)/E.$(EM)_Japan_inventory.csv \
@@ -797,6 +799,11 @@ $(MED_OUT)/E.$(EM)_CHN_inventory.csv: \
 	Rscript $< $(EM) --nosave --no-restore
 
 # ee1-2
+$(MED_OUT)/E.$(EM)_CHN_2_inventory.csv: \
+	$(MOD_E)/E.China_emissions_2017Update.R
+	Rscript $< $(EM) --nosave --no-restore
+
+# ee1-2
 $(MED_OUT)/E.$(EM)_Japan_inventory.csv: \
 	$(MOD_E)/E.Japan_emissions.R
 	Rscript $< $(EM) --nosave --no-restore
@@ -834,6 +841,7 @@ $(MED_OUT)/F.$(EM)_scaled_emissions.csv: \
 	$(MOD_F)/F1.1.CAN_scaling_olderData.R \
 	$(MOD_F)/F1.1.CAN_scaling_newerData.R \
 	$(MOD_F)/F1.1.China_scaling.R \
+        $(MOD_F)/F1.1.China_2017Update_scaling.R \
 	$(MOD_F)/F1.1.Edgar_scaling.R \
 	$(MOD_F)/F1.1.Edgar_PEGASOS_scaling.R \
 	$(MOD_F)/F1.1.EMEP_NFR09_scaling.R \
@@ -852,6 +860,7 @@ $(MED_OUT)/F.$(EM)_scaled_emissions.csv: \
 	$(MED_OUT)/E.$(EM)_CAN_inventory.csv \
 	$(MED_OUT)/E.$(EM)_CAN_to2011_inventory.csv \
 	$(MED_OUT)/E.$(EM)_CHN_inventory.csv \
+        $(MED_OUT)/E.$(EM)_CHN_2_inventory.csv \
 	$(MED_OUT)/E.$(EM)_EMEP_NFR09_inventory.csv \
 	$(MED_OUT)/E.$(EM)_EMEP_NFR14_inventory.csv \
 	$(MED_OUT)/E.$(EM)_Japan_inventory.csv \

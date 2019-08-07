@@ -9,7 +9,7 @@ em <- edgar_em_list[k]
   # ------------------------------------------------------------------------------
   # Program Name: Compare_to_EDGAR_country_details.R
   # Author: Rachel Hoesly
-  # Date Last Updated: 18 November 2016
+  # Date Last Updated: 6 August 2019
   # Program Purpose:
   # Input Files: [em]_total_CEDS_emissions.csv
   #
@@ -51,9 +51,9 @@ em <- edgar_em_list[k]
   # 0.5. Script Options
 
   edgar_start_year <- 1995
-  edgar_end_year <- 2010
+  edgar_end_year <- EDGAR_end_year
   ceds_start_year <- 1995
-  ceds_end_year <- 2014
+  ceds_end_year <- end_year
 
   edgar_years<- edgar_start_year : edgar_end_year
   x_edgar_years<- paste0( 'X', edgar_years )
@@ -214,8 +214,8 @@ em <- edgar_em_list[k]
     plot <- ggplot( country_combined_long, aes(x = year, y = emissions, linetype = inventory, alpha = inventory))+
       geom_line(size = 1)+
       scale_x_continuous(limits = c(edgar_start_year,edgar_end_year ),
-                         breaks= seq(from=1995, to=2014, by=5),
-                         minor_breaks = seq(from=1995, to=2014, by=1)) +
+                         breaks= seq(from=1995, to=end_year, by=5),
+                         minor_breaks = seq(from=1995, to=end_year, by=1)) +
       scale_y_continuous(labels = comma)+
       scale_alpha_manual(values = c(.6,1))+
       ggtitle( paste(country_name,': ',em,'Global') )+
@@ -256,8 +256,8 @@ em <- edgar_em_list[k]
     plot <- ggplot( df_plot, aes(x = year, y = emissions, color = sector, linetype = inventory, alpha = inventory))+
       geom_line(size = 1)+
       scale_x_continuous(limits = c(edgar_start_year,edgar_end_year ),
-                         breaks= seq(from=1995, to=2014, by=5),
-                         minor_breaks = seq(from=1995, to=2014, by=1)) +
+                         breaks= seq(from=1995, to=end_year, by=5),
+                         minor_breaks = seq(from=1995, to=end_year, by=1)) +
       scale_y_continuous(labels = comma)+
       scale_alpha_manual(values = c(.6,1))+
       ggtitle( paste(country_name,': ',em,'Inventories by Sector') )+
@@ -303,8 +303,8 @@ em <- edgar_em_list[k]
       plot <- ggplot( df_plot, aes(x = year, y = difference, fill = sector))+
         geom_area(alpha = .8)+
         scale_x_continuous(limits = c(edgar_start_year,edgar_end_year ),
-                           breaks= seq(from=1995, to=2014, by=5),
-                           minor_breaks = seq(from=1995, to=2014, by=1)) +
+                           breaks= seq(from=1995, to=end_year, by=5),
+                           minor_breaks = seq(from=1995, to=end_year, by=1)) +
         scale_y_continuous(labels = comma)+
         ggtitle( paste(country_name,': ',em,'Difference by Sector (CEDS-EDGAR)') )+
         labs(x= "" , y= paste(em ,'Emissions [Tg/yr]') )+
