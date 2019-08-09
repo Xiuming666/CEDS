@@ -19,16 +19,16 @@
 # Get emission species first so can name log appropriately
     args_from_makefile <- commandArgs( TRUE )
     em <- args_from_makefile[1]
-    if ( is.na( em ) ) em <- "NOx"
-  
-# Call standard script header function to read in universal header files - 
+    if ( is.na( em ) ) em <- "SO2"
+
+# Call standard script header function to read in universal header files -
 # provide logging, file support, and system functions - and start the script log.
     headers <- c( 'common_data.R', "data_functions.R",
                   "emissions_scaling_functions.R", "analysis_functions.R",
                   "interpolation_extension_functions.R" ) # Additional function files required.
     log_msg <- "Modifying emissions factors from UNFCCC inventory data" # First message to be printed to the log
     script_name <- paste0( em, "-F1.1.UNFCCC_scaling.R" )
-  
+
     source( paste0( PARAM_DIR, "header.R" ) )
     initialize( script_name, log_msg, headers )
 
@@ -45,15 +45,15 @@
 # Inventory parameters. Provide the inventory and mapping file names, the
 #   mapping method (by sector, fuel, or both), and the regions covered by
 #   the inventory (as a vector of iso codes)
-    
+
     sector_fuel_mapping <- 'UNFCCC_scaling_mapping'
     if ( em == 'CH4')  sector_fuel_mapping <- 'UNFCCC_scaling_mapping_CH4'
     mapping_method <- 'sector'
     inv_name <- 'UNFCCC'
     region <- c( "aus", "aut", "bel", "bgr", "blr", "che", "cyp", "cze", "deu",
                  "dnk", "esp", "est", "fin", "fra", "gbr", "grc", "hrv", "hun",
-                 "irl", "isl", "ita", "jpn", "ltu", "lva", "mlt", "nld", "nor",
-                 "nzl", "prt", "rou", "svk", "svn", "swe", "tur", "ukr" )
+                 "irl", "isl", "ita", "jpn", "kaz", "ltu", "lva", "lux", "mlt", "nld", "nor",
+                 "nzl", "prt", "rou", "rus", "svk", "svn", "swe", "tur", "ukr" )
 
     # All other ems besides CH4 do not include can and pol data from the UNFCCC
         if ( em == 'CH4') region <- c( region, "can", "pol" )
@@ -62,7 +62,7 @@
 # TODO: blr and ukr should only be used for specific years where is close to expert estimates, or to calibrate parameters off-line
 # TODO: why is grc not in EMEP?
 # Ukraine (ukr) energy reporting is inconsistent, instead have calibrated coal S% by hand. Check other emissions
-    if ( em %!in% c("CO2", 'CH4')) region <- c( "blr" , "grc" , "nzl" )
+    if ( em %!in% c("CO2", 'CH4')) region <- c( "blr" , "grc" , "nzl", "kaz" )
     inv_years <- c( 1990:2012 )
 
 # UNFCCC inventory is processed in E.UNFCCC_[em]_emissions.R script

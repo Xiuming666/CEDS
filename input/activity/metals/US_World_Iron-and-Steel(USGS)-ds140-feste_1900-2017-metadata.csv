@@ -1,0 +1,2 @@
+Data.Type,Emission,Region,Sector,Start.Year,End.Year,Source.Comment
+Activity,None,USA,2C_Metal-production,1900,2017,"U.S. Geological Survey, Iron And Steel Statistics (1900-2013: https://www.usgs.gov/centers/nmic/historical-statistics-mineral-and-material-commodities-united-states, 2014-2017: https://www.usgs.gov/centers/nmic/iron-and-steel-statistics-and-information?qt-science_support_page_related_con=0#qt-science_support_page_related_con)"

@@ -63,15 +63,16 @@
 # UN population from Module A
     un_pop <- readData( "MED_OUT", 'A.UN_pop_master' )
 
-    usgs_sheets <- c( "2002", "2005", "2007", "2010", "2011", "2013", "2016" )
+    usgs_sheets <- c( "2002", "2005", "2007", "2010", "2011", "2013", "2014",
+                      "2015", "2016", "2017", "2018", "2019" )
 # USGS data
     usgs_data_in <- readData( "ACTIVITY_IN",
-                              "USGS_Commodity_Summaries_Cement_Production",
+                              "USGS_Commodity_Summaries_Cement_Production_2017",
                               ".xlsx", sheet_selection = usgs_sheets,
                               missing_value = c("--", "XX", "W", "(5)") )
 # USGS mapping
     usgs_ctry_map <- readData( "ACTIVITY_IN",
-                               "USGS_Commodity_Summaries_Cement_Production",
+                               "USGS_Commodity_Summaries_Cement_Production_2017",
                                ".xlsx", sheet_selection = "mapping" )
 
 # -----------------------------------------------------------------------------------------------------------
@@ -513,30 +514,60 @@
       cement[ cement$iso == "scg", paste0( "X", 1998:2005 ) ]
     cement <- filter( cement, iso != "scg" )
 
-# Make all NA 2013 production zero (sgp only)
-    cement$X2013[ is.na( cement$X2013 ) ] <- 0
+### Code for old Cement Data file
 
-# Disaggregate 2014/2015 production based on 2013 shares
-# Find iso/years without 2014 data, and select the corresponding 2013 data
-    shares <- filter( cement, is.na( X2014 ) ) %>%
-                          select( iso, X2013 )
-# Find what pct of 2013 each country holds
-    shares$ratio <- shares$X2013 / sum( shares$X2013 )
+## Make all NA 2013 production zero (sgp only)
+#   cement$X2013[ is.na( cement$X2013 ) ] <- 0
 
-# Cement data to add to 2014 is the same proportion that the country had of 2013
-# data
-    cement_other_X2014_X2015 <- filter( cement, iso == "OTHER" ) %>%
-                                          select( X2014, X2015 ) %>%
-                  merge( select( shares, iso, ratio ), all = T ) %>%
-              dplyr::mutate( X2014 = X2014*ratio, X2015 = X2015*ratio )
+## Disaggregate 2014/2015 production based on 2013 shares
+## Find iso/years without 2014 data, and select the corresponding 2013 data
+#    shares <- filter( cement, is.na( X2014 ) ) %>%
+#                          select( iso, X2013 )
+## Find what pct of 2013 each country holds
+#    shares$ratio <- shares$X2013 / sum( shares$X2013 )
+#
+## Cement data to add to 2014 is the same proportion that the country had of 2013
+## data
+#    cement_other_X2014_X2015 <- filter( cement, iso == "OTHER" ) %>%
+#                                          select( X2014, X2015 ) %>%
+#                  merge( select( shares, iso, ratio ), all = T ) %>%
+#              dplyr::mutate( X2014 = X2014*ratio, X2015 = X2015*ratio )
+#
+## Deselect 2015 and 2014 in original df data and replace with new values
+#    cement_other <- filter( cement, is.na( X2014 ) ) %>%
+#                    select( -X2014, -X2015 ) %>%
+#                    merge( select( cement_other_X2014_X2015, -ratio ) )
 
-# Deselect 2015 and 2014 in original df data and replace with new values
-    cement_other <- filter( cement, is.na( X2014 ) ) %>%
-                    select( -X2014, -X2015 ) %>%
-                    merge( select( cement_other_X2014_X2015, -ratio ) )
+#    # Combine all data with cement_other
+#    cement_all <- filter( cement, !is.na( X2014 ), iso != "OTHER" ) %>%
+#        rbind( cement_other ) %>%
+#        dplyr::arrange( iso )
+###
+
+   # Make all NA 2013 production zero (sgp only)
+       cement$X2016[ is.na( cement$X2016 ) ] <- 0
+
+# Disaggregate 2017/2018 production based on 2016 shares
+    # Find iso/years without 2014 data, and select the corresponding 2016 data
+    shares <- filter( cement, is.na( X2017 ) ) %>%
+        select( iso, X2016 )
+    # Find what pct of 2016 each country holds
+    shares$ratio <- shares$X2016 / sum( shares$X2016 )
+
+    # Cement data to add to 2017 is the same proportion that the country had of 2016
+    # data
+    cement_other_X2017_X2018 <- filter( cement, iso == "OTHER" ) %>%
+        select( X2017, X2018 ) %>%
+        merge( select( shares, iso, ratio ), all = T ) %>%
+        dplyr::mutate( X2017 = X2017*ratio, X2018 = X2018*ratio )
+
+    # Deselect 2017 and 2018 in original df data and replace with new values
+    cement_other <- filter( cement, is.na( X2017 ) ) %>%
+        select( -X2017, -X2018 ) %>%
+        merge( select( cement_other_X2017_X2018, -ratio ) )
 
 # Combine all data with cement_other
-    cement_all <- filter( cement, !is.na( X2014 ), iso != "OTHER" ) %>%
+    cement_all <- filter( cement, !is.na( X2017 ), iso != "OTHER" ) %>%
                                               rbind( cement_other ) %>%
                                                      dplyr::arrange( iso )
 
@@ -547,7 +578,7 @@
 
 # Calculate EFs over time using USGS cement production
     X_cement_years <- paste0( "X", 1998:2011 )
-    X_cement_ext_years <- paste0( "X", 2012:2015 )
+    X_cement_ext_years <- paste0( "X", 2012:2018 ) ##changed from 2015
 # Extract X CDIAC years
     X_cdiac_years_ext <- paste0( 'X', cdiac_start_year:cdiac_end_year_cement )
 

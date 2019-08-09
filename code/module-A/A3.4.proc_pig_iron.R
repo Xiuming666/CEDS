@@ -3,7 +3,7 @@
 # Author: Linh Vu
 # Date Last Updated: 14 April 2016
 # Program Purpose: Process pig iron production
-# Input Files:  Blast_furnace_iron_production_1850-2014.xlsx,
+# Input Files:  Blast_furnace_iron_production_1850-2017.xlsx,
 #               Pig_Iron_Production_US.csv, Pig_Iron_Production_Mitchell.csv,
 #               A.UN_pop_master.csv
 # Output Files: A.Pig_Iron_Production.csv, A.Pig_Iron_Production_full.csv
@@ -29,10 +29,10 @@
 # 1. Read input
 
 # 'Data' tab only runs to 1890, so read 1850-1890 from tab 'SPEW_Pig_iron_production'
-    spew <- readData( "ACTIVITY_IN", "Blast_furnace_iron_production_1850-2014", ".xlsx",
+    spew <- readData( "ACTIVITY_IN", "Blast_furnace_iron_production_1850-2017", ".xlsx",
                       sheet_selection = "Data", domain_extension = "metals/",
                       skip = 2 )[ 1:60, 3:128 ]
-    spew_pre <- readData( "ACTIVITY_IN", "Blast_furnace_iron_production_1850-2014", ".xlsx",
+    spew_pre <- readData( "ACTIVITY_IN", "Blast_furnace_iron_production_1850-2017", ".xlsx",
                     sheet_selection = "SPEW_Pig_iron_production", domain_extension = "metals/",
                     to_numeric = F )[ 2:10 ]
     us <- readData( "ACTIVITY_IN", "Pig_Iron_Production_US", domain_extension = "metals/" )
