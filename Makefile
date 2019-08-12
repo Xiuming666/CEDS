@@ -754,7 +754,7 @@ $(MED_OUT)/D.$(EM)_default_nc_emissions.csv: \
 # ee1-1
 # Creates formatted emissions inventory
 $(MED_OUT)/E.$(EM)_UNFCCC_inventory.csv: \
-	$(MOD_E)/E.UNFCCC_emissions.R
+	$(MOD_E)/E.UNFCCC_emissions_new.R
 	Rscript $< $(EM) --nosave --no-restore
 
 # ee1-2
@@ -849,7 +849,7 @@ $(MED_OUT)/F.$(EM)_scaled_emissions.csv: \
 	$(MOD_F)/F1.1.Japan_scaling.R \
 	$(MOD_F)/F1.1.REAS_scaling.R \
 	$(MOD_F)/F1.1.South_korea_scaling.R \
-	$(MOD_F)/F1.1.UNFCCC_scaling.R \
+	$(MOD_F)/F1.1.UNFCCC_scaling_new.R \
 	$(MOD_F)/F1.1.US_scaling.R \
 	$(MOD_F)/F1.1.US-EPA_scaling.R \
 	$(MOD_F)/F1.1.US-GHG_scaling.R \
