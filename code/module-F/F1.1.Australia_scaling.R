@@ -1,10 +1,9 @@
 #------------------------------------------------------------------------------
 # Program Name: F1.1.Australia_scaling.R
-# Authors' Names: Leyang Feng
-# Date Last Modified: March 18, 2016
+# Authors' Names: Leyang Feng, Erin McDuffie
+# Date Last Modified: August 15, 2019
 # Program Purpose: To create scaling factors and update emissions estimate for
 # Australia from latest emissions working copy by using Australia NEI data.
-# This data only contains data from 2000, 2006, 2012.
 # Input Files: emissions_scaling_functions.R, F.[em]_scaled_EF.csv,
 #              F.[em]_scaled_emissions.csv, Australia_scaling_mapping.xlsx,
 # Output Files: F.[em]_total_scaled_EF.csv, F.[em]_total_scaled_emissions.csv
@@ -23,7 +22,7 @@
 
 # Call standard script header function to read in universal header files -
 # provide logging, file support, and system functions - and start the script log.
-    headers <- c( 'common_data.R', "data_functions.R", 
+    headers <- c( 'common_data.R', "data_functions.R",
                   "emissions_scaling_functions.R", "analysis_functions.R" ) # Additional function files required.
     log_msg <- "Australia inventory scaling" # First message to be printed to the log
     script_name <- paste0( em, "-F1.1.Australia_scaling.R" )
@@ -36,7 +35,7 @@
 
 # Stop script if running for unsupported species
     if ( em %!in% c( 'SO2', 'NOx', 'NMVOC', 'CO' ) ) {
-        stop( paste( 'Australia scaling is not supported for emission species', 
+        stop( paste( 'Australia scaling is not supported for emission species',
                      em, 'remove from script list in F1.1.inventory_scaling.R' ) )
     }
 
@@ -47,8 +46,9 @@
     sector_fuel_mapping <- 'Australia_scaling_mapping'
     mapping_method <- 'sector'
     inv_name <- 'AUS' #for naming diagnostic files
-    region <- c( "aus" ) 
-    inv_years<-c( 2000, 2006, 2012 )
+    region <- c( "aus" )
+    inv_years<-c( 2000:2018 )
+    #inv_years<-c( 2000, 2006, 2012 )
     inventory_data_file <- paste0( 'E.', em, '_', inv_name, '_inventory' )
 
 # ------------------------------------------------------------------------------
@@ -58,16 +58,16 @@
 
     scaling_data <- F.readScalingData( inventory = inventory_data_file,
                                        inv_data_folder,
-                                       mapping = sector_fuel_mapping, 
+                                       mapping = sector_fuel_mapping,
                                        method = mapping_method,
                                        region, inv_name, inv_years )
-    
+
     list2env( scaling_data, envir = .GlobalEnv )
 
 # ------------------------------------------------------------------------------
 # 3. Arrange the CEDS emissions data to match the inventory data
 
-# Aggregate inventory data to scaling sectors/fuels 
+# Aggregate inventory data to scaling sectors/fuels
     inv_data <- F.invAggregate( std_form_inv, region )
 
 # Aggregate ceds data to scaling sectors/fuels
@@ -77,8 +77,8 @@
 # 4. Calculate Scaling Factors, reaggregate to CEDS sectors
 
 # Calculate and extend scaling factors
-    scaling_factors_list <- F.scaling( ceds_data, inv_data, region, 
-                                       replacement_method = 'replace', 
+    scaling_factors_list <- F.scaling( ceds_data, inv_data, region,
+                                       replacement_method = 'replace',
                                        max_scaling_factor = 100,
                                        replacement_scaling_factor = 100 )
     list2env( scaling_factors_list, envir = .GlobalEnv )
