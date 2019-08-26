@@ -33,7 +33,7 @@
 # Describes which emission species is being analyzed
     args_from_makefile <- commandArgs( TRUE )
     em <<- args_from_makefile[ 1 ]
-    if ( is.na( em ) ) em <- "SO2"
+    if ( is.na( em ) ) em <- "NOx"
 
     em.read <- em
     if( em == "SO2" ) em.read <- "SOx"

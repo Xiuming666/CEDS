@@ -19,7 +19,7 @@ PARAM_DIR <- if("input" %in% dir()) "code/parameters/" else "../code/parameters/
 # provides logging, file support, and system functions - and start the script log.
 headers <- c( "data_functions.R", "analysis_functions.R" ) # Any additional function files required
 log_msg <- "Initial reformatting of the UNFCCC emissions inventories" # First message to be printed to the log
-script_name <- "E.UNFCCC_emissions.R"
+script_name <- "E.UNFCCC_emissions_new.R"
 
 source( paste0( PARAM_DIR, "header.R" ) )
 initialize( script_name, log_msg, headers )

@@ -1,11 +1,11 @@
 #------------------------------------------------------------------------------
-# Program Name: F1.1.EMEP_scaling.R
-# Authors' Names: Patrick O'Rourke, Rachel Hoesly
-# Date Last Modified: December 26th, 2015
+# Program Name: F1.1.EMEP_NFR14_scaling.R
+# Authors' Names: Erin McDuffie, adapted from original by Patrick O'Rourke, Rachel Hoesly
+# Date Last Modified: August 14, 2019
 # Program Purpose: To create scaling factors & update emissions estimate for
 # the EMEP regions from latest emissions working CEDS copy.
 # Input Files: emissions_scaling_functions.R, F.[em]_scaled_EF.csv,
-#              F.[em]_scaled_emissions.csv, UNFCCC_scaling_mapping.xlsx,
+#              F.[em]_scaled_emissions.csv, EMEP_scaling_mapping.xlsx,
 #              E.[em]_EMEP_inventory.csv
 # Output Files: F.[em]_total_scaled_EF.csv, F.[em]_total_scaled_emissions.csv
 # Notes: EMEP inventory has both level 1 and level 2 sectors. Choose data in
