@@ -160,7 +160,7 @@ F.invAggregate <- function( std_form_inv, region , mapping_method,
 
   # Make data numeric
 
-  inv_data[,X_inv_years] <- suppressWarnings( apply( inv_data[,X_inv_years] , 2, as.numeric ) )
+  inv_data[,X_inv_years] <- suppressWarnings( apply( inv_data[,X_inv_years, drop=F] , 2, as.numeric ) )
 
   # Select regions
   inv_data <- inv_data[ inv_data$iso %in% region,]
@@ -651,7 +651,8 @@ F.scaling <- function( ceds_data, inv_data, region,
     index <- rbind( which( scaling[,temp_X_years] >= max , arr.ind=T ) ,
                     which( scaling[,temp_X_years] <= min , arr.ind=T) )
 
-    if(nrow(index)>0){
+    #EEM: changed from (nrow(index)>0) - number of rows for empty matrix was 2, num col was 0
+    if(!all(is.na(index))){
       printLog( "Replacing very large/small scaling factors." )
       problem_scaling_factors <- melt(scaling, id.vars = c('iso', scaling_name))
       problem_scaling_factors <- problem_scaling_factors[!is.na(problem_scaling_factors$value),]
@@ -900,7 +901,7 @@ F.scaling <- function( ceds_data, inv_data, region,
               add <- data.frame(year)
               add$iso <- scaling_ext[i,c('iso')]
               if(method %in% c('sector','fuel')) add[,scaling_name] <- scaling_ext[i,scaling_name]
-              if(method %in% c('both')) add[,scaling_name] <- t(replicate(scaling_ext[i,scaling_name],n=length(year)))
+              if(method %in% c('both')) add[,scaling_name] <- scaling_ext[i,scaling_name]#t(replicate(scaling_ext[i,scaling_name],n=length(year)))
 
               add$comment <- paste('Scaled by linearly pre-extended scaling factor from inventory -', inv_name)
               meta_notes <- replaceValueColMatch(meta_notes, add,
@@ -928,7 +929,8 @@ F.scaling <- function( ceds_data, inv_data, region,
             add <- data.frame(year)
             add$iso <- scaling_ext[i,c('iso')]
             if(method %in% c('sector','fuel')) add[,scaling_name] <- scaling_ext[i,scaling_name]
-            if(method %in% c('both')) add[,scaling_name] <- t(replicate(scaling_ext[i,scaling_name],n=length(year)))
+            if(method %in% c('both')) add[,scaling_name] <- scaling_ext[i,scaling_name]
+            #t(replicate(scaling_ext[i,scaling_name],n=length(year)))
 
             add$comment <- paste('Scaled by constantly pre-extended scaling factor from inventory -', inv_name)
             meta_notes <- replaceValueColMatch(meta_notes, add,
@@ -1040,7 +1042,7 @@ F.scaling <- function( ceds_data, inv_data, region,
             add <- data.frame(year)
             add$iso <- scaling_ext[i,c('iso')]
             if(method %in% c('sector','fuel')) add[,scaling_name] <- scaling_ext[i,scaling_name]
-            if(method %in% c('both')) add[,scaling_name] <- t(replicate(scaling_ext[i,scaling_name],n=length(year)))
+            if(method %in% c('both')) add[,scaling_name] <- scaling_ext[i,scaling_name] #EEM t(replicate(scaling_ext[i,scaling_name],n=length(year)))
 
             add$comment <- paste('Scaled by constantly post-extended scaling factor from inventory -', inv_name)
             meta_notes <- replaceValueColMatch(meta_notes, add,
@@ -1152,7 +1154,7 @@ F.applyScale <- function(scaling_factors){
                                    scaling_ceds_map_unique,
                                    all = TRUE)
   scaling_factors_by_ceds <- scaling_factors_by_ceds[ , c('iso',ceds_matchcol_name,'year','scaling_factor')]
-  names(scaling_factors_by_ceds)[which(names(scaling_factors_by_ceds)==ceds_matchcol_name)] <- method_col
+  names(scaling_factors_by_ceds)[which(names(scaling_factors_by_ceds) %in% ceds_matchcol_name)] <- method_col  #EEM, wasnt replacing with == sign
 
   # current emissions/ef
   em_long <- input_em[ input_em$iso %in% region,]
