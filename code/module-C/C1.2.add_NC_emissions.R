@@ -54,12 +54,14 @@ if( em == "BC" || em == "OC" ){
 
 # Add EDGAR data script for all relevant emissions species
 if( em == "SO2" || em == "CO" || em == "NOx" || em == "NMVOC"  || em == "NH3" ){
-    scripts <- c( scripts, "C1.2.add_NC_emissions_EDGAR_PEGASOS.R" )
+    #scripts <- c( scripts, "C1.2.add_NC_emissions_EDGAR_PEGASOS.R" )
+    scripts <- c( scripts, "C1.2.add_NC_emissions_EDGAR_v432.R" )
 }
 
-# Note if using EDGAR 4.2 then also need to edit correction for end-year in C2.1.base_NC_EF.R
+# Note if using EDGAR 4.2 then also need to edit correction for end-year in C2.1.base_NC_EF.R -
+#Note (2019): now using v4.3.2 so year is now changed to the same as others
 if( em == "CH4" || em == "CO2" ){
-    scripts <- c( scripts, "C1.2.add_NC_emissions_EDGAR.R" )
+    scripts <- c( scripts, "C1.2.add_NC_emissions_EDGAR_v432_carbon.R" )
 }
 
 # Add FAO Agriculture methane data
@@ -74,7 +76,8 @@ if( em == "CO2" ){
 
 if ( em != "CO2" ) {
   scripts <- c( scripts, 'C1.2.ECLIPSE_flaring_emissions_extension.R' )
-  scripts <- c( scripts, 'C1.2.Fugitive-petr-and-gas_default_process_emissions.R' )
+  #scripts <- c( scripts, 'C1.2.Fugitive-petr-and-gas_default_process_emissions.R' )
+  scripts <- c( scripts, 'C1.2.Fugitive-petr-and-gas_default_process_emissions_EDGARv432.R' )
 }
 
 

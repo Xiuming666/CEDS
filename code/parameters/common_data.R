@@ -29,7 +29,7 @@ BP_FSU_aggregate <- TRUE
 
 # Edgar year
 EDGAR_start_year <- 1971
-EDGAR_end_year <- 2010
+EDGAR_end_year <- 2012
 
 # The combined yearset for historical emission years
 emissions_years <- c(IEA_years,BP_years)

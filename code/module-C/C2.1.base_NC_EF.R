@@ -96,7 +96,7 @@ extendFF <- function( df, ext_years ){
 
 args_from_makefile <- commandArgs( TRUE )
 em <- args_from_makefile[ 1 ]
-if ( is.na( em ) ) em <- "CO"
+if ( is.na( em ) ) em <- "NOx"
 
 activity_data <- readData( "MED_OUT", "A.NC_activity" )
 
@@ -183,7 +183,8 @@ if( length ( check ) > 0 ) {
  temp_EDGAR_end_year = EDGAR_end_year
 
  # Re-set EDGAR end-year if are still using EDGAR 4.2
- if( em == "CH4" || em == "CO2" ) temp_EDGAR_end_year = 2008
+ #now using v4.3.2 for all species
+ #if( em == "CH4" || em == "CO2" ) temp_EDGAR_end_year = 2008
 
  EDGAR_replace_years <- paste0('X',(temp_EDGAR_end_year+1):end_year)
 
