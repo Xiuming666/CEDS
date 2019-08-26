@@ -71,12 +71,16 @@
     scripts <- c()
 
 # EDGAR 4.3 PEGASOS
-    if ( em %in% c( 'NOx', 'NMVOC', 'CO', "NH3" ) ) scripts <-
-              c( scripts, 'F1.1.Edgar_PEGASOS_scaling.R' )
+#    if ( em %in% c( 'NOx', 'NMVOC', 'CO', "NH3" ) ) scripts <-
+#              c( scripts, 'F1.1.Edgar_PEGASOS_scaling.R' )
 
 # EDGAR 4.2
-    if ( em %in% c( 'CH4' ) ) scripts <-
-              c( scripts, 'F1.1.Edgar_scaling.R')
+#    if ( em %in% c( 'CH4' ) ) scripts <-
+#              c( scripts, 'F1.1.Edgar_scaling.R')
+
+# EDGAR 4.3.2
+    if ( em %in% c( 'NOx', 'NMVOC', 'CO', 'NH3', 'CH4' ) ) scripts <-
+        c( scripts, 'F1.1.Edgar_v432_scaling.R')
 
 # EMEP NFR09 (older data - use because has more sectors and goes back further)
     if ( em %in% c( 'CO', 'NH3', 'NMVOC', 'NOx', 'SO2' ) ) scripts <-
@@ -88,7 +92,7 @@
 
 # UNFCCC
     if ( em %in% c( 'SO2', 'CO', 'NMVOC', 'NOx', 'CO2', 'CH4' ) ) scripts <-
-              c( scripts, 'F1.1.UNFCCC_scaling.R' )
+              c( scripts, 'F1.1.UNFCCC_scaling_new.R' )
 
 # REAS
   if ( em %in% c('SO2','CO','NMVOC','NOx', 'NH3') ) scripts <- c(scripts, 'F1.1.REAS_scaling.R')
@@ -98,8 +102,9 @@
               c( scripts, 'F1.1.CAN_scaling_olderData.R' )
 
 # CAN - Newer data must run latter
-    if ( em %in% c( 'SO2', 'NOx', 'NMVOC', 'CO' ) ) scripts <-
-              c( scripts, 'F1.1.CAN_scaling_newerData.R' )
+    if ( em %in% c( 'SO2', 'NOx', 'NMVOC', 'CO', 'NH3' ) ) scripts <-
+              #c( scripts, 'F1.1.CAN_scaling_newerData.R' )
+            c( scripts, 'F1.1.CAN_scaling_2017Update.R' )
 
 # USA
     if ( em %in% c( 'SO2', 'NOx', 'NMVOC', 'CO',
@@ -140,6 +145,10 @@
 # Australia
     if ( em %in% c( 'SO2', 'NOx', 'CO', 'NMVOC' ) ) scripts <-
               c( scripts, 'F1.1.Australia_scaling.R' )
+
+# Africa
+    if ( em %in% c( 'SO2', 'NOx', 'CO', 'NMVOC' ) ) scripts <-
+        c( scripts, 'F1.1.Africa_scaling.R' )
 
 
 # ------------------------------------------------------------------------------------
