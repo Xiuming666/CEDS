@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 # Program Name: F1.1.Edgar_PEGASOS_scaling.R
 # Authors' Names: Tyler Pitkanen, Jon Seibert, Rachel Hoesly
-# Date Last Modified: Dec 27, 2015
+# Date Last Modified: June 10, 2019
 # Program Purpose: To create scaling factors and update emissions estimate for
 #                  Edgar PEGASOS
 # Input Files: emissions_scaling_functions.R, F.[em]_scaled_EF.csv,
@@ -75,7 +75,7 @@
                   "lva", "mkd", "pol", "rou", "scg", "svk", "svn", "blr", "mda",
                   "ukr", "kaz", "kgz", "tjk", "tkm", "uzb", "arm", "aze", "geo",
                   "rus", "are", "irn", "irq", "isr", "jor", "kwt", "lbn", "omn",
-                  "qat", "sau", "syr", "yem", "afg", "bgd", "btn", "ind", "lka",
+                  "qat", "sau", "syr", "yem", "afg", "bgd", "btn", "lka",
                   "mdv", "npl", "pak", "kor", "prk", "chn", "hkg", "mac", "mng",
                   "twn", "brn", "khm", "lao", "mmr", "mys", "phl", "sgp", "tha",
                   "tls", "vnm", "idn", "png", "jpn", "aus", "cok", "fji", "kir",

@@ -321,7 +321,6 @@ handleNanBreakdowns <- function( disagg_pct_breakdown, global_data, Xyears, agg_
 
 # ----------------------------------------------------------------------------------
 
-
 # generateWarnings
 #
 # Brief: A helper function for normalizeAndIncludeData. Analyzes the output and

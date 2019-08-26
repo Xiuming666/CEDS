@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 # Program Name: F1.1.Edgar_scaling.R
 # Authors' Names: Tyler Pitkanen, Jon Seibert, Rachel Hoesly
-# Date Last Modified: Dec 27, 2015
+# Date Last Modified: June 10, 2019
 # Program Purpose: To create scaling factors and update emissions estimate for
 #                  Edgar
 # Input Files: emissions_scaling_functions.R, F.[em]_scaled_EF.csv,
@@ -101,6 +101,7 @@
 #remove rows with all NA's
     inv_data_sheet <-
         inv_data_sheet[ apply( X = inv_data_sheet[ , paste0( "X", inv_years ) ],
+
                                MARGIN = 1, function( x )
                                              ( !all.na( x ) ) ) ,]
 

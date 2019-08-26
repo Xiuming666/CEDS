@@ -46,6 +46,7 @@
 # read in the BP oil production data since this is a longer more consistent time series than IEA
     bp_energy_data <- readData( 'ENERGY_IN', file_name = BP_data_file_name, extension = ".xlsx", skip = 2 )
     bp_oil_prod  <- bp_energy_data[[ getBPSheetNumber( "oil", "production", "tonnes", bp_energy_data ) ]]
+
 # read in master country list
     mcl <- readData( 'MAPPINGS', 'Master_Country_List' )
 
