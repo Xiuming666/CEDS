@@ -39,7 +39,7 @@
 
     args_from_makefile <- commandArgs( TRUE )
     em <- args_from_makefile[ 1 ]
-    if ( is.na( em ) ) em <- "SO2"
+    if ( is.na( em ) ) em <- "NOx"
 
 # Stop script if running for unsupported species
     if ( em %!in% c('SO2','NOx','NMVOC','BC','OC','CH4','CO','CO2') ) {
@@ -158,7 +158,7 @@
 
 # These have a single column of data and therefore the function is not necessary;
 #   Execute a single sum
-    Diesel <- c( "Gas.diesel.oil" )
+    Diesel <- c( "Gas.diesel.oil.excl..biofuels" ) #EEM: change from "Gas.diesel.oil"
     mult_Diesel <- sum( conversion[ , Diesel ], na.rm = T ) /
                    length( na.omit( conversion[ , Diesel ] ) )
 
