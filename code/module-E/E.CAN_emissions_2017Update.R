@@ -48,6 +48,12 @@
 
 # ------------------------------------------------------------------------------
 # 2. Inventory in Standard Form (iso-sector-fuel-years, iso-sector-years, etc)
+
+    if ( em %!in% c( 'SO2', 'NOx', 'NMVOC', 'CO', 'NH3' ) ) {
+        # Output a blank df for unsupported species
+        inv_data_clean <- data.frame( )
+
+    } else {
     file_path <- filePath( inv_data_folder, inventory_data_file,
                            extension = ".xlsx",
                            domain_extension = subfolder_name )
@@ -101,7 +107,7 @@
         inv_data_clean <- data.frame()
     }
 
-
+    }
 # ------------------------------------------------------------------------------
 # 3. Write standard form inventory
 

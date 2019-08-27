@@ -55,7 +55,10 @@
     mapping_method <- 'sector'
 
 # Identify all countries in this inventory. Countries with poor or inconsistent
-# data not included ('srb', "mlt", "tur", bhr')
+# data not included ('srb', "mlt", "tur", bhr') #EEM: added these back in because
+    # they were originally scaled to EDGAR v4.2. Now that I'm not scaling to that
+    #inventory anymore, I am scaling them here to improve agreement with GAINS (at
+    #least for tur)
     inv_name <- 'EDGAR_v432' # for naming diagnostic files
     region <-  c( "can", "spm", "usa", "mex", "abw", "aia", "ant", "atg", "bhs",
                   "blz", "bmu", "brb", "cri", "cub", "cym", "dma", "dom", "glp",
@@ -80,7 +83,7 @@
                   "tls", "vnm", "idn", "png", "jpn", "aus", "cok", "fji", "kir",
                   "ncl", "nzl", "plw", "pyf", "slb", "ton", "vut", "wsm", "sea",
                   "air", "dza", "egy", "lby", "mar", "pry", "sur", "ury", "ven",
-                  "esh", "asm", "fsm", "niu", "wlf")
+                  "esh", "asm", "fsm", "niu", "wlf", "tur", "srb", "mlt", "bhr")
     #last two lines are new countries in new EDGAR version
 
 inv_years <- c( EDGAR_start_year:EDGAR_end_year )
