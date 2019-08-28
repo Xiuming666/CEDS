@@ -702,6 +702,7 @@ $(MED_OUT)/C.$(EM)_NC_emissions.csv: \
 	$(MED_OUT)/E.$(EM)_US-EPA_inventory.csv \
 	$(MED_OUT)/E.$(EM)_US_GHG_inventory.csv \
 	$(MED_OUT)/E.$(EM)_DICE_inventory.csv \
+	$(MED_OUT)/E.$(EM)_India_inventory.csv \
 	$(MED_OUT)/A.UN_pop_master.csv \
 	$(ACTIV)/wastewater/UN_Percentage_WW_Treatment.xlsx \
 	$(ACTIV)/wastewater/OECD_Percentage_WW_Treatment.xlsx \
@@ -830,6 +831,11 @@ $(MED_OUT)/E.$(EM)_DICE_inventory.csv: \
 	$(MOD_E)/E.Africa_emissions.R
 	Rscript $< $(EM) --nosave --no-restore
 
+# ee1-2
+$(MED_OUT)/E.$(EM)_India_inventory.csv: \
+	$(MOD_E)/E.India_emissions.R
+	Rscript $< $(EM) --nosave --no-restore
+
 # ff1-1a
 # Creates scaled emissions and emissions factors
 $(MED_OUT)/F.$(EM)_scaled_emissions.csv: \
@@ -852,6 +858,7 @@ $(MED_OUT)/F.$(EM)_scaled_emissions.csv: \
 	$(MOD_F)/F1.1.Australia_scaling.R \
 	$(MOD_F)/F1.1.Taiwan_scaling.R \
 	$(MOD_F)/F1.1.Africa_scaling.R \
+	$(MOD_F)/F1.1.India_scaling.R \
 	$(PARAMS)/emissions_scaling_functions.R \
 	$(MED_OUT)/E.$(EM)_ARG_inventory.csv \
 	$(MED_OUT)/E.$(EM)_CAN_to2011_inventory.csv \
@@ -869,6 +876,7 @@ $(MED_OUT)/F.$(EM)_scaled_emissions.csv: \
 	$(MED_OUT)/E.$(EM)_AUS_inventory.csv \
 	$(MED_OUT)/E.$(EM)_TWN_inventory.csv \
 	$(MED_OUT)/E.$(EM)_DICE_inventory.csv \
+	$(MED_OUT)/E.$(EM)_India_inventory.csv \
 	$(SC_MAPPINGS)/Argentina_scaling_mapping.xlsx \
 	$(SC_MAPPINGS)/CAN_scaling_mapping.xlsx \
 	$(SC_MAPPINGS)/CAN_scaling_mapping_2017Update.xlsx \
@@ -884,6 +892,7 @@ $(MED_OUT)/F.$(EM)_scaled_emissions.csv: \
 	$(SC_MAPPINGS)/Australia_scaling_mapping.xlsx \
 	$(SC_MAPPINGS)/Taiwan_scaling_mapping.xlsx \
 	$(SC_MAPPINGS)/Africa_scaling_mapping.xlsx \
+	$(SC_MAPPINGS)/India_scaling_mapping.xlsx \
 	$(MED_OUT)/D.$(EM)_default_total_EF.csv \
 	$(MED_OUT)/D.$(EM)_default_total_emissions.csv
 	Rscript $< $(EM) --nosave --no-restore

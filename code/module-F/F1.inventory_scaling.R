@@ -147,8 +147,14 @@
               c( scripts, 'F1.1.Australia_scaling.R' )
 
 # Africa
-    if ( em %in% c( 'SO2', 'NOx', 'CO', 'NMVOC' ) ) scripts <-
+    #for now, dont scale to NMVOCs - I haven't been able to confirm which VOCs are
+    # in the Edgar and other inventories, so I don't know whether to exclude some DICE VOCs or not
+    if ( em %in% c( 'SO2', 'NOx', 'CO' ) ) scripts <-
         c( scripts, 'F1.1.Africa_scaling.R' )
+
+# India
+ #   if ( em %in% c( 'SO2', 'NOx', 'NMVOC' ) ) scripts <-
+  #      c( scripts, 'F1.1.India_scaling.R' )
 
 
 # ------------------------------------------------------------------------------------
