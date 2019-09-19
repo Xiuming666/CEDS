@@ -41,3 +41,6 @@ input/energy/OECD_Conversion_Factors.csv
 
 #Other
 .DS_Store
+
+code/module-G/G4.move_gridded_emissions.R
+

@@ -1,0 +1,5 @@
+"file","description","input_files","output_files","output_description"
+"G4.move_gridded_emissions.R",NA,"../code/parameters/global_settings.R
+../code/parameters/IO_functions.R
+../code/parameters/data_functions.R
+../code/parameters/common_data.R","",NA

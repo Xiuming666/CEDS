@@ -1768,8 +1768,9 @@ singleVarChunking_bulkemissions <- function( em,
   #  0: Agriculture;
   #  1: Energy Sector;
   #  2: Industrial Sector;
-  #  3: Transportation Sector;
-  #  4: Residential, Commercial, Other - Residential;
+  #  3a: Non-Road Transproation;
+  #  3b: Road Transportation;
+  #  4a: Residential, Commercial, Other - Residential;
   #  4b: Residential, Commercial, Other - Commercial;
   #  4c: Residential, Commercial, Other - Other;
   #  5: Solvents production and application;
@@ -2036,9 +2037,11 @@ singleVarChunking_subVOCemissions <- function( VOC_em,
   #  0: Agriculture;
   #  1: Energy Sector;
   #  2: Industrial Sector;
-  #  3: Transportation Sector;
-  #  3b: ROAD
-  #  4: Residential, Commercial, Other;
+  #  3a: Non-Road Transproation;
+  #  3b: Road Transportation;
+  #  4a: Residential, Commercial, Other - Residential;
+  #  4b: Residential, Commercial, Other - Commercial;
+  #  4c: Residential, Commercial, Other - Other;
   #  5: Solvents production and application;
   #  6: Waste;
   #  7: International Shipping
@@ -2274,9 +2277,11 @@ singleVarChunking_subVOCemissions_rbulk <- function( VOC_em,
     #  0: Agriculture;
     #  1: Energy Sector;
     #  2: Industrial Sector;
-    #  3: Transportation Sector;
-    #  3b: ROAD
-    #  4: Residential, Commercial, Other;
+    #  3a: Non-Road Transproation;
+    #  3b: Road Transportation;
+    #  4a: Residential, Commercial, Other - Residential;
+    #  4b: Residential, Commercial, Other - Commercial;
+    #  4c: Residential, Commercial, Other - Other;
     #  5: Solvents production and application;
     #  6: Waste;
     #  7: International Shipping
@@ -2512,9 +2517,11 @@ singleVarChunking_subVOCemissions_coalfuel <- function( VOC_em,
     #  0: Agriculture;
     #  1: Energy Sector;
     #  2: Industrial Sector;
-    #  3: Transportation Sector;
-    #  3b: ROAD
-    #  4: Residential, Commercial, Other;
+    #  3a: Non-Road Transproation;
+    #  3b: Road Transportation;
+    #  4a: Residential, Commercial, Other - Residential;
+    #  4b: Residential, Commercial, Other - Commercial;
+    #  4c: Residential, Commercial, Other - Other;
     #  5: Solvents production and application;
     #  6: Waste;
     #  7: International Shipping
@@ -2751,9 +2758,11 @@ singleVarChunking_subVOCemissions_solidbiofuel <- function( VOC_em,
     #  0: Agriculture;
     #  1: Energy Sector;
     #  2: Industrial Sector;
-    #  3: Transportation Sector;
-    #  3b: ROAD
-    #  4: Residential, Commercial, Other;
+    #  3a: Non-Road Transproation;
+    #  3b: Road Transportation;
+    #  4a: Residential, Commercial, Other - Residential;
+    #  4b: Residential, Commercial, Other - Commercial;
+    #  4c: Residential, Commercial, Other - Other;
     #  5: Solvents production and application;
     #  6: Waste;
     #  7: International Shipping
@@ -2988,9 +2997,11 @@ singleVarChunking_rbulkemissions <- function( em,
     #  0: Agriculture;
     #  1: Energy Sector;
     #  2: Industrial Sector;
-    #  3: Transportation Sector;
-    #  3b: ROAD
-    #  4: Residential, Commercial, Other;
+    #  3a: Non-Road Transproation;
+    #  3b: Road Transportation;
+    #  4a: Residential, Commercial, Other - Residential;
+    #  4b: Residential, Commercial, Other - Commercial;
+    #  4c: Residential, Commercial, Other - Other;
     #  5: Solvents production and application;
     #  6: Waste;
     #  7: International Shipping
@@ -3221,9 +3232,11 @@ singleVarChunking_solidbiofuelemissions <- function( em,
   #  0: Agriculture;
   #  1: Energy Sector;
   #  2: Industrial Sector;
-  #  3: Transportation Sector;
-  #  3b: ROAD
-  #  4: Residential, Commercial, Other;
+  #  3a: Non-Road Transproation;
+  #  3b: Road Transportation;
+  #  4a: Residential, Commercial, Other - Residential;
+  #  4b: Residential, Commercial, Other - Commercial;
+  #  4c: Residential, Commercial, Other - Other;
   #  5: Solvents production and application;
   #  6: Waste;
   #  7: International Shipping
@@ -3453,9 +3466,11 @@ singleVarChunking_coalfuelemissions <- function( em,
     #  0: Agriculture;
     #  1: Energy Sector;
     #  2: Industrial Sector;
-    #  3: Transportation Sector;
-    # 3b: ROAD
-    #  4: Residential, Commercial, Other;
+    #  3a: Non-Road Transproation;
+    #  3b: Road Transportation;
+    #  4a: Residential, Commercial, Other - Residential;
+    #  4b: Residential, Commercial, Other - Commercial;
+    #  4c: Residential, Commercial, Other - Other;
     #  5: Solvents production and application;
     #  6: Waste;
     #  7: International Shipping
@@ -4509,7 +4524,7 @@ add_global_attributes_single_var <- function( nc_new, title, flat_var_name, MD_d
   ncatt_put( nc_new, "time", "standard_name", "time" )
   if ( !air ) {
     ncatt_put( nc_new, "sector", "bounds", "sector_bnds" )
-    ncatt_put( nc_new, "sector", "ids", "0: Agriculture; 1: Energy; 2: Industrial; 3: Transportation; 4: Residential, Commercial, Other; 5: Solvents production and application; 6: Waste; 7: International Shipping" )
+    ncatt_put( nc_new, "sector", "ids", "0: Agriculture; 1: Energy; 2: Industrial; 3a: Non-Road/Other Transportation; 3b: Road Transportation; 4a: Residential; 4b: Commercial; 4c: Other; 5: Solvents production and application; 6: Waste; 7: International Shipping" )
   }
   # attributes for variables
   ncatt_put( nc_new, flat_var_name, 'cell_methods', 'time: mean' )
@@ -4525,24 +4540,24 @@ add_global_attributes_single_var <- function( nc_new, title, flat_var_name, MD_d
   ncatt_put( nc_new, 0, 'Conventions', 'CF-1.6' )
   ncatt_put( nc_new, 0, 'activity_id', 'NA' )
   ncatt_put( nc_new, 0, 'comment', 'Research data produced using CEDS.' )
-  ncatt_put( nc_new, 0, 'contact', 'Your Name Here (your-email@where.you.are)' )
+  ncatt_put( nc_new, 0, 'contact', 'Erin McDuffie (erin.mcduffie@dal.ca)' )
   ncatt_put( nc_new, 0, 'creation_date', as.character( format( as.POSIXlt( Sys.time(), "UTC"), format = '%Y-%m-%dT%H:%M:%SZ' ) ) )
   ncatt_put( nc_new, 0, 'data_structure', 'grid' )
   ncatt_put( nc_new, 0, 'dataset_category', 'emissions' )
   ncatt_put( nc_new, 0, 'dataset_version_number', MD_dataset_version_number_value )
   ncatt_put( nc_new, 0, 'external_variables', 'gridcell_area' )
   ncatt_put( nc_new, 0, 'frequency', 'mon' )
-  ncatt_put( nc_new, 0, 'further_info_url', 'your.web.site' )
+  ncatt_put( nc_new, 0, 'further_info_url', '' )
   ncatt_put( nc_new, 0, 'grid', '0.5x0.5 degree latitude x longitude' )
   ncatt_put( nc_new, 0, 'grid_label', 'gn' )
   ncatt_put( nc_new, 0, 'nominal_resolution', '50 km' )
-  ncatt_put( nc_new, 0, 'history', paste0( as.character( format( as.POSIXlt( Sys.time(), "UTC"), format = '%d-%m-%Y %H:%M:%S %p %Z' ) ), '; your city, state, country') )
-  ncatt_put( nc_new, 0, 'institution', 'your institution full name, city, state, zip, country' )
-  ncatt_put( nc_new, 0, 'institution_id', 'your institution abbreviation' )
+  ncatt_put( nc_new, 0, 'history', paste0( as.character( format( as.POSIXlt( Sys.time(), "UTC"), format = '%d-%m-%Y %H:%M:%S %p %Z' ) ), '; Halifax, NS, Canada') )
+  ncatt_put( nc_new, 0, 'institution', 'Dalhousie University, Halifax, NS, Canada' )
+  ncatt_put( nc_new, 0, 'institution_id', 'Dal' )
   ncatt_put( nc_new, 0, 'mip_era', 'post-CMIP6' )
   ncatt_put( nc_new, 0, 'product', ifelse( primary, 'primary-emissions-data', 'supplementary-emissions-data' ) )
   ncatt_put( nc_new, 0, 'realm', 'atmos' )
-  ncatt_put( nc_new, 0, 'references', 'Your journal paper or other reference for this work.' )
+  ncatt_put( nc_new, 0, 'references', 'Y' )
   ncatt_put( nc_new, 0, 'source', MD_source_value )
   ncatt_put( nc_new, 0, 'source_id', MD_source_id_value )
 # Used for generating data for CMIP
@@ -4567,10 +4582,10 @@ chunk_emissions <- function(singleVarChunkingFun, em, ... ) {
 
     # Chunking variables
     grid_resolution <- 0.5
-# If chunking years should be different than the full dataset specify that here
+# If chunking years should be different than the full dataset specify that here (start is set to IEA data start)
 
-#    start_year <- 1750
-#    end_year <- 1850
+    start_year <- grid_start_year
+    end_year <- grid_end_year
     chunk_years <- 50
 
     # basic start year/end year check

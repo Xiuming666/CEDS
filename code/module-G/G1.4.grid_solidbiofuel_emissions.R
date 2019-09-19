@@ -30,7 +30,7 @@ initialize( "G1.4.grid_solidbiofuel_emissions.R", log_msg, headers )
 # Define emissions species variable
 args_from_makefile <- commandArgs( TRUE )
 em <- args_from_makefile[ 1 ]
-if ( is.na( em ) ) em <- "SO2"
+if ( is.na( em ) ) em <- "VOC04"
 
 # Set up directories
 output_dir          <- filePath( "MED_OUT",  "gridded-emissions/",     extension = "" )
@@ -43,8 +43,8 @@ final_emissions_dir <- filePath( "FIN_OUT",  "current-versions/",      extension
 
 # Initialize the gridding parameters
 gridding_initialize( grid_resolution = 0.5,
-                     start_year = 1750,
-                     end_year = end_year,
+                     start_year = grid_start_year,
+                     end_year = grid_end_year,
                      load_masks = T,
                      load_seasonality_profile = T )
 
