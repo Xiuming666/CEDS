@@ -111,7 +111,7 @@ initialize( script_name, log_msg, headers )
 	# so convert here to lower heating value
 	EIA_HHV = 18.60 # MJ/tonne
 	EIA_biomass$EIA <- EIA_biomass$EIA * conversionFactor_biomass_kt_TJ / EIA_HHV
-    
+
 # Merge all 4 datasets and keep only emissions years
     biomass_0 <- merge( IEA_biomass, Fern_biomass, all = T ) %>%
       merge( Eur_biomass, all.x = T ) %>%
@@ -185,9 +185,9 @@ initialize( script_name, log_msg, headers )
 # Diagnostics: Decide whether to use IEA or Fernandes for countries in iso_Eur
     diag_Eur <- filter( biomass_1, iso %in% iso_Eur ) %>%
       select( iso, year, pop2, IEA, Eur, Fern, IEA_pc, Eur_pc, Fern_pc )
-    # Resolution: Use Fern for aze, rus, svk, ukr; use IEA for geo, irl, mda, swe # EEM: Updated to use IEA for hrv, hun, ita, and nld ** CHECK **
+    # Resolution: Use Fern for aze, rus, svk, ukr; use IEA for geo, irl, mda, swe # EEM: Updated to use IEA for aut, hrv, hun, ita, and nld ** CHECK **
     iso_Fern <- c( iso_Fern, "aze", "rus", "svk", "ukr")
-    iso_IEA <- c( iso_IEA, "geo", "irl", "mda", "swe","hrv", "hun", "ita", "nld")
+    iso_IEA <- c( iso_IEA, "aut", "geo", "irl", "mda", "swe","hrv", "hun", "ita", "nld")
     rm( iso_Eur, iso_rest )
 
 # Keep relevant columns

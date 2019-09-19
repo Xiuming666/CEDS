@@ -3,7 +3,7 @@
 # Set of historical years for which the CEDS system has IEA data.
 
 # USER SET DATA - Set this to the last year of the IEA data used
-IEA_end_year  <- 2016  # Latest year of IEA data; used to compare BP and IEA
+IEA_end_year  <- 2017  # Latest year of IEA data; used to compare BP and IEA
 
 IEA_start_year  <- 1960
 X_IEA_end_year  <- paste0( "X", IEA_end_year  )
@@ -60,6 +60,11 @@ X_bond_years <- paste0('X', bond_years)
 cdiac_start_year <- 1750
 cdiac_end_year <- 2011
 cdiac_end_year_cement <- 2018 #Changed from 2015 with new usgs cement data
+
+#Gridding Years - specify the years to grid in mod-G
+grid_start_year_NMVOC <- 2010
+grid_start_year <- 2010
+grid_end_year <- 2018
 
 # ---------------------------------
 # Define available CEDS releases
