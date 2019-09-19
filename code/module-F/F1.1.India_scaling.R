@@ -1,5 +1,5 @@
 #------------------------------------------------------------------------------
-# Program Name: F1.1.Africa_scaling.R
+# Program Name: F1.1.India_scaling.R
 # Authors' Names: Erin McDuffie
 # Date Last Modified: August 27, 2019
 # Program Purpose: To create scaling factors and update emissions estimate for
@@ -47,7 +47,7 @@
     mapping_method <- 'both'
     inv_name <- 'India' #for naming diagnostic files
     region <- 'ind'
-    inv_years<-c( 2013 )
+    inv_years<-c( 2015 )
     inventory_data_file <- paste0( 'E.', em, '_', inv_name, '_inventory' )
 
 # ------------------------------------------------------------------------------

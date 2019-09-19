@@ -153,9 +153,8 @@
         c( scripts, 'F1.1.Africa_scaling.R' )
 
 # India
- #   if ( em %in% c( 'SO2', 'NOx', 'NMVOC' ) ) scripts <-
-  #      c( scripts, 'F1.1.India_scaling.R' )
-
+    if ( em %in% c( 'SO2', 'NOx', 'NMVOC' ) ) scripts <-
+        c( scripts, 'F1.1.India_scaling.R' )
 
 # ------------------------------------------------------------------------------------
 # 4. Run all scripts for the given emissions type

@@ -18,7 +18,7 @@
 # Get emission species first so can name log appropriately
     args_from_makefile <- commandArgs( TRUE )
     em <- args_from_makefile[ 1 ]
-    if ( is.na( em ) ) em <- "NOx"
+    if ( is.na( em ) ) em <- "CO"
 
 # Call standard script header function to read in universal header files -
 # provide logging, file support, and system functions - and start the script log.
@@ -42,12 +42,16 @@
     inv_data_folder <- "EM_INV"
     subfolder_name <- 'India/'
     inv_name <- 'India' #for naming diagnostic files
-    inv_years<-c( 2013 )
+    inv_years<-c( 2015 )
 
 
 # ------------------------------------------------------------------------------
 # 2. Inventory in Standard Form (iso-sector-fuel-years, iso-sector-years, etc)
+    if ( em %!in% c( 'SO2', 'NMVOC', 'NOx' ) ) {
+        # Output a blank df for unsupported species
+        inv_data_sheet_clean <- data.frame( )
 
+    } else {
 # Import Sheets containing selected species data.
     inv_data_sheet <- readData( inv_data_folder, inventory_data_file,
                             ".csv", domain_extension = subfolder_name)
@@ -59,7 +63,7 @@
    # inv_data_sheet_clean <- dplyr::mutate( inv_data_sheet_clean, Country = as.character( Country ) )
    # inv_data_sheet_clean <- inv_data_sheet_clean[ order( inv_data_sheet_clean$Fuel, inv_data_sheet_clean$Sector ), ]
 
-# Mapping DICE countries to CEDS iso codes
+# Mapping India countries to CEDS iso codes
     inv_data_sheet_clean$iso <- 'ind'
     inv_data_sheet_clean <- inv_data_sheet_clean[ , c( 'iso', 'Fuel', 'Sector', em)]
     #inv_data_sheet_clean$Country <- MCL[ match( inv_data_sheet_clean$Country, MCL$Country_Name ),'iso' ]
@@ -73,11 +77,11 @@
 
 # Make numeric
     inv_data_sheet_clean[ , year ] <- sapply( inv_data_sheet_clean[ , year ], as.numeric )
-    
+
 #convert from ton to kt
     inv_data_sheet_clean[ , year ] <- inv_data_sheet_clean[ , year ] / 1e3
 
-
+}
 # ------------------------------------------------------------------------------
 # 3. Write out standard form inventory
     writeData( inv_data_sheet_clean, domain = "MED_OUT",
