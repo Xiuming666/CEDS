@@ -20,7 +20,7 @@
 # Get emission species first so can name log appropriately
     args_from_makefile <- commandArgs( TRUE )
     em <- args_from_makefile[1]
-    if ( is.na( em ) ) em <- "NOx"
+    if ( is.na( em ) ) em <- "CO"
 
 # Call standard script header function to read in universal header files -
 # provide logging, file support, and system functions - and start the script log.
@@ -37,7 +37,7 @@
 # 1. Define parameters for inventory specific script
 
 # Stop script if running for unsupported species
-    if ( em %!in% c( 'SO2', 'NOx', 'NMVOC', 'CO', 'CH4', 'NH3' ) ) {
+    if ( em %!in% c( 'SO2', 'NOx', 'NMVOC', 'CO', 'CH4', 'NH3','BC','OC' ) ) {
         stop( paste( 'Edgar scaling is not supported for emission species ',
                em, '. Remove from script
                     list in F1.1.inventory_v432_scaling.R' ) )
@@ -52,6 +52,8 @@
     inventory_data_file <- paste0( 'Edgar_v432_', em )
     inv_data_folder <- "EM_INV"
     sector_fuel_mapping <- 'Edgar_scaling_mapping'
+    if ( em == 'CO')  sector_fuel_mapping <- 'Edgar_scaling_mapping_CO'
+    if ( em == 'NOx')  sector_fuel_mapping <- 'Edgar_scaling_mapping_NOx'
     mapping_method <- 'sector'
 
 # Identify all countries in this inventory. Countries with poor or inconsistent
@@ -60,7 +62,7 @@
     #inventory anymore, I am scaling them here to improve agreement with GAINS (at
     #least for tur)
     inv_name <- 'EDGAR_v432' # for naming diagnostic files
-    region <-  c( "can", "spm", "usa", "mex", "abw", "aia", "ant", "atg", "bhs",
+        region <-  c( "can", "spm", "usa", "mex", "abw", "aia", "ant", "atg", "bhs",
                   "blz", "bmu", "brb", "cri", "cub", "cym", "dma", "dom", "glp",
                   "grd", "gtm", "hnd", "hti", "jam", "kna", "lca", "msr", "mtq",
                   "nic", "pan", "pri", "slv", "tca", "tto", "vct", "vgb", "bra",
