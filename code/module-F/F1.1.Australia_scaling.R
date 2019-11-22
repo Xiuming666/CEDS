@@ -18,7 +18,7 @@
 # Get emission species first so can name log appropriately
     args_from_makefile <- commandArgs( TRUE )
     em <- args_from_makefile[1]
-    if ( is.na( em ) ) em <- "NOx"
+    if ( is.na( em ) ) em <- "SO2"
 
 # Call standard script header function to read in universal header files -
 # provide logging, file support, and system functions - and start the script log.
@@ -47,7 +47,7 @@
     mapping_method <- 'sector'
     inv_name <- 'AUS' #for naming diagnostic files
     region <- c( "aus" )
-    inv_years<-c( 2000:2018 )
+    inv_years<-c( 2001:2018 )
     #inv_years<-c( 2000, 2006, 2012 )
     inventory_data_file <- paste0( 'E.', em, '_', inv_name, '_inventory' )
 
