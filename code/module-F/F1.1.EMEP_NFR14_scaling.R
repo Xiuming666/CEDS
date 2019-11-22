@@ -25,7 +25,7 @@
 # Get emission species first so can name log appropriately
     args_from_makefile <- commandArgs( TRUE )
     em <- args_from_makefile[1]
-    if ( is.na( em ) ) em <- "NOx"
+    if ( is.na( em ) ) em <- "CO"
 
 # Call standard script header function to read in universal header files -
 # provide logging, file support, and system functions - and start the script log.
@@ -43,7 +43,7 @@
 
 # Stop script if running for unsupported emissions species
 # Note, while EMEP has BC, there is no OC, so retain consistent BC, OC estimates
-    if ( em %!in% c( 'CO', 'NH3', 'NMVOC', 'NOx', 'SO2' ) ) {
+    if ( em %!in% c( 'CO', 'NH3', 'NMVOC', 'NOx', 'SO2','BC' ) ) {
       stop( paste( 'EMEP scaling is not supported for emission species ',
                     em, '. Remove from script list in F1.1.inventory_scaling.R' ) )
     }
@@ -62,13 +62,13 @@
 
     mapping_method <- 'sector'
     inv_name <- 'EMEP_NFR14'
-# Do not include regions with problematic inventories ("mda", "aze", "srb", "tur", "ukr")
+# Do not include regions with problematic inventories ("mda", "aze", "srb", "tur", "ukr", "blr")
 # Do not include "can" since have higher resolution data to use
     region <- c( "aut", "bel", "bgr", "che", "cyp", "cze", "deu",
                  "dnk", "esp", "est", "fin", "fra", "gbr", "geo", "hrv", "hun",
                  "irl", "isl", "ita", "ltu", "lux", "lva", "mkd",
                  "nld", "nor", "pol", "prt", "rou", "svk", "svn", "swe",
-                 "alb", "arm", "blr", "grc", "kgz", "mlt", "mne")           #included new country data
+                 "alb", "arm", "grc", "kgz", "mlt", "mne","lie")           #included new country data
     inv_years <- c( 1980:2017 )
 
 # EMEP level 1 inventory is reformatted by the E2.EMEP_em_emissions_lvl1.R script

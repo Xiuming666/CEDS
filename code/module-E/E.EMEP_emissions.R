@@ -33,7 +33,7 @@
 # Describes which emission species is being analyzed
     args_from_makefile <- commandArgs( TRUE )
     em <<- args_from_makefile[ 1 ]
-    if ( is.na( em ) ) em <- "NOx"
+    if ( is.na( em ) ) em <- "CO"
 
     em.read <- em
     if( em == "SO2" ) em.read <- "SOx"
@@ -61,7 +61,6 @@
     cat( "here with inv_file_path:: ", file_path )
 
     if ( file.exists( file_path ) ) {
-
     # Function used to read in list of txt files
         inv <- read.table( paste0( './emissions-inventories/EMEP/',
                                    inv_file_name ),
@@ -112,7 +111,12 @@
 
     	# Remove EU, EU 9, EU 12, EU 15, EU 27 Data (Interested in Countries not EU)
     	    remove_ISO2 <- c( 'EU', 'EU09', 'EU12', 'EU15', 'EU27', 'EU28')
-    	    EMEP_em <- EMEP_em[ -which( EMEP_em$ISO2 %in% remove_ISO2 ), ]
+    	    #EEM: no data is written if the EU countries are not present in the file. Changed.
+    	    if ( length( which( EMEP_em$ISO2 %in% remove_ISO2 ) > 0 ) ) {
+    	        EMEP_em <- EMEP_em[ -which( EMEP_em$ISO2 %in% remove_ISO2 ), ]
+    	    } else {
+    	        EMEP_em <- EMEP_em
+    	    }
 
     	# Mapping EMEP ISO2 to CEDS iso codes
     	    EMEP_em$ISO2 <- MCL[ match( EMEP_em$ISO2, MCL$EMEP ),'iso' ]

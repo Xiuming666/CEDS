@@ -63,13 +63,13 @@
     mapping_method <- 'sector'
     inv_name <- 'EMEP_NFR09'
 
-# Do not include regions with problematic inventories ("mda", "aze", "srb", "tur","ukr")
+# Do not include regions with problematic inventories ("mda", "aze", "srb", "tur","ukr","blr")
 # Do not include "can" since have higher resolution data to use
     region <- c( "aut", "bel", "bgr", "che", "cyp", "cze", "deu",
                  "dnk", "esp", "est", "fin", "fra", "gbr", "geo", "hrv", "hun",
                  "irl", "isl", "ita", "ltu", "lux", "lva", "mkd",
                  "nld", "nor", "pol", "prt", "rou", "svk", "svn", "swe",
-                 "alb", "arm", "blr", "grc", "kgz", "mlt", "mne")           #included new country data
+                 "alb", "arm", "grc", "kgz", "mlt", "mne")           #included new country data
     inv_years <- c( 1980:2012 )
 
 # EMEP level 1 inventory is reformatted by the E2.EMEP_em_emissions_lvl1.R script
