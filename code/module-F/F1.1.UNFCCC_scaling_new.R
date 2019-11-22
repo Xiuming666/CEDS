@@ -61,9 +61,12 @@
 
 # include only regions that aren't scaled elsewhere for non-CO2 and non-CH4 emissions
 # TODO: blr and ukr should only be used for specific years where is close to expert estimates, or to calibrate parameters off-line
-# TODO: why is grc not in EMEP?
+# TODO: why is grc not in EMEP? EEM: grc is in EMEP through 2016
 # Ukraine (ukr) energy reporting is inconsistent, instead have calibrated coal S% by hand. Check other emissions
-    if ( em %!in% c("CO2", 'CH4')) region <- c( "blr" , "grc" , "nzl", "kaz" )
+#Note: blr: some historical blr data here even though later years scaled to EMEP
+#Note: jpn: could scale to UNFCCC after 2010 since that's when regional inventory ends
+#Note: kaz: could scale to UNFCCC after 2008 since that's when regional REAS inventory ends
+    if ( em %!in% c("CO2", 'CH4')) region <- c( "blr", "nzl", "kaz")
     inv_years <- c( 1990:2017 )
 
 # UNFCCC inventory is processed in E.UNFCCC_[em]_emissions.R script
