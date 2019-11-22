@@ -53,6 +53,7 @@
     inventory_data_file <- paste0( 'E.', em, '_', inv_name, '_inventory' )
     inv_data_folder <- 'MED_OUT'
     sector_fuel_mapping <- 'MEIC_2017Update_scaling_mapping'
+    if ( em == 'NOx')  sector_fuel_mapping <- 'MEIC_2017Update_scaling_mapping_NOx'
     mapping_method <- 'sector'
     inv_years<-c( 2010:2017 )
 
