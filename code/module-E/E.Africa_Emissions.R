@@ -1,9 +1,9 @@
 #------------------------------------------------------------------------------
 # Program Name: E.Africa_emissions.R
 # Authors' Names: Erin McDuffie (adapted from E.China_emissions.R)
-# Date Last Modified: August 21, 2019
+# Date Last Modified: November 15, 2019
 # Program Purpose: To read in and reformat DICE Africa emissions inventory data
-# This data only contains data from 2013.
+# This data is from 2006 and 2013.
 # Units are initially in Tg, converted to kt
 # Input Files: DICE_[em].csv
 # Output Files: E.[em]_Africa_inventory.csv
@@ -18,7 +18,7 @@
 # Get emission species first so can name log appropriately
     args_from_makefile <- commandArgs( TRUE )
     em <- args_from_makefile[ 1 ]
-    if ( is.na( em ) ) em <- "NOx"
+    if ( is.na( em ) ) em <- "BC"
 
 # Call standard script header function to read in universal header files -
 # provide logging, file support, and system functions - and start the script log.
@@ -42,7 +42,7 @@
     inv_data_folder <- "EM_INV"
     subfolder_name <- 'Africa/'
     inv_name <- 'DICE' #for naming diagnostic files
-    inv_years<-c( 2013 )
+    inv_years<-c( 2006, 2013 )
 
 
 # ------------------------------------------------------------------------------
@@ -53,7 +53,8 @@
                                 ".csv", domain_extension = subfolder_name)
 
     inv_data_sheet_clean <- inv_data_sheet
-    inv_data_sheet_clean <- inv_data_sheet_clean[ , c( "Country", "Fuel", "Sector", em ) ]
+    years <- paste( "X", inv_years, sep="" )
+    inv_data_sheet_clean <- inv_data_sheet_clean[ , c( "Country", "Fuel", "Sector", years ) ]
 
 # Order By ISO2 & sector
     inv_data_sheet_clean <- dplyr::mutate( inv_data_sheet_clean, Country = as.character( Country ) )
@@ -66,12 +67,11 @@
     names( inv_data_sheet_clean ) [ 3 ] <- "sector"
 
 #Rename columns
-    year = paste0( 'X', inv_years )
-    names( inv_data_sheet_clean ) [ 4 ] <- year
+    names( inv_data_sheet_clean ) [ 4:5 ] <- years
 #    inv_data_sheet_clean <- inv_data_sheet_clean[ , c( 'iso', 'fuel', 'sector', 'year' ) ]
 
 # Make numeric
-    inv_data_sheet_clean[ , year ] <- sapply( inv_data_sheet_clean[ , year ], as.numeric )
+    inv_data_sheet_clean[ , years ] <- sapply( inv_data_sheet_clean[ , years ], as.numeric )
 
 
 # ------------------------------------------------------------------------------

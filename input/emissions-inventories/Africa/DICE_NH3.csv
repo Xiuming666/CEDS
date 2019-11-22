@@ -1,521 +1,573 @@
-Sector,Fuel,Country,NH3
-cars,gas_diesel,Algeria,NaN
-cars,gas_diesel,Egypt,NaN
-cars,gas_diesel,Libya,NaN
-cars,gas_diesel,Morocco,NaN
-cars,gas_diesel,Sudan,NaN
-cars,gas_diesel,Tunisia,NaN
-cars,gas_diesel,Angola,NaN
-cars,gas_diesel,Central African Republic,NaN
-cars,gas_diesel,Congo,NaN
-cars,gas_diesel,Democratic Republic of Congo,NaN
-cars,gas_diesel,Equatorial Guinea,NaN
-cars,gas_diesel,Gabon,NaN
-cars,gas_diesel,Burundi,NaN
-cars,gas_diesel,Comoros,NaN
-cars,gas_diesel,Djibouti,NaN
-cars,gas_diesel,Eritrea,NaN
-cars,gas_diesel,Ethiopia,NaN
-cars,gas_diesel,Kenya,NaN
-cars,gas_diesel,Madagascar,NaN
-cars,gas_diesel,Malawi,NaN
-cars,gas_diesel,Mozambique,NaN
-cars,gas_diesel,Rwanda,NaN
-cars,gas_diesel,Somalia,NaN
-cars,gas_diesel,South Sudan,NaN
-cars,gas_diesel,Tanzania,NaN
-cars,gas_diesel,Uganda,NaN
-cars,gas_diesel,Zambia,NaN
-cars,gas_diesel,Botswana,NaN
-cars,gas_diesel,Lesotho,NaN
-cars,gas_diesel,Namibia,NaN
-cars,gas_diesel,South Africa,NaN
-cars,gas_diesel,Swaziland,NaN
-cars,gas_diesel,Zimbabwe,NaN
-cars,gas_diesel,Benin,NaN
-cars,gas_diesel,Burkina Faso,NaN
-cars,gas_diesel,Cameroon,NaN
-cars,gas_diesel,Cape Verde,NaN
-cars,gas_diesel,Chad,NaN
-cars,gas_diesel,Cote dIvoire,NaN
-cars,gas_diesel,Gambia,NaN
-cars,gas_diesel,Ghana,NaN
-cars,gas_diesel,Guinea,NaN
-cars,gas_diesel,Guinea-Bissau,NaN
-cars,gas_diesel,Liberia,NaN
-cars,gas_diesel,Mali,NaN
-cars,gas_diesel,Mauritania,NaN
-cars,gas_diesel,Niger,NaN
-cars,gas_diesel,Nigeria,NaN
-cars,gas_diesel,Sao Tome and Principe,NaN
-cars,gas_diesel,Senegal,NaN
-cars,gas_diesel,Sierra Leone,NaN
-cars,gas_diesel,Togo,NaN
-charcoal-production,biomass,Algeria,0.0175899304449558
-charcoal-production,biomass,Egypt,6.66954565048218
-charcoal-production,biomass,Libya,0.00117180973757058
-charcoal-production,biomass,Morocco,0.531535148620605
-charcoal-production,biomass,Sudan,6.51204013824463
-charcoal-production,biomass,Tunisia,0.916822552680969
-charcoal-production,biomass,Angola,6.16397285461426
-charcoal-production,biomass,Central African Republic,0.952880203723907
-charcoal-production,biomass,Congo,0.935874223709106
-charcoal-production,biomass,Democratic Republic of Congo,3.70168399810791
-charcoal-production,biomass,Equatorial Guinea,0.0436209663748741
-charcoal-production,biomass,Gabon,0.108667358756065
-charcoal-production,biomass,Burundi,0.384120792150497
-charcoal-production,biomass,Comoros,NaN
-charcoal-production,biomass,Djibouti,0.233925476670265
-charcoal-production,biomass,Eritrea,0.774015367031097
-charcoal-production,biomass,Ethiopia,19.5384254455566
-charcoal-production,biomass,Kenya,0.153468742966652
-charcoal-production,biomass,Madagascar,5.77345943450928
-charcoal-production,biomass,Malawi,2.77520895004272
-charcoal-production,biomass,Mozambique,3.18408679962158
-charcoal-production,biomass,Rwanda,1.51730537414551
-charcoal-production,biomass,Somalia,5.63619041442871
-charcoal-production,biomass,South Sudan,3.08223295211792
-charcoal-production,biomass,Tanzania,7.76919794082642
-charcoal-production,biomass,Uganda,4.93534374237061
-charcoal-production,biomass,Zambia,5.34203672409058
-charcoal-production,biomass,Botswana,0.360620439052582
-charcoal-production,biomass,Lesotho,0.467494308948517
-charcoal-production,biomass,Namibia,0.0787623524665833
-charcoal-production,biomass,South Africa,3.48238897323608
-charcoal-production,biomass,Swaziland,0.244013398885727
-charcoal-production,biomass,Zimbabwe,0.106075994670391
-charcoal-production,biomass,Benin,1.25214290618896
-charcoal-production,biomass,Burkina Faso,3.13858079910278
-charcoal-production,biomass,Cameroon,1.29381167888641
-charcoal-production,biomass,Cape Verde,NaN
-charcoal-production,biomass,Chad,2.07639741897583
-charcoal-production,biomass,Cote dIvoire,6.42337656021118
-charcoal-production,biomass,Gambia,0.232631668448448
-charcoal-production,biomass,Ghana,6.6310887336731
-charcoal-production,biomass,Guinea,1.70013535022736
-charcoal-production,biomass,Guinea-Bissau,0.281022310256958
-charcoal-production,biomass,Liberia,1.26008176803589
-charcoal-production,biomass,Mali,0.753370940685272
-charcoal-production,biomass,Mauritania,1.02374219894409
-charcoal-production,biomass,Niger,0.409165769815445
-charcoal-production,biomass,Nigeria,19.3722305297852
-charcoal-production,biomass,Sao Tome and Principe,NaN
-charcoal-production,biomass,Senegal,2.84035325050354
-charcoal-production,biomass,Sierra Leone,2.02904868125916
-charcoal-production,biomass,Togo,3.3016984462738
-charcoal-use,biomass,Algeria,0.000935213873162866
-charcoal-use,biomass,Egypt,0.18195316195488
-charcoal-use,biomass,Libya,6.45078262095922e-06
-charcoal-use,biomass,Morocco,0.0696942955255508
-charcoal-use,biomass,Sudan,1.01322519779205
-charcoal-use,biomass,Tunisia,0.119703628122807
-charcoal-use,biomass,Angola,0.822452366352081
-charcoal-use,biomass,Central African Republic,0.0484353117644787
-charcoal-use,biomass,Congo,0.134280860424042
-charcoal-use,biomass,Democratic Republic of Congo,0.498282968997955
-charcoal-use,biomass,Equatorial Guinea,0.00413706852123141
-charcoal-use,biomass,Gabon,0.00146204722113907
-charcoal-use,biomass,Burundi,0.198080271482468
-charcoal-use,biomass,Comoros,NaN
-charcoal-use,biomass,Djibouti,0.0330309793353081
-charcoal-use,biomass,Eritrea,0.0956304743885994
-charcoal-use,biomass,Ethiopia,2.71648240089417
-charcoal-use,biomass,Kenya,0.0217713639140129
-charcoal-use,biomass,Madagascar,0.395464688539505
-charcoal-use,biomass,Malawi,0.814498603343964
-charcoal-use,biomass,Mozambique,0.444039583206177
-charcoal-use,biomass,Rwanda,0.234929218888283
-charcoal-use,biomass,Somalia,0.0668241605162621
-charcoal-use,biomass,South Sudan,0.137550443410873
-charcoal-use,biomass,Tanzania,1.09767806529999
-charcoal-use,biomass,Uganda,0.706067621707916
-charcoal-use,biomass,Zambia,0.781884133815765
-charcoal-use,biomass,Botswana,0.0199011228978634
-charcoal-use,biomass,Lesotho,0.0635836273431778
-charcoal-use,biomass,Namibia,0.0186586454510689
-charcoal-use,biomass,South Africa,0.485374391078949
-charcoal-use,biomass,Swaziland,0.0322917997837067
-charcoal-use,biomass,Zimbabwe,0.770168244838715
-charcoal-use,biomass,Benin,0.149785280227661
-charcoal-use,biomass,Burkina Faso,0.445465326309204
-charcoal-use,biomass,Cameroon,0.180395111441612
-charcoal-use,biomass,Cape Verde,NaN
-charcoal-use,biomass,Chad,0.268880069255829
-charcoal-use,biomass,Cote dIvoire,0.731211245059967
-charcoal-use,biomass,Gambia,0.039741724729538
-charcoal-use,biomass,Ghana,0.87413477897644
-charcoal-use,biomass,Guinea,0.144745618104935
-charcoal-use,biomass,Guinea-Bissau,0.0200957376509905
-charcoal-use,biomass,Liberia,0.104686170816422
-charcoal-use,biomass,Mali,0.0953669100999832
-charcoal-use,biomass,Mauritania,0.145150914788246
-charcoal-use,biomass,Niger,0.451982975006104
-charcoal-use,biomass,Nigeria,2.31744503974915
-charcoal-use,biomass,Sao Tome and Principe,NaN
-charcoal-use,biomass,Senegal,0.36505201458931
-charcoal-use,biomass,Sierra Leone,0.27107760310173
-charcoal-use,biomass,Togo,0.418755143880844
-gas-flares,process,Algeria,NaN
-gas-flares,process,Egypt,NaN
-gas-flares,process,Libya,NaN
-gas-flares,process,Morocco,NaN
-gas-flares,process,Sudan,NaN
-gas-flares,process,Tunisia,NaN
-gas-flares,process,Angola,NaN
-gas-flares,process,Central African Republic,NaN
-gas-flares,process,Congo,NaN
-gas-flares,process,Democratic Republic of Congo,NaN
-gas-flares,process,Equatorial Guinea,NaN
-gas-flares,process,Gabon,NaN
-gas-flares,process,Burundi,NaN
-gas-flares,process,Comoros,NaN
-gas-flares,process,Djibouti,NaN
-gas-flares,process,Eritrea,NaN
-gas-flares,process,Ethiopia,NaN
-gas-flares,process,Kenya,NaN
-gas-flares,process,Madagascar,NaN
-gas-flares,process,Malawi,NaN
-gas-flares,process,Mozambique,NaN
-gas-flares,process,Rwanda,NaN
-gas-flares,process,Somalia,NaN
-gas-flares,process,South Sudan,NaN
-gas-flares,process,Tanzania,NaN
-gas-flares,process,Uganda,NaN
-gas-flares,process,Zambia,NaN
-gas-flares,process,Botswana,NaN
-gas-flares,process,Lesotho,NaN
-gas-flares,process,Namibia,NaN
-gas-flares,process,South Africa,NaN
-gas-flares,process,Swaziland,NaN
-gas-flares,process,Zimbabwe,NaN
-gas-flares,process,Benin,NaN
-gas-flares,process,Burkina Faso,NaN
-gas-flares,process,Cameroon,NaN
-gas-flares,process,Cape Verde,NaN
-gas-flares,process,Chad,NaN
-gas-flares,process,Cote dIvoire,NaN
-gas-flares,process,Gambia,NaN
-gas-flares,process,Ghana,NaN
-gas-flares,process,Guinea,NaN
-gas-flares,process,Guinea-Bissau,NaN
-gas-flares,process,Liberia,NaN
-gas-flares,process,Mali,NaN
-gas-flares,process,Mauritania,NaN
-gas-flares,process,Niger,NaN
-gas-flares,process,Nigeria,NaN
-gas-flares,process,Sao Tome and Principe,NaN
-gas-flares,process,Senegal,NaN
-gas-flares,process,Sierra Leone,NaN
-gas-flares,process,Togo,NaN
-generator-use,gas_diesel,Algeria,NaN
-generator-use,gas_diesel,Egypt,NaN
-generator-use,gas_diesel,Libya,NaN
-generator-use,gas_diesel,Morocco,NaN
-generator-use,gas_diesel,Sudan,NaN
-generator-use,gas_diesel,Tunisia,NaN
-generator-use,gas_diesel,Angola,NaN
-generator-use,gas_diesel,Central African Republic,NaN
-generator-use,gas_diesel,Congo,NaN
-generator-use,gas_diesel,Democratic Republic of Congo,NaN
-generator-use,gas_diesel,Equatorial Guinea,NaN
-generator-use,gas_diesel,Gabon,NaN
-generator-use,gas_diesel,Burundi,NaN
-generator-use,gas_diesel,Comoros,NaN
-generator-use,gas_diesel,Djibouti,NaN
-generator-use,gas_diesel,Eritrea,NaN
-generator-use,gas_diesel,Ethiopia,NaN
-generator-use,gas_diesel,Kenya,NaN
-generator-use,gas_diesel,Madagascar,NaN
-generator-use,gas_diesel,Malawi,NaN
-generator-use,gas_diesel,Mozambique,NaN
-generator-use,gas_diesel,Rwanda,NaN
-generator-use,gas_diesel,Somalia,NaN
-generator-use,gas_diesel,South Sudan,NaN
-generator-use,gas_diesel,Tanzania,NaN
-generator-use,gas_diesel,Uganda,NaN
-generator-use,gas_diesel,Zambia,NaN
-generator-use,gas_diesel,Botswana,NaN
-generator-use,gas_diesel,Lesotho,NaN
-generator-use,gas_diesel,Namibia,NaN
-generator-use,gas_diesel,South Africa,NaN
-generator-use,gas_diesel,Swaziland,NaN
-generator-use,gas_diesel,Zimbabwe,NaN
-generator-use,gas_diesel,Benin,NaN
-generator-use,gas_diesel,Burkina Faso,NaN
-generator-use,gas_diesel,Cameroon,NaN
-generator-use,gas_diesel,Cape Verde,NaN
-generator-use,gas_diesel,Chad,NaN
-generator-use,gas_diesel,Cote dIvoire,NaN
-generator-use,gas_diesel,Gambia,NaN
-generator-use,gas_diesel,Ghana,NaN
-generator-use,gas_diesel,Guinea,NaN
-generator-use,gas_diesel,Guinea-Bissau,NaN
-generator-use,gas_diesel,Liberia,NaN
-generator-use,gas_diesel,Mali,NaN
-generator-use,gas_diesel,Mauritania,NaN
-generator-use,gas_diesel,Niger,NaN
-generator-use,gas_diesel,Nigeria,NaN
-generator-use,gas_diesel,Sao Tome and Principe,NaN
-generator-use,gas_diesel,Senegal,NaN
-generator-use,gas_diesel,Sierra Leone,NaN
-generator-use,gas_diesel,Togo,NaN
-household-crop-residue-use,biomass,Algeria,0.0201023574918509
-household-crop-residue-use,biomass,Egypt,0.112991757690907
-household-crop-residue-use,biomass,Libya,0.00121751357801259
-household-crop-residue-use,biomass,Morocco,0.0399108305573463
-household-crop-residue-use,biomass,Sudan,0.000489895057398826
-household-crop-residue-use,biomass,Tunisia,0.00484205549582839
-household-crop-residue-use,biomass,Angola,0.941035568714142
-household-crop-residue-use,biomass,Central African Republic,0.091855876147747
-household-crop-residue-use,biomass,Congo,0.0593736693263054
-household-crop-residue-use,biomass,Democratic Republic of Congo,0.726494193077087
-household-crop-residue-use,biomass,Equatorial Guinea,0.00284996908158064
-household-crop-residue-use,biomass,Gabon,0.02950076200068
-household-crop-residue-use,biomass,Burundi,0.137644693255424
-household-crop-residue-use,biomass,Comoros,NaN
-household-crop-residue-use,biomass,Djibouti,2.6477084702492e-06
-household-crop-residue-use,biomass,Eritrea,0.00943469535559416
-household-crop-residue-use,biomass,Ethiopia,3.40535140037537
-household-crop-residue-use,biomass,Kenya,1.06929695606232
-household-crop-residue-use,biomass,Madagascar,0.699751675128937
-household-crop-residue-use,biomass,Malawi,1.12196516990662
-household-crop-residue-use,biomass,Mozambique,0.788549721240997
-household-crop-residue-use,biomass,Rwanda,0.237450480461121
-household-crop-residue-use,biomass,Somalia,0.00371902948245406
-household-crop-residue-use,biomass,South Sudan,0.00558762717992067
-household-crop-residue-use,biomass,Tanzania,2.04658842086792
-household-crop-residue-use,biomass,Uganda,0.769383072853088
-household-crop-residue-use,biomass,Zambia,0.784602522850037
-household-crop-residue-use,biomass,Botswana,0.000510117504745722
-household-crop-residue-use,biomass,Lesotho,0.0122058875858784
-household-crop-residue-use,biomass,Namibia,0.00266997679136693
-household-crop-residue-use,biomass,South Africa,0.0878042727708817
-household-crop-residue-use,biomass,Swaziland,0.229806169867516
-household-crop-residue-use,biomass,Zimbabwe,0.413207143545151
-household-crop-residue-use,biomass,Benin,0.510978102684021
-household-crop-residue-use,biomass,Burkina Faso,0.886718571186066
-household-crop-residue-use,biomass,Cameroon,0.693919897079468
-household-crop-residue-use,biomass,Cape Verde,NaN
-household-crop-residue-use,biomass,Chad,0.011967645958066
-household-crop-residue-use,biomass,Cote dIvoire,0.758424282073975
-household-crop-residue-use,biomass,Gambia,0.0210633277893066
-household-crop-residue-use,biomass,Ghana,1.08953738212585
-household-crop-residue-use,biomass,Guinea,0.461954414844513
-household-crop-residue-use,biomass,Guinea-Bissau,0.0471687279641628
-household-crop-residue-use,biomass,Liberia,0.064499244093895
-household-crop-residue-use,biomass,Mali,0.0446660742163658
-household-crop-residue-use,biomass,Mauritania,0.00616888515651226
-household-crop-residue-use,biomass,Niger,0.0751647278666496
-household-crop-residue-use,biomass,Nigeria,6.57546758651733
-household-crop-residue-use,biomass,Sao Tome and Principe,NaN
-household-crop-residue-use,biomass,Senegal,0.239586785435677
-household-crop-residue-use,biomass,Sierra Leone,0.330294102430344
-household-crop-residue-use,biomass,Togo,0.290570735931396
-household-fuelwood-use,biomass,Algeria,0.00446752738207579
-household-fuelwood-use,biomass,Egypt,0.719089448451996
-household-fuelwood-use,biomass,Libya,0.0297893770039082
-household-fuelwood-use,biomass,Morocco,0.276713401079178
-household-fuelwood-use,biomass,Sudan,0.482979625463486
-household-fuelwood-use,biomass,Tunisia,0.0850743502378464
-household-fuelwood-use,biomass,Angola,0.364403635263443
-household-fuelwood-use,biomass,Central African Republic,0.0582996942102909
-household-fuelwood-use,biomass,Congo,0.0756959393620491
-household-fuelwood-use,biomass,Democratic Republic of Congo,2.36648416519165
-household-fuelwood-use,biomass,Equatorial Guinea,0.0128356963396072
-household-fuelwood-use,biomass,Gabon,0.114150710403919
-household-fuelwood-use,biomass,Burundi,0.389677882194519
-household-fuelwood-use,biomass,Comoros,NaN
-household-fuelwood-use,biomass,Djibouti,0.00291852210648358
-household-fuelwood-use,biomass,Eritrea,0.0439827553927898
-household-fuelwood-use,biomass,Ethiopia,3.2558753490448
-household-fuelwood-use,biomass,Kenya,1.06446433067322
-household-fuelwood-use,biomass,Madagascar,0.235615193843842
-household-fuelwood-use,biomass,Malawi,0.135049030184746
-household-fuelwood-use,biomass,Mozambique,0.70043534040451
-household-fuelwood-use,biomass,Rwanda,0.227523967623711
-household-fuelwood-use,biomass,Somalia,0.268426656723022
-household-fuelwood-use,biomass,South Sudan,0.159651413559914
-household-fuelwood-use,biomass,Tanzania,1.61581420898438
-household-fuelwood-use,biomass,Uganda,1.47460877895355
-household-fuelwood-use,biomass,Zambia,0.527012944221497
-household-fuelwood-use,biomass,Botswana,0.0136307757347822
-household-fuelwood-use,biomass,Lesotho,0.0671519488096237
-household-fuelwood-use,biomass,Namibia,0.0169642884284258
-household-fuelwood-use,biomass,South Africa,1.47979259490967
-household-fuelwood-use,biomass,Swaziland,0.038868498057127
-household-fuelwood-use,biomass,Zimbabwe,0.63101190328598
-household-fuelwood-use,biomass,Benin,0.241924718022346
-household-fuelwood-use,biomass,Burkina Faso,0.385378926992416
-household-fuelwood-use,biomass,Cameroon,0.743833303451538
-household-fuelwood-use,biomass,Cape Verde,NaN
-household-fuelwood-use,biomass,Chad,0.186723589897156
-household-fuelwood-use,biomass,Cote dIvoire,0.698333203792572
-household-fuelwood-use,biomass,Gambia,0.0117208426818252
-household-fuelwood-use,biomass,Ghana,0.192683711647987
-household-fuelwood-use,biomass,Guinea,0.341693758964539
-household-fuelwood-use,biomass,Guinea-Bissau,0.0684184432029724
-household-fuelwood-use,biomass,Liberia,0.122542701661587
-household-fuelwood-use,biomass,Mali,0.198503896594048
-household-fuelwood-use,biomass,Mauritania,0.0330827981233597
-household-fuelwood-use,biomass,Niger,0.284388601779938
-household-fuelwood-use,biomass,Nigeria,6.44727802276611
-household-fuelwood-use,biomass,Sao Tome and Principe,NaN
-household-fuelwood-use,biomass,Senegal,0.0924509912729263
-household-fuelwood-use,biomass,Sierra Leone,0.140347376465797
-household-fuelwood-use,biomass,Togo,0.149200335144997
-kerosene-use,light_oil,Algeria,NaN
-kerosene-use,light_oil,Egypt,NaN
-kerosene-use,light_oil,Libya,NaN
-kerosene-use,light_oil,Morocco,NaN
-kerosene-use,light_oil,Sudan,NaN
-kerosene-use,light_oil,Tunisia,NaN
-kerosene-use,light_oil,Angola,NaN
-kerosene-use,light_oil,Central African Republic,NaN
-kerosene-use,light_oil,Congo,NaN
-kerosene-use,light_oil,Democratic Republic of Congo,NaN
-kerosene-use,light_oil,Equatorial Guinea,NaN
-kerosene-use,light_oil,Gabon,NaN
-kerosene-use,light_oil,Burundi,NaN
-kerosene-use,light_oil,Comoros,NaN
-kerosene-use,light_oil,Djibouti,NaN
-kerosene-use,light_oil,Eritrea,NaN
-kerosene-use,light_oil,Ethiopia,NaN
-kerosene-use,light_oil,Kenya,NaN
-kerosene-use,light_oil,Madagascar,NaN
-kerosene-use,light_oil,Malawi,NaN
-kerosene-use,light_oil,Mozambique,NaN
-kerosene-use,light_oil,Rwanda,NaN
-kerosene-use,light_oil,Somalia,NaN
-kerosene-use,light_oil,South Sudan,NaN
-kerosene-use,light_oil,Tanzania,NaN
-kerosene-use,light_oil,Uganda,NaN
-kerosene-use,light_oil,Zambia,NaN
-kerosene-use,light_oil,Botswana,NaN
-kerosene-use,light_oil,Lesotho,NaN
-kerosene-use,light_oil,Namibia,NaN
-kerosene-use,light_oil,South Africa,NaN
-kerosene-use,light_oil,Swaziland,NaN
-kerosene-use,light_oil,Zimbabwe,NaN
-kerosene-use,light_oil,Benin,NaN
-kerosene-use,light_oil,Burkina Faso,NaN
-kerosene-use,light_oil,Cameroon,NaN
-kerosene-use,light_oil,Cape Verde,NaN
-kerosene-use,light_oil,Chad,NaN
-kerosene-use,light_oil,Cote dIvoire,NaN
-kerosene-use,light_oil,Gambia,NaN
-kerosene-use,light_oil,Ghana,NaN
-kerosene-use,light_oil,Guinea,NaN
-kerosene-use,light_oil,Guinea-Bissau,NaN
-kerosene-use,light_oil,Liberia,NaN
-kerosene-use,light_oil,Mali,NaN
-kerosene-use,light_oil,Mauritania,NaN
-kerosene-use,light_oil,Niger,NaN
-kerosene-use,light_oil,Nigeria,NaN
-kerosene-use,light_oil,Sao Tome and Principe,NaN
-kerosene-use,light_oil,Senegal,NaN
-kerosene-use,light_oil,Sierra Leone,NaN
-kerosene-use,light_oil,Togo,NaN
-motorcycles,gas_diesel,Algeria,NaN
-motorcycles,gas_diesel,Egypt,NaN
-motorcycles,gas_diesel,Libya,NaN
-motorcycles,gas_diesel,Morocco,NaN
-motorcycles,gas_diesel,Sudan,NaN
-motorcycles,gas_diesel,Tunisia,NaN
-motorcycles,gas_diesel,Angola,NaN
-motorcycles,gas_diesel,Central African Republic,NaN
-motorcycles,gas_diesel,Congo,NaN
-motorcycles,gas_diesel,Democratic Republic of Congo,NaN
-motorcycles,gas_diesel,Equatorial Guinea,NaN
-motorcycles,gas_diesel,Gabon,NaN
-motorcycles,gas_diesel,Burundi,NaN
-motorcycles,gas_diesel,Comoros,NaN
-motorcycles,gas_diesel,Djibouti,NaN
-motorcycles,gas_diesel,Eritrea,NaN
-motorcycles,gas_diesel,Ethiopia,NaN
-motorcycles,gas_diesel,Kenya,NaN
-motorcycles,gas_diesel,Madagascar,NaN
-motorcycles,gas_diesel,Malawi,NaN
-motorcycles,gas_diesel,Mozambique,NaN
-motorcycles,gas_diesel,Rwanda,NaN
-motorcycles,gas_diesel,Somalia,NaN
-motorcycles,gas_diesel,South Sudan,NaN
-motorcycles,gas_diesel,Tanzania,NaN
-motorcycles,gas_diesel,Uganda,NaN
-motorcycles,gas_diesel,Zambia,NaN
-motorcycles,gas_diesel,Botswana,NaN
-motorcycles,gas_diesel,Lesotho,NaN
-motorcycles,gas_diesel,Namibia,NaN
-motorcycles,gas_diesel,South Africa,NaN
-motorcycles,gas_diesel,Swaziland,NaN
-motorcycles,gas_diesel,Zimbabwe,NaN
-motorcycles,gas_diesel,Benin,NaN
-motorcycles,gas_diesel,Burkina Faso,NaN
-motorcycles,gas_diesel,Cameroon,NaN
-motorcycles,gas_diesel,Cape Verde,NaN
-motorcycles,gas_diesel,Chad,NaN
-motorcycles,gas_diesel,Cote dIvoire,NaN
-motorcycles,gas_diesel,Gambia,NaN
-motorcycles,gas_diesel,Ghana,NaN
-motorcycles,gas_diesel,Guinea,NaN
-motorcycles,gas_diesel,Guinea-Bissau,NaN
-motorcycles,gas_diesel,Liberia,NaN
-motorcycles,gas_diesel,Mali,NaN
-motorcycles,gas_diesel,Mauritania,NaN
-motorcycles,gas_diesel,Niger,NaN
-motorcycles,gas_diesel,Nigeria,NaN
-motorcycles,gas_diesel,Sao Tome and Principe,NaN
-motorcycles,gas_diesel,Senegal,NaN
-motorcycles,gas_diesel,Sierra Leone,NaN
-motorcycles,gas_diesel,Togo,NaN
-other-fuelwood-use,biomass,Algeria,2.77829917649797e-06
-other-fuelwood-use,biomass,Egypt,0.361643433570862
-other-fuelwood-use,biomass,Libya,1.53276978380745e-05
-other-fuelwood-use,biomass,Morocco,NaN
-other-fuelwood-use,biomass,Sudan,0.109512574970722
-other-fuelwood-use,biomass,Tunisia,0.000255073071457446
-other-fuelwood-use,biomass,Angola,0.0036498224362731
-other-fuelwood-use,biomass,Central African Republic,0.00749211199581623
-other-fuelwood-use,biomass,Congo,0.0148802511394024
-other-fuelwood-use,biomass,Democratic Republic of Congo,0.665572583675385
-other-fuelwood-use,biomass,Equatorial Guinea,8.3745049778372e-05
-other-fuelwood-use,biomass,Gabon,0.0264052525162697
-other-fuelwood-use,biomass,Burundi,0.00980955082923174
-other-fuelwood-use,biomass,Comoros,NaN
-other-fuelwood-use,biomass,Djibouti,NaN
-other-fuelwood-use,biomass,Eritrea,0.00336905010044575
-other-fuelwood-use,biomass,Ethiopia,0.0412009097635746
-other-fuelwood-use,biomass,Kenya,0.00504476903006434
-other-fuelwood-use,biomass,Madagascar,NaN
-other-fuelwood-use,biomass,Malawi,0.00726610748097301
-other-fuelwood-use,biomass,Mozambique,0.117636784911156
-other-fuelwood-use,biomass,Rwanda,0.0284466911107302
-other-fuelwood-use,biomass,Somalia,NaN
-other-fuelwood-use,biomass,South Sudan,0.0354441441595554
-other-fuelwood-use,biomass,Tanzania,0.570941567420959
-other-fuelwood-use,biomass,Uganda,0.0110360197722912
-other-fuelwood-use,biomass,Zambia,0.14713753759861
-other-fuelwood-use,biomass,Botswana,NaN
-other-fuelwood-use,biomass,Lesotho,NaN
-other-fuelwood-use,biomass,Namibia,NaN
-other-fuelwood-use,biomass,South Africa,0.000241482994169928
-other-fuelwood-use,biomass,Swaziland,5.71116870560218e-05
-other-fuelwood-use,biomass,Zimbabwe,0.0802853927016258
-other-fuelwood-use,biomass,Benin,0.0500381663441658
-other-fuelwood-use,biomass,Burkina Faso,0.00112042459659278
-other-fuelwood-use,biomass,Cameroon,0.0795737653970718
-other-fuelwood-use,biomass,Cape Verde,NaN
-other-fuelwood-use,biomass,Chad,0.000333053001668304
-other-fuelwood-use,biomass,Cote dIvoire,0.0623369850218296
-other-fuelwood-use,biomass,Gambia,NaN
-other-fuelwood-use,biomass,Ghana,0.0787033215165138
-other-fuelwood-use,biomass,Guinea,NaN
-other-fuelwood-use,biomass,Guinea-Bissau,NaN
-other-fuelwood-use,biomass,Liberia,0.197819873690605
-other-fuelwood-use,biomass,Mali,0.000223799492232502
-other-fuelwood-use,biomass,Mauritania,NaN
-other-fuelwood-use,biomass,Niger,0.0105977430939674
-other-fuelwood-use,biomass,Nigeria,1.82120358943939
-other-fuelwood-use,biomass,Sao Tome and Principe,NaN
-other-fuelwood-use,biomass,Senegal,NaN
-other-fuelwood-use,biomass,Sierra Leone,0.00405808538198471
-other-fuelwood-use,biomass,Togo,0.0308809373527765
+﻿Sector,Fuel,Country,2006,2013
+adhoc-oil-refining,adhoc-oil-refining,Algeria,NaN,NaN
+adhoc-oil-refining,adhoc-oil-refining,Egypt,NaN,NaN
+adhoc-oil-refining,adhoc-oil-refining,Libya,NaN,NaN
+adhoc-oil-refining,adhoc-oil-refining,Morocco,NaN,NaN
+adhoc-oil-refining,adhoc-oil-refining,Sudan,NaN,NaN
+adhoc-oil-refining,adhoc-oil-refining,Tunisia,NaN,NaN
+adhoc-oil-refining,adhoc-oil-refining,Angola,NaN,NaN
+adhoc-oil-refining,adhoc-oil-refining,Central African Republic,NaN,NaN
+adhoc-oil-refining,adhoc-oil-refining,Congo,NaN,NaN
+adhoc-oil-refining,adhoc-oil-refining,Democratic Republic of Congo,NaN,NaN
+adhoc-oil-refining,adhoc-oil-refining,Equatorial Guinea,NaN,NaN
+adhoc-oil-refining,adhoc-oil-refining,Gabon,NaN,NaN
+adhoc-oil-refining,adhoc-oil-refining,Burundi,NaN,NaN
+adhoc-oil-refining,adhoc-oil-refining,Comoros,NaN,NaN
+adhoc-oil-refining,adhoc-oil-refining,Djibouti,NaN,NaN
+adhoc-oil-refining,adhoc-oil-refining,Eritrea,NaN,NaN
+adhoc-oil-refining,adhoc-oil-refining,Ethiopia,NaN,NaN
+adhoc-oil-refining,adhoc-oil-refining,Kenya,NaN,NaN
+adhoc-oil-refining,adhoc-oil-refining,Madagascar,NaN,NaN
+adhoc-oil-refining,adhoc-oil-refining,Malawi,NaN,NaN
+adhoc-oil-refining,adhoc-oil-refining,Mozambique,NaN,NaN
+adhoc-oil-refining,adhoc-oil-refining,Rwanda,NaN,NaN
+adhoc-oil-refining,adhoc-oil-refining,Somalia,NaN,NaN
+adhoc-oil-refining,adhoc-oil-refining,South Sudan,NaN,NaN
+adhoc-oil-refining,adhoc-oil-refining,Tanzania,NaN,NaN
+adhoc-oil-refining,adhoc-oil-refining,Uganda,NaN,NaN
+adhoc-oil-refining,adhoc-oil-refining,Zambia,NaN,NaN
+adhoc-oil-refining,adhoc-oil-refining,Botswana,NaN,NaN
+adhoc-oil-refining,adhoc-oil-refining,Lesotho,NaN,NaN
+adhoc-oil-refining,adhoc-oil-refining,Namibia,NaN,NaN
+adhoc-oil-refining,adhoc-oil-refining,South Africa,NaN,NaN
+adhoc-oil-refining,adhoc-oil-refining,Swaziland,NaN,NaN
+adhoc-oil-refining,adhoc-oil-refining,Zimbabwe,NaN,NaN
+adhoc-oil-refining,adhoc-oil-refining,Benin,NaN,NaN
+adhoc-oil-refining,adhoc-oil-refining,Burkina Faso,NaN,NaN
+adhoc-oil-refining,adhoc-oil-refining,Cameroon,NaN,NaN
+adhoc-oil-refining,adhoc-oil-refining,Cape Verde,NaN,NaN
+adhoc-oil-refining,adhoc-oil-refining,Chad,NaN,NaN
+adhoc-oil-refining,adhoc-oil-refining,Cote dIvoire,NaN,NaN
+adhoc-oil-refining,adhoc-oil-refining,Gambia,NaN,NaN
+adhoc-oil-refining,adhoc-oil-refining,Ghana,NaN,NaN
+adhoc-oil-refining,adhoc-oil-refining,Guinea,NaN,NaN
+adhoc-oil-refining,adhoc-oil-refining,Guinea-Bissau,NaN,NaN
+adhoc-oil-refining,adhoc-oil-refining,Liberia,NaN,NaN
+adhoc-oil-refining,adhoc-oil-refining,Mali,NaN,NaN
+adhoc-oil-refining,adhoc-oil-refining,Mauritania,NaN,NaN
+adhoc-oil-refining,adhoc-oil-refining,Niger,NaN,NaN
+adhoc-oil-refining,adhoc-oil-refining,Nigeria,NaN,NaN
+adhoc-oil-refining,adhoc-oil-refining,Sao Tome and Principe,NaN,NaN
+adhoc-oil-refining,adhoc-oil-refining,Senegal,NaN,NaN
+adhoc-oil-refining,adhoc-oil-refining,Sierra Leone,NaN,NaN
+adhoc-oil-refining,adhoc-oil-refining,Togo,NaN,NaN
+cars,gas_diesel,Algeria,NaN,NaN
+cars,gas_diesel,Egypt,NaN,NaN
+cars,gas_diesel,Libya,NaN,NaN
+cars,gas_diesel,Morocco,NaN,NaN
+cars,gas_diesel,Sudan,NaN,NaN
+cars,gas_diesel,Tunisia,NaN,NaN
+cars,gas_diesel,Angola,NaN,NaN
+cars,gas_diesel,Central African Republic,NaN,NaN
+cars,gas_diesel,Congo,NaN,NaN
+cars,gas_diesel,Democratic Republic of Congo,NaN,NaN
+cars,gas_diesel,Equatorial Guinea,NaN,NaN
+cars,gas_diesel,Gabon,NaN,NaN
+cars,gas_diesel,Burundi,NaN,NaN
+cars,gas_diesel,Comoros,NaN,NaN
+cars,gas_diesel,Djibouti,NaN,NaN
+cars,gas_diesel,Eritrea,NaN,NaN
+cars,gas_diesel,Ethiopia,NaN,NaN
+cars,gas_diesel,Kenya,NaN,NaN
+cars,gas_diesel,Madagascar,NaN,NaN
+cars,gas_diesel,Malawi,NaN,NaN
+cars,gas_diesel,Mozambique,NaN,NaN
+cars,gas_diesel,Rwanda,NaN,NaN
+cars,gas_diesel,Somalia,NaN,NaN
+cars,gas_diesel,South Sudan,NaN,NaN
+cars,gas_diesel,Tanzania,NaN,NaN
+cars,gas_diesel,Uganda,NaN,NaN
+cars,gas_diesel,Zambia,NaN,NaN
+cars,gas_diesel,Botswana,NaN,NaN
+cars,gas_diesel,Lesotho,NaN,NaN
+cars,gas_diesel,Namibia,NaN,NaN
+cars,gas_diesel,South Africa,NaN,NaN
+cars,gas_diesel,Swaziland,NaN,NaN
+cars,gas_diesel,Zimbabwe,NaN,NaN
+cars,gas_diesel,Benin,NaN,NaN
+cars,gas_diesel,Burkina Faso,NaN,NaN
+cars,gas_diesel,Cameroon,NaN,NaN
+cars,gas_diesel,Cape Verde,NaN,NaN
+cars,gas_diesel,Chad,NaN,NaN
+cars,gas_diesel,Cote dIvoire,NaN,NaN
+cars,gas_diesel,Gambia,NaN,NaN
+cars,gas_diesel,Ghana,NaN,NaN
+cars,gas_diesel,Guinea,NaN,NaN
+cars,gas_diesel,Guinea-Bissau,NaN,NaN
+cars,gas_diesel,Liberia,NaN,NaN
+cars,gas_diesel,Mali,NaN,NaN
+cars,gas_diesel,Mauritania,NaN,NaN
+cars,gas_diesel,Niger,NaN,NaN
+cars,gas_diesel,Nigeria,NaN,NaN
+cars,gas_diesel,Sao Tome and Principe,NaN,NaN
+cars,gas_diesel,Senegal,NaN,NaN
+cars,gas_diesel,Sierra Leone,NaN,NaN
+cars,gas_diesel,Togo,NaN,NaN
+charcoal-production,biomass,Algeria,0.002493544,0.003517986
+charcoal-production,biomass,Egypt,1.25263176,1.33390913
+charcoal-production,biomass,Libya,0.000188182,0.000234362
+charcoal-production,biomass,Morocco,0.097590506,0.10630703
+charcoal-production,biomass,Sudan,1.464679337,1.302408028
+charcoal-production,biomass,Tunisia,0.166305971,0.183364511
+charcoal-production,biomass,Angola,0.989010048,1.232794571
+charcoal-production,biomass,Central African Republic,0.021017949,0.190576041
+charcoal-production,biomass,Congo,0.172485542,0.187174845
+charcoal-production,biomass,Democratic Republic of Congo,0.606559372,0.7403368
+charcoal-production,biomass,Equatorial Guinea,0.007482158,0.008724193
+charcoal-production,biomass,Gabon,0.01887151,0.021733472
+charcoal-production,biomass,Burundi,0.074255967,0.076824158
+charcoal-production,biomass,Comoros,NaN,NaN
+charcoal-production,biomass,Djibouti,0.040479803,0.046785095
+charcoal-production,biomass,Eritrea,0.122989845,0.154803073
+charcoal-production,biomass,Ethiopia,3.371905899,3.907685089
+charcoal-production,biomass,Kenya,0.029009256,0.030693749
+charcoal-production,biomass,Madagascar,0.924526501,1.154691887
+charcoal-production,biomass,Malawi,0.472796679,0.55504179
+charcoal-production,biomass,Mozambique,0.38861649,0.63681736
+charcoal-production,biomass,Rwanda,0.26512711,0.303461075
+charcoal-production,biomass,Somalia,0.891431999,1.127238083
+charcoal-production,biomass,South Sudan,0.425625896,0.61644659
+charcoal-production,biomass,Tanzania,1.462755108,1.553839588
+charcoal-production,biomass,Uganda,0.84233551,0.987068748
+charcoal-production,biomass,Zambia,0.882539558,1.068407345
+charcoal-production,biomass,Botswana,0.064099824,0.072124088
+charcoal-production,biomass,Lesotho,0.081980729,0.093498862
+charcoal-production,biomass,Namibia,0.01594802,0.01575247
+charcoal-production,biomass,South Africa,0.1906829,0.696477795
+charcoal-production,biomass,Swaziland,0.038388622,0.04880268
+charcoal-production,biomass,Zimbabwe,0.018678255,0.021215199
+charcoal-production,biomass,Benin,0.201328468,0.250428581
+charcoal-production,biomass,Burkina Faso,0.52736845,0.62771616
+charcoal-production,biomass,Cameroon,0.228457546,0.258762336
+charcoal-production,biomass,Cape Verde,NaN,NaN
+charcoal-production,biomass,Chad,0.35577178,0.415279484
+charcoal-production,biomass,Cote dIvoire,0.989198112,1.284675312
+charcoal-production,biomass,Gambia,0.04109281,0.046526334
+charcoal-production,biomass,Ghana,0.987295532,1.326217747
+charcoal-production,biomass,Guinea,0.295769286,0.34002707
+charcoal-production,biomass,Guinea-Bissau,0.049252614,0.056204462
+charcoal-production,biomass,Liberia,0.239150429,0.252016354
+charcoal-production,biomass,Mali,0.130208838,0.150674188
+charcoal-production,biomass,Mauritania,0.168489134,0.20474844
+charcoal-production,biomass,Niger,0.059235603,0.081833154
+charcoal-production,biomass,Nigeria,2.290421295,3.874446106
+charcoal-production,biomass,Sao Tome and Principe,NaN,NaN
+charcoal-production,biomass,Senegal,0.342097855,0.56807065
+charcoal-production,biomass,Sierra Leone,0.352088547,0.405809736
+charcoal-production,biomass,Togo,0.536722898,0.660339689
+charcoal-use,biomass,Algeria,0.000345753,0.000935214
+charcoal-use,biomass,Egypt,0.16805014,0.181953162
+charcoal-use,biomass,Libya,1.32E-05,6.45E-06
+charcoal-use,biomass,Morocco,0.063588895,0.069694296
+charcoal-use,biomass,Sudan,1.065007091,1.013225198
+charcoal-use,biomass,Tunisia,0.129778177,0.119703628
+charcoal-use,biomass,Angola,0.647181332,0.822452366
+charcoal-use,biomass,Central African Republic,0.043750729,0.048435312
+charcoal-use,biomass,Congo,0.137516677,0.13428086
+charcoal-use,biomass,Democratic Republic of Congo,0.398133457,0.498282969
+charcoal-use,biomass,Equatorial Guinea,0.003443831,0.004137069
+charcoal-use,biomass,Gabon,0.001434325,0.001462047
+charcoal-use,biomass,Burundi,0.170153141,0.198080271
+charcoal-use,biomass,Comoros,NaN,NaN
+charcoal-use,biomass,Djibouti,0.029712854,0.033030979
+charcoal-use,biomass,Eritrea,0.080030955,0.095630474
+charcoal-use,biomass,Ethiopia,2.346646786,2.716482401
+charcoal-use,biomass,Kenya,0.028558047,0.021771364
+charcoal-use,biomass,Madagascar,0.242202431,0.395464689
+charcoal-use,biomass,Malawi,0.668329775,0.814498603
+charcoal-use,biomass,Mozambique,0.274490595,0.444039583
+charcoal-use,biomass,Rwanda,0.195440173,0.234929219
+charcoal-use,biomass,Somalia,0.059609938,0.066824161
+charcoal-use,biomass,South Sudan,0.069361754,0.137550443
+charcoal-use,biomass,Tanzania,1.021078229,1.097678065
+charcoal-use,biomass,Uganda,0.603268325,0.706067622
+charcoal-use,biomass,Zambia,0.645691037,0.781884134
+charcoal-use,biomass,Botswana,0.004627477,0.019901123
+charcoal-use,biomass,Lesotho,0.056188703,0.063583627
+charcoal-use,biomass,Namibia,0.004529354,0.018658645
+charcoal-use,biomass,South Africa,0.11938975,0.485374391
+charcoal-use,biomass,Swaziland,0.026774062,0.0322918
+charcoal-use,biomass,Zimbabwe,0.636738241,0.770168245
+charcoal-use,biomass,Benin,0.123069994,0.14978528
+charcoal-use,biomass,Burkina Faso,0.375130564,0.445465326
+charcoal-use,biomass,Cameroon,0.161499262,0.180395111
+charcoal-use,biomass,Cape Verde,NaN,NaN
+charcoal-use,biomass,Chad,0.233048409,0.268880069
+charcoal-use,biomass,Cote dIvoire,0.709418416,0.731211245
+charcoal-use,biomass,Gambia,0.027157376,0.039741725
+charcoal-use,biomass,Ghana,0.721446276,0.874134779
+charcoal-use,biomass,Guinea,0.117114291,0.144745618
+charcoal-use,biomass,Guinea-Bissau,0.015664618,0.020095738
+charcoal-use,biomass,Liberia,0.081319727,0.104686171
+charcoal-use,biomass,Mali,0.083772898,0.09536691
+charcoal-use,biomass,Mauritania,0.119859226,0.145150915
+charcoal-use,biomass,Niger,0.379593164,0.451982975
+charcoal-use,biomass,Nigeria,1.390725374,2.31744504
+charcoal-use,biomass,Sao Tome and Principe,NaN,NaN
+charcoal-use,biomass,Senegal,0.217575595,0.365052015
+charcoal-use,biomass,Sierra Leone,0.257380277,0.271077603
+charcoal-use,biomass,Togo,0.351218432,0.418755144
+gas-flares,process,Algeria,NaN,NaN
+gas-flares,process,Egypt,NaN,NaN
+gas-flares,process,Libya,NaN,NaN
+gas-flares,process,Morocco,NaN,NaN
+gas-flares,process,Sudan,NaN,NaN
+gas-flares,process,Tunisia,NaN,NaN
+gas-flares,process,Angola,NaN,NaN
+gas-flares,process,Central African Republic,NaN,NaN
+gas-flares,process,Congo,NaN,NaN
+gas-flares,process,Democratic Republic of Congo,NaN,NaN
+gas-flares,process,Equatorial Guinea,NaN,NaN
+gas-flares,process,Gabon,NaN,NaN
+gas-flares,process,Burundi,NaN,NaN
+gas-flares,process,Comoros,NaN,NaN
+gas-flares,process,Djibouti,NaN,NaN
+gas-flares,process,Eritrea,NaN,NaN
+gas-flares,process,Ethiopia,NaN,NaN
+gas-flares,process,Kenya,NaN,NaN
+gas-flares,process,Madagascar,NaN,NaN
+gas-flares,process,Malawi,NaN,NaN
+gas-flares,process,Mozambique,NaN,NaN
+gas-flares,process,Rwanda,NaN,NaN
+gas-flares,process,Somalia,NaN,NaN
+gas-flares,process,South Sudan,NaN,NaN
+gas-flares,process,Tanzania,NaN,NaN
+gas-flares,process,Uganda,NaN,NaN
+gas-flares,process,Zambia,NaN,NaN
+gas-flares,process,Botswana,NaN,NaN
+gas-flares,process,Lesotho,NaN,NaN
+gas-flares,process,Namibia,NaN,NaN
+gas-flares,process,South Africa,NaN,NaN
+gas-flares,process,Swaziland,NaN,NaN
+gas-flares,process,Zimbabwe,NaN,NaN
+gas-flares,process,Benin,NaN,NaN
+gas-flares,process,Burkina Faso,NaN,NaN
+gas-flares,process,Cameroon,NaN,NaN
+gas-flares,process,Cape Verde,NaN,NaN
+gas-flares,process,Chad,NaN,NaN
+gas-flares,process,Cote dIvoire,NaN,NaN
+gas-flares,process,Gambia,NaN,NaN
+gas-flares,process,Ghana,NaN,NaN
+gas-flares,process,Guinea,NaN,NaN
+gas-flares,process,Guinea-Bissau,NaN,NaN
+gas-flares,process,Liberia,NaN,NaN
+gas-flares,process,Mali,NaN,NaN
+gas-flares,process,Mauritania,NaN,NaN
+gas-flares,process,Niger,NaN,NaN
+gas-flares,process,Nigeria,NaN,NaN
+gas-flares,process,Sao Tome and Principe,NaN,NaN
+gas-flares,process,Senegal,NaN,NaN
+gas-flares,process,Sierra Leone,NaN,NaN
+gas-flares,process,Togo,NaN,NaN
+generator-use,gas_diesel,Algeria,NaN,NaN
+generator-use,gas_diesel,Egypt,NaN,NaN
+generator-use,gas_diesel,Libya,NaN,NaN
+generator-use,gas_diesel,Morocco,NaN,NaN
+generator-use,gas_diesel,Sudan,NaN,NaN
+generator-use,gas_diesel,Tunisia,NaN,NaN
+generator-use,gas_diesel,Angola,NaN,NaN
+generator-use,gas_diesel,Central African Republic,NaN,NaN
+generator-use,gas_diesel,Congo,NaN,NaN
+generator-use,gas_diesel,Democratic Republic of Congo,NaN,NaN
+generator-use,gas_diesel,Equatorial Guinea,NaN,NaN
+generator-use,gas_diesel,Gabon,NaN,NaN
+generator-use,gas_diesel,Burundi,NaN,NaN
+generator-use,gas_diesel,Comoros,NaN,NaN
+generator-use,gas_diesel,Djibouti,NaN,NaN
+generator-use,gas_diesel,Eritrea,NaN,NaN
+generator-use,gas_diesel,Ethiopia,NaN,NaN
+generator-use,gas_diesel,Kenya,NaN,NaN
+generator-use,gas_diesel,Madagascar,NaN,NaN
+generator-use,gas_diesel,Malawi,NaN,NaN
+generator-use,gas_diesel,Mozambique,NaN,NaN
+generator-use,gas_diesel,Rwanda,NaN,NaN
+generator-use,gas_diesel,Somalia,NaN,NaN
+generator-use,gas_diesel,South Sudan,NaN,NaN
+generator-use,gas_diesel,Tanzania,NaN,NaN
+generator-use,gas_diesel,Uganda,NaN,NaN
+generator-use,gas_diesel,Zambia,NaN,NaN
+generator-use,gas_diesel,Botswana,NaN,NaN
+generator-use,gas_diesel,Lesotho,NaN,NaN
+generator-use,gas_diesel,Namibia,NaN,NaN
+generator-use,gas_diesel,South Africa,NaN,NaN
+generator-use,gas_diesel,Swaziland,NaN,NaN
+generator-use,gas_diesel,Zimbabwe,NaN,NaN
+generator-use,gas_diesel,Benin,NaN,NaN
+generator-use,gas_diesel,Burkina Faso,NaN,NaN
+generator-use,gas_diesel,Cameroon,NaN,NaN
+generator-use,gas_diesel,Cape Verde,NaN,NaN
+generator-use,gas_diesel,Chad,NaN,NaN
+generator-use,gas_diesel,Cote dIvoire,NaN,NaN
+generator-use,gas_diesel,Gambia,NaN,NaN
+generator-use,gas_diesel,Ghana,NaN,NaN
+generator-use,gas_diesel,Guinea,NaN,NaN
+generator-use,gas_diesel,Guinea-Bissau,NaN,NaN
+generator-use,gas_diesel,Liberia,NaN,NaN
+generator-use,gas_diesel,Mali,NaN,NaN
+generator-use,gas_diesel,Mauritania,NaN,NaN
+generator-use,gas_diesel,Niger,NaN,NaN
+generator-use,gas_diesel,Nigeria,NaN,NaN
+generator-use,gas_diesel,Sao Tome and Principe,NaN,NaN
+generator-use,gas_diesel,Senegal,NaN,NaN
+generator-use,gas_diesel,Sierra Leone,NaN,NaN
+generator-use,gas_diesel,Togo,NaN,NaN
+household-crop-residue-use,biomass,Algeria,0.015900718,0.020102357
+household-crop-residue-use,biomass,Egypt,0.113334753,0.112991758
+household-crop-residue-use,biomass,Libya,0.000879763,0.001217514
+household-crop-residue-use,biomass,Morocco,0.038347047,0.039910831
+household-crop-residue-use,biomass,Sudan,0.000957816,0.000489895
+household-crop-residue-use,biomass,Tunisia,0.006186636,0.004842055
+household-crop-residue-use,biomass,Angola,0.549072266,0.941035569
+household-crop-residue-use,biomass,Central African Republic,0.082564369,0.091855876
+household-crop-residue-use,biomass,Congo,0.054552015,0.059373669
+household-crop-residue-use,biomass,Democratic Republic of Congo,0.679054856,0.726494193
+household-crop-residue-use,biomass,Equatorial Guinea,0.004329549,0.002849969
+household-crop-residue-use,biomass,Gabon,0.023365958,0.029500762
+household-crop-residue-use,biomass,Burundi,0.195009023,0.137644693
+household-crop-residue-use,biomass,Comoros,NaN,NaN
+household-crop-residue-use,biomass,Djibouti,1.33E-06,2.65E-06
+household-crop-residue-use,biomass,Eritrea,0.005516248,0.009434695
+household-crop-residue-use,biomass,Ethiopia,1.974587202,3.4053514
+household-crop-residue-use,biomass,Kenya,1.042464018,1.069296956
+household-crop-residue-use,biomass,Madagascar,0.68271929,0.699751675
+household-crop-residue-use,biomass,Malawi,0.809417367,1.12196517
+household-crop-residue-use,biomass,Mozambique,0.567033827,0.788549721
+household-crop-residue-use,biomass,Rwanda,0.093148023,0.23745048
+household-crop-residue-use,biomass,Somalia,0.003222539,0.003719029
+household-crop-residue-use,biomass,South Sudan,0.003566968,0.005587627
+household-crop-residue-use,biomass,Tanzania,1.736156583,2.046588421
+household-crop-residue-use,biomass,Uganda,0.584078252,0.769383073
+household-crop-residue-use,biomass,Zambia,0.459900588,0.784602523
+household-crop-residue-use,biomass,Botswana,0.000433419,0.000510118
+household-crop-residue-use,biomass,Lesotho,0.020636318,0.012205888
+household-crop-residue-use,biomass,Namibia,0.002112767,0.002669977
+household-crop-residue-use,biomass,South Africa,0.067151055,0.087804273
+household-crop-residue-use,biomass,Swaziland,0.209374338,0.22980617
+household-crop-residue-use,biomass,Zimbabwe,0.577763617,0.413207144
+household-crop-residue-use,biomass,Benin,0.337269455,0.510978103
+household-crop-residue-use,biomass,Burkina Faso,0.653219938,0.886718571
+household-crop-residue-use,biomass,Cameroon,0.584966004,0.693919897
+household-crop-residue-use,biomass,Cape Verde,NaN,NaN
+household-crop-residue-use,biomass,Chad,0.009303906,0.011967646
+household-crop-residue-use,biomass,Cote dIvoire,0.65651989,0.758424282
+household-crop-residue-use,biomass,Gambia,0.020055639,0.021063328
+household-crop-residue-use,biomass,Ghana,0.770377755,1.089537382
+household-crop-residue-use,biomass,Guinea,0.394419312,0.461954415
+household-crop-residue-use,biomass,Guinea-Bissau,0.037605636,0.047168728
+household-crop-residue-use,biomass,Liberia,0.061783273,0.064499244
+household-crop-residue-use,biomass,Mali,0.031134134,0.044666074
+household-crop-residue-use,biomass,Mauritania,0.004670341,0.006168885
+household-crop-residue-use,biomass,Niger,0.069019988,0.075164728
+household-crop-residue-use,biomass,Nigeria,6.375352383,6.575467587
+household-crop-residue-use,biomass,Sao Tome and Principe,NaN,NaN
+household-crop-residue-use,biomass,Senegal,0.18189624,0.239586785
+household-crop-residue-use,biomass,Sierra Leone,0.232500747,0.330294102
+household-crop-residue-use,biomass,Togo,0.225607395,0.290570736
+household-fuelwood-use,biomass,Algeria,0.012658872,0.004467527
+household-fuelwood-use,biomass,Egypt,0.732713699,0.719089448
+household-fuelwood-use,biomass,Libya,0.02800707,0.029789377
+household-fuelwood-use,biomass,Morocco,0.29146558,0.276713401
+household-fuelwood-use,biomass,Sudan,0.541271567,0.482979625
+household-fuelwood-use,biomass,Tunisia,0.091281377,0.08507435
+household-fuelwood-use,biomass,Angola,0.30185622,0.364403635
+household-fuelwood-use,biomass,Central African Republic,0.105718374,0.058299694
+household-fuelwood-use,biomass,Congo,0.071688496,0.075695939
+household-fuelwood-use,biomass,Democratic Republic of Congo,2.486322403,2.366484165
+household-fuelwood-use,biomass,Equatorial Guinea,0.013055949,0.012835696
+household-fuelwood-use,biomass,Gabon,0.09645123,0.11415071
+household-fuelwood-use,biomass,Burundi,0.354810834,0.389677882
+household-fuelwood-use,biomass,Comoros,NaN,NaN
+household-fuelwood-use,biomass,Djibouti,0.002613093,0.002918522
+household-fuelwood-use,biomass,Eritrea,0.037286915,0.043982755
+household-fuelwood-use,biomass,Ethiopia,3.057793617,3.255875349
+household-fuelwood-use,biomass,Kenya,1.07027781,1.064464331
+household-fuelwood-use,biomass,Madagascar,0.294586271,0.235615194
+household-fuelwood-use,biomass,Malawi,0.135583103,0.13504903
+household-fuelwood-use,biomass,Mozambique,0.743347049,0.70043534
+household-fuelwood-use,biomass,Rwanda,0.194527134,0.227523968
+household-fuelwood-use,biomass,Somalia,0.242334649,0.268426657
+household-fuelwood-use,biomass,South Sudan,0.115104944,0.159651414
+household-fuelwood-use,biomass,Tanzania,1.352008343,1.615814209
+household-fuelwood-use,biomass,Uganda,1.379756927,1.474608779
+household-fuelwood-use,biomass,Zambia,0.441016883,0.527012944
+household-fuelwood-use,biomass,Botswana,0.013232871,0.013630776
+household-fuelwood-use,biomass,Lesotho,0.062728763,0.067151949
+household-fuelwood-use,biomass,Namibia,0.015829938,0.016964288
+household-fuelwood-use,biomass,South Africa,1.365664005,1.479792595
+household-fuelwood-use,biomass,Swaziland,0.036333743,0.038868498
+household-fuelwood-use,biomass,Zimbabwe,0.612278223,0.631011903
+household-fuelwood-use,biomass,Benin,0.206601381,0.241924718
+household-fuelwood-use,biomass,Burkina Faso,0.32338652,0.385378927
+household-fuelwood-use,biomass,Cameroon,0.784060478,0.743833303
+household-fuelwood-use,biomass,Cape Verde,NaN,NaN
+household-fuelwood-use,biomass,Chad,0.17443487,0.18672359
+household-fuelwood-use,biomass,Cote dIvoire,0.543416858,0.698333204
+household-fuelwood-use,biomass,Gambia,0.011180294,0.011720843
+household-fuelwood-use,biomass,Ghana,0.230202362,0.192683712
+household-fuelwood-use,biomass,Guinea,0.335363358,0.341693759
+household-fuelwood-use,biomass,Guinea-Bissau,0.062271133,0.068418443
+household-fuelwood-use,biomass,Liberia,0.087124243,0.122542702
+household-fuelwood-use,biomass,Mali,0.18582733,0.198503897
+household-fuelwood-use,biomass,Mauritania,0.030842552,0.033082798
+household-fuelwood-use,biomass,Niger,0.292450011,0.284388602
+household-fuelwood-use,biomass,Nigeria,5.476883411,6.447278023
+household-fuelwood-use,biomass,Sao Tome and Principe,NaN,NaN
+household-fuelwood-use,biomass,Senegal,0.087543875,0.092450991
+household-fuelwood-use,biomass,Sierra Leone,0.145896778,0.140347376
+household-fuelwood-use,biomass,Togo,0.125294626,0.149200335
+kerosene-use,light_oil,Algeria,NaN,NaN
+kerosene-use,light_oil,Egypt,NaN,NaN
+kerosene-use,light_oil,Libya,NaN,NaN
+kerosene-use,light_oil,Morocco,NaN,NaN
+kerosene-use,light_oil,Sudan,NaN,NaN
+kerosene-use,light_oil,Tunisia,NaN,NaN
+kerosene-use,light_oil,Angola,NaN,NaN
+kerosene-use,light_oil,Central African Republic,NaN,NaN
+kerosene-use,light_oil,Congo,NaN,NaN
+kerosene-use,light_oil,Democratic Republic of Congo,NaN,NaN
+kerosene-use,light_oil,Equatorial Guinea,NaN,NaN
+kerosene-use,light_oil,Gabon,NaN,NaN
+kerosene-use,light_oil,Burundi,NaN,NaN
+kerosene-use,light_oil,Comoros,NaN,NaN
+kerosene-use,light_oil,Djibouti,NaN,NaN
+kerosene-use,light_oil,Eritrea,NaN,NaN
+kerosene-use,light_oil,Ethiopia,NaN,NaN
+kerosene-use,light_oil,Kenya,NaN,NaN
+kerosene-use,light_oil,Madagascar,NaN,NaN
+kerosene-use,light_oil,Malawi,NaN,NaN
+kerosene-use,light_oil,Mozambique,NaN,NaN
+kerosene-use,light_oil,Rwanda,NaN,NaN
+kerosene-use,light_oil,Somalia,NaN,NaN
+kerosene-use,light_oil,South Sudan,NaN,NaN
+kerosene-use,light_oil,Tanzania,NaN,NaN
+kerosene-use,light_oil,Uganda,NaN,NaN
+kerosene-use,light_oil,Zambia,NaN,NaN
+kerosene-use,light_oil,Botswana,NaN,NaN
+kerosene-use,light_oil,Lesotho,NaN,NaN
+kerosene-use,light_oil,Namibia,NaN,NaN
+kerosene-use,light_oil,South Africa,NaN,NaN
+kerosene-use,light_oil,Swaziland,NaN,NaN
+kerosene-use,light_oil,Zimbabwe,NaN,NaN
+kerosene-use,light_oil,Benin,NaN,NaN
+kerosene-use,light_oil,Burkina Faso,NaN,NaN
+kerosene-use,light_oil,Cameroon,NaN,NaN
+kerosene-use,light_oil,Cape Verde,NaN,NaN
+kerosene-use,light_oil,Chad,NaN,NaN
+kerosene-use,light_oil,Cote dIvoire,NaN,NaN
+kerosene-use,light_oil,Gambia,NaN,NaN
+kerosene-use,light_oil,Ghana,NaN,NaN
+kerosene-use,light_oil,Guinea,NaN,NaN
+kerosene-use,light_oil,Guinea-Bissau,NaN,NaN
+kerosene-use,light_oil,Liberia,NaN,NaN
+kerosene-use,light_oil,Mali,NaN,NaN
+kerosene-use,light_oil,Mauritania,NaN,NaN
+kerosene-use,light_oil,Niger,NaN,NaN
+kerosene-use,light_oil,Nigeria,NaN,NaN
+kerosene-use,light_oil,Sao Tome and Principe,NaN,NaN
+kerosene-use,light_oil,Senegal,NaN,NaN
+kerosene-use,light_oil,Sierra Leone,NaN,NaN
+kerosene-use,light_oil,Togo,NaN,NaN
+motorcycles,gas_diesel,Algeria,NaN,NaN
+motorcycles,gas_diesel,Egypt,NaN,NaN
+motorcycles,gas_diesel,Libya,NaN,NaN
+motorcycles,gas_diesel,Morocco,NaN,NaN
+motorcycles,gas_diesel,Sudan,NaN,NaN
+motorcycles,gas_diesel,Tunisia,NaN,NaN
+motorcycles,gas_diesel,Angola,NaN,NaN
+motorcycles,gas_diesel,Central African Republic,NaN,NaN
+motorcycles,gas_diesel,Congo,NaN,NaN
+motorcycles,gas_diesel,Democratic Republic of Congo,NaN,NaN
+motorcycles,gas_diesel,Equatorial Guinea,NaN,NaN
+motorcycles,gas_diesel,Gabon,NaN,NaN
+motorcycles,gas_diesel,Burundi,NaN,NaN
+motorcycles,gas_diesel,Comoros,NaN,NaN
+motorcycles,gas_diesel,Djibouti,NaN,NaN
+motorcycles,gas_diesel,Eritrea,NaN,NaN
+motorcycles,gas_diesel,Ethiopia,NaN,NaN
+motorcycles,gas_diesel,Kenya,NaN,NaN
+motorcycles,gas_diesel,Madagascar,NaN,NaN
+motorcycles,gas_diesel,Malawi,NaN,NaN
+motorcycles,gas_diesel,Mozambique,NaN,NaN
+motorcycles,gas_diesel,Rwanda,NaN,NaN
+motorcycles,gas_diesel,Somalia,NaN,NaN
+motorcycles,gas_diesel,South Sudan,NaN,NaN
+motorcycles,gas_diesel,Tanzania,NaN,NaN
+motorcycles,gas_diesel,Uganda,NaN,NaN
+motorcycles,gas_diesel,Zambia,NaN,NaN
+motorcycles,gas_diesel,Botswana,NaN,NaN
+motorcycles,gas_diesel,Lesotho,NaN,NaN
+motorcycles,gas_diesel,Namibia,NaN,NaN
+motorcycles,gas_diesel,South Africa,NaN,NaN
+motorcycles,gas_diesel,Swaziland,NaN,NaN
+motorcycles,gas_diesel,Zimbabwe,NaN,NaN
+motorcycles,gas_diesel,Benin,NaN,NaN
+motorcycles,gas_diesel,Burkina Faso,NaN,NaN
+motorcycles,gas_diesel,Cameroon,NaN,NaN
+motorcycles,gas_diesel,Cape Verde,NaN,NaN
+motorcycles,gas_diesel,Chad,NaN,NaN
+motorcycles,gas_diesel,Cote dIvoire,NaN,NaN
+motorcycles,gas_diesel,Gambia,NaN,NaN
+motorcycles,gas_diesel,Ghana,NaN,NaN
+motorcycles,gas_diesel,Guinea,NaN,NaN
+motorcycles,gas_diesel,Guinea-Bissau,NaN,NaN
+motorcycles,gas_diesel,Liberia,NaN,NaN
+motorcycles,gas_diesel,Mali,NaN,NaN
+motorcycles,gas_diesel,Mauritania,NaN,NaN
+motorcycles,gas_diesel,Niger,NaN,NaN
+motorcycles,gas_diesel,Nigeria,NaN,NaN
+motorcycles,gas_diesel,Sao Tome and Principe,NaN,NaN
+motorcycles,gas_diesel,Senegal,NaN,NaN
+motorcycles,gas_diesel,Sierra Leone,NaN,NaN
+motorcycles,gas_diesel,Togo,NaN,NaN
+other-fuelwood-use,biomass,Algeria,NaN,2.78E-06
+other-fuelwood-use,biomass,Egypt,0.362878144,0.361643434
+other-fuelwood-use,biomass,Libya,2.75E-05,1.53E-05
+other-fuelwood-use,biomass,Morocco,NaN,NaN
+other-fuelwood-use,biomass,Sudan,0.131653011,0.109512575
+other-fuelwood-use,biomass,Tunisia,NaN,0.000255073
+other-fuelwood-use,biomass,Angola,0.003713211,0.003649822
+other-fuelwood-use,biomass,Central African Republic,0.009082321,0.007492112
+other-fuelwood-use,biomass,Congo,0.014679354,0.014880251
+other-fuelwood-use,biomass,Democratic Republic of Congo,0.699273527,0.665572584
+other-fuelwood-use,biomass,Equatorial Guinea,6.56E-05,8.37E-05
+other-fuelwood-use,biomass,Gabon,0.022339329,0.026405253
+other-fuelwood-use,biomass,Burundi,0.009102236,0.009809551
+other-fuelwood-use,biomass,Comoros,NaN,NaN
+other-fuelwood-use,biomass,Djibouti,NaN,NaN
+other-fuelwood-use,biomass,Eritrea,0.002610859,0.00336905
+other-fuelwood-use,biomass,Ethiopia,0.032905571,0.04120091
+other-fuelwood-use,biomass,Kenya,0.005019378,0.005044769
+other-fuelwood-use,biomass,Madagascar,NaN,NaN
+other-fuelwood-use,biomass,Malawi,0.005851552,0.007266107
+other-fuelwood-use,biomass,Mozambique,0.101365149,0.117636785
+other-fuelwood-use,biomass,Rwanda,0.024187639,0.028446691
+other-fuelwood-use,biomass,Somalia,NaN,NaN
+other-fuelwood-use,biomass,South Sudan,0.027451184,0.035444144
+other-fuelwood-use,biomass,Tanzania,0.489548445,0.570941567
+other-fuelwood-use,biomass,Uganda,0.012628971,0.01103602
+other-fuelwood-use,biomass,Zambia,0.123054907,0.147137538
+other-fuelwood-use,biomass,Botswana,NaN,NaN
+other-fuelwood-use,biomass,Lesotho,NaN,NaN
+other-fuelwood-use,biomass,Namibia,NaN,NaN
+other-fuelwood-use,biomass,South Africa,0.000188675,0.000241483
+other-fuelwood-use,biomass,Swaziland,4.56E-05,5.71E-05
+other-fuelwood-use,biomass,Zimbabwe,0.078001566,0.080285393
+other-fuelwood-use,biomass,Benin,0.041388825,0.050038166
+other-fuelwood-use,biomass,Burkina Faso,0.000913892,0.001120425
+other-fuelwood-use,biomass,Cameroon,0.067477524,0.079573765
+other-fuelwood-use,biomass,Cape Verde,NaN,NaN
+other-fuelwood-use,biomass,Chad,0.0003697,0.000333053
+other-fuelwood-use,biomass,Cote dIvoire,0.049408335,0.062336985
+other-fuelwood-use,biomass,Gambia,NaN,NaN
+other-fuelwood-use,biomass,Ghana,0.085147731,0.078703322
+other-fuelwood-use,biomass,Guinea,NaN,NaN
+other-fuelwood-use,biomass,Guinea-Bissau,NaN,NaN
+other-fuelwood-use,biomass,Liberia,0.147083431,0.197819874
+other-fuelwood-use,biomass,Mali,0.000133886,0.000223799
+other-fuelwood-use,biomass,Mauritania,NaN,NaN
+other-fuelwood-use,biomass,Niger,0.004851594,0.010597743
+other-fuelwood-use,biomass,Nigeria,0.800006688,1.821203589
+other-fuelwood-use,biomass,Sao Tome and Principe,NaN,NaN
+other-fuelwood-use,biomass,Senegal,NaN,NaN
+other-fuelwood-use,biomass,Sierra Leone,0.003736921,0.004058085
+other-fuelwood-use,biomass,Togo,0.022175314,0.030880937

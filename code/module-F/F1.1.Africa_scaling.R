@@ -1,9 +1,9 @@
 #------------------------------------------------------------------------------
 # Program Name: F1.1.Africa_scaling.R
 # Authors' Names: Erin McDuffie
-# Date Last Modified: August 21, 2019
+# Date Last Modified: November 15, 2019
 # Program Purpose: To create scaling factors and update emissions estimate for
-# AFrica from latest emissions working copy by using Africa DICE data.
+# Africa from latest emissions working copy by using Africa DICE data.
 # Input Files: emissions_scaling_functions.R, F.[em]_scaled_EF.csv,
 #              F.[em]_scaled_emissions.csv, Africa_scaling_mapping.xlsx,
 # Output Files: F.[em]_total_scaled_EF.csv, F.[em]_total_scaled_emissions.csv
@@ -18,7 +18,7 @@
 # Get emission species first so can name log appropriately
     args_from_makefile <- commandArgs( TRUE )
     em <- args_from_makefile[1]
-    if ( is.na( em ) ) em <- "NOx"
+    if ( is.na( em ) ) em <- "BC"
 
 # Call standard script header function to read in universal header files -
 # provide logging, file support, and system functions - and start the script log.
@@ -34,7 +34,7 @@
 # 1. Define parameters for inventory specific script
 
 # Stop script if running for unsupported species
-    if ( em %!in% c( 'SO2', 'NOx', 'NMVOC', 'CO', 'NH3' ) ) {
+    if ( em %!in% c( 'SO2', 'NOx', 'NMVOC', 'CO', 'NH3','BC','OC' ) ) {
       stop( paste( 'Africa scaling is not supported for emission species',
                   em, 'remove from script list in F1.1.inventory_scaling.R' ) )
     }
@@ -52,7 +52,7 @@
                  'mrt','mwi','nam','ner','nga','rwa','sdn','sen','sle','som',
                  'ssd','stp','swz','tcd','tgo','tun','tza','uga','zaf','zmb',
                  'zwe','cod')
-    inv_years<-c( 2013 )
+    inv_years<-c( 2006, 2013 )
     inventory_data_file <- paste0( 'E.', em, '_', inv_name, '_inventory' )
 
 # ------------------------------------------------------------------------------
@@ -83,9 +83,12 @@
 # Calculate and extend scaling factors
     scaling_factors_list <- F.scaling( ceds_data, inv_data, region,
                                    replacement_method = 'replace',
-                                   max_scaling_factor = 100,
-                                   replacement_scaling_factor = 100 )
+                                   max_scaling_factor = 1000,
+                                   replacement_scaling_factor = 1000 )
     list2env( scaling_factors_list, envir = .GlobalEnv )
+#Note: scaling factor range increased to better capture residential light oil (kerosene) use
+# differences between CEDS and DICE. Only notable changes are to BC and sector is so small that
+# changes aren't noticable.
 
 # Apply Scaling Factors to Ceds data
     scaled <- F.applyScale( scaling_factors )

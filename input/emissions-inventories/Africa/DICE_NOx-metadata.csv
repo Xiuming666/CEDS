@@ -1,3 +1,2 @@
 ﻿Source,Data.Type,Emission,Region,Sector,Start.Year,End.Year,Source.Comment
-Emissions,NA,All,NA,NA,2013,2013,"from Marias and Wiedenmeyer, 2016. https://www2.acom.ucar.edu/modeling/dice-africa. Reformated gridded files w/custom Matlab script"
-
+Emissions,NA,All,NA,NA,2006,2013,"from Marias and Wiedenmeyer, 2016. https://www2.acom.ucar.edu/modeling/dice-africa. Reformated gridded files w/custom Matlab script"
