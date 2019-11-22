@@ -54,6 +54,8 @@
 #   mapping method (by sector, fuel, or both), and the regions covered by
 #   the inventory (as a vector of iso codes)
     sector_fuel_mapping <- 'CAN_scaling_mapping_2017Update'
+    if ( em == 'NOx')  sector_fuel_mapping <- 'CAN_scaling_mapping_2017Update_NOx'
+    if ( em == 'CO')  sector_fuel_mapping <- 'CAN_scaling_mapping_2017Update_CO'
     mapping_method <- 'sector'
     inv_name <- 'CAN' #for naming diagnostic files
     region <- c( "can" )
