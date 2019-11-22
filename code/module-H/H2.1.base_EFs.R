@@ -51,11 +51,16 @@ if( any( extension_drivers_EF$method %!in% valid_methods) ) stop(
           'Invalid methods in CEDS_historical_extension_methods_EF. Please Check' )
 
 
+
 # ---------------------------------------------------------------------------
 # 3. Extend Data frame
 
-ceds_EF_extended <- ceds_EFs
-ceds_EF_extended[ paste0('X', historical_pre_extension_year: (historical_end_extension_year-1))] <- ceds_EFs$X1960
+ceds_EF_extended <- ceds_EFs  #change the historical extension end year for OC and BC species (set in common_data.R)
+if ( em %in% c( 'BC','OC' ) ) {
+    ceds_EF_extended[ paste0('X', historical_pre_extension_year: (1960-1))] <- ceds_EFs$X1960
+} else {
+    ceds_EF_extended[ paste0('X', historical_pre_extension_year: (historical_end_extension_year-1))] <- ceds_EFs$X1960
+    }
 ceds_EF_extended <- ceds_EF_extended[ c( 'iso' , 'sector' , 'fuel' , 'units' , X_extended_years ) ]
 
 # TODO: change default to NA and have a better check method for EF drivers

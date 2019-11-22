@@ -87,7 +87,8 @@
               c( scripts,'F1.1.EMEP_NFR09_scaling.R' )
 
 # EMEP NFR14
-    if ( em %in% c( 'CO', 'NH3', 'NMVOC', 'NOx', 'SO2' ) ) scripts <-
+    #if ( em %in% c( 'CO', 'NH3', 'NMVOC', 'NOx', 'SO2') ) scripts <-
+    if ( em %in% c( 'CO', 'NH3', 'NMVOC', 'NOx', 'SO2','BC' ) ) scripts <-
               c( scripts, 'F1.1.EMEP_NFR14_scaling.R' )
 
 # UNFCCC
@@ -95,7 +96,9 @@
               c( scripts, 'F1.1.UNFCCC_scaling_new.R' )
 
 # REAS
-  if ( em %in% c('SO2','CO','NMVOC','NOx', 'NH3') ) scripts <- c(scripts, 'F1.1.REAS_scaling.R')
+    #if ( em %in% c('SO2','CO','NMVOC','NOx', 'NH3') ) scripts <-
+    if ( em %in% c('SO2','CO','NMVOC','NOx', 'NH3','BC','OC') ) scripts <-
+        c(scripts, 'F1.1.REAS_scaling.R')
 
 # CAN
     if ( em %in% c('SO2','NOx','NMVOC','CO','PM10','PM25' ) ) scripts <-
@@ -121,9 +124,11 @@
         c( scripts, 'F1.1.US-GHG_scaling.R')
 
 # China
-    if ( em %in% c( 'SO2', 'NOx', 'NH3', 'NMVOC', 'CO' ) ) scripts <-
+    #if ( em %in% c( 'SO2', 'NOx', 'NH3', 'NMVOC', 'CO') ) scripts <-
+    if ( em %in% c( 'SO2', 'NOx', 'NH3', 'NMVOC', 'CO','BC','OC' ) ) scripts <-
               c( scripts, 'F1.1.China_scaling.R' )
-    if ( em %in% c( 'SO2', 'NOx', 'NH3', 'NMVOC', 'CO' ) ) scripts <-
+    #if ( em %in% c( 'SO2', 'NOx', 'NH3', 'NMVOC', 'CO') ) scripts <-
+    if ( em %in% c( 'SO2', 'NOx', 'NH3', 'NMVOC', 'CO','BC','OC' ) ) scripts <-
         c( scripts, 'F1.1.China_2017Update_scaling.R' )
 
 # Argentina
@@ -131,7 +136,8 @@
               c( scripts, 'F1.1.Argentina_scaling.R' )
 
 # Japan
-    if ( em %in% c( 'SO2', 'NOx', 'CO', 'NMVOC', 'NH3' ) ) scripts <-
+    #if ( em %in% c( 'SO2', 'NOx', 'CO', 'NMVOC', 'NH3' ) ) scripts <-
+    if ( em %in% c( 'SO2', 'NOx', 'CO', 'NMVOC', 'NH3','BC','OC' ) ) scripts <-
               c(scripts, 'F1.1.Japan_scaling.R')
 
 # South Korea
@@ -147,14 +153,14 @@
               c( scripts, 'F1.1.Australia_scaling.R' )
 
 # Africa
-    #for now, dont scale to NMVOCs - I haven't been able to confirm which VOCs are
-    # in the Edgar and other inventories, so I don't know whether to exclude some DICE VOCs or not
-    if ( em %in% c( 'SO2', 'NOx', 'CO' ) ) scripts <-
+    #Specific VOC species included in the total NMVOC EDGAR emissions
+    #  relative to those in the total DICE emissions remains uncertain
+    if ( em %in% c( 'SO2','NOx','NMVOC','CO','BC','OC') ) scripts <-
         c( scripts, 'F1.1.Africa_scaling.R' )
 
 # India
-    if ( em %in% c( 'SO2', 'NOx', 'NMVOC' ) ) scripts <-
-        c( scripts, 'F1.1.India_scaling.R' )
+    if ( em %in% c( 'SO2','NOx','NMVOC','CO','BC','OC' ) ) scripts <-
+       c( scripts, 'F1.1.India_scaling.R' )
 
 # ------------------------------------------------------------------------------------
 # 4. Run all scripts for the given emissions type

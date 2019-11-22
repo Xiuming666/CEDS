@@ -50,6 +50,8 @@ if( em == "SO2" ){
 # Set scripts to add emissions data for BC or OC (currently no data to add)
 if( em == "BC" || em == "OC" ){
     scripts <- c(  )
+    #EDGAR data doesnt have non-combustion OC and BC emissions
+    #scripts <- c( scripts, "C1.2.add_NC_emissions_EDGAR_v432.R" )
 }
 
 # Add EDGAR data script for all relevant emissions species

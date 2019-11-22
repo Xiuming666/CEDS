@@ -1035,7 +1035,10 @@ F.scaling <- function( ceds_data, inv_data, region,
           }}
         # Constant Extrapolation
         else if( ext_method_default[i,'post_ext_method'] == 'constant'){
-          post_scaling_ext_line[1,] <-t(na.locf(t(post_scaling_ext_line[1,])))
+            #added na.rm=FALSE because if min_inv_year is not > first non-NaN inv_year, theb pre_scaling_ext_line and
+            #scaling_ext (used to make post_scaling_line) are not calculated. In otherwords, post_scaling_ext_line will still
+            #have NaN's and they will be removed, leaving the incorrect number of points (found from scaling deu road)
+          post_scaling_ext_line[1,] <-t(na.locf(t(post_scaling_ext_line[1,]), na.rm=FALSE))
           # Add meta notes
           if(meta==TRUE){
             year <- X_post_scaling_ext_years
