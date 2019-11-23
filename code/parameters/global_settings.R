@@ -87,7 +87,8 @@ VERBOSE <- TRUE
 
 # User should uncomment the following line if he/she has a specific cedsUserVersionNumber to use
 
- options(cedsUserVersionNumber = "v_2019_08_25")
+ #options(cedsUserVersionNumber = "v_2019_08_25")
+options(cedsUserVersionNumber = "v_GBDMAPS_2019_11_23")
 
 getcedsVersionNumber <- function( ) {
 

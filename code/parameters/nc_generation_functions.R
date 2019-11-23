@@ -1848,7 +1848,7 @@ singleVarChunking_bulkemissions <- function( em,
   FN_variable_id_value <- paste0( em, '-em-anthro' )
   nc_file_name <- paste0( output_dir,
                           FN_variable_id_value,
-                          '_input4MIPs_emissions_CMIP_',
+                          '_input4GBDMAPS_emissions_',
                           FN_source_id_value,
                           '_gn_',
                           chunk_start_years[ chunk_count_index ], '01', '-', chunk_end_years[ chunk_count_index ], '12',
@@ -1857,7 +1857,7 @@ singleVarChunking_bulkemissions <- function( em,
   # generate flat_var variable name
   MD_variable_id_value <- paste0( em, '_em_anthro' ) # identical with FN_variable_id_value except the '-'
   flat_var_name <- MD_variable_id_value
-  flat_var_longname <- paste0( em, ' Anthropogenic Emissions' )
+  flat_var_longname <- paste0( em, ' Anthropogenic Emissions (all fuel types)' )
 
   # define unit and missing value
   data_unit <- 'kg m-2 s-1'
@@ -1893,7 +1893,7 @@ singleVarChunking_bulkemissions <- function( em,
   ncvar_put( nc_new, time_bnds, time_bnds_data )
   ncvar_put( nc_new, sector_bnds, t( sector_bnds_data ) )
 
-  title <- paste( 'Annual Anthropogenic Emissions of', em, 'prepared for input4MIPs' )
+  title <- paste( 'Annual Anthropogenic Emissions of', em, 'prepared for input4GBDMAPS' )
   add_global_attributes_single_var( nc_new, title, flat_var_name, MD_dataset_version_number_value, MD_source_value,
                                     MD_source_id_value, MD_variable_id_value, air = FALSE, primary = TRUE )
 
@@ -2095,7 +2095,7 @@ singleVarChunking_subVOCemissions <- function( VOC_em,
   FN_variable_id_value <- paste0( VOC_em, '-', VOC_name_10_dig, '-em-speciated-VOC-anthro' )
   nc_file_name <- paste0( output_dir,
                           FN_variable_id_value,
-                          '_input4MIPs_emissions_CMIP_',
+                          '_input4GBDMAPS_emissions_',
                           FN_source_id_value,
                           '_gn_',
                           chunk_start_years[ chunk_count_index ], '01', '-', chunk_end_years[ chunk_count_index ], '12',
@@ -2104,7 +2104,7 @@ singleVarChunking_subVOCemissions <- function( VOC_em,
   # generate flat_var variable name
   MD_variable_id_value <- gsub( '-', '_', FN_variable_id_value, fixed = T )
   flat_var_name <- MD_variable_id_value
-  flat_var_longname <- paste0( VOC_em, ' ', VOC_name, ' Anthropogenic Emissions' )
+  flat_var_longname <- paste0( VOC_em, ' ', VOC_name, ' Anthropogenic Emissions (all fuel types)' )
 
   # define unit and missing value
   data_unit <- 'kg m-2 s-1'
@@ -2133,7 +2133,7 @@ singleVarChunking_subVOCemissions <- function( VOC_em,
   ncvar_put( nc_new, time_bnds, time_bnds_data )
   ncvar_put( nc_new, sector_bnds, t( sector_bnds_data ) )
 
-  title <- paste( 'Annual Anthropogenic Emissions of', VOC_em, VOC_name, 'prepared for input4MIPs' )
+  title <- paste( 'Annual Anthropogenic Emissions of', VOC_em, VOC_name, 'prepared for input4GBDMAPS' )
   add_global_attributes_single_var( nc_new, title, flat_var_name, MD_dataset_version_number_value, MD_source_value,
                                     MD_source_id_value, MD_variable_id_value, air = FALSE, primary = FALSE )
 
@@ -2335,7 +2335,7 @@ singleVarChunking_subVOCemissions_rbulk <- function( VOC_em,
     FN_variable_id_value <- paste0( VOC_em, '-', VOC_name_10_dig, '-em-speciated-VOC-ranthro' )
     nc_file_name <- paste0( output_dir,
                             FN_variable_id_value,
-                            '_input4MIPs_emissions_CMIP_',
+                            '_input4GBDMAPS_emissions_',
                             FN_source_id_value,
                             '_gn_',
                             chunk_start_years[ chunk_count_index ], '01', '-', chunk_end_years[ chunk_count_index ], '12',
@@ -2344,7 +2344,7 @@ singleVarChunking_subVOCemissions_rbulk <- function( VOC_em,
     # generate flat_var variable name
     MD_variable_id_value <- gsub( '-', '_', FN_variable_id_value, fixed = T )
     flat_var_name <- MD_variable_id_value
-    flat_var_longname <- paste0( VOC_em, ' ', VOC_name, ' Anthropogenic Emissions' )
+    flat_var_longname <- paste0( VOC_em, ' ', VOC_name, ' Anthropogenic Emissions (all fuel except coal and biofuel)' )
 
     # define unit and missing value
     data_unit <- 'kg m-2 s-1'
@@ -2373,7 +2373,7 @@ singleVarChunking_subVOCemissions_rbulk <- function( VOC_em,
     ncvar_put( nc_new, time_bnds, time_bnds_data )
     ncvar_put( nc_new, sector_bnds, t( sector_bnds_data ) )
 
-    title <- paste( 'Annual Anthropogenic Emissions of', VOC_em, VOC_name, 'prepared for input4MIPs' )
+    title <- paste( 'Annual REMAINING Anthropogenic Emissions of', VOC_em, VOC_name, 'prepared for input4GBDMAPS' )
     add_global_attributes_single_var( nc_new, title, flat_var_name, MD_dataset_version_number_value, MD_source_value,
                                       MD_source_id_value, MD_variable_id_value, air = FALSE, primary = FALSE )
 
@@ -2575,7 +2575,7 @@ singleVarChunking_subVOCemissions_coalfuel <- function( VOC_em,
     FN_variable_id_value <- paste0( VOC_em, '-', VOC_name_10_dig, '-em-speciated-VOC-coalfuel' )
     nc_file_name <- paste0( output_dir,
                             FN_variable_id_value,
-                            '_input4MIPs_emissions_CMIP_',
+                            '_input4GBDMAPS_emissions_',
                             FN_source_id_value,
                             '_gn_',
                             chunk_start_years[ chunk_count_index ], '01', '-', chunk_end_years[ chunk_count_index ], '12',
@@ -2584,7 +2584,7 @@ singleVarChunking_subVOCemissions_coalfuel <- function( VOC_em,
     # generate flat_var variable name
     MD_variable_id_value <- gsub( '-', '_', FN_variable_id_value, fixed = T )
     flat_var_name <- MD_variable_id_value
-    flat_var_longname <- paste0( VOC_em, ' ', VOC_name, ' Anthropogenic Emissions' )
+    flat_var_longname <- paste0( VOC_em, ' ', VOC_name, ' Anthropogenic Emissions (coal fuel)' )
 
     # define unit and missing value
     data_unit <- 'kg m-2 s-1'
@@ -2613,7 +2613,7 @@ singleVarChunking_subVOCemissions_coalfuel <- function( VOC_em,
     ncvar_put( nc_new, time_bnds, time_bnds_data )
     ncvar_put( nc_new, sector_bnds, t( sector_bnds_data ) )
 
-    title <- paste( 'Annual Anthropogenic Emissions of', VOC_em, VOC_name, 'prepared for input4MIPs' )
+    title <- paste( 'Annual TOTAL COALFUEL Anthropogenic Emissions of', VOC_em, VOC_name, 'prepared for input4GBDMAPS' )
     add_global_attributes_single_var( nc_new, title, flat_var_name, MD_dataset_version_number_value, MD_source_value,
                                       MD_source_id_value, MD_variable_id_value, air = FALSE, primary = FALSE )
 
@@ -2816,7 +2816,7 @@ singleVarChunking_subVOCemissions_solidbiofuel <- function( VOC_em,
     FN_variable_id_value <- paste0( VOC_em, '-', VOC_name_10_dig, '-em-speciated-VOC-solidbiofuel' )
     nc_file_name <- paste0( output_dir,
                             FN_variable_id_value,
-                            '_input4MIPs_emissions_CMIP_',
+                            '_input4GBDMAPS_emissions_',
                             FN_source_id_value,
                             '_gn_',
                             chunk_start_years[ chunk_count_index ], '01', '-', chunk_end_years[ chunk_count_index ], '12',
@@ -2825,7 +2825,7 @@ singleVarChunking_subVOCemissions_solidbiofuel <- function( VOC_em,
     # generate flat_var variable name
     MD_variable_id_value <- gsub( '-', '_', FN_variable_id_value, fixed = T )
     flat_var_name <- MD_variable_id_value
-    flat_var_longname <- paste0( VOC_em, ' ', VOC_name, ' Anthropogenic Emissions' )
+    flat_var_longname <- paste0( VOC_em, ' ', VOC_name, ' Anthropogenic Emissions (biofuel)' )
 
     # define unit and missing value
     data_unit <- 'kg m-2 s-1'
@@ -2854,7 +2854,7 @@ singleVarChunking_subVOCemissions_solidbiofuel <- function( VOC_em,
     ncvar_put( nc_new, time_bnds, time_bnds_data )
     ncvar_put( nc_new, sector_bnds, t( sector_bnds_data ) )
 
-    title <- paste( 'Annual Anthropogenic Emissions of', VOC_em, VOC_name, 'prepared for input4MIPs' )
+    title <- paste( 'Annual SOLID BIOFUEL Anthropogenic Emissions of', VOC_em, VOC_name, 'prepared for input4GBDMAPS' )
     add_global_attributes_single_var( nc_new, title, flat_var_name, MD_dataset_version_number_value, MD_source_value,
                                       MD_source_id_value, MD_variable_id_value, air = FALSE, primary = FALSE )
 
@@ -3051,7 +3051,7 @@ singleVarChunking_rbulkemissions <- function( em,
     FN_variable_id_value <- paste0( em, '-em-ranthro' )
     nc_file_name <- paste0( output_dir,
                             FN_variable_id_value,
-                            '_input4MIPs_emissions_CMIP_',
+                            '_input4GBDMAPS_emissions_',
                             FN_source_id_value,
                             '_gn_',
                             chunk_start_years[ chunk_count_index ], '01', '-', chunk_end_years[ chunk_count_index ], '12',
@@ -3060,7 +3060,7 @@ singleVarChunking_rbulkemissions <- function( em,
     # generate flat_var variable name
     MD_variable_id_value <- paste0( em, '_em_ranthro' )
     flat_var_name <- MD_variable_id_value
-    flat_var_longname <- paste0( em, ' REMAINING Anthropogenic Emissions - Supplemental Data' )
+    flat_var_longname <- paste0( em, ' Anthropogenic Emissions - Supplemental Data (all fuel except coal and biofuel)' )
 
 
     # define unit and missing value
@@ -3090,7 +3090,7 @@ singleVarChunking_rbulkemissions <- function( em,
     ncvar_put( nc_new, time_bnds, time_bnds_data )
     ncvar_put( nc_new, sector_bnds, t( sector_bnds_data ) )
 
-    title <- paste( 'Annual REMAINING Anthropogenic Emissions of', em, 'prepared for input4MIPs' )
+    title <- paste( 'Annual REMAINING Anthropogenic Emissions of', em, 'prepared for input4GBDMAPS' )
     add_global_attributes_single_var( nc_new, title, flat_var_name, MD_dataset_version_number_value, MD_source_value,
                                       MD_source_id_value, MD_variable_id_value, air = FALSE, primary = FALSE )
 
@@ -3286,7 +3286,7 @@ singleVarChunking_solidbiofuelemissions <- function( em,
   FN_variable_id_value <- paste0( em, '-em-SOLID-BIOFUEL-anthro' )
   nc_file_name <- paste0( output_dir,
                           FN_variable_id_value,
-                          '_input4MIPs_emissions_CMIP_',
+                          '_input4MGBDMAPS_emissions_',
                           FN_source_id_value,
                           '_gn_',
                           chunk_start_years[ chunk_count_index ], '01', '-', chunk_end_years[ chunk_count_index ], '12',
@@ -3295,7 +3295,7 @@ singleVarChunking_solidbiofuelemissions <- function( em,
   # generate flat_var variable name
   MD_variable_id_value <- paste0( em, '_em_SOLID_BIOFUEL_anthro' )
   flat_var_name <- MD_variable_id_value
-  flat_var_longname <- paste0( em, ' SOLID BIOFUEL Anthropogenic Emissions - Supplemental Data' )
+  flat_var_longname <- paste0( em, ' Anthropogenic Emissions - Supplemental Data (biofuel)' )
 
 
   # define unit and missing value
@@ -3325,7 +3325,7 @@ singleVarChunking_solidbiofuelemissions <- function( em,
   ncvar_put( nc_new, time_bnds, time_bnds_data )
   ncvar_put( nc_new, sector_bnds, t( sector_bnds_data ) )
 
-  title <- paste( 'Annual SOLID BIOFUEL Anthropogenic Emissions of', em, 'prepared for input4MIPs' )
+  title <- paste( 'Annual SOLID BIOFUEL Anthropogenic Emissions of', em, 'prepared for input4GBDMAPS' )
   add_global_attributes_single_var( nc_new, title, flat_var_name, MD_dataset_version_number_value, MD_source_value,
                                     MD_source_id_value, MD_variable_id_value, air = FALSE, primary = FALSE )
 
@@ -3520,7 +3520,7 @@ singleVarChunking_coalfuelemissions <- function( em,
     FN_variable_id_value <- paste0( em, '-em-TOTAL_COALFUEL-anthro' )
     nc_file_name <- paste0( output_dir,
                             FN_variable_id_value,
-                            '_input4MIPs_emissions_CMIP_',
+                            '_input4GBDMAPS_emissions_',
                             FN_source_id_value,
                             '_gn_',
                             chunk_start_years[ chunk_count_index ], '01', '-', chunk_end_years[ chunk_count_index ], '12',
@@ -3529,7 +3529,7 @@ singleVarChunking_coalfuelemissions <- function( em,
     # generate flat_var variable name
     MD_variable_id_value <- paste0( em, '_em_TOTAL_COALFUEL_anthro' )
     flat_var_name <- MD_variable_id_value
-    flat_var_longname <- paste0( em, ' TOTAL COALFUEL Anthropogenic Emissions - Supplemental Data' )
+    flat_var_longname <- paste0( em, ' Anthropogenic Emissions - Supplemental Data (coal fuel)' )
 
 
     # define unit and missing value
@@ -3559,7 +3559,7 @@ singleVarChunking_coalfuelemissions <- function( em,
     ncvar_put( nc_new, time_bnds, time_bnds_data )
     ncvar_put( nc_new, sector_bnds, t( sector_bnds_data ) )
 
-    title <- paste( 'Annual TOTAL COALFUEL Anthropogenic Emissions of', em, 'prepared for input4MIPs' )
+    title <- paste( 'Annual TOTAL COALFUEL Anthropogenic Emissions of', em, 'prepared for input4GBDMAPS' )
     add_global_attributes_single_var( nc_new, title, flat_var_name, MD_dataset_version_number_value, MD_source_value,
                                       MD_source_id_value, MD_variable_id_value, air = FALSE, primary = FALSE )
 
@@ -4459,8 +4459,8 @@ add_global_attributes <- function( nc_new, title ) {
   # NOTE- This data must currently be edited in two separate places within this file
   # ********************************************************************************
   ncatt_put( nc_new, 0, 'title', title )
-  ncatt_put( nc_new, 0, 'institution', 'your institution full name, city, state, zip, country' )
-  ncatt_put( nc_new, 0, 'institution_id', 'your institution abbreviation' )
+  ncatt_put( nc_new, 0, 'institution', 'Dalhousie University, Halifax, NS, Canada' )
+  ncatt_put( nc_new, 0, 'institution_id', 'DAL' )
   ncatt_put( nc_new, 0, 'activity_id', 'NA' )
   ncatt_put( nc_new, 0, 'Conventions', 'CF-1.6' )
   ncatt_put( nc_new, 0, 'creation_date', as.character( format( now, format = '%Y-%m-%dT%H:%M:%SZ' ) ) )
@@ -4470,14 +4470,14 @@ add_global_attributes <- function( nc_new, title ) {
   ncatt_put( nc_new, 0, 'source', paste0( 'CEDS ', as.character( format( now, format = '%m-%d-%Y' ) ),
                                           ': Community Emissions Data System (CEDS) for Historical Emissions' ) )
   ncatt_put( nc_new, 0, 'source_id', paste0( 'CEDS-', as.character( format( now, format = '%m-%d-%Y' ) ) ) )
-  ncatt_put( nc_new, 0, 'further_info_url', 'your.web.site' )
+  ncatt_put( nc_new, 0, 'further_info_url', 'https://github.com/emcduffie/CEDS/' )
   ncatt_put( nc_new, 0, 'history', paste0( as.character( format( now, format = '%d-%m-%Y %H:%M:%S %p %Z' ) ),
-                                           '; your city, state, country') )
+                                           '; Halifax, NS, Canada') )
 #  Specific metadata for CO2 emissions
 #  ncatt_put( nc_new, 0, 'data_usage_tips', 'Note that these are monthly average fluxes of all oxidized fossil carbon. CO2 from solid and liquid biofuel combustion is not included.' )
   ncatt_put( nc_new, 0, 'data_usage_tips', 'Note that these are monthly average fluxes.' )
   ncatt_put( nc_new, 0, 'host', 'TBD' )
-  ncatt_put( nc_new, 0, 'contact', 'Your Name Here (your-email@where.you.are)' )
+  ncatt_put( nc_new, 0, 'contact', 'Erin McDuffie (erin.mcduffie@dal.ca)' )
   ncatt_put( nc_new, 0, 'references', 'Your journal paper or other reference for this work.' )
   ncatt_put( nc_new, 0, 'dataset_category', 'emissions' )
   ncatt_put( nc_new, 0, 'dataset_version_number', '1.0.0' )

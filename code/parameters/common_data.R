@@ -62,9 +62,9 @@ cdiac_end_year <- 2011
 cdiac_end_year_cement <- 2018 #Changed from 2015 with new usgs cement data
 
 #Gridding Years - specify the years to grid in mod-G
-grid_start_year_NMVOC <- 2010
-grid_start_year <- 2010
-grid_end_year <- 2018
+grid_start_year_NMVOC <- 1960
+grid_start_year <- 1960
+grid_end_year <- 2017
 
 # ---------------------------------
 # Define available CEDS releases
