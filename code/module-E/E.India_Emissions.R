@@ -47,7 +47,7 @@
 
 # ------------------------------------------------------------------------------
 # 2. Inventory in Standard Form (iso-sector-fuel-years, iso-sector-years, etc)
-    if ( em %!in% c( 'SO2', 'NMVOC', 'NOx' ) ) {
+    if ( em %!in% c( 'SO2', 'NMVOC', 'NOx', 'CO', 'OC','BC' ) ) {
         # Output a blank df for unsupported species
         inv_data_sheet_clean <- data.frame( )
 

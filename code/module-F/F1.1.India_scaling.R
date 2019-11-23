@@ -18,7 +18,7 @@
 # Get emission species first so can name log appropriately
     args_from_makefile <- commandArgs( TRUE )
     em <- args_from_makefile[1]
-    if ( is.na( em ) ) em <- "NOx"
+    if ( is.na( em ) ) em <- "BC"
 
 # Call standard script header function to read in universal header files -
 # provide logging, file support, and system functions - and start the script log.
@@ -34,7 +34,7 @@
 # 1. Define parameters for inventory specific script
 
 # Stop script if running for unsupported species
-    if ( em %!in% c( 'SO2', 'NOx', 'NMVOC' ) ) {
+    if ( em %!in% c( 'SO2', 'NOx', 'NMVOC','OC','BC','CO' ) ) {
       stop( paste( 'India scaling is not supported for emission species',
                   em, 'remove from script list in F1.1.inventory_scaling.R' ) )
     }
@@ -44,6 +44,7 @@
 #   the inventory (as a vector of iso codes)
     inv_data_folder <- 'MED_OUT'
     sector_fuel_mapping <- 'India_scaling_mapping'
+    if ( em %in% c('BC','OC','CO') )  sector_fuel_mapping <- 'India_scaling_mapping_BC_OC_CO'  #different sectors for different species
     mapping_method <- 'both'
     inv_name <- 'India' #for naming diagnostic files
     region <- 'ind'
@@ -76,10 +77,20 @@
 # 4. Calculate Scaling Factors, reaggregate to CEDS sectors
 
 # Calculate and extend scaling factors
+    #EEM: Change SF to factor of 1000 to correct 'bad scaling factors' and ensure
+    # that scaled RCOR emissions are greater than the inventory
+   # if( em %in% c('NMVOC') ){
+        max_sf <-1000
+        replace_sf <-1000
+   # }else{
+   #     max_sf <-100
+   #     replace_sf <-100
+   # }
     scaling_factors_list <- F.scaling( ceds_data, inv_data, region,
                                       replacement_method = 'replace',
-                                      max_scaling_factor = 100,
-                                      replacement_scaling_factor = 100 )
+                                      max_scaling_factor = max_sf,
+                                      replacement_scaling_factor = replace_sf )
+
     list2env( scaling_factors_list, envir = .GlobalEnv )
 
 # Apply Scaling Factors to Ceds data
