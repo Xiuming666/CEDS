@@ -66,7 +66,7 @@ names(drivers_method_data_list) <- drivers_method_files$file_name
 # # first, preprocess the population data
 # pop$year <- paste0( 'pop_', pop$year )
 # pop_wide <- cast( pop, iso ~ year, value = 'pop', fun.aggregate = sum )
-# pop_wide <- pop_wide[ , c( 'iso', paste0( 'pop_', as.character( 1750 : 2014 ) ) ) ]
+# pop_wide <- pop_wide[ , c( 'iso', paste0( 'pop_', as.character( 1750 : 2018 ) ) ) ]
 
 # # extract drivers_method_data_list$U.N_manure as manure
 # manure <- drivers_method_data_list$U.N_manure

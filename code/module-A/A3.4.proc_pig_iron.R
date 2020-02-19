@@ -28,10 +28,11 @@
 # ---------------------------------------------------------------------------
 # 1. Read input
 
+# Note: Need to update 131 to appropriate column if updating year
 # 'Data' tab only runs to 1890, so read 1850-1890 from tab 'SPEW_Pig_iron_production'
     spew <- readData( "ACTIVITY_IN", "Blast_furnace_iron_production_1850-2017", ".xlsx",
                       sheet_selection = "Data", domain_extension = "metals/",
-                      skip = 2 )[ 1:60, 3:128 ]
+                      skip = 2 )[ 1:60, 3:131 ]
     spew_pre <- readData( "ACTIVITY_IN", "Blast_furnace_iron_production_1850-2017", ".xlsx",
                     sheet_selection = "SPEW_Pig_iron_production", domain_extension = "metals/",
                     to_numeric = F )[ 2:10 ]

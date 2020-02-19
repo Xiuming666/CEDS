@@ -132,8 +132,8 @@ write_global_emissions_by_sector <- function( em_by_sector ) {
 # Brief:  This function creates or modifies an xlsx file containing aggregate
 #         emissions by species and a README sheet
 # Details: Data for the species are expected to be in the following form (where
-#          2014 should be the CEDS end year):
-#          |  em  | units | 1750 | 1751 | ... | 2014 |
+#          2018 should be the CEDS end year):
+#          |  em  | units | 1750 | 1751 | ... | 2018 |
 # Dependencies: None
 # Author(s): Caleb Braun
 # Params: em_by_species - a data frame containing total emissions for one or

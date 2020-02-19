@@ -3,7 +3,7 @@
 # Author: Presley Muwan
 # Date Last Updated: 4 June 2019
 # Program Purpose: Create the default activity oil data for CEDS following these three steps:
-#                 * Merge IEA oil data (2014 - 1960/1971) to UNSD oil data (1959/1970 - 1950)
+#                 * Merge IEA oil data (2017 - 1960/1971) to UNSD oil data (1959/1970 - 1950)
 #                   and extend the merged data from 1950 to 1850 using CDIAC data.
 #                 * Disaggregate the merge data by iso-fuel
 #                 * Disaggregate the merged data by CEDS iso-fuel-Sector

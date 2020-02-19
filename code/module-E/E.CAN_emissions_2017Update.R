@@ -38,7 +38,7 @@
 
 # ------------------------------------------------------------------------------
 # 1. Define parameters for inventory specific script
-    inventory_data_file <- 'EN_APEI-Canada' #paste0( 'ape_results_e_', em, '_2014' )
+    inventory_data_file <- 'EN_APEI-Canada'
     subfolder_name <- 'Canada/'
     inv_data_folder <- "EM_INV"
     inv_name <- 'CAN' # For naming diagnostic files

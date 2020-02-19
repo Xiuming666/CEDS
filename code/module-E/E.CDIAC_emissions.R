@@ -1,9 +1,9 @@
 # ------------------------------------------------------------------------------
 # Program Name: E.CDIAC_emissions.R
-# Author(s): Rachel Hoesly, Linh Vu
-# Date Last Updated: 15 Sept 2016
+# Author(s): Rachel Hoesly, Linh Vu, Erin McDuffie
+# Date Last Updated: 19 Feb 2020
 # Program Purpose: To read in & reformat CDIAC emissions data.
-# Input Files: A.UN_pop_master.csv,CDIAC_national_1751_2011.csv, CDIAC_country_map.csv
+# Input Files: A.UN_pop_master.csv,CDIAC_national_1751_2014.csv, CDIAC_country_map.csv
 # Output Files:
 # Notes: Cement data is extended to last availale year for USGS cement data. Other data ends at last CDIAC year, with zeros afterward.
 # TODO:
@@ -55,7 +55,7 @@
 
 # CDIAC inventory
     cdiac_read <- readData( 'EM_INV', domain_extension = "CDIAC/",
-                            'CDIAC_national_1751_2011', missing_value = '.' )
+                            'CDIAC_national_1751_2014', missing_value = '.' )
 # Mapping files
     MCL <- readData( "MAPPINGS", "Master_Country_List" )
     cdiac_country_map <- readData( 'EM_INV', domain_extension = "CDIAC/",
@@ -78,8 +78,8 @@
 # -----------------------------------------------------------------------------------------------------------
 # 2. Formatting Data to ceds format
 
-    cdiac_start_year <- 1751
-    cdiac_end_year <- 2011
+    cdiac_start_year <- min(cdiac_read$Year, na.rm = TRUE) #1751 #need to reset because set to 1750 in common data
+    #cdiac_end_year <- max(cdiac_read$Year, na.rm = TRUE) #2014 - already set in common data
 
 # Process UN population
     un_pop$X_year <- paste0( "X", un_pop$year )
@@ -277,7 +277,7 @@
                                     trend_data = population,
                                     trend_match_cols = 'iso',
                                     combined_iso = 'ant',
-                                    dis_end_year = 2011,
+                                    dis_end_year = cdiac_end_year,
                                     ratio_range_length = 2,
                                     disaggregate_iso = c( 'cuw', 'sxm' ) )
 # Rhodesia Nyasaland
@@ -544,41 +544,43 @@
 #        dplyr::arrange( iso )
 ###
 
-   # Make all NA 2013 production zero (sgp only)
-       cement$X2016[ is.na( cement$X2016 ) ] <- 0
+###   # Make all NA 2016 production zero (sgp only)
+#       cement$X2016[ is.na( cement$X2016 ) ] <- 0
 
-# Disaggregate 2017/2018 production based on 2016 shares
-    # Find iso/years without 2014 data, and select the corresponding 2016 data
-    shares <- filter( cement, is.na( X2017 ) ) %>%
-        select( iso, X2016 )
-    # Find what pct of 2016 each country holds
-    shares$ratio <- shares$X2016 / sum( shares$X2016 )
+## Disaggregate 2017/2018 production based on 2016 shares
+#    # Find iso/years without 2017 data, and select the corresponding 2016 data
+#    shares <- filter( cement, is.na( X2017 ) ) %>%
+#        select( iso, X2016 )
+#    # Find what pct of 2016 each country holds
+#    shares$ratio <- shares$X2016 / sum( shares$X2016 )
 
-    # Cement data to add to 2017 is the same proportion that the country had of 2016
-    # data
-    cement_other_X2017_X2018 <- filter( cement, iso == "OTHER" ) %>%
-        select( X2017, X2018 ) %>%
-        merge( select( shares, iso, ratio ), all = T ) %>%
-        dplyr::mutate( X2017 = X2017*ratio, X2018 = X2018*ratio )
+#    # Cement data to add to 2017 is the same proportion that the country had of 2016
+#    # data
+#    cement_other_X2017_X2018 <- filter( cement, iso == "OTHER" ) %>%
+#        select( X2017, X2018 ) %>%
+#        merge( select( shares, iso, ratio ), all = T ) %>%
+#        dplyr::mutate( X2017 = X2017*ratio, X2018 = X2018*ratio )
 
-    # Deselect 2017 and 2018 in original df data and replace with new values
-    cement_other <- filter( cement, is.na( X2017 ) ) %>%
-        select( -X2017, -X2018 ) %>%
-        merge( select( cement_other_X2017_X2018, -ratio ) )
+#    # Deselect 2017 and 2018 in original df data and replace with new values
+#    cement_other <- filter( cement, is.na( X2017 ) ) %>%
+#        select( -X2017, -X2018 ) %>%
+#        merge( select( cement_other_X2017_X2018, -ratio ) )
 
-# Combine all data with cement_other
-    cement_all <- filter( cement, !is.na( X2017 ), iso != "OTHER" ) %>%
-                                              rbind( cement_other ) %>%
-                                                     dplyr::arrange( iso )
+## Combine all data with cement_other
+#    cement_all <- filter( cement, !is.na( X2017 ), iso != "OTHER" ) %>%
+#                                              rbind( cement_other ) %>%
+#                                                     dplyr::arrange( iso )
+###
 
 # Interpolate NAs
-    cement_all[ , Xyears ] <- interpolate_NAs( cement_all[ , Xyears ] )
+    cement_all <- cement
+    cement_all[ , Xyears ] <- interpolate_NAs( cement[ , Xyears ] )
 # Make remaining edge NAs 0
     cement_all[ is.na( cement_all ) ] <- 0
 
 # Calculate EFs over time using USGS cement production
-    X_cement_years <- paste0( "X", 1998:2011 )
-    X_cement_ext_years <- paste0( "X", 2012:2018 ) ##changed from 2015
+    X_cement_years <- paste0( "X", 1998:cdiac_end_year )
+    X_cement_ext_years <- paste0( "X", (cdiac_end_year+1):cdiac_end_year_cement ) ##changed from 2015
 # Extract X CDIAC years
     X_cdiac_years_ext <- paste0( 'X', cdiac_start_year:cdiac_end_year_cement )
 
@@ -598,7 +600,7 @@
                                      cement_prod[ , X_cement_years ]
 
 # Extend cement emissions to 2015 using production and 2009-2011 average EFs
-    cement_ef$avg <- rowMeans( cement_ef[ paste0( "X", 2009:2011 ) ], na.rm = T )
+    cement_ef$avg <- rowMeans( cement_ef[ paste0( "X", 2009:cdiac_end_year ) ], na.rm = T )
     cdiac_ext[ , X_cement_ext_years ] <- cement_prod[ , X_cement_ext_years ] *
                                          cement_ef$avg
 

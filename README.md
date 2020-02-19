@@ -52,3 +52,14 @@ All rights reserved.
     * Other than as used herein, neither the name Battelle Memorial Institute or Battelle may be used in any form whatsoever without the express written consent of Battelle.
 
 2.	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL BATTELLE OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+**CEDS_GDB-MAPS Version:** Feb 19, 2020. The current code in the repository is updates as described in McDuffie et al., 2020.
+* Gridded (0.5x0.5) global emissions of NOx, SO2, CO, NMVOCs, NH3, BC, OC for 1970 - 2017
+* Major Updates include:
+	1) Updated IEA activity data (extended to 2017)
+	2) Updated EDGAR v4.3.2 and regional inventories (used for calibration)
+	3) Added India and Africa regional emission inventories to calibration
+	4) Now calibrate BC and OC to regional inventories
+	5) Updated aggregation steps to disaggregate TRA and RCO sectors as well as coal, biofuel, and remaining fuel types. 
+* NOTE: Diagnostic files are not updated relative to CEDS August 25, 2019 pre-release * 
+	

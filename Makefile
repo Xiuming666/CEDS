@@ -82,10 +82,10 @@ else
 # outputs of the system.
 emissions: $(FINAL_OUT)/current-versions/CEDS_$(EM)_emissions_by_country_sector_%.csv
 
-gridded-emissions: $(FINAL_OUT)/gridded-emissions/$(EM)-em-anthro* \
-	$(FINAL_OUT)/gridded-emissions/$(EM)-em-ranthro* \
-	$(FINAL_OUT)/gridded-emissions/$(EM)-em-SOLID-BIOFUEL-anthro*
-#	$(FINAL_OUT)/gridded-emissions/$(EM)-em-TOTAL-COALFUEL-anthro*
+gridded-emissions: $(FINAL_OUT)/gridded-emissions/$(EM)-em-ranthro* \
+	$(FINAL_OUT)/gridded-emissions/$(EM)-em-TOTAL-COALFUEL-anthro* \
+	$(FINAL_OUT)/gridded-emissions/$(EM)-em-SOLID-BIOFUEL-anthro* \
+	$(FINAL_OUT)/gridded-emissions/$(EM)-em-anthro*
 #	$(FINAL_OUT)/gridded-emissions/$(EM)-em-AIR-anthro*
 
 
@@ -111,7 +111,7 @@ endif
 
 # Note that this is an inefficient method of creating data for multiple species
 # If a multi-processor machine is available, CEDS should be instead run in parellel for multiple species
-all: SO2-emissions BC-emissions OC-emissions NOx-emissions CO-emissions NMVOC-emissions NH3-emissions
+all: BC-emissions OC-emissions NOx-emissions NMVOC-emissions CO-emissions NH3-emissions SO2-emissions 
 part1: SO2-emissions NOx-emissions NH3-emissions
 part2: BC-emissions OC-emissions CO2-emissions
 part3: CO-emissions NMVOC-emissions CH4-emissions
@@ -121,8 +121,8 @@ all-gridded: SO2-gridded BC-gridded OC-gridded NOx-gridded CO-gridded NH3-gridde
 
 # Targets used to remove output files for a fresh run
 clean-all: \
-	clean-intermediate clean-diagnostic clean-final clean-logs clean-io clean-modA clean-modB clean-modC \
-	clean-modD clean-modE clean-modF clean-modH # clean-gridding
+	clean-intermediate clean-diagnostic clean-logs clean-io clean-modA clean-modB clean-modC \
+	clean-modD clean-modE clean-modF clean-modH clean-gridding clean-final
 
 clean-intermediate:
 	rm -fv $(MED_OUT)/*.csv
@@ -425,7 +425,7 @@ $(MED_OUT)/A.IEA_CEDS_coal_difference.csv: \
 $(EXT_DATA)/A.Pig_Iron_Production.csv: \
 	$(MOD_A)/A3.4.proc_pig_iron.R \
 	$(MED_OUT)/A.UN_pop_master.csv \
-	#(ACTIV)/metals/Blast_furnace_iron_production_1850-2014.xlsx \
+	#(ACTIV)/metals/Blast_furnace_iron_production_1850-2017.xlsx \
 	#(ACTIV)/metals/Pig_Iron_Production_US.csv \
 	#(ACTIV)/metals/Pig_Iron_Production_Mitchell.csv
 	Rscript $< $(EM) --nosave --no-restore

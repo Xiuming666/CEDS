@@ -1,21 +1,19 @@
 #------------------------------------------------------------------------------
 # Program Name: A1.1.UN_pop_WB_HYDE_extension.R
-# Author: Linh Vu, Rachel Hoesly, Patrick O'Rourke
-# Date Last Updated: June 7, 2019
+# Author: Linh Vu, Rachel Hoesly, Patrick O'Rourke, Erin McDuffie
+# Date Last Updated: Feb 19, 2020
 # Program Purpose: Produce input population data for CEDS emissions system from
 #                  United Nations data, World Bank (WB) data, and the History
 #                  Database of the Global Environment (HYDE) data.
 #                  Output are 1700-2100 population and urban population share.
-# Input Files: WPP2015_POP_F01_1_TOTAL_POPULATION_BOTH_SEXES.XLS;
-#              WUP2014-F21-Proportion_Urban_Annual.xls;
+# Input Files: WPP2019_POP_F01_1_TOTAL_POPULATION_BOTH_SEXES.XLS;
+#              WUP2018-F21-Proportion_Urban_Annual.xls;
 #              WB_SP.POP.TOTL.csv; WB_SP.URB.TOTL.csv;
 #              urbanpop_2004Rev_tcm61-36007.xlsx; Master_Country_List.csv
 #              UN_pop_WB_HYDE_ext_iso_map.xlsx; UN_pop_shares_WB_HYDE_ext_iso_map.xlsx;
 #              WB_pop_UN_HYDE_ext_iso_map.xlsx; HYDE_pop_UN_WB_ext_iso_map.xlsx
 # Output Files: A.UN_pop_master.csv; A.HYDE_pop.csv; A.UN_pop_WB_ext.csv; A.UN_WB_vs_HYDE_1950. csv
 # Notes: 1. UN population data are downloaded from:
-#           -- Total population: http://esa.un.org/unpd/wpp/DVD/
-#           -- Urban population share: http://esa.un.org/unpd/wup/CD-ROM/
 #           WB population and urban population share can optionally be pulled from the
 #           WDI API, using the R package FAOSTAT.
 #        2. UN has population data for 1950-2100, urban share data for 1950-2050.
@@ -346,20 +344,20 @@
     # extendProxy(): takes df containing two time series (s1, s2 -- described below),
     # extends s1 using s2 growth, returns completed s1 series.
     #   s1: incomplete series, to be extended using s2 growth rate; assumed to cover
-    #       a continuous range of all s2 years (e.g. 1960-2014 covers a continuous
+    #       a continuous range of all s2 years (e.g. 1960-2017 covers a continuous
     #       range of 1950-2100)
     #   s2: complete series, to be used as proxy for extending s1 (see example below)
     #   first_data_year: first year where s1 is available
     #   last_data_year: last year where s1 is available
     #   col_out: column name of extended s1 series
-    # EXAMPLE: Say s1 is available 1960-2014 and s2 is available 1950-2100, so first_data_year
-    # is 1960 and last_data_year is 2014. Then s1 will be extended to 1950-2100 as follows:
+    # EXAMPLE: Say s1 is available 1960-2017 and s2 is available 1950-2100, so first_data_year
+    # is 1960 and last_data_year is 2017. Then s1 will be extended to 1950-2100 as follows:
     #   s1[1959] = s1[1960] * s2[1959] / s2[1960]
     #   s1[1958] = s1[1959] * s2[1958] / s2[1959]
     #            = s1[1960] * ( s2[1959] / s2[1960] ) * ( s2[1958] / s2[1959] )
     #            = s1[1960] * s2[1958] / s2[1960]
     #   s1[1950] = s1[1960] * s2[1950] / s2[1960]
-    #   s1[2100] = s1[2014] * s2[2100] / s2[2014]
+    #   s1[2100] = s1[2017] * s2[2100] / s2[2017]
     # TODO: Fix cases where first_data_year or last_data_year is 0
     extendProxy <- function( df, s1, s2, first_data_yr, last_data_yr, col_out ){
       out <- dplyr::arrange( df, year )

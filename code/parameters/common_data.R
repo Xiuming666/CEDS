@@ -58,7 +58,7 @@ X_bond_years <- paste0('X', bond_years)
 
 # CDIAC years
 cdiac_start_year <- 1750
-cdiac_end_year <- 2011
+cdiac_end_year <- 2014        #Changed from 2011 with new dataset
 cdiac_end_year_cement <- 2018 #Changed from 2015 with new usgs cement data
 
 #Gridding Years - specify the years to grid in mod-G

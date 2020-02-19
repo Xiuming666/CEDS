@@ -1,13 +1,13 @@
 # ------------------------------------------------------------------------------
 # Program Name: C.1.2.add_SO2_NC_emissions_FAO_pulp_paper.R
-# Authors: Ryan Bolt, Jon Seibert, Linh Vu
-# Date Last Modified: 10 May 2019
+# Authors: Ryan Bolt, Jon Seibert, Linh Vu, Erin McDuffie
+# Date Last Modified: 19 Feb 2020
 # Program Purpose: Use the package FAOSTAT to retrieve data on pulp production
 #                  and with an emission factor to produce driver data.
 # Input Files: Master_Country_List.csv, FAO_SO2_emissions.csv
 # Output Files: C.SO2_NC_emissions_PulpPaper.csv
 # To Do:
-# Notes:
+# Notes: SO2 pulp and paper data is extended to last availale year for FAO data, then held constant afterward.
 # -----------------------------------------------------------------------------
 # 0. Read in global settings and headers
 # Define PARAM_DIR as the location of the CEDS "parameters" directory, relative
@@ -111,7 +111,7 @@ total_emiss$activity <- act
 total_emiss$units <- unit
 
 # Reorder columns
-order <- c("iso","activity", "units", paste0("X",1961:2014))
+order <- c("iso","activity", "units", paste0("X",1961:2014)) #input data only extend to 2014
 total_emiss <- total_emiss[,order]
 
 #--------------------------------------------------------------------------------
@@ -198,6 +198,10 @@ for (m in seq_along(cou_info)){
     total_emiss <- country_splitting(total_emiss, cou_info[[m]])
 }
 
+# This input file only extends to 2014, so copy values out to last data year (EEM)
+    X_Extend_Years <- paste0("X", 2015:BP_last_year)
+    total_emis <- total_emiss %>%
+    dplyr::mutate_at( X_Extend_Years, funs( identity( !!rlang::sym( "X2014" ) ) ) )
 # --------------------------------------------------------------------------------
 # 6. Output
   addToEmissionsDb_overwrite(total_emiss,em='SO2',type='NC')

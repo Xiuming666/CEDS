@@ -318,15 +318,15 @@
 
     gainsash_ret_final_IND <- final_GAINS_ashret_procsesing( gainsash_ret_mean_IND, "X2010")
 
-#       Expand India data to all CEDS unextended years (1960-2014) - same data for all CEDS years
+#       Expand India data to all CEDS unextended years (1960-2017) - same data for all CEDS years
 #       Note: We have not taken into account for India how coal imports may change ash
 #             retention values for different years, or how GAINS subfuels (multiple GAINS fuels
 #             mapped to 1 CEDS fuel) could vary in consumption from year to year (for weights).
 #       TODO: Account for the above note (retention values varying with coal imports and
 #             consupmtion of GAINS subfuels over time)
         all_years_before2010 <- paste0( "X", 1960:2009 )
-        all_years_after2010 <- paste0( "X", 2011:2014 )
-        all_years <- paste0( "X", 1960:2014 )
+        all_years_after2010 <- paste0( "X", 2011:end_year )
+        all_years <- paste0( "X", 1960:end_year)
 
         gainsash_ret_final_IND_extended <- gainsash_ret_final_IND %>%
             dplyr::mutate_at( all_years_before2010, funs( + X2010 ) ) %>%

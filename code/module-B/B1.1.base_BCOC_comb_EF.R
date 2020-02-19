@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 # Program Name: B1.1.base_BCOC_comb_EF.R
-# Author: Rachel Hoesly, Linh Vu, Patrick O'Rourke
-# Date Last Updated: 10 May 2019
+# Author: Rachel Hoesly, Linh Vu, Patrick O'Rourke, Erin McDuffie
+# Date Last Updated: 19 Feb 2020
 # Program Purpose: 1. Produce BC and OC emissions factors from SPEW (i.e. Bond) data.
 # Input Files:  A.final_comb_activity_modern.csv
 #               CD.SPEW_iso_map.csv
@@ -85,7 +85,7 @@
     MSL <-     readData( "MAPPINGS", "Master_Fuel_Sector_List", ".xlsx",
                          sheet_selection = "Sectors" , meta = F )
 
-# Read in Bond data and region mapping
+# Read in Bond data and region mapping (updated, data after 2000 are constant)
     bond_remove_values <- readData( "DEFAULT_EF_IN", paste0("CD.",em,"_bond_country_sector_fuel_2001" ) )
     bond_EF_region <- readData( "DEFAULT_EF_IN",  paste0("CD.",em, "_bond_EF_region" ) )
     bond_EF_agg_sector <- readData( "DEFAULT_EF_IN", paste0("CD.",em, "_bond_EF_agg_sector_by_region" ) )
@@ -214,10 +214,10 @@
     final_out <- final_full[ , c( 'iso', 'sector', 'fuel',
                                   'units', X_emissions_years ) ]
 # Removed values are recent bond values for cases that only had 2005 or 2010 values)
-# This input file only extends to 2014, so copy values out to last data year
-	X_Extend_Years <- paste0("X", 2015:BP_last_year)
+# This input file only extends to 2017, so copy values out to last data year
+	X_Extend_Years <- paste0("X", 2018:BP_last_year)
     bond_remove_values <- bond_remove_values %>%
-      dplyr::mutate_at( X_Extend_Years, funs( identity( !!rlang::sym( "X2014" ) ) ) )
+      dplyr::mutate_at( X_Extend_Years, funs( identity( !!rlang::sym( "X2017" ) ) ) )
 
 # Replace bond values that were removed
     final_out <- replaceValueColMatch( final_out, bond_remove_values,
