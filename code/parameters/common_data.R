@@ -70,7 +70,7 @@ grid_end_year <- 2017
 # Define available CEDS releases
 # versions include:
 # 1) "v2016_07_26"    ---   CEDS Release 1 (CMIP release)
-available_CEDS_releases <- c( "v2016_07_26" )
+available_CEDS_releases <- c( "v2020_01_13" )
 
 
 # ---------------------------------

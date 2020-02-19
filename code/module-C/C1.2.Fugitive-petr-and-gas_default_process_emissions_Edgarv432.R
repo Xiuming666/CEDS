@@ -18,7 +18,7 @@
 
 # Call standard script header function to read in universal header files -
 # provides logging, file support, and system functions - and start the script log.
-    headers <- c( 'data_functions.R' ) # Any additional function files required
+    headers <- c( 'data_functions.R','IO_functions.R' ) # Any additional function files required
     log_msg <- "Generating flaring default process emissions" # First message to be printed to the log
     script_name <- "C1.2.Fugitive-petr-and-gas_default_process_emissions_EDGAR_v432.R"
 
@@ -31,7 +31,7 @@
 # Define emissions species variable
     args_from_makefile <- commandArgs( TRUE )
     em <- args_from_makefile[ 1 ]
-    if ( is.na( em ) ) em <- "NMVOC"
+    if ( is.na( em ) ) em <- "BC"
 
     MODULE_C <- "../code/module-C/"
 
@@ -144,7 +144,7 @@
     emissions <- emissions[ , c( 'iso', 'sector', 'fuel', 'units', all_Xyear ) ]
 
     #EEM: some countries dont report oil, gas, and liq fuel data - so the number of countries will be different
-    #so for these countires (aia, hit, zwe, ton), filter so there is no runtime error and note that
+    #so for these countries (aia, hit, zwe, ton), filter so there is no runtime error and note that
     #fugitive emissions ==0 here
     edgar_gas_fuel <- edgar_gas_fuel %>%
         dplyr::filter( edgar_gas_fuel$iso %in% emissions$iso )
@@ -167,10 +167,11 @@ if ( dim( edgar_liquid_fuel )[ 1 ] != 0 ) {
 
 # -----------------------------------------------------------------------------
 # 4. Write output
-meta_names <- c( "Data.Type", "Emission", "Sector", "Start.Year", "End.Year", "Source.Comment")
-meta_note <- c( "default process emissions for 1B2c_Venting-flaring-oil-gas", em, "1B2_Fugitive-petr-and-gas",
+meta_names <- c( "Data.Type", "Emission","Region","Sector", "Start.Year", "End.Year", "Source.Comment")
+meta_note <- c( "default process emissions for 1B2c_Venting-flaring-oil-gas", em, "All", "1B2_Fugitive-petr-and-gas",
                 "1970", end_year, "Max value between EDGAR v4.3.2 data and extended ECLIPSE flaring emissions is taken as default process emissions for country-year combination for sector 1B2c_Venting-flaring-oil-gas" )
-addMetaData( meta_note, meta_names )
+source_info <- "C1.2.Fugitive-petr-and-gas_default_process_emissions.R"
+addMetaData( meta_note, meta_names, source_info )
 
 writeData( emissions , "DEFAULT_EF_IN", domain_extension = 'non-combustion-emissions/' ,paste0( "C.", em, "_Fugitive-petr-and-gas_default_process_emissions" ) )
 
