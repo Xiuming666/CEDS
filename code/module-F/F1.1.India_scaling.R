@@ -18,7 +18,7 @@
 # Get emission species first so can name log appropriately
     args_from_makefile <- commandArgs( TRUE )
     em <- args_from_makefile[1]
-    if ( is.na( em ) ) em <- "BC"
+    if ( is.na( em ) ) em <- "CO"
 
 # Call standard script header function to read in universal header files -
 # provide logging, file support, and system functions - and start the script log.
@@ -44,7 +44,7 @@
 #   the inventory (as a vector of iso codes)
     inv_data_folder <- 'MED_OUT'
     sector_fuel_mapping <- 'India_scaling_mapping'
-    if ( em %in% c('BC','OC','CO') )  sector_fuel_mapping <- 'India_scaling_mapping_BC_OC_CO'  #different sectors for different species
+    #if ( em %in% c('BC','OC','CO') )  sector_fuel_mapping <- 'India_scaling_mapping_BC_OC_CO'  #different sectors for different species
     mapping_method <- 'both'
     inv_name <- 'India' #for naming diagnostic files
     region <- 'ind'
@@ -77,15 +77,15 @@
 # 4. Calculate Scaling Factors, reaggregate to CEDS sectors
 
 # Calculate and extend scaling factors
-    #EEM: Change SF to factor of 1000 to correct 'bad scaling factors' and ensure
+    #EEM: Change SF to factor of 100 for BC and OC so 1985-2008 IND values are not too large
     # that scaled RCOR emissions are greater than the inventory
-   # if( em %in% c('NMVOC') ){
+    if( em %in% c('BC','OC') ){
+        max_sf <-100
+        replace_sf <-100
+    }else{
         max_sf <-1000
         replace_sf <-1000
-   # }else{
-   #     max_sf <-100
-   #     replace_sf <-100
-   # }
+    }
     scaling_factors_list <- F.scaling( ceds_data, inv_data, region,
                                       replacement_method = 'replace',
                                       max_scaling_factor = max_sf,
