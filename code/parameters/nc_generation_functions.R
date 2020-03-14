@@ -1957,82 +1957,6 @@ singleVarChunking_subVOCemissions <- function( VOC_em,
       stop( "Cannot find all files need for chunk ", year_1st, "-", year_last )
   }
 
-  # read in each nc file and extract variables
-  # create empty arrays for storage
-  # TODO: This way of growing arrays is slow and bad, re-write with array size set before the loop.
-  AGR_array <- ENE_array <- IND_array <- NRTR_array <- ROAD_array <- RCOR_array <- RCOC_array <- RCOO_array <- SLV_array <- WST_array <- SHP_array <- c( )
-  time_array <- time_bnds_array <- c( )
-
-  # go through each nc files, extract the variables and append to storage array
-  for ( fin_grid in fin_grid_list ) {
-    # open the nc file
-    nc_temp <- nc_open( file.path( input_dir, fin_grid ) )
-    # extract the data for variables
-    AGR_fin_block <- ncvar_get( nc_temp, 'AGR' )
-    ENE_fin_block <- ncvar_get( nc_temp, 'ENE' )
-    IND_fin_block <- ncvar_get( nc_temp, 'IND' )
-    NRTR_fin_block <- ncvar_get( nc_temp, 'NRTR' )
-    ROAD_fin_block <- ncvar_get( nc_temp, 'ROAD' )
-    RCOR_fin_block <- ncvar_get( nc_temp, 'RCOR' )
-    RCOC_fin_block <- ncvar_get( nc_temp, 'RCOC' )
-    RCOO_fin_block <- ncvar_get( nc_temp, 'RCOO' )
-    SLV_fin_block <- ncvar_get( nc_temp, 'SLV' )
-    WST_fin_block <- ncvar_get( nc_temp, 'WST' )
-    SHP_fin_block <- ncvar_get( nc_temp, 'SHP' )
-    time_fin_block <- ncvar_get( nc_temp, 'time' )
-    time_bnds_fin_block <- ncvar_get( nc_temp, 'time_bnds' )
-    # close the nc file
-    nc_close( nc_temp )
-    # append the data to storage array
-    AGR_array <- c( AGR_array, AGR_fin_block )
-    ENE_array <- c( ENE_array, ENE_fin_block )
-    IND_array <- c( IND_array, IND_fin_block )
-    NRTR_array <- c( NRTR_array, NRTR_fin_block )
-    ROAD_array <- c( ROAD_array, ROAD_fin_block )
-    RCOR_array <- c( RCOR_array, RCOR_fin_block )
-    RCOC_array <- c( RCOC_array, RCOC_fin_block )
-    RCOO_array <- c( RCOO_array, RCOO_fin_block )
-    SLV_array <- c( SLV_array, SLV_fin_block )
-    WST_array <- c( WST_array, WST_fin_block )
-    SHP_array <- c( SHP_array, SHP_fin_block )
-    time_array <- c( time_array, time_fin_block )
-    time_bnds_array <- c( time_bnds_array, time_bnds_fin_block )
-  }
-
-  # extract values of global_total_emission attribute from first year and last year
-  # value from first year
-  fin_grid_1st <- fin_grid_list[ 1 ]
-  nc_temp <- nc_open( file.path( input_dir, fin_grid_1st ) )
-  MD_global_total_emission_1st_year <- ncatt_get( nc_temp, 0, 'global_total_emission' )[[ 2 ]]
-  nc_close( nc_temp )
-  # value from last year
-  fin_grid_last <- fin_grid_list[ length( fin_grid_list ) ]
-  nc_temp <- nc_open( file.path( input_dir, fin_grid_last ) )
-  MD_global_total_emission_last_year <- ncatt_get( nc_temp, 0, 'global_total_emission' )[[ 2 ]]
-
-  # reshape the array
-  # calculate how many years in the duration
-  years_in_current_chunk <- chunk_end_years[ chunk_count_index ] - chunk_start_years[ chunk_count_index ] + 1
-  # define dim for 3-D data
-  array_dim <- c( dim( AGR_fin_block )[ 1 : 2 ], 12 * years_in_current_chunk ) # the dim for AGR_temp_data should always be the same in each nc file
-  # time array has no need to be reshaped -- it's a one dimensional vector
-  time_bnds_dim <- c( dim( time_bnds_fin_block )[ 1 ], 12 * years_in_current_chunk )
-  # reshaping
-  dim( AGR_array ) <- array_dim
-  dim( ENE_array ) <- array_dim
-  dim( IND_array ) <- array_dim
-  dim( NRTR_array ) <- array_dim
-  dim( ROAD_array ) <- array_dim
-  dim( RCOR_array ) <- array_dim
-  dim( RCOC_array ) <- array_dim
-  dim( RCOO_array ) <- array_dim
-  dim( SLV_array ) <- array_dim
-  dim( WST_array ) <- array_dim
-  dim( SHP_array ) <- array_dim
-  time_array <- time_array
-  dim( time_bnds_array ) <- time_bnds_dim
-
-  # create flat data block
   # the order of sectors is as below:
   #  0: Agriculture;
   #  1: Energy Sector;
@@ -2046,19 +1970,49 @@ singleVarChunking_subVOCemissions <- function( VOC_em,
   #  6: Waste;
   #  7: International Shipping
 
-  flat_dim <- c( array_dim[ 1 ], array_dim[ 2 ], 11 , array_dim[ 3 ] )
-  flat_array <- array( dim = flat_dim )
-  flat_array[ , , 1 , ] <- AGR_array
-  flat_array[ , , 2 , ] <- ENE_array
-  flat_array[ , , 3 , ] <- IND_array
-  flat_array[ , , 4 , ] <- NRTR_array
-  flat_array[ , , 5 , ] <- ROAD_array
-  flat_array[ , , 6 , ] <- RCOR_array
-  flat_array[ , , 7 , ] <- RCOC_array
-  flat_array[ , , 8 , ] <- RCOO_array
-  flat_array[ , , 9 , ] <- SLV_array
-  flat_array[ , , 10 , ] <- WST_array
-  flat_array[ , , 11 , ] <- SHP_array
+  # read in each nc file and extract variables
+  # create empty arrays for storage
+  sectors <- c( 'AGR', 'ENE', 'IND', 'NRTR', 'ROAD', 'RCOR', 'RCOC', 'RCOO', 'SLV', 'WST', 'SHP' )
+  n_chunk_years <- ( chunk_end_years - chunk_start_years + 1 )[ chunk_count_index ]
+  n_months <- 12 * n_chunk_years
+
+  flat_array <- NULL
+  time_array <- numeric( n_months )
+  time_bnds_array <- array( dim = c( 2, n_months ) )
+  current_month <- 1
+
+  for ( fin_grid in fin_grid_list ) {
+      nc <- nc_open( file.path( input_dir, fin_grid ) )
+
+      # Build the final array if this is the first pass through. Note that the
+      # dimension of the first sector should always be the same as the other
+      # sectors within this file and across all other.
+      if ( current_month == 1 ) {
+          grid_dims <- nc[[ c( 'var', sectors[[1]], 'size' ) ]]
+          flat_array <- array( dim = c( grid_dims[ 1:2 ], length( sectors ), n_months ) )
+
+          MD_global_total_emission_1st_year <- ncatt_get( nc, 0, 'global_total_emission' )[[ 2 ]]
+      }
+
+      # Extract values of global_total_emission attribute from first year and last year
+      if ( current_month == n_months - 12 + 1 ) {
+          MD_global_total_emission_last_year <- ncatt_get( nc, 0, 'global_total_emission' )[[ 2 ]]
+      }
+
+      # Put the data into our pre-built arrays in 12-month chunks
+      month_range <- current_month:(current_month + 12 - 1)
+      for ( i in seq_along( sectors ) ) {
+          flat_array[ , , i, month_range ] <- ncvar_get( nc, sectors[ i ] )
+      }
+
+      time_array[ month_range ] <- ncvar_get( nc, 'time' )
+      time_bnds_array[ , month_range ] <- ncvar_get( nc, 'time_bnds' )
+
+      current_month <- current_month + 12
+
+      nc_close( nc )
+  }
+
 
   # generate nc file
 
@@ -2127,7 +2081,14 @@ singleVarChunking_subVOCemissions <- function( VOC_em,
   # put nc variables into the nc file
   printLog( paste( 'Writing', nc_file_name ) )
 
-  ncvar_put( nc_new, flat_var, flat_array )
+  # write the data in 6 pieces to allow for lower-memory devices
+  for ( sub_range in seq( n_months / 6, n_months, length.out = 6 ) ) {
+      m1 <- 1 + sub_range - n_months / 6
+      m2 <- sub_range
+      st <- c( 1, 1, 1, m1 )
+      ct <- c( -1, -1, -1, n_months / 6)
+      ncvar_put( nc_new, flat_var, flat_array[ , , , m1:m2 ], start = st, count = ct )
+  }
   ncvar_put( nc_new, lon_bnds, t( lon_bnds_data ) )
   ncvar_put( nc_new, lat_bnds, t( lat_bnds_data ) )
   ncvar_put( nc_new, time_bnds, time_bnds_data )
@@ -2197,82 +2158,6 @@ singleVarChunking_subVOCemissions_rbulk <- function( VOC_em,
         stop( "Cannot find all files need for chunk ", year_1st, "-", year_last )
     }
 
-    # read in each nc file and extract variables
-    # create empty arrays for storage
-    # TODO: This way of growing arrays is slow and bad, re-write with array size set before the loop.
-    AGR_array <- ENE_array <- IND_array <- NRTR_array <- ROAD_array <- RCOR_array <- RCOC_array <- RCOO_array <- SLV_array <- WST_array <- SHP_array <- c( )
-    time_array <- time_bnds_array <- c( )
-
-    # go through each nc files, extract the variables and append to storage array
-    for ( fin_grid in fin_grid_list ) {
-        # open the nc file
-        nc_temp <- nc_open( file.path( input_dir, fin_grid ) )
-        # extract the data for variables
-        AGR_fin_block <- ncvar_get( nc_temp, 'AGR' )
-        ENE_fin_block <- ncvar_get( nc_temp, 'ENE' )
-        IND_fin_block <- ncvar_get( nc_temp, 'IND' )
-        NRTR_fin_block <- ncvar_get( nc_temp, 'NRTR' )
-        ROAD_fin_block <- ncvar_get( nc_temp, 'ROAD' )
-        RCOR_fin_block <- ncvar_get( nc_temp, 'RCOR' )
-        RCOC_fin_block <- ncvar_get( nc_temp, 'RCOC' )
-        RCOO_fin_block <- ncvar_get( nc_temp, 'RCOO' )
-        SLV_fin_block <- ncvar_get( nc_temp, 'SLV' )
-        WST_fin_block <- ncvar_get( nc_temp, 'WST' )
-        SHP_fin_block <- ncvar_get( nc_temp, 'SHP' )
-        time_fin_block <- ncvar_get( nc_temp, 'time' )
-        time_bnds_fin_block <- ncvar_get( nc_temp, 'time_bnds' )
-        # close the nc file
-        nc_close( nc_temp )
-        # append the data to storage array
-        AGR_array <- c( AGR_array, AGR_fin_block )
-        ENE_array <- c( ENE_array, ENE_fin_block )
-        IND_array <- c( IND_array, IND_fin_block )
-        NRTR_array <- c( NRTR_array, NRTR_fin_block )
-        ROAD_array <- c( ROAD_array, ROAD_fin_block )
-        RCOR_array <- c( RCOR_array, RCOR_fin_block )
-        RCOC_array <- c( RCOC_array, RCOC_fin_block )
-        RCOO_array <- c( RCOO_array, RCOO_fin_block )
-        SLV_array <- c( SLV_array, SLV_fin_block )
-        WST_array <- c( WST_array, WST_fin_block )
-        SHP_array <- c( SHP_array, SHP_fin_block )
-        time_array <- c( time_array, time_fin_block )
-        time_bnds_array <- c( time_bnds_array, time_bnds_fin_block )
-    }
-
-    # extract values of global_total_emission attribute from first year and last year
-    # value from first year
-    fin_grid_1st <- fin_grid_list[ 1 ]
-    nc_temp <- nc_open( file.path( input_dir, fin_grid_1st ) )
-    MD_global_total_emission_1st_year <- ncatt_get( nc_temp, 0, 'global_total_emission' )[[ 2 ]]
-    nc_close( nc_temp )
-    # value from last year
-    fin_grid_last <- fin_grid_list[ length( fin_grid_list ) ]
-    nc_temp <- nc_open( file.path( input_dir, fin_grid_last ) )
-    MD_global_total_emission_last_year <- ncatt_get( nc_temp, 0, 'global_total_emission' )[[ 2 ]]
-
-    # reshape the array
-    # calculate how many years in the duration
-    years_in_current_chunk <- chunk_end_years[ chunk_count_index ] - chunk_start_years[ chunk_count_index ] + 1
-    # define dim for 3-D data
-    array_dim <- c( dim( AGR_fin_block )[ 1 : 2 ], 12 * years_in_current_chunk ) # the dim for AGR_temp_data should always be the same in each nc file
-    # time array has no need to be reshaped -- it's a one dimensional vector
-    time_bnds_dim <- c( dim( time_bnds_fin_block )[ 1 ], 12 * years_in_current_chunk )
-    # reshaping
-    dim( AGR_array ) <- array_dim
-    dim( ENE_array ) <- array_dim
-    dim( IND_array ) <- array_dim
-    dim( NRTR_array ) <- array_dim
-    dim( ROAD_array ) <- array_dim
-    dim( RCOR_array ) <- array_dim
-    dim( RCOC_array ) <- array_dim
-    dim( RCOO_array ) <- array_dim
-    dim( SLV_array ) <- array_dim
-    dim( WST_array ) <- array_dim
-    dim( SHP_array ) <- array_dim
-    time_array <- time_array
-    dim( time_bnds_array ) <- time_bnds_dim
-
-    # create flat data block
     # the order of sectors is as below:
     #  0: Agriculture;
     #  1: Energy Sector;
@@ -2286,19 +2171,49 @@ singleVarChunking_subVOCemissions_rbulk <- function( VOC_em,
     #  6: Waste;
     #  7: International Shipping
 
-    flat_dim <- c( array_dim[ 1 ], array_dim[ 2 ], 11 , array_dim[ 3 ] )
-    flat_array <- array( dim = flat_dim )
-    flat_array[ , , 1 , ] <- AGR_array
-    flat_array[ , , 2 , ] <- ENE_array
-    flat_array[ , , 3 , ] <- IND_array
-    flat_array[ , , 4 , ] <- NRTR_array
-    flat_array[ , , 5 , ] <- ROAD_array
-    flat_array[ , , 6 , ] <- RCOR_array
-    flat_array[ , , 7 , ] <- RCOC_array
-    flat_array[ , , 8 , ] <- RCOO_array
-    flat_array[ , , 9 , ] <- SLV_array
-    flat_array[ , , 10 , ] <- WST_array
-    flat_array[ , , 11 , ] <- SHP_array
+    # read in each nc file and extract variables
+    # create empty arrays for storage
+    sectors <- c( 'AGR', 'ENE', 'IND', 'NRTR', 'ROAD', 'RCOR', 'RCOC', 'RCOO', 'SLV', 'WST', 'SHP' )
+    n_chunk_years <- ( chunk_end_years - chunk_start_years + 1 )[ chunk_count_index ]
+    n_months <- 12 * n_chunk_years
+
+    flat_array <- NULL
+    time_array <- numeric( n_months )
+    time_bnds_array <- array( dim = c( 2, n_months ) )
+    current_month <- 1
+
+    for ( fin_grid in fin_grid_list ) {
+        nc <- nc_open( file.path( input_dir, fin_grid ) )
+
+        # Build the final array if this is the first pass through. Note that the
+        # dimension of the first sector should always be the same as the other
+        # sectors within this file and across all other.
+        if ( current_month == 1 ) {
+            grid_dims <- nc[[ c( 'var', sectors[[1]], 'size' ) ]]
+            flat_array <- array( dim = c( grid_dims[ 1:2 ], length( sectors ), n_months ) )
+
+            MD_global_total_emission_1st_year <- ncatt_get( nc, 0, 'global_total_emission' )[[ 2 ]]
+        }
+
+        # Extract values of global_total_emission attribute from first year and last year
+        if ( current_month == n_months - 12 + 1 ) {
+            MD_global_total_emission_last_year <- ncatt_get( nc, 0, 'global_total_emission' )[[ 2 ]]
+        }
+
+        # Put the data into our pre-built arrays in 12-month chunks
+        month_range <- current_month:(current_month + 12 - 1)
+        for ( i in seq_along( sectors ) ) {
+            flat_array[ , , i, month_range ] <- ncvar_get( nc, sectors[ i ] )
+        }
+
+        time_array[ month_range ] <- ncvar_get( nc, 'time' )
+        time_bnds_array[ , month_range ] <- ncvar_get( nc, 'time_bnds' )
+
+        current_month <- current_month + 12
+
+        nc_close( nc )
+    }
+
 
     # generate nc file
 
@@ -2367,7 +2282,14 @@ singleVarChunking_subVOCemissions_rbulk <- function( VOC_em,
     # put nc variables into the nc file
     printLog( paste( 'Writing', nc_file_name ) )
 
-    ncvar_put( nc_new, flat_var, flat_array )
+    # write the data in 6 pieces to allow for lower-memory devices
+    for ( sub_range in seq( n_months / 6, n_months, length.out = 6 ) ) {
+        m1 <- 1 + sub_range - n_months / 6
+        m2 <- sub_range
+        st <- c( 1, 1, 1, m1 )
+        ct <- c( -1, -1, -1, n_months / 6)
+        ncvar_put( nc_new, flat_var, flat_array[ , , , m1:m2 ], start = st, count = ct )
+    }
     ncvar_put( nc_new, lon_bnds, t( lon_bnds_data ) )
     ncvar_put( nc_new, lat_bnds, t( lat_bnds_data ) )
     ncvar_put( nc_new, time_bnds, time_bnds_data )
@@ -2437,82 +2359,6 @@ singleVarChunking_subVOCemissions_coalfuel <- function( VOC_em,
         stop( "Cannot find all files need for chunk ", year_1st, "-", year_last )
     }
 
-    # read in each nc file and extract variables
-    # create empty arrays for storage
-    # TODO: This way of growing arrays is slow and bad, re-write with array size set before the loop.
-    AGR_array <- ENE_array <- IND_array <- NRTR_array <- ROAD_array <- RCOR_array <- RCOC_array <- RCOO_array <- SLV_array <- WST_array <- SHP_array <- c( )
-    time_array <- time_bnds_array <- c( )
-
-    # go through each nc files, extract the variables and append to storage array
-    for ( fin_grid in fin_grid_list ) {
-        # open the nc file
-        nc_temp <- nc_open( file.path( input_dir, fin_grid ) )
-        # extract the data for variables
-        AGR_fin_block <- ncvar_get( nc_temp, 'AGR' )
-        ENE_fin_block <- ncvar_get( nc_temp, 'ENE' )
-        IND_fin_block <- ncvar_get( nc_temp, 'IND' )
-        NRTR_fin_block <- ncvar_get( nc_temp, 'NRTR' )
-        ROAD_fin_block <- ncvar_get( nc_temp, 'ROAD' )
-        RCOR_fin_block <- ncvar_get( nc_temp, 'RCOR' )
-        RCOC_fin_block <- ncvar_get( nc_temp, 'RCOC' )
-        RCOO_fin_block <- ncvar_get( nc_temp, 'RCOO' )
-        SLV_fin_block <- ncvar_get( nc_temp, 'SLV' )
-        WST_fin_block <- ncvar_get( nc_temp, 'WST' )
-        SHP_fin_block <- ncvar_get( nc_temp, 'SHP' )
-        time_fin_block <- ncvar_get( nc_temp, 'time' )
-        time_bnds_fin_block <- ncvar_get( nc_temp, 'time_bnds' )
-        # close the nc file
-        nc_close( nc_temp )
-        # append the data to storage array
-        AGR_array <- c( AGR_array, AGR_fin_block )
-        ENE_array <- c( ENE_array, ENE_fin_block )
-        IND_array <- c( IND_array, IND_fin_block )
-        NRTR_array <- c( NRTR_array, NRTR_fin_block )
-        ROAD_array <- c( ROAD_array, ROAD_fin_block )
-        RCOR_array <- c( RCOR_array, RCOR_fin_block )
-        RCOC_array <- c( RCOC_array, RCOC_fin_block )
-        RCOO_array <- c( RCOO_array, RCOO_fin_block )
-        SLV_array <- c( SLV_array, SLV_fin_block )
-        WST_array <- c( WST_array, WST_fin_block )
-        SHP_array <- c( SHP_array, SHP_fin_block )
-        time_array <- c( time_array, time_fin_block )
-        time_bnds_array <- c( time_bnds_array, time_bnds_fin_block )
-    }
-
-    # extract values of global_total_emission attribute from first year and last year
-    # value from first year
-    fin_grid_1st <- fin_grid_list[ 1 ]
-    nc_temp <- nc_open( file.path( input_dir, fin_grid_1st ) )
-    MD_global_total_emission_1st_year <- ncatt_get( nc_temp, 0, 'global_total_emission' )[[ 2 ]]
-    nc_close( nc_temp )
-    # value from last year
-    fin_grid_last <- fin_grid_list[ length( fin_grid_list ) ]
-    nc_temp <- nc_open( file.path( input_dir, fin_grid_last ) )
-    MD_global_total_emission_last_year <- ncatt_get( nc_temp, 0, 'global_total_emission' )[[ 2 ]]
-
-    # reshape the array
-    # calculate how many years in the duration
-    years_in_current_chunk <- chunk_end_years[ chunk_count_index ] - chunk_start_years[ chunk_count_index ] + 1
-    # define dim for 3-D data
-    array_dim <- c( dim( AGR_fin_block )[ 1 : 2 ], 12 * years_in_current_chunk ) # the dim for AGR_temp_data should always be the same in each nc file
-    # time array has no need to be reshaped -- it's a one dimensional vector
-    time_bnds_dim <- c( dim( time_bnds_fin_block )[ 1 ], 12 * years_in_current_chunk )
-    # reshaping
-    dim( AGR_array ) <- array_dim
-    dim( ENE_array ) <- array_dim
-    dim( IND_array ) <- array_dim
-    dim( NRTR_array ) <- array_dim
-    dim( ROAD_array ) <- array_dim
-    dim( RCOR_array ) <- array_dim
-    dim( RCOC_array ) <- array_dim
-    dim( RCOO_array ) <- array_dim
-    dim( SLV_array ) <- array_dim
-    dim( WST_array ) <- array_dim
-    dim( SHP_array ) <- array_dim
-    time_array <- time_array
-    dim( time_bnds_array ) <- time_bnds_dim
-
-    # create flat data block
     # the order of sectors is as below:
     #  0: Agriculture;
     #  1: Energy Sector;
@@ -2526,19 +2372,49 @@ singleVarChunking_subVOCemissions_coalfuel <- function( VOC_em,
     #  6: Waste;
     #  7: International Shipping
 
-    flat_dim <- c( array_dim[ 1 ], array_dim[ 2 ], 11 , array_dim[ 3 ] )
-    flat_array <- array( dim = flat_dim )
-    flat_array[ , , 1 , ] <- AGR_array
-    flat_array[ , , 2 , ] <- ENE_array
-    flat_array[ , , 3 , ] <- IND_array
-    flat_array[ , , 4 , ] <- NRTR_array
-    flat_array[ , , 5 , ] <- ROAD_array
-    flat_array[ , , 6 , ] <- RCOR_array
-    flat_array[ , , 7 , ] <- RCOC_array
-    flat_array[ , , 8 , ] <- RCOO_array
-    flat_array[ , , 9 , ] <- SLV_array
-    flat_array[ , , 10 , ] <- WST_array
-    flat_array[ , , 11 , ] <- SHP_array
+    # read in each nc file and extract variables
+    # create empty arrays for storage
+    sectors <- c( 'AGR', 'ENE', 'IND', 'NRTR', 'ROAD', 'RCOR', 'RCOC', 'RCOO', 'SLV', 'WST', 'SHP' )
+    n_chunk_years <- ( chunk_end_years - chunk_start_years + 1 )[ chunk_count_index ]
+    n_months <- 12 * n_chunk_years
+
+    flat_array <- NULL
+    time_array <- numeric( n_months )
+    time_bnds_array <- array( dim = c( 2, n_months ) )
+    current_month <- 1
+
+    for ( fin_grid in fin_grid_list ) {
+        nc <- nc_open( file.path( input_dir, fin_grid ) )
+
+        # Build the final array if this is the first pass through. Note that the
+        # dimension of the first sector should always be the same as the other
+        # sectors within this file and across all other.
+        if ( current_month == 1 ) {
+            grid_dims <- nc[[ c( 'var', sectors[[1]], 'size' ) ]]
+            flat_array <- array( dim = c( grid_dims[ 1:2 ], length( sectors ), n_months ) )
+
+            MD_global_total_emission_1st_year <- ncatt_get( nc, 0, 'global_total_emission' )[[ 2 ]]
+        }
+
+        # Extract values of global_total_emission attribute from first year and last year
+        if ( current_month == n_months - 12 + 1 ) {
+            MD_global_total_emission_last_year <- ncatt_get( nc, 0, 'global_total_emission' )[[ 2 ]]
+        }
+
+        # Put the data into our pre-built arrays in 12-month chunks
+        month_range <- current_month:(current_month + 12 - 1)
+        for ( i in seq_along( sectors ) ) {
+            flat_array[ , , i, month_range ] <- ncvar_get( nc, sectors[ i ] )
+        }
+
+        time_array[ month_range ] <- ncvar_get( nc, 'time' )
+        time_bnds_array[ , month_range ] <- ncvar_get( nc, 'time_bnds' )
+
+        current_month <- current_month + 12
+
+        nc_close( nc )
+    }
+
 
     # generate nc file
 
@@ -2607,7 +2483,14 @@ singleVarChunking_subVOCemissions_coalfuel <- function( VOC_em,
     # put nc variables into the nc file
     printLog( paste( 'Writing', nc_file_name ) )
 
-    ncvar_put( nc_new, flat_var, flat_array )
+    # write the data in 6 pieces to allow for lower-memory devices
+    for ( sub_range in seq( n_months / 6, n_months, length.out = 6 ) ) {
+        m1 <- 1 + sub_range - n_months / 6
+        m2 <- sub_range
+        st <- c( 1, 1, 1, m1 )
+        ct <- c( -1, -1, -1, n_months / 6)
+        ncvar_put( nc_new, flat_var, flat_array[ , , , m1:m2 ], start = st, count = ct )
+    }
     ncvar_put( nc_new, lon_bnds, t( lon_bnds_data ) )
     ncvar_put( nc_new, lat_bnds, t( lat_bnds_data ) )
     ncvar_put( nc_new, time_bnds, time_bnds_data )
@@ -2678,82 +2561,6 @@ singleVarChunking_subVOCemissions_solidbiofuel <- function( VOC_em,
         stop( "Cannot find all files need for chunk ", year_1st, "-", year_last )
     }
 
-    # read in each nc file and extract variables
-    # create empty arrays for storage
-    # TODO: This way of growing arrays is slow and bad, re-write with array size set before the loop.
-    AGR_array <- ENE_array <- IND_array <- NRTR_array <- ROAD_array <- RCOR_array <- RCOC_array <- RCOO_array <- SLV_array <- WST_array <- SHP_array <- c( )
-    time_array <- time_bnds_array <- c( )
-
-    # go through each nc files, extract the variables and append to storage array
-    for ( fin_grid in fin_grid_list ) {
-        # open the nc file
-        nc_temp <- nc_open( file.path( input_dir, fin_grid ) )
-        # extract the data for variables
-        AGR_fin_block <- ncvar_get( nc_temp, 'AGR' )
-        ENE_fin_block <- ncvar_get( nc_temp, 'ENE' )
-        IND_fin_block <- ncvar_get( nc_temp, 'IND' )
-        NRTR_fin_block <- ncvar_get( nc_temp, 'NRTR' )
-        ROAD_fin_block <- ncvar_get( nc_temp, 'ROAD' )
-        RCOR_fin_block <- ncvar_get( nc_temp, 'RCOR' )
-        RCOC_fin_block <- ncvar_get( nc_temp, 'RCOC' )
-        RCOO_fin_block <- ncvar_get( nc_temp, 'RCOO' )
-        SLV_fin_block <- ncvar_get( nc_temp, 'SLV' )
-        WST_fin_block <- ncvar_get( nc_temp, 'WST' )
-        SHP_fin_block <- ncvar_get( nc_temp, 'SHP' )
-        time_fin_block <- ncvar_get( nc_temp, 'time' )
-        time_bnds_fin_block <- ncvar_get( nc_temp, 'time_bnds' )
-        # close the nc file
-        nc_close( nc_temp )
-        # append the data to storage array
-        AGR_array <- c( AGR_array, AGR_fin_block )
-        ENE_array <- c( ENE_array, ENE_fin_block )
-        IND_array <- c( IND_array, IND_fin_block )
-        NRTR_array <- c( NRTR_array, NRTR_fin_block )
-        ROAD_array <- c( ROAD_array, ROAD_fin_block )
-        RCOR_array <- c( RCOR_array, RCOR_fin_block )
-        RCOC_array <- c( RCOC_array, RCOC_fin_block )
-        RCOO_array <- c( RCOO_array, RCOO_fin_block )
-        SLV_array <- c( SLV_array, SLV_fin_block )
-        WST_array <- c( WST_array, WST_fin_block )
-        SHP_array <- c( SHP_array, SHP_fin_block )
-        time_array <- c( time_array, time_fin_block )
-        time_bnds_array <- c( time_bnds_array, time_bnds_fin_block )
-    }
-
-    # extract values of global_total_emission attribute from first year and last year
-    # value from first year
-    fin_grid_1st <- fin_grid_list[ 1 ]
-    nc_temp <- nc_open( file.path( input_dir, fin_grid_1st ) )
-    MD_global_total_emission_1st_year <- ncatt_get( nc_temp, 0, 'global_total_emission' )[[ 2 ]]
-    nc_close( nc_temp )
-    # value from last year
-    fin_grid_last <- fin_grid_list[ length( fin_grid_list ) ]
-    nc_temp <- nc_open( file.path( input_dir, fin_grid_last ) )
-    MD_global_total_emission_last_year <- ncatt_get( nc_temp, 0, 'global_total_emission' )[[ 2 ]]
-
-    # reshape the array
-    # calculate how many years in the duration
-    years_in_current_chunk <- chunk_end_years[ chunk_count_index ] - chunk_start_years[ chunk_count_index ] + 1
-    # define dim for 3-D data
-    array_dim <- c( dim( AGR_fin_block )[ 1 : 2 ], 12 * years_in_current_chunk ) # the dim for AGR_temp_data should always be the same in each nc file
-    # time array has no need to be reshaped -- it's a one dimensional vector
-    time_bnds_dim <- c( dim( time_bnds_fin_block )[ 1 ], 12 * years_in_current_chunk )
-    # reshaping
-    dim( AGR_array ) <- array_dim
-    dim( ENE_array ) <- array_dim
-    dim( IND_array ) <- array_dim
-    dim( NRTR_array ) <- array_dim
-    dim( ROAD_array ) <- array_dim
-    dim( RCOR_array ) <- array_dim
-    dim( RCOC_array ) <- array_dim
-    dim( RCOO_array ) <- array_dim
-    dim( SLV_array ) <- array_dim
-    dim( WST_array ) <- array_dim
-    dim( SHP_array ) <- array_dim
-    time_array <- time_array
-    dim( time_bnds_array ) <- time_bnds_dim
-
-    # create flat data block
     # the order of sectors is as below:
     #  0: Agriculture;
     #  1: Energy Sector;
@@ -2767,19 +2574,49 @@ singleVarChunking_subVOCemissions_solidbiofuel <- function( VOC_em,
     #  6: Waste;
     #  7: International Shipping
 
-    flat_dim <- c( array_dim[ 1 ], array_dim[ 2 ], 11 , array_dim[ 3 ] )
-    flat_array <- array( dim = flat_dim )
-    flat_array[ , , 1 , ] <- AGR_array
-    flat_array[ , , 2 , ] <- ENE_array
-    flat_array[ , , 3 , ] <- IND_array
-    flat_array[ , , 4 , ] <- NRTR_array
-    flat_array[ , , 5 , ] <- ROAD_array
-    flat_array[ , , 6 , ] <- RCOR_array
-    flat_array[ , , 7 , ] <- RCOC_array
-    flat_array[ , , 8 , ] <- RCOO_array
-    flat_array[ , , 9 , ] <- SLV_array
-    flat_array[ , , 10 , ] <- WST_array
-    flat_array[ , , 11 , ] <- SHP_array
+    # read in each nc file and extract variables
+    # create empty arrays for storage
+    sectors <- c( 'AGR', 'ENE', 'IND', 'NRTR', 'ROAD', 'RCOR', 'RCOC', 'RCOO', 'SLV', 'WST', 'SHP' )
+    n_chunk_years <- ( chunk_end_years - chunk_start_years + 1 )[ chunk_count_index ]
+    n_months <- 12 * n_chunk_years
+
+    flat_array <- NULL
+    time_array <- numeric( n_months )
+    time_bnds_array <- array( dim = c( 2, n_months ) )
+    current_month <- 1
+
+    for ( fin_grid in fin_grid_list ) {
+        nc <- nc_open( file.path( input_dir, fin_grid ) )
+
+        # Build the final array if this is the first pass through. Note that the
+        # dimension of the first sector should always be the same as the other
+        # sectors within this file and across all other.
+        if ( current_month == 1 ) {
+            grid_dims <- nc[[ c( 'var', sectors[[1]], 'size' ) ]]
+            flat_array <- array( dim = c( grid_dims[ 1:2 ], length( sectors ), n_months ) )
+
+            MD_global_total_emission_1st_year <- ncatt_get( nc, 0, 'global_total_emission' )[[ 2 ]]
+        }
+
+        # Extract values of global_total_emission attribute from first year and last year
+        if ( current_month == n_months - 12 + 1 ) {
+            MD_global_total_emission_last_year <- ncatt_get( nc, 0, 'global_total_emission' )[[ 2 ]]
+        }
+
+        # Put the data into our pre-built arrays in 12-month chunks
+        month_range <- current_month:(current_month + 12 - 1)
+        for ( i in seq_along( sectors ) ) {
+            flat_array[ , , i, month_range ] <- ncvar_get( nc, sectors[ i ] )
+        }
+
+        time_array[ month_range ] <- ncvar_get( nc, 'time' )
+        time_bnds_array[ , month_range ] <- ncvar_get( nc, 'time_bnds' )
+
+        current_month <- current_month + 12
+
+        nc_close( nc )
+    }
+
 
     # generate nc file
 
@@ -2848,7 +2685,14 @@ singleVarChunking_subVOCemissions_solidbiofuel <- function( VOC_em,
     # put nc variables into the nc file
     printLog( paste( 'Writing', nc_file_name ) )
 
-    ncvar_put( nc_new, flat_var, flat_array )
+    # write the data in 6 pieces to allow for lower-memory devices
+    for ( sub_range in seq( n_months / 6, n_months, length.out = 6 ) ) {
+        m1 <- 1 + sub_range - n_months / 6
+        m2 <- sub_range
+        st <- c( 1, 1, 1, m1 )
+        ct <- c( -1, -1, -1, n_months / 6)
+        ncvar_put( nc_new, flat_var, flat_array[ , , , m1:m2 ], start = st, count = ct )
+    }
     ncvar_put( nc_new, lon_bnds, t( lon_bnds_data ) )
     ncvar_put( nc_new, lat_bnds, t( lat_bnds_data ) )
     ncvar_put( nc_new, time_bnds, time_bnds_data )
@@ -2917,82 +2761,6 @@ singleVarChunking_rbulkemissions <- function( em,
         stop( "Cannot find all files need for chunk ", year_1st, "-", year_last )
     }
 
-    # read in each nc file and extract variables
-    # create empty arrays for storage
-    # TODO: This way of growing arrays is slow and bad, re-write with array size set before the loop.
-    AGR_array <- ENE_array <- IND_array <- NRTR_array <- ROAD_array <- RCOR_array <- RCOC_array <- RCOO_array <- SLV_array <- WST_array <- SHP_array <- c( )
-    time_array <- time_bnds_array <- c( )
-
-    # go through each nc files, extract the variables and append to storage array
-    for ( fin_grid in fin_grid_list ) {
-        # open the nc file
-        nc_temp <- nc_open( file.path( input_dir, fin_grid ) )
-        # extract the data for variables
-        AGR_fin_block <- ncvar_get( nc_temp, 'AGR' )
-        ENE_fin_block <- ncvar_get( nc_temp, 'ENE' )
-        IND_fin_block <- ncvar_get( nc_temp, 'IND' )
-        NRTR_fin_block <- ncvar_get( nc_temp, 'NRTR' )
-        ROAD_fin_block <- ncvar_get( nc_temp, 'ROAD' )
-        RCOR_fin_block <- ncvar_get( nc_temp, 'RCOR' )
-        RCOC_fin_block <- ncvar_get( nc_temp, 'RCOC' )
-        RCOO_fin_block <- ncvar_get( nc_temp, 'RCOO' )
-        SLV_fin_block <- ncvar_get( nc_temp, 'SLV' )
-        WST_fin_block <- ncvar_get( nc_temp, 'WST' )
-        SHP_fin_block <- ncvar_get( nc_temp, 'SHP' )
-        time_fin_block <- ncvar_get( nc_temp, 'time' )
-        time_bnds_fin_block <- ncvar_get( nc_temp, 'time_bnds' )
-        # close the nc file
-        nc_close( nc_temp )
-        # append the data to storage array
-        AGR_array <- c( AGR_array, AGR_fin_block )
-        ENE_array <- c( ENE_array, ENE_fin_block )
-        IND_array <- c( IND_array, IND_fin_block )
-        NRTR_array <- c( NRTR_array, NRTR_fin_block )
-        ROAD_array <- c( ROAD_array, ROAD_fin_block )
-        RCOR_array <- c( RCOR_array, RCOR_fin_block )
-        RCOC_array <- c( RCOC_array, RCOC_fin_block )
-        RCOO_array <- c( RCOO_array, RCOO_fin_block )
-        SLV_array <- c( SLV_array, SLV_fin_block )
-        WST_array <- c( WST_array, WST_fin_block )
-        SHP_array <- c( SHP_array, SHP_fin_block )
-        time_array <- c( time_array, time_fin_block )
-        time_bnds_array <- c( time_bnds_array, time_bnds_fin_block )
-    }
-
-    # extract values of global_total_emission attribute from first year and last year
-    # value from first year
-    fin_grid_1st <- fin_grid_list[ 1 ]
-    nc_temp <- nc_open( file.path( input_dir, fin_grid_1st ) )
-    MD_global_total_emission_1st_year <- ncatt_get( nc_temp, 0, 'global_total_emission' )[[ 2 ]]
-    nc_close( nc_temp )
-    # value from last year
-    fin_grid_last <- fin_grid_list[ length( fin_grid_list ) ]
-    nc_temp <- nc_open( file.path( input_dir, fin_grid_last ) )
-    MD_global_total_emission_last_year <- ncatt_get( nc_temp, 0, 'global_total_emission' )[[ 2 ]]
-
-    # reshape the array
-    # calculate how many years in the duration
-    years_in_current_chunk <- chunk_end_years[ chunk_count_index ] - chunk_start_years[ chunk_count_index ] + 1
-    # define dim for 3-D data
-    array_dim <- c( dim( AGR_fin_block )[ 1 : 2 ], 12 * years_in_current_chunk ) # the dim for AGR_temp_data should always be the same in each nc file
-    # time array has no need to be reshaped -- it's a one dimensional vector
-    time_bnds_dim <- c( dim( time_bnds_fin_block )[ 1 ], 12 * years_in_current_chunk )
-    # reshaping
-    dim( AGR_array ) <- array_dim
-    dim( ENE_array ) <- array_dim
-    dim( IND_array ) <- array_dim
-    dim( NRTR_array ) <- array_dim
-    dim( ROAD_array ) <- array_dim
-    dim( RCOR_array ) <- array_dim
-    dim( RCOC_array ) <- array_dim
-    dim( RCOO_array ) <- array_dim
-    dim( SLV_array ) <- array_dim
-    dim( WST_array ) <- array_dim
-    dim( SHP_array ) <- array_dim
-    time_array <- time_array
-    dim( time_bnds_array ) <- time_bnds_dim
-
-    # create flat data block
     # the order of sectors is as below:
     #  0: Agriculture;
     #  1: Energy Sector;
@@ -3006,22 +2774,50 @@ singleVarChunking_rbulkemissions <- function( em,
     #  6: Waste;
     #  7: International Shipping
 
-    flat_dim <- c( array_dim[ 1 ], array_dim[ 2 ], 11 , array_dim[ 3 ] )
-    flat_array <- array( dim = flat_dim )
-    flat_array[ , , 1 , ] <- AGR_array
-    flat_array[ , , 2 , ] <- ENE_array
-    flat_array[ , , 3 , ] <- IND_array
-    flat_array[ , , 4 , ] <- NRTR_array
-    flat_array[ , , 5 , ] <- ROAD_array
-    flat_array[ , , 6 , ] <- RCOR_array
-    flat_array[ , , 7 , ] <- RCOC_array
-    flat_array[ , , 8 , ] <- RCOO_array
-    flat_array[ , , 9 , ] <- SLV_array
-    flat_array[ , , 10 , ] <- WST_array
-    flat_array[ , , 11 , ] <- SHP_array
+    # read in each nc file and extract variables
+    # create empty arrays for storage
+    sectors <- c( 'AGR', 'ENE', 'IND', 'NRTR', 'ROAD', 'RCOR', 'RCOC', 'RCOO', 'SLV', 'WST', 'SHP' )
+    n_chunk_years <- ( chunk_end_years - chunk_start_years + 1 )[ chunk_count_index ]
+    n_months <- 12 * n_chunk_years
+
+    flat_array <- NULL
+    time_array <- numeric( n_months )
+    time_bnds_array <- array( dim = c( 2, n_months ) )
+    current_month <- 1
+
+    for ( fin_grid in fin_grid_list ) {
+        nc <- nc_open( file.path( input_dir, fin_grid ) )
+
+        # Build the final array if this is the first pass through. Note that the
+        # dimension of the first sector should always be the same as the other
+        # sectors within this file and across all other.
+        if ( current_month == 1 ) {
+            grid_dims <- nc[[ c( 'var', sectors[[1]], 'size' ) ]]
+            flat_array <- array( dim = c( grid_dims[ 1:2 ], length( sectors ), n_months ) )
+
+            MD_global_total_emission_1st_year <- ncatt_get( nc, 0, 'global_total_emission' )[[ 2 ]]
+        }
+
+        # Extract values of global_total_emission attribute from first year and last year
+        if ( current_month == n_months - 12 + 1 ) {
+            MD_global_total_emission_last_year <- ncatt_get( nc, 0, 'global_total_emission' )[[ 2 ]]
+        }
+
+        # Put the data into our pre-built arrays in 12-month chunks
+        month_range <- current_month:(current_month + 12 - 1)
+        for ( i in seq_along( sectors ) ) {
+            flat_array[ , , i, month_range ] <- ncvar_get( nc, sectors[ i ] )
+        }
+
+        time_array[ month_range ] <- ncvar_get( nc, 'time' )
+        time_bnds_array[ , month_range ] <- ncvar_get( nc, 'time_bnds' )
+
+        current_month <- current_month + 12
+
+        nc_close( nc )
+    }
 
     # generate nc file
-
     # the new nc generation routine begins here
     lons <- seq( -180 + grid_resolution / 2, 180 - grid_resolution / 2, grid_resolution )
     lats <- seq( -90 + grid_resolution / 2, 90 - grid_resolution / 2, grid_resolution )
@@ -3060,7 +2856,7 @@ singleVarChunking_rbulkemissions <- function( em,
     # generate flat_var variable name
     MD_variable_id_value <- paste0( em, '_em_ranthro' )
     flat_var_name <- MD_variable_id_value
-    flat_var_longname <- paste0( em, ' Anthropogenic Emissions - Supplemental Data (all fuel except coal and biofuel)' )
+    flat_var_longname <- paste0( em, ' Anthropogenic Emissions - Other Fuel Data (all emssions except from coal and biofuel)' )
 
 
     # define unit and missing value
@@ -3084,11 +2880,19 @@ singleVarChunking_rbulkemissions <- function( em,
     # put nc variables into the nc file
     printLog( paste( 'Writing', nc_file_name ) )
 
-    ncvar_put( nc_new, flat_var, flat_array )
+    # write the data in 6 pieces to allow for lower-memory devices
+    for ( sub_range in seq( n_months / 6, n_months, length.out = 6 ) ) {
+        m1 <- 1 + sub_range - n_months / 6
+        m2 <- sub_range
+        st <- c( 1, 1, 1, m1 )
+        ct <- c( -1, -1, -1, n_months / 6)
+        ncvar_put( nc_new, flat_var, flat_array[ , , , m1:m2 ], start = st, count = ct )
+    }
     ncvar_put( nc_new, lon_bnds, t( lon_bnds_data ) )
     ncvar_put( nc_new, lat_bnds, t( lat_bnds_data ) )
     ncvar_put( nc_new, time_bnds, time_bnds_data )
     ncvar_put( nc_new, sector_bnds, t( sector_bnds_data ) )
+
 
     title <- paste( 'Annual REMAINING Anthropogenic Emissions of', em, 'prepared for input4GBDMAPS' )
     add_global_attributes_single_var( nc_new, title, flat_var_name, MD_dataset_version_number_value, MD_source_value,
@@ -3152,82 +2956,6 @@ singleVarChunking_solidbiofuelemissions <- function( em,
       stop( "Cannot find all files need for chunk ", year_1st, "-", year_last )
   }
 
-  # read in each nc file and extract variables
-  # create empty arrays for storage
-  # TODO: This way of growing arrays is slow and bad, re-write with array size set before the loop.
-  AGR_array <- ENE_array <- IND_array <- NRTR_array <- ROAD_array <- RCOR_array <- RCOC_array <- RCOO_array <- SLV_array <- WST_array <- SHP_array <- c( )
-  time_array <- time_bnds_array <- c( )
-
-  # go through each nc files, extract the variables and append to storage array
-  for ( fin_grid in fin_grid_list ) {
-    # open the nc file
-    nc_temp <- nc_open( file.path( input_dir, fin_grid ) )
-    # extract the data for variables
-    AGR_fin_block <- ncvar_get( nc_temp, 'AGR' )
-    ENE_fin_block <- ncvar_get( nc_temp, 'ENE' )
-    IND_fin_block <- ncvar_get( nc_temp, 'IND' )
-    NRTR_fin_block <- ncvar_get( nc_temp, 'NRTR' )
-    ROAD_fin_block <- ncvar_get( nc_temp, 'ROAD' )
-    RCOR_fin_block <- ncvar_get( nc_temp, 'RCOR' )
-    RCOC_fin_block <- ncvar_get( nc_temp, 'RCOC' )
-    RCOO_fin_block <- ncvar_get( nc_temp, 'RCOO' )
-    SLV_fin_block <- ncvar_get( nc_temp, 'SLV' )
-    WST_fin_block <- ncvar_get( nc_temp, 'WST' )
-    SHP_fin_block <- ncvar_get( nc_temp, 'SHP' )
-    time_fin_block <- ncvar_get( nc_temp, 'time' )
-    time_bnds_fin_block <- ncvar_get( nc_temp, 'time_bnds' )
-    # close the nc file
-    nc_close( nc_temp )
-    # append the data to storage array
-    AGR_array <- c( AGR_array, AGR_fin_block )
-    ENE_array <- c( ENE_array, ENE_fin_block )
-    IND_array <- c( IND_array, IND_fin_block )
-    NRTR_array <- c( NRTR_array, NRTR_fin_block )
-    ROAD_array <- c( ROAD_array, ROAD_fin_block )
-    RCOR_array <- c( RCOR_array, RCOR_fin_block )
-    RCOC_array <- c( RCOC_array, RCOC_fin_block )
-    RCOO_array <- c( RCOO_array, RCOO_fin_block )
-    SLV_array <- c( SLV_array, SLV_fin_block )
-    WST_array <- c( WST_array, WST_fin_block )
-    SHP_array <- c( SHP_array, SHP_fin_block )
-    time_array <- c( time_array, time_fin_block )
-    time_bnds_array <- c( time_bnds_array, time_bnds_fin_block )
-  }
-
-  # extract values of global_total_emission attribute from first year and last year
-  # value from first year
-  fin_grid_1st <- fin_grid_list[ 1 ]
-  nc_temp <- nc_open( file.path( input_dir, fin_grid_1st ) )
-  MD_global_total_emission_1st_year <- ncatt_get( nc_temp, 0, 'global_total_emission' )[[ 2 ]]
-  nc_close( nc_temp )
-  # value from last year
-  fin_grid_last <- fin_grid_list[ length( fin_grid_list ) ]
-  nc_temp <- nc_open( file.path( input_dir, fin_grid_last ) )
-  MD_global_total_emission_last_year <- ncatt_get( nc_temp, 0, 'global_total_emission' )[[ 2 ]]
-
-  # reshape the array
-  # calculate how many years in the duration
-  years_in_current_chunk <- chunk_end_years[ chunk_count_index ] - chunk_start_years[ chunk_count_index ] + 1
-  # define dim for 3-D data
-  array_dim <- c( dim( AGR_fin_block )[ 1 : 2 ], 12 * years_in_current_chunk ) # the dim for AGR_temp_data should always be the same in each nc file
-  # time array has no need to be reshaped -- it's a one dimensional vector
-  time_bnds_dim <- c( dim( time_bnds_fin_block )[ 1 ], 12 * years_in_current_chunk )
-  # reshaping
-  dim( AGR_array ) <- array_dim
-  dim( ENE_array ) <- array_dim
-  dim( IND_array ) <- array_dim
-  dim( NRTR_array ) <- array_dim
-  dim( ROAD_array ) <- array_dim
-  dim( RCOR_array ) <- array_dim
-  dim( RCOC_array ) <- array_dim
-  dim( RCOO_array ) <- array_dim
-  dim( SLV_array ) <- array_dim
-  dim( WST_array ) <- array_dim
-  dim( SHP_array ) <- array_dim
-  time_array <- time_array
-  dim( time_bnds_array ) <- time_bnds_dim
-
-  # create flat data block
   # the order of sectors is as below:
   #  0: Agriculture;
   #  1: Energy Sector;
@@ -3241,19 +2969,48 @@ singleVarChunking_solidbiofuelemissions <- function( em,
   #  6: Waste;
   #  7: International Shipping
 
-  flat_dim <- c( array_dim[ 1 ], array_dim[ 2 ], 11 , array_dim[ 3 ] )
-  flat_array <- array( dim = flat_dim )
-  flat_array[ , , 1 , ] <- AGR_array
-  flat_array[ , , 2 , ] <- ENE_array
-  flat_array[ , , 3 , ] <- IND_array
-  flat_array[ , , 4 , ] <- NRTR_array
-  flat_array[ , , 5 , ] <- ROAD_array
-  flat_array[ , , 6 , ] <- RCOR_array
-  flat_array[ , , 7 , ] <- RCOC_array
-  flat_array[ , , 8 , ] <- RCOO_array
-  flat_array[ , , 9 , ] <- SLV_array
-  flat_array[ , , 10 , ] <- WST_array
-  flat_array[ , , 11 , ] <- SHP_array
+  # read in each nc file and extract variables
+  # create empty arrays for storage
+  sectors <- c( 'AGR', 'ENE', 'IND', 'NRTR', 'ROAD', 'RCOR', 'RCOC', 'RCOO', 'SLV', 'WST', 'SHP' )
+  n_chunk_years <- ( chunk_end_years - chunk_start_years + 1 )[ chunk_count_index ]
+  n_months <- 12 * n_chunk_years
+
+  flat_array <- NULL
+  time_array <- numeric( n_months )
+  time_bnds_array <- array( dim = c( 2, n_months ) )
+  current_month <- 1
+
+  for ( fin_grid in fin_grid_list ) {
+      nc <- nc_open( file.path( input_dir, fin_grid ) )
+
+      # Build the final array if this is the first pass through. Note that the
+      # dimension of the first sector should always be the same as the other
+      # sectors within this file and across all other.
+      if ( current_month == 1 ) {
+          grid_dims <- nc[[ c( 'var', sectors[[1]], 'size' ) ]]
+          flat_array <- array( dim = c( grid_dims[ 1:2 ], length( sectors ), n_months ) )
+
+          MD_global_total_emission_1st_year <- ncatt_get( nc, 0, 'global_total_emission' )[[ 2 ]]
+      }
+
+      # Extract values of global_total_emission attribute from first year and last year
+      if ( current_month == n_months - 12 + 1 ) {
+          MD_global_total_emission_last_year <- ncatt_get( nc, 0, 'global_total_emission' )[[ 2 ]]
+      }
+
+      # Put the data into our pre-built arrays in 12-month chunks
+      month_range <- current_month:(current_month + 12 - 1)
+      for ( i in seq_along( sectors ) ) {
+          flat_array[ , , i, month_range ] <- ncvar_get( nc, sectors[ i ] )
+      }
+
+      time_array[ month_range ] <- ncvar_get( nc, 'time' )
+      time_bnds_array[ , month_range ] <- ncvar_get( nc, 'time_bnds' )
+
+      current_month <- current_month + 12
+
+      nc_close( nc )
+  }
 
   # generate nc file
 
@@ -3319,7 +3076,15 @@ singleVarChunking_solidbiofuelemissions <- function( em,
   # put nc variables into the nc file
   printLog( paste( 'Writing', nc_file_name ) )
 
-  ncvar_put( nc_new, flat_var, flat_array )
+  # write the data in 6 pieces to allow for lower-memory devices
+  for ( sub_range in seq( n_months / 6, n_months, length.out = 6 ) ) {
+      m1 <- 1 + sub_range - n_months / 6
+      m2 <- sub_range
+      st <- c( 1, 1, 1, m1 )
+      ct <- c( -1, -1, -1, n_months / 6)
+      ncvar_put( nc_new, flat_var, flat_array[ , , , m1:m2 ], start = st, count = ct )
+  }
+
   ncvar_put( nc_new, lon_bnds, t( lon_bnds_data ) )
   ncvar_put( nc_new, lat_bnds, t( lat_bnds_data ) )
   ncvar_put( nc_new, time_bnds, time_bnds_data )
@@ -3386,82 +3151,6 @@ singleVarChunking_coalfuelemissions <- function( em,
         stop( "Cannot find all files need for chunk ", year_1st, "-", year_last )
     }
 
-    # read in each nc file and extract variables
-    # create empty arrays for storage
-    # TODO: This way of growing arrays is slow and bad, re-write with array size set before the loop.
-    AGR_array <- ENE_array <- IND_array <- NRTR_array <- ROAD_array <- RCOR_array <- RCOC_array <- RCOO_array <- SLV_array <- WST_array <- SHP_array <- c( )
-    time_array <- time_bnds_array <- c( )
-
-    # go through each nc files, extract the variables and append to storage array
-    for ( fin_grid in fin_grid_list ) {
-        # open the nc file
-        nc_temp <- nc_open( file.path( input_dir, fin_grid ) )
-        # extract the data for variables
-        AGR_fin_block <- ncvar_get( nc_temp, 'AGR' )
-        ENE_fin_block <- ncvar_get( nc_temp, 'ENE' )
-        IND_fin_block <- ncvar_get( nc_temp, 'IND' )
-        NRTR_fin_block <- ncvar_get( nc_temp, 'NRTR' )
-        ROAD_fin_block <- ncvar_get( nc_temp, 'ROAD' )
-        RCOR_fin_block <- ncvar_get( nc_temp, 'RCOR' )
-        RCOC_fin_block <- ncvar_get( nc_temp, 'RCOC' )
-        RCOO_fin_block <- ncvar_get( nc_temp, 'RCOO' )
-        SLV_fin_block <- ncvar_get( nc_temp, 'SLV' )
-        WST_fin_block <- ncvar_get( nc_temp, 'WST' )
-        SHP_fin_block <- ncvar_get( nc_temp, 'SHP' )
-        time_fin_block <- ncvar_get( nc_temp, 'time' )
-        time_bnds_fin_block <- ncvar_get( nc_temp, 'time_bnds' )
-        # close the nc file
-        nc_close( nc_temp )
-        # append the data to storage array
-        AGR_array <- c( AGR_array, AGR_fin_block )
-        ENE_array <- c( ENE_array, ENE_fin_block )
-        IND_array <- c( IND_array, IND_fin_block )
-        NRTR_array <- c( NRTR_array, NRTR_fin_block )
-        ROAD_array <- c( ROAD_array, ROAD_fin_block )
-        RCOR_array <- c( RCOR_array, RCOR_fin_block )
-        RCOC_array <- c( RCOC_array, RCOC_fin_block )
-        RCOO_array <- c( RCOO_array, RCOO_fin_block )
-        SLV_array <- c( SLV_array, SLV_fin_block )
-        WST_array <- c( WST_array, WST_fin_block )
-        SHP_array <- c( SHP_array, SHP_fin_block )
-        time_array <- c( time_array, time_fin_block )
-        time_bnds_array <- c( time_bnds_array, time_bnds_fin_block )
-    }
-
-    # extract values of global_total_emission attribute from first year and last year
-    # value from first year
-    fin_grid_1st <- fin_grid_list[ 1 ]
-    nc_temp <- nc_open( file.path( input_dir, fin_grid_1st ) )
-    MD_global_total_emission_1st_year <- ncatt_get( nc_temp, 0, 'global_total_emission' )[[ 2 ]]
-    nc_close( nc_temp )
-    # value from last year
-    fin_grid_last <- fin_grid_list[ length( fin_grid_list ) ]
-    nc_temp <- nc_open( file.path( input_dir, fin_grid_last ) )
-    MD_global_total_emission_last_year <- ncatt_get( nc_temp, 0, 'global_total_emission' )[[ 2 ]]
-
-    # reshape the array
-    # calculate how many years in the duration
-    years_in_current_chunk <- chunk_end_years[ chunk_count_index ] - chunk_start_years[ chunk_count_index ] + 1
-    # define dim for 3-D data
-    array_dim <- c( dim( AGR_fin_block )[ 1 : 2 ], 12 * years_in_current_chunk ) # the dim for AGR_temp_data should always be the same in each nc file
-    # time array has no need to be reshaped -- it's a one dimensional vector
-    time_bnds_dim <- c( dim( time_bnds_fin_block )[ 1 ], 12 * years_in_current_chunk )
-    # reshaping
-    dim( AGR_array ) <- array_dim
-    dim( ENE_array ) <- array_dim
-    dim( IND_array ) <- array_dim
-    dim( NRTR_array ) <- array_dim
-    dim( ROAD_array ) <- array_dim
-    dim( RCOR_array ) <- array_dim
-    dim( RCOC_array ) <- array_dim
-    dim( RCOO_array ) <- array_dim
-    dim( SLV_array ) <- array_dim
-    dim( WST_array ) <- array_dim
-    dim( SHP_array ) <- array_dim
-    time_array <- time_array
-    dim( time_bnds_array ) <- time_bnds_dim
-
-    # create flat data block
     # the order of sectors is as below:
     #  0: Agriculture;
     #  1: Energy Sector;
@@ -3475,19 +3164,49 @@ singleVarChunking_coalfuelemissions <- function( em,
     #  6: Waste;
     #  7: International Shipping
 
-    flat_dim <- c( array_dim[ 1 ], array_dim[ 2 ], 11 , array_dim[ 3 ] )
-    flat_array <- array( dim = flat_dim )
-    flat_array[ , , 1 , ] <- AGR_array
-    flat_array[ , , 2 , ] <- ENE_array
-    flat_array[ , , 3 , ] <- IND_array
-    flat_array[ , , 4 , ] <- NRTR_array
-    flat_array[ , , 5 , ] <- ROAD_array
-    flat_array[ , , 6 , ] <- RCOR_array
-    flat_array[ , , 7 , ] <- RCOC_array
-    flat_array[ , , 8 , ] <- RCOO_array
-    flat_array[ , , 9 , ] <- SLV_array
-    flat_array[ , , 10 , ] <- WST_array
-    flat_array[ , , 11 , ] <- SHP_array
+    # read in each nc file and extract variables
+    # create empty arrays for storage
+    sectors <- c( 'AGR', 'ENE', 'IND', 'NRTR', 'ROAD', 'RCOR', 'RCOC', 'RCOO', 'SLV', 'WST', 'SHP' )
+    n_chunk_years <- ( chunk_end_years - chunk_start_years + 1 )[ chunk_count_index ]
+    n_months <- 12 * n_chunk_years
+
+    flat_array <- NULL
+    time_array <- numeric( n_months )
+    time_bnds_array <- array( dim = c( 2, n_months ) )
+    current_month <- 1
+
+    for ( fin_grid in fin_grid_list ) {
+        nc <- nc_open( file.path( input_dir, fin_grid ) )
+
+        # Build the final array if this is the first pass through. Note that the
+        # dimension of the first sector should always be the same as the other
+        # sectors within this file and across all other.
+        if ( current_month == 1 ) {
+            grid_dims <- nc[[ c( 'var', sectors[[1]], 'size' ) ]]
+            flat_array <- array( dim = c( grid_dims[ 1:2 ], length( sectors ), n_months ) )
+
+            MD_global_total_emission_1st_year <- ncatt_get( nc, 0, 'global_total_emission' )[[ 2 ]]
+        }
+
+        # Extract values of global_total_emission attribute from first year and last year
+        if ( current_month == n_months - 12 + 1 ) {
+            MD_global_total_emission_last_year <- ncatt_get( nc, 0, 'global_total_emission' )[[ 2 ]]
+        }
+
+        # Put the data into our pre-built arrays in 12-month chunks
+        month_range <- current_month:(current_month + 12 - 1)
+        for ( i in seq_along( sectors ) ) {
+            flat_array[ , , i, month_range ] <- ncvar_get( nc, sectors[ i ] )
+        }
+
+        time_array[ month_range ] <- ncvar_get( nc, 'time' )
+        time_bnds_array[ , month_range ] <- ncvar_get( nc, 'time_bnds' )
+
+        current_month <- current_month + 12
+
+        nc_close( nc )
+    }
+
 
     # generate nc file
 
@@ -3553,7 +3272,15 @@ singleVarChunking_coalfuelemissions <- function( em,
     # put nc variables into the nc file
     printLog( paste( 'Writing', nc_file_name ) )
 
-    ncvar_put( nc_new, flat_var, flat_array )
+    # write the data in 6 pieces to allow for lower-memory devices
+    for ( sub_range in seq( n_months / 6, n_months, length.out = 6 ) ) {
+        m1 <- 1 + sub_range - n_months / 6
+        m2 <- sub_range
+        st <- c( 1, 1, 1, m1 )
+        ct <- c( -1, -1, -1, n_months / 6)
+        ncvar_put( nc_new, flat_var, flat_array[ , , , m1:m2 ], start = st, count = ct )
+    }
+
     ncvar_put( nc_new, lon_bnds, t( lon_bnds_data ) )
     ncvar_put( nc_new, lat_bnds, t( lat_bnds_data ) )
     ncvar_put( nc_new, time_bnds, time_bnds_data )

@@ -62,15 +62,15 @@ cdiac_end_year <- 2014        #Changed from 2011 with new dataset
 cdiac_end_year_cement <- 2018 #Changed from 2015 with new usgs cement data
 
 #Gridding Years - specify the years to grid in mod-G
-grid_start_year_NMVOC <- 1960
-grid_start_year <- 1960
+grid_start_year_NMVOC <- 1970
+grid_start_year <- 1970
 grid_end_year <- 2017
 
 # ---------------------------------
 # Define available CEDS releases
 # versions include:
 # 1) "v2016_07_26"    ---   CEDS Release 1 (CMIP release)
-available_CEDS_releases <- c( "v2020_01_13" )
+available_CEDS_releases <- c( "v2020_03_10" )
 
 
 # ---------------------------------

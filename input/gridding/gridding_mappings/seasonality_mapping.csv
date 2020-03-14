@@ -1,4 +1,6 @@
 em,sector,year,seasonality_file
+BC,ENE,2017,ENE_seasonality
+BC,ENE,2016,ENE_seasonality
 BC,ENE,2015,ENE_seasonality
 BC,ENE,2014,ENE_seasonality
 BC,ENE,2013,ENE_seasonality
@@ -265,6 +267,8 @@ BC,ENE,1753,ENE_seasonality
 BC,ENE,1752,ENE_seasonality
 BC,ENE,1751,ENE_seasonality
 BC,ENE,1750,ENE_seasonality
+BC,IND,2017,RCOO_seasonality
+BC,IND,2016,RCOO_seasonality
 BC,IND,2015,RCOO_seasonality
 BC,IND,2014,RCOO_seasonality
 BC,IND,2013,RCOO_seasonality
@@ -531,6 +535,8 @@ BC,IND,1753,RCOO_seasonality
 BC,IND,1752,RCOO_seasonality
 BC,IND,1751,RCOO_seasonality
 BC,IND,1750,RCOO_seasonality
+BC,RCOO,2017,RCOO_seasonality
+BC,RCOO,2016,RCOO_seasonality
 BC,RCOO,2015,RCOO_seasonality
 BC,RCOO,2014,RCOO_seasonality
 BC,RCOO,2013,RCOO_seasonality
@@ -797,6 +803,8 @@ BC,RCOO,1753,RCOO_seasonality
 BC,RCOO,1752,RCOO_seasonality
 BC,RCOO,1751,RCOO_seasonality
 BC,RCOO,1750,RCOO_seasonality
+BC,RCOC,2017,RCORC_seasonality
+BC,RCOC,2016,RCORC_seasonality
 BC,RCOC,2015,RCORC_seasonality
 BC,RCOC,2014,RCORC_seasonality
 BC,RCOC,2013,RCORC_seasonality
@@ -1063,6 +1071,8 @@ BC,RCOC,1753,RCORC_seasonality
 BC,RCOC,1752,RCORC_seasonality
 BC,RCOC,1751,RCORC_seasonality
 BC,RCOC,1750,RCORC_seasonality
+BC,RCOR,2017,RCORC_seasonality
+BC,RCOR,2016,RCORC_seasonality
 BC,RCOR,2015,RCORC_seasonality
 BC,RCOR,2014,RCORC_seasonality
 BC,RCOR,2013,RCORC_seasonality
@@ -1329,6 +1339,8 @@ BC,RCOR,1753,RCORC_seasonality
 BC,RCOR,1752,RCORC_seasonality
 BC,RCOR,1751,RCORC_seasonality
 BC,RCOR,1750,RCORC_seasonality
+BC,SLV,2017,SLV_seasonality
+BC,SLV,2016,SLV_seasonality
 BC,SLV,2015,SLV_seasonality
 BC,SLV,2014,SLV_seasonality
 BC,SLV,2013,SLV_seasonality
@@ -1595,6 +1607,8 @@ BC,SLV,1753,SLV_seasonality
 BC,SLV,1752,SLV_seasonality
 BC,SLV,1751,SLV_seasonality
 BC,SLV,1750,SLV_seasonality
+BC,NRTR,2017,TRA_seasonality
+BC,NRTR,2016,TRA_seasonality
 BC,NRTR,2015,TRA_seasonality
 BC,NRTR,2014,TRA_seasonality
 BC,NRTR,2013,TRA_seasonality
@@ -1861,6 +1875,8 @@ BC,NRTR,1753,TRA_seasonality
 BC,NRTR,1752,TRA_seasonality
 BC,NRTR,1751,TRA_seasonality
 BC,NRTR,1750,TRA_seasonality
+BC,WST,2017,WST_seasonality
+BC,WST,2016,WST_seasonality
 BC,WST,2015,WST_seasonality
 BC,WST,2014,WST_seasonality
 BC,WST,2013,WST_seasonality
@@ -2127,6 +2143,8 @@ BC,WST,1753,WST_seasonality
 BC,WST,1752,WST_seasonality
 BC,WST,1751,WST_seasonality
 BC,WST,1750,WST_seasonality
+CO,ENE,2017,ENE_seasonality
+CO,ENE,2016,ENE_seasonality
 CO,ENE,2015,ENE_seasonality
 CO,ENE,2014,ENE_seasonality
 CO,ENE,2013,ENE_seasonality
@@ -2393,6 +2411,8 @@ CO,ENE,1753,ENE_seasonality
 CO,ENE,1752,ENE_seasonality
 CO,ENE,1751,ENE_seasonality
 CO,ENE,1750,ENE_seasonality
+CO,IND,2017,RCOO_seasonality
+CO,IND,2016,RCOO_seasonality
 CO,IND,2015,RCOO_seasonality
 CO,IND,2014,RCOO_seasonality
 CO,IND,2013,RCOO_seasonality
@@ -2659,6 +2679,8 @@ CO,IND,1753,RCOO_seasonality
 CO,IND,1752,RCOO_seasonality
 CO,IND,1751,RCOO_seasonality
 CO,IND,1750,RCOO_seasonality
+CO,RCOO,2017,RCOO_seasonality
+CO,RCOO,2016,RCOO_seasonality
 CO,RCOO,2015,RCOO_seasonality
 CO,RCOO,2014,RCOO_seasonality
 CO,RCOO,2013,RCOO_seasonality
@@ -2925,6 +2947,8 @@ CO,RCOO,1753,RCOO_seasonality
 CO,RCOO,1752,RCOO_seasonality
 CO,RCOO,1751,RCOO_seasonality
 CO,RCOO,1750,RCOO_seasonality
+CO,RCOC,2017,RCORC_seasonality
+CO,RCOC,2016,RCORC_seasonality
 CO,RCOC,2015,RCORC_seasonality
 CO,RCOC,2014,RCORC_seasonality
 CO,RCOC,2013,RCORC_seasonality
@@ -3191,6 +3215,8 @@ CO,RCOC,1753,RCORC_seasonality
 CO,RCOC,1752,RCORC_seasonality
 CO,RCOC,1751,RCORC_seasonality
 CO,RCOC,1750,RCORC_seasonality
+CO,RCOR,2017,RCORC_seasonality
+CO,RCOR,2016,RCORC_seasonality
 CO,RCOR,2015,RCORC_seasonality
 CO,RCOR,2014,RCORC_seasonality
 CO,RCOR,2013,RCORC_seasonality
@@ -3457,6 +3483,8 @@ CO,RCOR,1753,RCORC_seasonality
 CO,RCOR,1752,RCORC_seasonality
 CO,RCOR,1751,RCORC_seasonality
 CO,RCOR,1750,RCORC_seasonality
+CO,SLV,2017,SLV_seasonality
+CO,SLV,2016,SLV_seasonality
 CO,SLV,2015,SLV_seasonality
 CO,SLV,2014,SLV_seasonality
 CO,SLV,2013,SLV_seasonality
@@ -3723,6 +3751,8 @@ CO,SLV,1753,SLV_seasonality
 CO,SLV,1752,SLV_seasonality
 CO,SLV,1751,SLV_seasonality
 CO,SLV,1750,SLV_seasonality
+CO,NRTR,2017,TRA_seasonality
+CO,NRTR,2016,TRA_seasonality
 CO,NRTR,2015,TRA_seasonality
 CO,NRTR,2014,TRA_seasonality
 CO,NRTR,2013,TRA_seasonality
@@ -3989,6 +4019,8 @@ CO,NRTR,1753,TRA_seasonality
 CO,NRTR,1752,TRA_seasonality
 CO,NRTR,1751,TRA_seasonality
 CO,NRTR,1750,TRA_seasonality
+CO,WST,2017,WST_seasonality
+CO,WST,2016,WST_seasonality
 CO,WST,2015,WST_seasonality
 CO,WST,2014,WST_seasonality
 CO,WST,2013,WST_seasonality
@@ -4255,6 +4287,8 @@ CO,WST,1753,WST_seasonality
 CO,WST,1752,WST_seasonality
 CO,WST,1751,WST_seasonality
 CO,WST,1750,WST_seasonality
+CO2,ENE,2017,ENE_seasonality
+CO2,ENE,2016,ENE_seasonality
 CO2,ENE,2015,ENE_seasonality
 CO2,ENE,2014,ENE_seasonality
 CO2,ENE,2013,ENE_seasonality
@@ -4521,6 +4555,8 @@ CO2,ENE,1753,ENE_seasonality
 CO2,ENE,1752,ENE_seasonality
 CO2,ENE,1751,ENE_seasonality
 CO2,ENE,1750,ENE_seasonality
+CO2,IND,2017,RCOO_seasonality
+CO2,IND,2016,RCOO_seasonality
 CO2,IND,2015,RCOO_seasonality
 CO2,IND,2014,RCOO_seasonality
 CO2,IND,2013,RCOO_seasonality
@@ -4787,6 +4823,8 @@ CO2,IND,1753,RCOO_seasonality
 CO2,IND,1752,RCOO_seasonality
 CO2,IND,1751,RCOO_seasonality
 CO2,IND,1750,RCOO_seasonality
+CO2,RCOO,2017,RCOO_seasonality
+CO2,RCOO,2016,RCOO_seasonality
 CO2,RCOO,2015,RCOO_seasonality
 CO2,RCOO,2014,RCOO_seasonality
 CO2,RCOO,2013,RCOO_seasonality
@@ -5053,6 +5091,8 @@ CO2,RCOO,1753,RCOO_seasonality
 CO2,RCOO,1752,RCOO_seasonality
 CO2,RCOO,1751,RCOO_seasonality
 CO2,RCOO,1750,RCOO_seasonality
+CO2,RCOC,2017,RCORC_seasonality
+CO2,RCOC,2016,RCORC_seasonality
 CO2,RCOC,2015,RCORC_seasonality
 CO2,RCOC,2014,RCORC_seasonality
 CO2,RCOC,2013,RCORC_seasonality
@@ -5319,6 +5359,8 @@ CO2,RCOC,1753,RCORC_seasonality
 CO2,RCOC,1752,RCORC_seasonality
 CO2,RCOC,1751,RCORC_seasonality
 CO2,RCOC,1750,RCORC_seasonality
+CO2,RCOR,2017,RCORC_seasonality
+CO2,RCOR,2016,RCORC_seasonality
 CO2,RCOR,2015,RCORC_seasonality
 CO2,RCOR,2014,RCORC_seasonality
 CO2,RCOR,2013,RCORC_seasonality
@@ -5585,6 +5627,8 @@ CO2,RCOR,1753,RCORC_seasonality
 CO2,RCOR,1752,RCORC_seasonality
 CO2,RCOR,1751,RCORC_seasonality
 CO2,RCOR,1750,RCORC_seasonality
+CO2,SLV,2017,SLV_seasonality
+CO2,SLV,2016,SLV_seasonality
 CO2,SLV,2015,SLV_seasonality
 CO2,SLV,2014,SLV_seasonality
 CO2,SLV,2013,SLV_seasonality
@@ -5851,6 +5895,8 @@ CO2,SLV,1753,SLV_seasonality
 CO2,SLV,1752,SLV_seasonality
 CO2,SLV,1751,SLV_seasonality
 CO2,SLV,1750,SLV_seasonality
+CO2,NRTR,2017,TRA_seasonality
+CO2,NRTR,2016,TRA_seasonality
 CO2,NRTR,2015,TRA_seasonality
 CO2,NRTR,2014,TRA_seasonality
 CO2,NRTR,2013,TRA_seasonality
@@ -6117,6 +6163,8 @@ CO2,NRTR,1753,TRA_seasonality
 CO2,NRTR,1752,TRA_seasonality
 CO2,NRTR,1751,TRA_seasonality
 CO2,NRTR,1750,TRA_seasonality
+CO2,WST,2017,WST_seasonality
+CO2,WST,2016,WST_seasonality
 CO2,WST,2015,WST_seasonality
 CO2,WST,2014,WST_seasonality
 CO2,WST,2013,WST_seasonality
@@ -6383,6 +6431,8 @@ CO2,WST,1753,WST_seasonality
 CO2,WST,1752,WST_seasonality
 CO2,WST,1751,WST_seasonality
 CO2,WST,1750,WST_seasonality
+NH3,ENE,2017,ENE_seasonality
+NH3,ENE,2016,ENE_seasonality
 NH3,ENE,2015,ENE_seasonality
 NH3,ENE,2014,ENE_seasonality
 NH3,ENE,2013,ENE_seasonality
@@ -6649,6 +6699,8 @@ NH3,ENE,1753,ENE_seasonality
 NH3,ENE,1752,ENE_seasonality
 NH3,ENE,1751,ENE_seasonality
 NH3,ENE,1750,ENE_seasonality
+NH3,IND,2017,RCOO_seasonality
+NH3,IND,2016,RCOO_seasonality
 NH3,IND,2015,RCOO_seasonality
 NH3,IND,2014,RCOO_seasonality
 NH3,IND,2013,RCOO_seasonality
@@ -6915,6 +6967,8 @@ NH3,IND,1753,RCOO_seasonality
 NH3,IND,1752,RCOO_seasonality
 NH3,IND,1751,RCOO_seasonality
 NH3,IND,1750,RCOO_seasonality
+NH3,RCOO,2017,RCOO_seasonality
+NH3,RCOO,2016,RCOO_seasonality
 NH3,RCOO,2015,RCOO_seasonality
 NH3,RCOO,2014,RCOO_seasonality
 NH3,RCOO,2013,RCOO_seasonality
@@ -7181,6 +7235,8 @@ NH3,RCOO,1753,RCOO_seasonality
 NH3,RCOO,1752,RCOO_seasonality
 NH3,RCOO,1751,RCOO_seasonality
 NH3,RCOO,1750,RCOO_seasonality
+NH3,RCOC,2017,RCORC_seasonality
+NH3,RCOC,2016,RCORC_seasonality
 NH3,RCOC,2015,RCORC_seasonality
 NH3,RCOC,2014,RCORC_seasonality
 NH3,RCOC,2013,RCORC_seasonality
@@ -7447,6 +7503,8 @@ NH3,RCOC,1753,RCORC_seasonality
 NH3,RCOC,1752,RCORC_seasonality
 NH3,RCOC,1751,RCORC_seasonality
 NH3,RCOC,1750,RCORC_seasonality
+NH3,RCOR,2017,RCORC_seasonality
+NH3,RCOR,2016,RCORC_seasonality
 NH3,RCOR,2015,RCORC_seasonality
 NH3,RCOR,2014,RCORC_seasonality
 NH3,RCOR,2013,RCORC_seasonality
@@ -7713,6 +7771,8 @@ NH3,RCOR,1753,RCORC_seasonality
 NH3,RCOR,1752,RCORC_seasonality
 NH3,RCOR,1751,RCORC_seasonality
 NH3,RCOR,1750,RCORC_seasonality
+NH3,SLV,2017,SLV_seasonality
+NH3,SLV,2016,SLV_seasonality
 NH3,SLV,2015,SLV_seasonality
 NH3,SLV,2014,SLV_seasonality
 NH3,SLV,2013,SLV_seasonality
@@ -7979,6 +8039,8 @@ NH3,SLV,1753,SLV_seasonality
 NH3,SLV,1752,SLV_seasonality
 NH3,SLV,1751,SLV_seasonality
 NH3,SLV,1750,SLV_seasonality
+NH3,NRTR,2017,TRA_seasonality
+NH3,NRTR,2016,TRA_seasonality
 NH3,NRTR,2015,TRA_seasonality
 NH3,NRTR,2014,TRA_seasonality
 NH3,NRTR,2013,TRA_seasonality
@@ -8245,6 +8307,8 @@ NH3,NRTR,1753,TRA_seasonality
 NH3,NRTR,1752,TRA_seasonality
 NH3,NRTR,1751,TRA_seasonality
 NH3,NRTR,1750,TRA_seasonality
+NH3,WST,2017,WST_seasonality
+NH3,WST,2016,WST_seasonality
 NH3,WST,2015,WST_seasonality
 NH3,WST,2014,WST_seasonality
 NH3,WST,2013,WST_seasonality
@@ -8511,6 +8575,8 @@ NH3,WST,1753,WST_seasonality
 NH3,WST,1752,WST_seasonality
 NH3,WST,1751,WST_seasonality
 NH3,WST,1750,WST_seasonality
+NOx,ENE,2017,ENE_seasonality
+NOx,ENE,2016,ENE_seasonality
 NOx,ENE,2015,ENE_seasonality
 NOx,ENE,2014,ENE_seasonality
 NOx,ENE,2013,ENE_seasonality
@@ -8777,6 +8843,8 @@ NOx,ENE,1753,ENE_seasonality
 NOx,ENE,1752,ENE_seasonality
 NOx,ENE,1751,ENE_seasonality
 NOx,ENE,1750,ENE_seasonality
+NOx,IND,2017,RCOO_seasonality
+NOx,IND,2016,RCOO_seasonality
 NOx,IND,2015,RCOO_seasonality
 NOx,IND,2014,RCOO_seasonality
 NOx,IND,2013,RCOO_seasonality
@@ -9043,6 +9111,8 @@ NOx,IND,1753,RCOO_seasonality
 NOx,IND,1752,RCOO_seasonality
 NOx,IND,1751,RCOO_seasonality
 NOx,IND,1750,RCOO_seasonality
+NOx,RCOO,2017,RCOO_seasonality
+NOx,RCOO,2016,RCOO_seasonality
 NOx,RCOO,2015,RCOO_seasonality
 NOx,RCOO,2014,RCOO_seasonality
 NOx,RCOO,2013,RCOO_seasonality
@@ -9309,6 +9379,8 @@ NOx,RCOO,1753,RCOO_seasonality
 NOx,RCOO,1752,RCOO_seasonality
 NOx,RCOO,1751,RCOO_seasonality
 NOx,RCOO,1750,RCOO_seasonality
+NOx,RCOC,2017,RCORC_seasonality
+NOx,RCOC,2016,RCORC_seasonality
 NOx,RCOC,2015,RCORC_seasonality
 NOx,RCOC,2014,RCORC_seasonality
 NOx,RCOC,2013,RCORC_seasonality
@@ -9575,6 +9647,8 @@ NOx,RCOC,1753,RCORC_seasonality
 NOx,RCOC,1752,RCORC_seasonality
 NOx,RCOC,1751,RCORC_seasonality
 NOx,RCOC,1750,RCORC_seasonality
+NOx,RCOR,2017,RCORC_seasonality
+NOx,RCOR,2016,RCORC_seasonality
 NOx,RCOR,2015,RCORC_seasonality
 NOx,RCOR,2014,RCORC_seasonality
 NOx,RCOR,2013,RCORC_seasonality
@@ -9841,6 +9915,8 @@ NOx,RCOR,1753,RCORC_seasonality
 NOx,RCOR,1752,RCORC_seasonality
 NOx,RCOR,1751,RCORC_seasonality
 NOx,RCOR,1750,RCORC_seasonality
+NOx,SLV,2017,SLV_seasonality
+NOx,SLV,2016,SLV_seasonality
 NOx,SLV,2015,SLV_seasonality
 NOx,SLV,2014,SLV_seasonality
 NOx,SLV,2013,SLV_seasonality
@@ -10107,6 +10183,8 @@ NOx,SLV,1753,SLV_seasonality
 NOx,SLV,1752,SLV_seasonality
 NOx,SLV,1751,SLV_seasonality
 NOx,SLV,1750,SLV_seasonality
+NOx,NRTR,2017,TRA_seasonality
+NOx,NRTR,2016,TRA_seasonality
 NOx,NRTR,2015,TRA_seasonality
 NOx,NRTR,2014,TRA_seasonality
 NOx,NRTR,2013,TRA_seasonality
@@ -10373,6 +10451,8 @@ NOx,NRTR,1753,TRA_seasonality
 NOx,NRTR,1752,TRA_seasonality
 NOx,NRTR,1751,TRA_seasonality
 NOx,NRTR,1750,TRA_seasonality
+NOx,WST,2017,WST_seasonality
+NOx,WST,2016,WST_seasonality
 NOx,WST,2015,WST_seasonality
 NOx,WST,2014,WST_seasonality
 NOx,WST,2013,WST_seasonality
@@ -10639,6 +10719,8 @@ NOx,WST,1753,WST_seasonality
 NOx,WST,1752,WST_seasonality
 NOx,WST,1751,WST_seasonality
 NOx,WST,1750,WST_seasonality
+NMVOC,ENE,2017,ENE_seasonality
+NMVOC,ENE,2016,ENE_seasonality
 NMVOC,ENE,2015,ENE_seasonality
 NMVOC,ENE,2014,ENE_seasonality
 NMVOC,ENE,2013,ENE_seasonality
@@ -10905,6 +10987,8 @@ NMVOC,ENE,1753,ENE_seasonality
 NMVOC,ENE,1752,ENE_seasonality
 NMVOC,ENE,1751,ENE_seasonality
 NMVOC,ENE,1750,ENE_seasonality
+NMVOC,IND,2017,RCOO_seasonality
+NMVOC,IND,2016,RCOO_seasonality
 NMVOC,IND,2015,RCOO_seasonality
 NMVOC,IND,2014,RCOO_seasonality
 NMVOC,IND,2013,RCOO_seasonality
@@ -11171,6 +11255,8 @@ NMVOC,IND,1753,RCOO_seasonality
 NMVOC,IND,1752,RCOO_seasonality
 NMVOC,IND,1751,RCOO_seasonality
 NMVOC,IND,1750,RCOO_seasonality
+NMVOC,RCOO,2017,RCOO_seasonality
+NMVOC,RCOO,2016,RCOO_seasonality
 NMVOC,RCOO,2015,RCOO_seasonality
 NMVOC,RCOO,2014,RCOO_seasonality
 NMVOC,RCOO,2013,RCOO_seasonality
@@ -11437,6 +11523,8 @@ NMVOC,RCOO,1753,RCOO_seasonality
 NMVOC,RCOO,1752,RCOO_seasonality
 NMVOC,RCOO,1751,RCOO_seasonality
 NMVOC,RCOO,1750,RCOO_seasonality
+NMVOC,RCOC,2017,RCORC_seasonality
+NMVOC,RCOC,2016,RCORC_seasonality
 NMVOC,RCOC,2015,RCORC_seasonality
 NMVOC,RCOC,2014,RCORC_seasonality
 NMVOC,RCOC,2013,RCORC_seasonality
@@ -11703,6 +11791,8 @@ NMVOC,RCOC,1753,RCORC_seasonality
 NMVOC,RCOC,1752,RCORC_seasonality
 NMVOC,RCOC,1751,RCORC_seasonality
 NMVOC,RCOC,1750,RCORC_seasonality
+NMVOC,RCOR,2017,RCORC_seasonality
+NMVOC,RCOR,2016,RCORC_seasonality
 NMVOC,RCOR,2015,RCORC_seasonality
 NMVOC,RCOR,2014,RCORC_seasonality
 NMVOC,RCOR,2013,RCORC_seasonality
@@ -11969,6 +12059,8 @@ NMVOC,RCOR,1753,RCORC_seasonality
 NMVOC,RCOR,1752,RCORC_seasonality
 NMVOC,RCOR,1751,RCORC_seasonality
 NMVOC,RCOR,1750,RCORC_seasonality
+NMVOC,SLV,2017,SLV_seasonality
+NMVOC,SLV,2016,SLV_seasonality
 NMVOC,SLV,2015,SLV_seasonality
 NMVOC,SLV,2014,SLV_seasonality
 NMVOC,SLV,2013,SLV_seasonality
@@ -12235,6 +12327,8 @@ NMVOC,SLV,1753,SLV_seasonality
 NMVOC,SLV,1752,SLV_seasonality
 NMVOC,SLV,1751,SLV_seasonality
 NMVOC,SLV,1750,SLV_seasonality
+NMVOC,NRTR,2017,TRA_seasonality
+NMVOC,NRTR,2016,TRA_seasonality
 NMVOC,NRTR,2015,TRA_seasonality
 NMVOC,NRTR,2014,TRA_seasonality
 NMVOC,NRTR,2013,TRA_seasonality
@@ -12501,6 +12595,8 @@ NMVOC,NRTR,1753,TRA_seasonality
 NMVOC,NRTR,1752,TRA_seasonality
 NMVOC,NRTR,1751,TRA_seasonality
 NMVOC,NRTR,1750,TRA_seasonality
+NMVOC,WST,2017,WST_seasonality
+NMVOC,WST,2016,WST_seasonality
 NMVOC,WST,2015,WST_seasonality
 NMVOC,WST,2014,WST_seasonality
 NMVOC,WST,2013,WST_seasonality
@@ -12767,6 +12863,8 @@ NMVOC,WST,1753,WST_seasonality
 NMVOC,WST,1752,WST_seasonality
 NMVOC,WST,1751,WST_seasonality
 NMVOC,WST,1750,WST_seasonality
+OC,ENE,2017,ENE_seasonality
+OC,ENE,2016,ENE_seasonality
 OC,ENE,2015,ENE_seasonality
 OC,ENE,2014,ENE_seasonality
 OC,ENE,2013,ENE_seasonality
@@ -13033,6 +13131,8 @@ OC,ENE,1753,ENE_seasonality
 OC,ENE,1752,ENE_seasonality
 OC,ENE,1751,ENE_seasonality
 OC,ENE,1750,ENE_seasonality
+OC,IND,2017,RCOO_seasonality
+OC,IND,2016,RCOO_seasonality
 OC,IND,2015,RCOO_seasonality
 OC,IND,2014,RCOO_seasonality
 OC,IND,2013,RCOO_seasonality
@@ -13299,6 +13399,8 @@ OC,IND,1753,RCOO_seasonality
 OC,IND,1752,RCOO_seasonality
 OC,IND,1751,RCOO_seasonality
 OC,IND,1750,RCOO_seasonality
+OC,RCOO,2017,RCOO_seasonality
+OC,RCOO,2016,RCOO_seasonality
 OC,RCOO,2015,RCOO_seasonality
 OC,RCOO,2014,RCOO_seasonality
 OC,RCOO,2013,RCOO_seasonality
@@ -13565,6 +13667,8 @@ OC,RCOO,1753,RCOO_seasonality
 OC,RCOO,1752,RCOO_seasonality
 OC,RCOO,1751,RCOO_seasonality
 OC,RCOO,1750,RCOO_seasonality
+OC,RCOC,2017,RCORC_seasonality
+OC,RCOC,2016,RCORC_seasonality
 OC,RCOC,2015,RCORC_seasonality
 OC,RCOC,2014,RCORC_seasonality
 OC,RCOC,2013,RCORC_seasonality
@@ -13831,6 +13935,8 @@ OC,RCOC,1753,RCORC_seasonality
 OC,RCOC,1752,RCORC_seasonality
 OC,RCOC,1751,RCORC_seasonality
 OC,RCOC,1750,RCORC_seasonality
+OC,RCOR,2017,RCORC_seasonality
+OC,RCOR,2016,RCORC_seasonality
 OC,RCOR,2015,RCORC_seasonality
 OC,RCOR,2014,RCORC_seasonality
 OC,RCOR,2013,RCORC_seasonality
@@ -14097,6 +14203,8 @@ OC,RCOR,1753,RCORC_seasonality
 OC,RCOR,1752,RCORC_seasonality
 OC,RCOR,1751,RCORC_seasonality
 OC,RCOR,1750,RCORC_seasonality
+OC,SLV,2017,SLV_seasonality
+OC,SLV,2016,SLV_seasonality
 OC,SLV,2015,SLV_seasonality
 OC,SLV,2014,SLV_seasonality
 OC,SLV,2013,SLV_seasonality
@@ -14363,6 +14471,8 @@ OC,SLV,1753,SLV_seasonality
 OC,SLV,1752,SLV_seasonality
 OC,SLV,1751,SLV_seasonality
 OC,SLV,1750,SLV_seasonality
+OC,NRTR,2017,TRA_seasonality
+OC,NRTR,2016,TRA_seasonality
 OC,NRTR,2015,TRA_seasonality
 OC,NRTR,2014,TRA_seasonality
 OC,NRTR,2013,TRA_seasonality
@@ -14629,6 +14739,8 @@ OC,NRTR,1753,TRA_seasonality
 OC,NRTR,1752,TRA_seasonality
 OC,NRTR,1751,TRA_seasonality
 OC,NRTR,1750,TRA_seasonality
+OC,WST,2017,WST_seasonality
+OC,WST,2016,WST_seasonality
 OC,WST,2015,WST_seasonality
 OC,WST,2014,WST_seasonality
 OC,WST,2013,WST_seasonality
@@ -14895,6 +15007,8 @@ OC,WST,1753,WST_seasonality
 OC,WST,1752,WST_seasonality
 OC,WST,1751,WST_seasonality
 OC,WST,1750,WST_seasonality
+SO2,ENE,2017,ENE_seasonality
+SO2,ENE,2016,ENE_seasonality
 SO2,ENE,2015,ENE_seasonality
 SO2,ENE,2014,ENE_seasonality
 SO2,ENE,2013,ENE_seasonality
@@ -15161,6 +15275,8 @@ SO2,ENE,1753,ENE_seasonality
 SO2,ENE,1752,ENE_seasonality
 SO2,ENE,1751,ENE_seasonality
 SO2,ENE,1750,ENE_seasonality
+SO2,IND,2017,RCOO_seasonality
+SO2,IND,2016,RCOO_seasonality
 SO2,IND,2015,RCOO_seasonality
 SO2,IND,2014,RCOO_seasonality
 SO2,IND,2013,RCOO_seasonality
@@ -15427,6 +15543,8 @@ SO2,IND,1753,RCOO_seasonality
 SO2,IND,1752,RCOO_seasonality
 SO2,IND,1751,RCOO_seasonality
 SO2,IND,1750,RCOO_seasonality
+SO2,RCOO,2017,RCOO_seasonality
+SO2,RCOO,2016,RCOO_seasonality
 SO2,RCOO,2015,RCOO_seasonality
 SO2,RCOO,2014,RCOO_seasonality
 SO2,RCOO,2013,RCOO_seasonality
@@ -15693,6 +15811,8 @@ SO2,RCOO,1753,RCOO_seasonality
 SO2,RCOO,1752,RCOO_seasonality
 SO2,RCOO,1751,RCOO_seasonality
 SO2,RCOO,1750,RCOO_seasonality
+SO2,RCOC,2017,RCORC_seasonality
+SO2,RCOC,2016,RCORC_seasonality
 SO2,RCOC,2015,RCORC_seasonality
 SO2,RCOC,2014,RCORC_seasonality
 SO2,RCOC,2013,RCORC_seasonality
@@ -15959,6 +16079,8 @@ SO2,RCOC,1753,RCORC_seasonality
 SO2,RCOC,1752,RCORC_seasonality
 SO2,RCOC,1751,RCORC_seasonality
 SO2,RCOC,1750,RCORC_seasonality
+SO2,RCOR,2017,RCORC_seasonality
+SO2,RCOR,2016,RCORC_seasonality
 SO2,RCOR,2015,RCORC_seasonality
 SO2,RCOR,2014,RCORC_seasonality
 SO2,RCOR,2013,RCORC_seasonality
@@ -16225,6 +16347,8 @@ SO2,RCOR,1753,RCORC_seasonality
 SO2,RCOR,1752,RCORC_seasonality
 SO2,RCOR,1751,RCORC_seasonality
 SO2,RCOR,1750,RCORC_seasonality
+SO2,SLV,2017,SLV_seasonality
+SO2,SLV,2016,SLV_seasonality
 SO2,SLV,2015,SLV_seasonality
 SO2,SLV,2014,SLV_seasonality
 SO2,SLV,2013,SLV_seasonality
@@ -16491,6 +16615,8 @@ SO2,SLV,1753,SLV_seasonality
 SO2,SLV,1752,SLV_seasonality
 SO2,SLV,1751,SLV_seasonality
 SO2,SLV,1750,SLV_seasonality
+SO2,NRTR,2017,TRA_seasonality
+SO2,NRTR,2016,TRA_seasonality
 SO2,NRTR,2015,TRA_seasonality
 SO2,NRTR,2014,TRA_seasonality
 SO2,NRTR,2013,TRA_seasonality
@@ -16757,6 +16883,8 @@ SO2,NRTR,1753,TRA_seasonality
 SO2,NRTR,1752,TRA_seasonality
 SO2,NRTR,1751,TRA_seasonality
 SO2,NRTR,1750,TRA_seasonality
+SO2,WST,2017,WST_seasonality
+SO2,WST,2016,WST_seasonality
 SO2,WST,2015,WST_seasonality
 SO2,WST,2014,WST_seasonality
 SO2,WST,2013,WST_seasonality
@@ -17023,6 +17151,8 @@ SO2,WST,1753,WST_seasonality
 SO2,WST,1752,WST_seasonality
 SO2,WST,1751,WST_seasonality
 SO2,WST,1750,WST_seasonality
+BC,AIR,2017,AIR_BC_2000_seasonality
+BC,AIR,2016,AIR_BC_2000_seasonality
 BC,AIR,2015,AIR_BC_2000_seasonality
 BC,AIR,2014,AIR_BC_2000_seasonality
 BC,AIR,2013,AIR_BC_2000_seasonality
@@ -17289,6 +17419,8 @@ BC,AIR,1753,AIR_BC_1850_seasonality
 BC,AIR,1752,AIR_BC_1850_seasonality
 BC,AIR,1751,AIR_BC_1850_seasonality
 BC,AIR,1750,AIR_BC_1850_seasonality
+NOx,AIR,2017,AIR_NOx_2000_seasonality
+NOx,AIR,2016,AIR_NOx_2000_seasonality
 NOx,AIR,2015,AIR_NOx_2000_seasonality
 NOx,AIR,2014,AIR_NOx_2000_seasonality
 NOx,AIR,2013,AIR_NOx_2000_seasonality
@@ -17555,6 +17687,8 @@ NOx,AIR,1753,AIR_NOx_1850_seasonality
 NOx,AIR,1752,AIR_NOx_1850_seasonality
 NOx,AIR,1751,AIR_NOx_1850_seasonality
 NOx,AIR,1750,AIR_NOx_1850_seasonality
+OC,AIR,2017,AIR_BC_2000_seasonality
+OC,AIR,2016,AIR_BC_2000_seasonality
 OC,AIR,2015,AIR_BC_2000_seasonality
 OC,AIR,2014,AIR_BC_2000_seasonality
 OC,AIR,2013,AIR_BC_2000_seasonality
@@ -17821,6 +17955,8 @@ OC,AIR,1753,AIR_BC_1850_seasonality
 OC,AIR,1752,AIR_BC_1850_seasonality
 OC,AIR,1751,AIR_BC_1850_seasonality
 OC,AIR,1750,AIR_BC_1850_seasonality
+CO,AIR,2017,AIR_NOx_2000_seasonality
+CO,AIR,2016,AIR_NOx_2000_seasonality
 CO,AIR,2015,AIR_NOx_2000_seasonality
 CO,AIR,2014,AIR_NOx_2000_seasonality
 CO,AIR,2013,AIR_NOx_2000_seasonality
@@ -18087,6 +18223,8 @@ CO,AIR,1753,AIR_NOx_1850_seasonality
 CO,AIR,1752,AIR_NOx_1850_seasonality
 CO,AIR,1751,AIR_NOx_1850_seasonality
 CO,AIR,1750,AIR_NOx_1850_seasonality
+CO2,AIR,2017,AIR_NOx_2000_seasonality
+CO2,AIR,2016,AIR_NOx_2000_seasonality
 CO2,AIR,2015,AIR_NOx_2000_seasonality
 CO2,AIR,2014,AIR_NOx_2000_seasonality
 CO2,AIR,2013,AIR_NOx_2000_seasonality
@@ -18353,6 +18491,8 @@ CO2,AIR,1753,AIR_NOx_1850_seasonality
 CO2,AIR,1752,AIR_NOx_1850_seasonality
 CO2,AIR,1751,AIR_NOx_1850_seasonality
 CO2,AIR,1750,AIR_NOx_1850_seasonality
+NH3,AIR,2017,AIR_NOx_2000_seasonality
+NH3,AIR,2016,AIR_NOx_2000_seasonality
 NH3,AIR,2015,AIR_NOx_2000_seasonality
 NH3,AIR,2014,AIR_NOx_2000_seasonality
 NH3,AIR,2013,AIR_NOx_2000_seasonality
@@ -18619,6 +18759,8 @@ NH3,AIR,1753,AIR_NOx_1850_seasonality
 NH3,AIR,1752,AIR_NOx_1850_seasonality
 NH3,AIR,1751,AIR_NOx_1850_seasonality
 NH3,AIR,1750,AIR_NOx_1850_seasonality
+NMVOC,AIR,2017,AIR_NOx_2000_seasonality
+NMVOC,AIR,2016,AIR_NOx_2000_seasonality
 NMVOC,AIR,2015,AIR_NOx_2000_seasonality
 NMVOC,AIR,2014,AIR_NOx_2000_seasonality
 NMVOC,AIR,2013,AIR_NOx_2000_seasonality
@@ -18885,6 +19027,8 @@ NMVOC,AIR,1753,AIR_NOx_1850_seasonality
 NMVOC,AIR,1752,AIR_NOx_1850_seasonality
 NMVOC,AIR,1751,AIR_NOx_1850_seasonality
 NMVOC,AIR,1750,AIR_NOx_1850_seasonality
+SO2,AIR,2017,AIR_NOx_2000_seasonality
+SO2,AIR,2016,AIR_NOx_2000_seasonality
 SO2,AIR,2015,AIR_NOx_2000_seasonality
 SO2,AIR,2014,AIR_NOx_2000_seasonality
 SO2,AIR,2013,AIR_NOx_2000_seasonality
@@ -19151,6 +19295,8 @@ SO2,AIR,1753,AIR_NOx_1850_seasonality
 SO2,AIR,1752,AIR_NOx_1850_seasonality
 SO2,AIR,1751,AIR_NOx_1850_seasonality
 SO2,AIR,1750,AIR_NOx_1850_seasonality
+BC,SHP,2017,SHP_BC_seasonality
+BC,SHP,2016,SHP_BC_seasonality
 BC,SHP,2015,SHP_BC_seasonality
 BC,SHP,2014,SHP_BC_seasonality
 BC,SHP,2013,SHP_BC_seasonality
@@ -19417,6 +19563,8 @@ BC,SHP,1753,SHP_BC_seasonality
 BC,SHP,1752,SHP_BC_seasonality
 BC,SHP,1751,SHP_BC_seasonality
 BC,SHP,1750,SHP_BC_seasonality
+CO,SHP,2017,SHP_CO_seasonality
+CO,SHP,2016,SHP_CO_seasonality
 CO,SHP,2015,SHP_CO_seasonality
 CO,SHP,2014,SHP_CO_seasonality
 CO,SHP,2013,SHP_CO_seasonality
@@ -19683,6 +19831,8 @@ CO,SHP,1753,SHP_CO_seasonality
 CO,SHP,1752,SHP_CO_seasonality
 CO,SHP,1751,SHP_CO_seasonality
 CO,SHP,1750,SHP_CO_seasonality
+CO2,SHP,2017,SHP_NOx_seasonality
+CO2,SHP,2016,SHP_NOx_seasonality
 CO2,SHP,2015,SHP_NOx_seasonality
 CO2,SHP,2014,SHP_NOx_seasonality
 CO2,SHP,2013,SHP_NOx_seasonality
@@ -19949,6 +20099,8 @@ CO2,SHP,1753,SHP_NOx_seasonality
 CO2,SHP,1752,SHP_NOx_seasonality
 CO2,SHP,1751,SHP_NOx_seasonality
 CO2,SHP,1750,SHP_NOx_seasonality
+NH3,SHP,2017,SHP_NH3_seasonality
+NH3,SHP,2016,SHP_NH3_seasonality
 NH3,SHP,2015,SHP_NH3_seasonality
 NH3,SHP,2014,SHP_NH3_seasonality
 NH3,SHP,2013,SHP_NH3_seasonality
@@ -20215,6 +20367,8 @@ NH3,SHP,1753,SHP_NH3_seasonality
 NH3,SHP,1752,SHP_NH3_seasonality
 NH3,SHP,1751,SHP_NH3_seasonality
 NH3,SHP,1750,SHP_NH3_seasonality
+NOx,SHP,2017,SHP_NOx_seasonality
+NOx,SHP,2016,SHP_NOx_seasonality
 NOx,SHP,2015,SHP_NOx_seasonality
 NOx,SHP,2014,SHP_NOx_seasonality
 NOx,SHP,2013,SHP_NOx_seasonality
@@ -20481,6 +20635,8 @@ NOx,SHP,1753,SHP_NOx_seasonality
 NOx,SHP,1752,SHP_NOx_seasonality
 NOx,SHP,1751,SHP_NOx_seasonality
 NOx,SHP,1750,SHP_NOx_seasonality
+NMVOC,SHP,2017,SHP_NMVOC_seasonality
+NMVOC,SHP,2016,SHP_NMVOC_seasonality
 NMVOC,SHP,2015,SHP_NMVOC_seasonality
 NMVOC,SHP,2014,SHP_NMVOC_seasonality
 NMVOC,SHP,2013,SHP_NMVOC_seasonality
@@ -20747,6 +20903,8 @@ NMVOC,SHP,1753,SHP_NMVOC_seasonality
 NMVOC,SHP,1752,SHP_NMVOC_seasonality
 NMVOC,SHP,1751,SHP_NMVOC_seasonality
 NMVOC,SHP,1750,SHP_NMVOC_seasonality
+OC,SHP,2017,SHP_OC_seasonality
+OC,SHP,2016,SHP_OC_seasonality
 OC,SHP,2015,SHP_OC_seasonality
 OC,SHP,2014,SHP_OC_seasonality
 OC,SHP,2013,SHP_OC_seasonality
@@ -21013,6 +21171,8 @@ OC,SHP,1753,SHP_OC_seasonality
 OC,SHP,1752,SHP_OC_seasonality
 OC,SHP,1751,SHP_OC_seasonality
 OC,SHP,1750,SHP_OC_seasonality
+SO2,SHP,2017,SHP_SO2_seasonality
+SO2,SHP,2016,SHP_SO2_seasonality
 SO2,SHP,2015,SHP_SO2_seasonality
 SO2,SHP,2014,SHP_SO2_seasonality
 SO2,SHP,2013,SHP_SO2_seasonality
@@ -21279,6 +21439,8 @@ SO2,SHP,1753,SHP_SO2_seasonality
 SO2,SHP,1752,SHP_SO2_seasonality
 SO2,SHP,1751,SHP_SO2_seasonality
 SO2,SHP,1750,SHP_SO2_seasonality
+BC,AGR,2017,AGR_seasonality
+BC,AGR,2016,AGR_seasonality
 BC,AGR,2015,AGR_seasonality
 BC,AGR,2014,AGR_seasonality
 BC,AGR,2013,AGR_seasonality
@@ -21545,6 +21707,8 @@ BC,AGR,1753,AGR_seasonality
 BC,AGR,1752,AGR_seasonality
 BC,AGR,1751,AGR_seasonality
 BC,AGR,1750,AGR_seasonality
+CO,AGR,2017,AGR_seasonality
+CO,AGR,2016,AGR_seasonality
 CO,AGR,2015,AGR_seasonality
 CO,AGR,2014,AGR_seasonality
 CO,AGR,2013,AGR_seasonality
@@ -21811,6 +21975,8 @@ CO,AGR,1753,AGR_seasonality
 CO,AGR,1752,AGR_seasonality
 CO,AGR,1751,AGR_seasonality
 CO,AGR,1750,AGR_seasonality
+CO2,AGR,2017,AGR_seasonality
+CO2,AGR,2016,AGR_seasonality
 CO2,AGR,2015,AGR_seasonality
 CO2,AGR,2014,AGR_seasonality
 CO2,AGR,2013,AGR_seasonality
@@ -22077,6 +22243,8 @@ CO2,AGR,1753,AGR_seasonality
 CO2,AGR,1752,AGR_seasonality
 CO2,AGR,1751,AGR_seasonality
 CO2,AGR,1750,AGR_seasonality
+NH3,AGR,2017,AGR_NH3_seasonality
+NH3,AGR,2016,AGR_NH3_seasonality
 NH3,AGR,2015,AGR_NH3_seasonality
 NH3,AGR,2014,AGR_NH3_seasonality
 NH3,AGR,2013,AGR_NH3_seasonality
@@ -22343,6 +22511,8 @@ NH3,AGR,1753,AGR_NH3_seasonality
 NH3,AGR,1752,AGR_NH3_seasonality
 NH3,AGR,1751,AGR_NH3_seasonality
 NH3,AGR,1750,AGR_NH3_seasonality
+NOx,AGR,2017,AGR_seasonality
+NOx,AGR,2016,AGR_seasonality
 NOx,AGR,2015,AGR_seasonality
 NOx,AGR,2014,AGR_seasonality
 NOx,AGR,2013,AGR_seasonality
@@ -22609,6 +22779,8 @@ NOx,AGR,1753,AGR_seasonality
 NOx,AGR,1752,AGR_seasonality
 NOx,AGR,1751,AGR_seasonality
 NOx,AGR,1750,AGR_seasonality
+NMVOC,AGR,2017,AGR_seasonality
+NMVOC,AGR,2016,AGR_seasonality
 NMVOC,AGR,2015,AGR_seasonality
 NMVOC,AGR,2014,AGR_seasonality
 NMVOC,AGR,2013,AGR_seasonality
@@ -22875,6 +23047,8 @@ NMVOC,AGR,1753,AGR_seasonality
 NMVOC,AGR,1752,AGR_seasonality
 NMVOC,AGR,1751,AGR_seasonality
 NMVOC,AGR,1750,AGR_seasonality
+OC,AGR,2017,AGR_seasonality
+OC,AGR,2016,AGR_seasonality
 OC,AGR,2015,AGR_seasonality
 OC,AGR,2014,AGR_seasonality
 OC,AGR,2013,AGR_seasonality
@@ -23141,6 +23315,8 @@ OC,AGR,1753,AGR_seasonality
 OC,AGR,1752,AGR_seasonality
 OC,AGR,1751,AGR_seasonality
 OC,AGR,1750,AGR_seasonality
+SO2,AGR,2017,AGR_seasonality
+SO2,AGR,2016,AGR_seasonality
 SO2,AGR,2015,AGR_seasonality
 SO2,AGR,2014,AGR_seasonality
 SO2,AGR,2013,AGR_seasonality
@@ -23407,6 +23583,8 @@ SO2,AGR,1753,AGR_seasonality
 SO2,AGR,1752,AGR_seasonality
 SO2,AGR,1751,AGR_seasonality
 SO2,AGR,1750,AGR_seasonality
+CH4,ENE,2017,ENE_seasonality
+CH4,ENE,2016,ENE_seasonality
 CH4,ENE,2015,ENE_seasonality
 CH4,ENE,2014,ENE_seasonality
 CH4,ENE,2013,ENE_seasonality
@@ -23453,6 +23631,8 @@ CH4,ENE,1973,ENE_seasonality
 CH4,ENE,1972,ENE_seasonality
 CH4,ENE,1971,ENE_seasonality
 CH4,ENE,1970,ENE_seasonality
+CH4,IND,2017,RCOO_seasonality
+CH4,IND,2016,RCOO_seasonality
 CH4,IND,2015,RCOO_seasonality
 CH4,IND,2014,RCOO_seasonality
 CH4,IND,2013,RCOO_seasonality
@@ -23499,6 +23679,8 @@ CH4,IND,1973,RCOO_seasonality
 CH4,IND,1972,RCOO_seasonality
 CH4,IND,1971,RCOO_seasonality
 CH4,IND,1970,RCOO_seasonality
+CH4,RCOO,2017,RCOO_seasonality
+CH4,RCOO,2016,RCOO_seasonality
 CH4,RCOO,2015,RCOO_seasonality
 CH4,RCOO,2014,RCOO_seasonality
 CH4,RCOO,2013,RCOO_seasonality
@@ -23545,6 +23727,8 @@ CH4,RCOO,1973,RCOO_seasonality
 CH4,RCOO,1972,RCOO_seasonality
 CH4,RCOO,1971,RCOO_seasonality
 CH4,RCOO,1970,RCOO_seasonality
+CH4,RCOC,2017,RCORC_seasonality
+CH4,RCOC,2016,RCORC_seasonality
 CH4,RCOC,2015,RCORC_seasonality
 CH4,RCOC,2014,RCORC_seasonality
 CH4,RCOC,2013,RCORC_seasonality
@@ -23591,6 +23775,8 @@ CH4,RCOC,1973,RCORC_seasonality
 CH4,RCOC,1972,RCORC_seasonality
 CH4,RCOC,1971,RCORC_seasonality
 CH4,RCOC,1970,RCORC_seasonality
+CH4,RCOR,2017,RCORC_seasonality
+CH4,RCOR,2016,RCORC_seasonality
 CH4,RCOR,2015,RCORC_seasonality
 CH4,RCOR,2014,RCORC_seasonality
 CH4,RCOR,2013,RCORC_seasonality
@@ -23637,6 +23823,8 @@ CH4,RCOR,1973,RCORC_seasonality
 CH4,RCOR,1972,RCORC_seasonality
 CH4,RCOR,1971,RCORC_seasonality
 CH4,RCOR,1970,RCORC_seasonality
+CH4,SLV,2017,SLV_seasonality
+CH4,SLV,2016,SLV_seasonality
 CH4,SLV,2015,SLV_seasonality
 CH4,SLV,2014,SLV_seasonality
 CH4,SLV,2013,SLV_seasonality
@@ -23683,6 +23871,8 @@ CH4,SLV,1973,SLV_seasonality
 CH4,SLV,1972,SLV_seasonality
 CH4,SLV,1971,SLV_seasonality
 CH4,SLV,1970,SLV_seasonality
+CH4,NRTR,2017,TRA_seasonality
+CH4,NRTR,2016,TRA_seasonality
 CH4,NRTR,2015,TRA_seasonality
 CH4,NRTR,2014,TRA_seasonality
 CH4,NRTR,2013,TRA_seasonality
@@ -23729,6 +23919,8 @@ CH4,NRTR,1973,TRA_seasonality
 CH4,NRTR,1972,TRA_seasonality
 CH4,NRTR,1971,TRA_seasonality
 CH4,NRTR,1970,TRA_seasonality
+CH4,WST,2017,WST_seasonality
+CH4,WST,2016,WST_seasonality
 CH4,WST,2015,WST_seasonality
 CH4,WST,2014,WST_seasonality
 CH4,WST,2013,WST_seasonality
@@ -23775,6 +23967,8 @@ CH4,WST,1973,WST_seasonality
 CH4,WST,1972,WST_seasonality
 CH4,WST,1971,WST_seasonality
 CH4,WST,1970,WST_seasonality
+CH4,AIR,2017,AIR_BC_2000_seasonality
+CH4,AIR,2016,AIR_BC_2000_seasonality
 CH4,AIR,2015,AIR_BC_2000_seasonality
 CH4,AIR,2014,AIR_BC_2000_seasonality
 CH4,AIR,2013,AIR_BC_2000_seasonality
@@ -23821,6 +24015,8 @@ CH4,AIR,1973,AIR_BC_1970_seasonality
 CH4,AIR,1972,AIR_BC_1970_seasonality
 CH4,AIR,1971,AIR_BC_1970_seasonality
 CH4,AIR,1970,AIR_BC_1970_seasonality
+CH4,SHP,2017,SHP_NMVOC_seasonality
+CH4,SHP,2016,SHP_NMVOC_seasonality
 CH4,SHP,2015,SHP_NMVOC_seasonality
 CH4,SHP,2014,SHP_NMVOC_seasonality
 CH4,SHP,2013,SHP_NMVOC_seasonality
@@ -23867,6 +24063,8 @@ CH4,SHP,1973,SHP_NMVOC_seasonality
 CH4,SHP,1972,SHP_NMVOC_seasonality
 CH4,SHP,1971,SHP_NMVOC_seasonality
 CH4,SHP,1970,SHP_NMVOC_seasonality
+CH4,AGR,2017,AGR_seasonality
+CH4,AGR,2016,AGR_seasonality
 CH4,AGR,2015,AGR_seasonality
 CH4,AGR,2014,AGR_seasonality
 CH4,AGR,2013,AGR_seasonality
@@ -24045,6 +24243,8 @@ CH4,AGR,1930,AGR_seasonality
 CH4,AGR,1940,AGR_seasonality
 CH4,AGR,1950,AGR_seasonality
 CH4,AGR,1960,AGR_seasonality
+BC,ROAD,2017,TRA_seasonality
+BC,ROAD,2016,TRA_seasonality
 BC,ROAD,2015,TRA_seasonality
 BC,ROAD,2014,TRA_seasonality
 BC,ROAD,2013,TRA_seasonality
@@ -24311,6 +24511,8 @@ BC,ROAD,1753,TRA_seasonality
 BC,ROAD,1752,TRA_seasonality
 BC,ROAD,1751,TRA_seasonality
 BC,ROAD,1750,TRA_seasonality
+CO,ROAD,2017,TRA_seasonality
+CO,ROAD,2016,TRA_seasonality
 CO,ROAD,2015,TRA_seasonality
 CO,ROAD,2014,TRA_seasonality
 CO,ROAD,2013,TRA_seasonality
@@ -24577,6 +24779,8 @@ CO,ROAD,1753,TRA_seasonality
 CO,ROAD,1752,TRA_seasonality
 CO,ROAD,1751,TRA_seasonality
 CO,ROAD,1750,TRA_seasonality
+CO2,ROAD,2017,TRA_seasonality
+CO2,ROAD,2016,TRA_seasonality
 CO2,ROAD,2015,TRA_seasonality
 CO2,ROAD,2014,TRA_seasonality
 CO2,ROAD,2013,TRA_seasonality
@@ -24842,6 +25046,8 @@ CO2,ROAD,1754,TRA_seasonality
 CO2,ROAD,1753,TRA_seasonality
 CO2,ROAD,1752,TRA_seasonality
 CO2,ROAD,1751,TRA_seasonality
+NH3,ROAD,2017,TRA_seasonality
+NH3,ROAD,2016,TRA_seasonality
 NH3,ROAD,2015,TRA_seasonality
 NH3,ROAD,2014,TRA_seasonality
 NH3,ROAD,2013,TRA_seasonality
@@ -25108,6 +25314,8 @@ NH3,ROAD,1753,TRA_seasonality
 NH3,ROAD,1752,TRA_seasonality
 NH3,ROAD,1751,TRA_seasonality
 NH3,ROAD,1750,TRA_seasonality
+NMVOC,ROAD,2017,TRA_seasonality
+NMVOC,ROAD,2016,TRA_seasonality
 NMVOC,ROAD,2015,TRA_seasonality
 NMVOC,ROAD,2014,TRA_seasonality
 NMVOC,ROAD,2013,TRA_seasonality
@@ -25374,6 +25582,8 @@ NMVOC,ROAD,1753,TRA_seasonality
 NMVOC,ROAD,1752,TRA_seasonality
 NMVOC,ROAD,1751,TRA_seasonality
 NMVOC,ROAD,1750,TRA_seasonality
+NOx,ROAD,2017,TRA_seasonality
+NOx,ROAD,2016,TRA_seasonality
 NOx,ROAD,2015,TRA_seasonality
 NOx,ROAD,2014,TRA_seasonality
 NOx,ROAD,2013,TRA_seasonality
@@ -25640,6 +25850,8 @@ NOx,ROAD,1753,TRA_seasonality
 NOx,ROAD,1752,TRA_seasonality
 NOx,ROAD,1751,TRA_seasonality
 NOx,ROAD,1750,TRA_seasonality
+OC,ROAD,2017,TRA_seasonality
+OC,ROAD,2016,TRA_seasonality
 OC,ROAD,2015,TRA_seasonality
 OC,ROAD,2014,TRA_seasonality
 OC,ROAD,2013,TRA_seasonality
@@ -25906,6 +26118,8 @@ OC,ROAD,1753,TRA_seasonality
 OC,ROAD,1752,TRA_seasonality
 OC,ROAD,1751,TRA_seasonality
 OC,ROAD,1750,TRA_seasonality
+SO2,ROAD,2017,TRA_seasonality
+SO2,ROAD,2016,TRA_seasonality
 SO2,ROAD,2015,TRA_seasonality
 SO2,ROAD,2014,TRA_seasonality
 SO2,ROAD,2013,TRA_seasonality
@@ -26172,6 +26386,8 @@ SO2,ROAD,1753,TRA_seasonality
 SO2,ROAD,1752,TRA_seasonality
 SO2,ROAD,1751,TRA_seasonality
 SO2,ROAD,1750,TRA_seasonality
+CH4,ROAD,2017,TRA_seasonality
+CH4,ROAD,2016,TRA_seasonality
 CH4,ROAD,2015,TRA_seasonality
 CH4,ROAD,2014,TRA_seasonality
 CH4,ROAD,2013,TRA_seasonality

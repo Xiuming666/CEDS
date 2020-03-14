@@ -1,2 +1,2 @@
-Data-Type,Emission,Region,Sector,Start Year,End Year,Source/Comment,Created by
-Mapping,NA,NA,NA,NA,NA,Proxy usage mapping for emission species-sector-year.,task CEDS-proxy-get-together-and-proxy-mapping
+Data-Type,Emission,Region,Sector,Start Year,End Year,Source/Comment
+Mapping,NA,NA,NA,NA,NA,Proxy usage mapping for emission species-sector-year. Created by: task CEDS-proxy-get-together-and-proxy-mapping

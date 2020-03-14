@@ -83,10 +83,10 @@ else
 # outputs of the system.
 emissions: $(FINAL_OUT)/current-versions/CEDS_$(EM)_emissions_by_country_sector_%.csv
 
-gridded-emissions: $(FINAL_OUT)/gridded-emissions/$(EM)-em-ranthro* \
-	$(FINAL_OUT)/gridded-emissions/$(EM)-em-TOTAL-COALFUEL-anthro* \
+gridded-emissions: $(FINAL_OUT)/gridded-emissions/$(EM)-em-TOTAL-COALFUEL-anthro* \
 	$(FINAL_OUT)/gridded-emissions/$(EM)-em-SOLID-BIOFUEL-anthro* \
 	$(FINAL_OUT)/gridded-emissions/$(EM)-em-anthro*
+	#$(FINAL_OUT)/gridded-emissions/$(EM)-em-ranthro* \
 #	$(FINAL_OUT)/gridded-emissions/$(EM)-em-AIR-anthro*
 
 
@@ -116,7 +116,7 @@ all: CO-emissions BC-emissions OC-emissions NOx-emissions NMVOC-emissions SO2-em
 part1: SO2-emissions NOx-emissions NH3-emissions
 part2: BC-emissions OC-emissions CO2-emissions
 part3: CO-emissions NMVOC-emissions CH4-emissions
-all-gridded: SO2-gridded BC-gridded OC-gridded NOx-gridded CO-gridded NH3-gridded
+all-gridded: CO-gridded NH3-gridded SO2-gridded #BC-gridded OC-gridded NOx-gridded 
 
 # --------------------------------------------------------------
 

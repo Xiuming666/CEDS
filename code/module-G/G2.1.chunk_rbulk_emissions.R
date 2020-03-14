@@ -21,7 +21,7 @@ initialize( "G2.1.chunk_rbulk_emissions.R", log_msg, headers )
 # Define emissions species variable
 args_from_makefile <- commandArgs( TRUE )
 em <- args_from_makefile[ 1 ]
-if ( is.na( em ) ) em <- "BC"
+if ( is.na( em ) ) em <- "SO2"
 
 # Chunk bulk emissions
 chunk_emissions( singleVarChunking_rbulkemissions, em )

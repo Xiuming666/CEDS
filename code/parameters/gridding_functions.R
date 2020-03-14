@@ -436,7 +436,7 @@ get_proxy <- function( em, year, sector, proxy_mapping, proxy_files, proxy_type 
     } else {
         proxy_file <- grep( file_name, proxy_files$primary, value = T )
     }
-
+    }
 
   # If we want a backup proxy, or the primary proxy file can't be found,
   # look for a backup
@@ -451,7 +451,8 @@ get_proxy <- function( em, year, sector, proxy_mapping, proxy_files, proxy_type 
         proxy_file <- grep( file_name, proxy_files$backup, value = T )
         } else {
         proxy_file <- grep( file_name, proxy_files$backup, value = T )
-    }
+        }
+  }
 
   # Check that we found one, and exactly one, proxy file
   if ( length( proxy_file ) != 1 ) {
@@ -825,22 +826,22 @@ extendProxyMapping <- function( a_proxy_mapping ) {
 # NOTE: Code assumes that current mapping file is complete for all years in the last year provided
 # TODO: See if extendProxyMapping and extendSeasonalityMapping can be combined using scoped function variants
 extendSeasonalityMapping <- function( a_seasonality_mapping ) {
-  last_seasonality_data_year <- as.numeric( max( a_seasonality_mapping$year ) )
-   last_seasonality_data_year_string <- paste( last_seasonality_data_year )
+    last_seasonality_data_year <- as.numeric( max( a_seasonality_mapping$year ) )
+    last_seasonality_data_year_string <- paste( last_seasonality_data_year )
 
-  extra_years_needed <- (last_seasonality_data_year+1):end_year
-  extra_years_needed_string <- paste( extra_years_needed )
+    extra_years_needed <- (last_seasonality_data_year+1):end_year
+    extra_years_needed_string <- paste( extra_years_needed )
 
-  final_years <- 1750:end_year
-  final_years_string <- paste( final_years )
+    final_years <- 1750:end_year
+    final_years_string <- paste( final_years )
 
-  a_seasonality_mapping <- a_seasonality_mapping %>%
-    tidyr::spread( year, seasonality_file ) %>%
-    dplyr::mutate_at( extra_years_needed_string, funs( identity (  !!rlang::sym( last_seasonality_data_year_string ) ) ) ) %>%
-    tidyr::gather( key = year, value = seasonality_file, final_years_string ) %>%
-    dplyr::arrange( em, sector, year, seasonality_file ) %>%
-    dplyr::select( em, sector,  year, seasonality_file ) %>%
-    dplyr::filter( !is.na( seasonality_file ) )
+    a_seasonality_mapping <- a_seasonality_mapping %>%
+        tidyr::spread( year, seasonality_file ) %>%
+        dplyr::mutate_at( extra_years_needed_string, funs( identity (  !!rlang::sym( last_seasonality_data_year_string ) ) ) ) %>%
+        tidyr::gather( key = year, value = seasonality_file, final_years_string ) %>%
+        dplyr::arrange( em, sector, year, seasonality_file ) %>%
+        dplyr::select( em, sector,  year, seasonality_file ) %>%
+        dplyr::filter( !is.na( seasonality_file ) )
 
-  return( a_seasonality_mapping )
+    return( a_seasonality_mapping )
 }
