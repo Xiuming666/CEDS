@@ -37,7 +37,7 @@ initialize( "G1.1.grid_rbulk_emissions.R", log_msg, headers )
 # Define emissions species variable
 args_from_makefile <- commandArgs( TRUE )
 em <- args_from_makefile[ 1 ]
-if ( is.na( em ) ) em <- "SO2"
+if ( is.na( em ) ) em <- "CO"
 
 # Set up directories
 output_dir          <- filePath( "MED_OUT",  "gridded-emissions/",     extension = "" )
@@ -98,7 +98,8 @@ gridding_emissions <- ceds_gridding_mapping %>%
   dplyr::inner_join( emissions, by = c( 'CEDS_working_sector' = 'sector' ) ) %>%
   dplyr::filter( !is.na( CEDS_int_gridding_sector_short ) ) %>%
   dplyr::rename( sector = CEDS_int_gridding_sector_short ) %>%
-  dplyr::filter( fuel != 'biomass', fuel != 'hard_coal', fuel !='brown_coal', fuel !='coal_coke', sector != 'AIR') %>%
+  dplyr::filter( fuel == 'process', sector != 'AIR') %>%
+  #dplyr::filter( fuel != 'biomass', fuel != 'hard_coal', fuel !='brown_coal', fuel !='coal_coke', sector != 'AIR') %>%
   dplyr::select( -fuel ) %>%
   dplyr::group_by( iso, sector ) %>%
   dplyr::summarise_at( paste0( 'X', year_list ), sum ) %>%
@@ -169,6 +170,15 @@ gridding_emissions_fin <- ceds_gridding_mapping %>%
   dplyr::ungroup() %>%
   dplyr::rename( sector = CEDS_final_gridding_sector_short ) %>%
   dplyr::arrange( sector )
+
+# manually add in all 0 lines for 'NRTR', 'RCOC', 'RCOO', 'RCOR', 'ROAD' because they only have emissions from combustion sources
+temp_matrix <- matrix( 0, 5, length( year_list ) )
+temp_df <- data.frame( temp_matrix )
+temp_df$sector <- c( 'NRTR', 'RCOC', 'RCOO', 'RCOR', 'ROAD')
+names( temp_df ) <- c( paste0( 'X', year_list ), 'sector' )
+temp_df <- temp_df[ ,c( 'sector', paste0( 'X', year_list ) ) ]
+gridding_emissions_fin <- rbind( gridding_emissions_fin, temp_df)
+gridding_emissions_fin <- gridding_emissions_fin[ order( gridding_emissions_fin$sector ), ]
 
 # consolidate different checksum files to have total emissions by sector by year
 checksum_df <- list.files( output_dir, paste0( '_', em, '_rbulk_anthro.*[.]csv' ), full.names = TRUE ) %>%

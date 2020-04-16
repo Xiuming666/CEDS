@@ -4,7 +4,7 @@
 # Date Last Modified: November 15, 2019
 # Program Purpose: To read in and reformat DICE Africa emissions inventory data
 # This data is from 2006 and 2013.
-# Units are initially in Tg, converted to kt
+# Units are kt
 # Input Files: DICE_[em].csv
 # Output Files: E.[em]_Africa_inventory.csv
 # Notes:

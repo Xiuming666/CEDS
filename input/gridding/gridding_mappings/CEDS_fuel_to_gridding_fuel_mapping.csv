@@ -1,10 +1,10 @@
 CEDS_working_fuel,CEDS_int_gridding_fuel,CEDS_int_gridding_fuel_short,CEDS_final_gridding_fuel,CEDS_final_gridding_fuel_short
-process,liquid fuels + natural gas + process,OTHER,liquid fuels + natural gas + process,OTHER
-biomass,solid biofuel,BIOFUEL,solid biofuel,BIOFUEL
-brown_coal,total coal,COAL,total coal,COAL
-coal_coke,total coal,COAL,total coal,COAL
-diesel_oil,liquid fuels + natural gas + process,OTHER,liquid fuels + natural gas + process,OTHER
-hard_coal,total coal,COAL,total coal,COAL
-heavy_oil,liquid fuels + natural gas + process,OTHER,liquid fuels + natural gas + process,OTHER
-light_oil,liquid fuels + natural gas + process,OTHER,liquid fuels + natural gas + process,OTHER
-natural_gas,liquid fuels + natural gas + process,OTHER,liquid fuels + natural gas + process,OTHER
+process,liquid fuels + natural gas + process,PROCESS,liquid fuels + natural gas + process,PROCESS
+biomass,solid biofuel,BIOFUEL,solid biofuel,SOLID_BIOFUEL
+brown_coal,total coal,COAL,total coal,TOTAL_COAL
+coal_coke,total coal,COAL,total coal,TOTAL_COAL
+diesel_oil,liquid fuels + natural gas + process,OIL_GAS,liquid fuels + natural gas + process,LIQUID_FUEL_PLUS_NATURAL_GAS
+hard_coal,total coal,COAL,total coal,TOTAL_COAL
+heavy_oil,liquid fuels + natural gas + process,OIL_GAS,liquid fuels + natural gas + process,LIQUID_FUEL_PLUS_NATURAL_GAS
+light_oil,liquid fuels + natural gas + process,OIL_GAS,liquid fuels + natural gas + process,LIQUID_FUEL_PLUS_NATURAL_GAS
+natural_gas,liquid fuels + natural gas + process,OIL_GAS,liquid fuels + natural gas + process,LIQUID_FUEL_PLUS_NATURAL_GAS

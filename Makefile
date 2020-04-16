@@ -83,10 +83,11 @@ else
 # outputs of the system.
 emissions: $(FINAL_OUT)/current-versions/CEDS_$(EM)_emissions_by_country_sector_%.csv
 
-gridded-emissions: $(FINAL_OUT)/gridded-emissions/$(EM)-em-TOTAL-COALFUEL-anthro* \
-	$(FINAL_OUT)/gridded-emissions/$(EM)-em-SOLID-BIOFUEL-anthro* \
-	$(FINAL_OUT)/gridded-emissions/$(EM)-em-anthro*
-	#$(FINAL_OUT)/gridded-emissions/$(EM)-em-ranthro* \
+gridded-emissions: $(FINAL_OUT)/gridded-emissions/$(EM)-em-ranthro* 
+	#$(FINAL_OUT)/gridded-emissions/$(EM)-em-anthro* \
+	#$(FINAL_OUT)/gridded-emissions/$(EM)-em-LIQUID-GAS-anthro* 
+	#$(FINAL_OUT)/gridded-emissions/$(EM)-em-TOTAL-COALFUEL-anthro* \
+	#$(FINAL_OUT)/gridded-emissions/$(EM)-em-SOLID-BIOFUEL-anthro* \
 #	$(FINAL_OUT)/gridded-emissions/$(EM)-em-AIR-anthro*
 
 
@@ -116,7 +117,7 @@ all: CO-emissions BC-emissions OC-emissions NOx-emissions NMVOC-emissions SO2-em
 part1: SO2-emissions NOx-emissions NH3-emissions
 part2: BC-emissions OC-emissions CO2-emissions
 part3: CO-emissions NMVOC-emissions CH4-emissions
-all-gridded: CO-gridded NH3-gridded SO2-gridded #BC-gridded OC-gridded NOx-gridded 
+all-gridded: CO-gridded NH3-gridded SO2-gridded BC-gridded OC-gridded NOx-gridded 
 
 # --------------------------------------------------------------
 
@@ -1066,7 +1067,7 @@ else
 	Rscript $(MOD_G)/G4.move_gridded_emissions.R $(EM) --nosave --no-restore
 endif
 
-# Remaining Bulk Emissions (anthropogenic - (solid biofuel + coal))
+# PROCESS Emissions (Remaining Bulk Emissions (anthropogenic - (biofuel + coal+ liq+gas)))
 $(MED_OUT)/gridded-emissions/CEDS_$(EM)_ranthro_%.csv: \
 	$(MOD_G)/G1.1.grid_rbulk_emissions.R \
 	$(PARAMS)/gridding_functions.R \
@@ -1334,6 +1335,97 @@ ifeq ($(EM),NMVOC)
 	Rscript $(MOD_G)/G2.2.chunk_subVOC_emissions_coalfuel.R VOC24 --nosave --no-restore
 	Rscript $(MOD_G)/G4.move_gridded_emissions.R VOC24 --nosave --no-restore
 	Rscript $(MOD_G)/G2.2.chunk_subVOC_emissions_coalfuel.R VOC25 --nosave --no-restore
+	Rscript $(MOD_G)/G4.move_gridded_emissions.R VOC25 --nosave --no-restore
+else
+	Rscript $(MOD_G)/G4.move_gridded_emissions.R $(EM) --nosave --no-restore
+endif
+
+# Total Liquid Fuel and Natural Gas emissions
+$(MED_OUT)/gridded-emissions/CEDS_$(EM)_liquid_gas_anthro_%.csv: \
+	$(MOD_G)/G1.6.grid_liquid_gas_emissions.R \
+	$(PARAMS)/gridding_functions.R \
+	$(PARAMS)/nc_generation_functions.R \
+	$(MED_OUT)/$(EM)_total_CEDS_emissions.csv
+	Rscript $< $(EM) --nosave --no-restore
+
+ifeq ($(EM),NMVOC)
+	Rscript $(MOD_G)/G1.2.grid_subVOC_emissions_liquid_gas.R VOC01 --nosave --no-restore
+	Rscript $(MOD_G)/G1.2.grid_subVOC_emissions_liquid_gas.R VOC02 --nosave --no-restore
+	Rscript $(MOD_G)/G1.2.grid_subVOC_emissions_liquid_gas.R VOC03 --nosave --no-restore
+	Rscript $(MOD_G)/G1.2.grid_subVOC_emissions_liquid_gas.R VOC04 --nosave --no-restore
+	Rscript $(MOD_G)/G1.2.grid_subVOC_emissions_liquid_gas.R VOC05 --nosave --no-restore
+	Rscript $(MOD_G)/G1.2.grid_subVOC_emissions_liquid_gas.R VOC06 --nosave --no-restore
+	Rscript $(MOD_G)/G1.2.grid_subVOC_emissions_liquid_gas.R VOC07 --nosave --no-restore
+	Rscript $(MOD_G)/G1.2.grid_subVOC_emissions_liquid_gas.R VOC08 --nosave --no-restore
+	Rscript $(MOD_G)/G1.2.grid_subVOC_emissions_liquid_gas.R VOC09 --nosave --no-restore
+	Rscript $(MOD_G)/G1.2.grid_subVOC_emissions_liquid_gas.R VOC12 --nosave --no-restore
+	Rscript $(MOD_G)/G1.2.grid_subVOC_emissions_liquid_gas.R VOC13 --nosave --no-restore
+	Rscript $(MOD_G)/G1.2.grid_subVOC_emissions_liquid_gas.R VOC14 --nosave --no-restore
+	Rscript $(MOD_G)/G1.2.grid_subVOC_emissions_liquid_gas.R VOC15 --nosave --no-restore
+	Rscript $(MOD_G)/G1.2.grid_subVOC_emissions_liquid_gas.R VOC16 --nosave --no-restore
+	Rscript $(MOD_G)/G1.2.grid_subVOC_emissions_liquid_gas.R VOC17 --nosave --no-restore
+	Rscript $(MOD_G)/G1.2.grid_subVOC_emissions_liquid_gas.R VOC18 --nosave --no-restore
+	Rscript $(MOD_G)/G1.2.grid_subVOC_emissions_liquid_gas.R VOC19 --nosave --no-restore
+	Rscript $(MOD_G)/G1.2.grid_subVOC_emissions_liquid_gas.R VOC20 --nosave --no-restore
+	Rscript $(MOD_G)/G1.2.grid_subVOC_emissions_liquid_gas.R VOC21 --nosave --no-restore
+	Rscript $(MOD_G)/G1.2.grid_subVOC_emissions_liquid_gas.R VOC22 --nosave --no-restore
+	Rscript $(MOD_G)/G1.2.grid_subVOC_emissions_liquid_gas.R VOC23 --nosave --no-restore
+	Rscript $(MOD_G)/G1.2.grid_subVOC_emissions_liquid_gas.R VOC24 --nosave --no-restore
+	Rscript $(MOD_G)/G1.2.grid_subVOC_emissions_liquid_gas.R VOC25 --nosave --no-restore
+endif
+
+$(FINAL_OUT)/gridded-emissions/$(EM)-em-LIQUID-GAS-anthro*: \
+	$(MOD_G)/G2.6.chunk_liquid_gas_emissions.R \
+	$(MED_OUT)/gridded-emissions/CEDS_$(EM)_liquid_gas_anthro_*.csv
+	rm -fv $(FINAL_OUT)/gridded-emissions/$(EM)-em-LIQUID-GAS-anthro*
+	Rscript $< $(EM) --nosave --no-restore
+
+ifeq ($(EM),NMVOC)
+	Rscript $(MOD_G)/G2.2.chunk_subVOC_emissions_liquid_gas.R VOC01 --nosave --no-restore
+	Rscript $(MOD_G)/G4.move_gridded_emissions.R VOC01 --nosave --no-restore
+	Rscript $(MOD_G)/G2.2.chunk_subVOC_emissions_liquid_gas.R VOC02 --nosave --no-restore
+	Rscript $(MOD_G)/G4.move_gridded_emissions.R VOC02 --nosave --no-restore
+	Rscript $(MOD_G)/G2.2.chunk_subVOC_emissions_liquid_gas.R VOC03 --nosave --no-restore
+	Rscript $(MOD_G)/G4.move_gridded_emissions.R VOC03 --nosave --no-restore
+	Rscript $(MOD_G)/G2.2.chunk_subVOC_emissions_liquid_gas.R VOC04 --nosave --no-restore
+	Rscript $(MOD_G)/G4.move_gridded_emissions.R VOC04 --nosave --no-restore
+	Rscript $(MOD_G)/G2.2.chunk_subVOC_emissions_liquid_gas.R VOC05 --nosave --no-restore
+	Rscript $(MOD_G)/G4.move_gridded_emissions.R VOC05 --nosave --no-restore
+	Rscript $(MOD_G)/G2.2.chunk_subVOC_emissions_liquid_gas.R VOC06 --nosave --no-restore
+	Rscript $(MOD_G)/G4.move_gridded_emissions.R VOC06 --nosave --no-restore
+	Rscript $(MOD_G)/G2.2.chunk_subVOC_emissions_liquid_gas.R VOC07 --nosave --no-restore
+	Rscript $(MOD_G)/G4.move_gridded_emissions.R VOC07 --nosave --no-restore
+	Rscript $(MOD_G)/G2.2.chunk_subVOC_emissions_liquid_gas.R VOC08 --nosave --no-restore
+	Rscript $(MOD_G)/G4.move_gridded_emissions.R VOC08 --nosave --no-restore
+	Rscript $(MOD_G)/G2.2.chunk_subVOC_emissions_liquid_gas.R VOC09 --nosave --no-restore
+	Rscript $(MOD_G)/G4.move_gridded_emissions.R VOC09 --nosave --no-restore
+	Rscript $(MOD_G)/G2.2.chunk_subVOC_emissions_liquid_gas.R VOC12 --nosave --no-restore
+	Rscript $(MOD_G)/G4.move_gridded_emissions.R VOC12 --nosave --no-restore
+	Rscript $(MOD_G)/G2.2.chunk_subVOC_emissions_liquid_gas.R VOC13 --nosave --no-restore
+	Rscript $(MOD_G)/G4.move_gridded_emissions.R VOC13 --nosave --no-restore
+	Rscript $(MOD_G)/G2.2.chunk_subVOC_emissions_liquid_gas.R VOC14 --nosave --no-restore
+	Rscript $(MOD_G)/G4.move_gridded_emissions.R VOC14 --nosave --no-restore
+	Rscript $(MOD_G)/G2.2.chunk_subVOC_emissions_liquid_gas.R VOC15 --nosave --no-restore
+	Rscript $(MOD_G)/G4.move_gridded_emissions.R VOC15 --nosave --no-restore
+	Rscript $(MOD_G)/G2.2.chunk_subVOC_emissions_liquid_gas.R VOC16 --nosave --no-restore
+	Rscript $(MOD_G)/G4.move_gridded_emissions.R VOC16 --nosave --no-restore
+	Rscript $(MOD_G)/G2.2.chunk_subVOC_emissions_liquid_gas.R VOC17 --nosave --no-restore
+	Rscript $(MOD_G)/G4.move_gridded_emissions.R VOC17 --nosave --no-restore
+	Rscript $(MOD_G)/G2.2.chunk_subVOC_emissions_liquid_gas.R VOC18 --nosave --no-restore
+	Rscript $(MOD_G)/G4.move_gridded_emissions.R VOC18 --nosave --no-restore
+	Rscript $(MOD_G)/G2.2.chunk_subVOC_emissions_liquid_gas.R VOC19 --nosave --no-restore
+	Rscript $(MOD_G)/G4.move_gridded_emissions.R VOC19 --nosave --no-restore
+	Rscript $(MOD_G)/G2.2.chunk_subVOC_emissions_liquid_gas.R VOC20 --nosave --no-restore
+	Rscript $(MOD_G)/G4.move_gridded_emissions.R VOC20 --nosave --no-restore
+	Rscript $(MOD_G)/G2.2.chunk_subVOC_emissions_liquid_gas.R VOC21 --nosave --no-restore
+	Rscript $(MOD_G)/G4.move_gridded_emissions.R VOC21 --nosave --no-restore
+	Rscript $(MOD_G)/G2.2.chunk_subVOC_emissions_liquid_gas.R VOC22 --nosave --no-restore
+	Rscript $(MOD_G)/G4.move_gridded_emissions.R VOC22 --nosave --no-restore
+	Rscript $(MOD_G)/G2.2.chunk_subVOC_emissions_liquid_gas.R VOC23 --nosave --no-restore
+	Rscript $(MOD_G)/G4.move_gridded_emissions.R VOC23 --nosave --no-restore
+	Rscript $(MOD_G)/G2.2.chunk_subVOC_emissions_liquid_gas.R VOC24 --nosave --no-restore
+	Rscript $(MOD_G)/G4.move_gridded_emissions.R VOC24 --nosave --no-restore
+	Rscript $(MOD_G)/G2.2.chunk_subVOC_emissions_liquid_gas.R VOC25 --nosave --no-restore
 	Rscript $(MOD_G)/G4.move_gridded_emissions.R VOC25 --nosave --no-restore
 else
 	Rscript $(MOD_G)/G4.move_gridded_emissions.R $(EM) --nosave --no-restore

@@ -1,5 +1,5 @@
 # ------------------------------------------------------------------------------
-# Program Name: G1.2.grid_subVOC_emissions_rbulk.R
+# Program Name: G1.2.grid_subVOC_emissions_liquid_gas.R
 # Authors: Erin McDuffie, adapted from Leyang Feng, Caleb Braun
 # Date Last Updated: July 4, 2019
 # Program Purpose: Grid aggregated emissions into NetCDF grids for subVOCs for remaining bulk emissions
@@ -22,7 +22,7 @@ PARAM_DIR <- if("input" %in% dir()) "code/parameters/" else "../code/parameters/
 headers <- c( 'data_functions.R', 'gridding_functions.R', 'nc_generation_functions.R' )
 log_msg <- "VOC speciation gridding "
 source( paste0( PARAM_DIR, "header.R" ) )
-initialize( "G1.2.grid_subVOC_emissions_rbulk.R", log_msg, headers )
+initialize( "G1.2.grid_subVOC_emissions_liquid_gas.R", log_msg, headers )
 
 
 # ------------------------------------------------------------------------------
@@ -95,8 +95,7 @@ gridding_emissions <- ceds_gridding_mapping %>%
   dplyr::inner_join( emissions, by = c( 'CEDS_working_sector' = 'sector' ) ) %>%
   dplyr::filter( !is.na( CEDS_int_gridding_sector_short ) ) %>%
   dplyr::rename( sector = CEDS_int_gridding_sector_short ) %>%
-  dplyr::filter( fuel == 'process', sector != 'AIR' ) %>%
-  #dplyr::filter( fuel != 'biomass', fuel != 'hard_coal', fuel != 'brown_coal', fuel != 'coal_coke', sector != 'AIR' ) %>%
+  dplyr::filter( fuel == 'heavy_oil' | fuel == 'diesel_oil' | fuel =='light_oil' | fuel =='natural_gas', sector != 'AIR' ) %>%
   dplyr::select( -fuel ) %>%
   dplyr::group_by( iso, sector ) %>%
   dplyr::summarise_at( paste0( 'X', year_list ), sum ) %>%
@@ -131,16 +130,16 @@ pb <- txtProgressBar(min = 0, max = length(year_list), style = 3)
 
 for ( year in year_list ) {
   setTxtProgressBar(pb, year - min(year_list))
-
+  
   # grid one years emissions for subVOCs
   int_grids_list <- grid_one_year( year, em, grid_resolution, gridding_emissions, location_index,
                                    proxy_mapping, proxy_substitution_mapping, proxy_files )
-
+  
   # generate nc file for gridded one years subVOC emissions,
   # a checksum file is also generated along with the nc file
   # which summarize the emissions in mass by sector by month.
-  generate_final_grids_nc_subVOC_rbulk( int_grids_list, output_dir, grid_resolution, year, em = 'NMVOC',
-                                  VOC_em = VOC_em, VOC_names, sector_name_mapping, seasonality_mapping )
+  generate_final_grids_nc_subVOC_liquid_gas( int_grids_list, output_dir, grid_resolution, year, em = 'NMVOC',
+                                        VOC_em = VOC_em, VOC_names, sector_name_mapping, seasonality_mapping )
 }
 
 close(pb)
@@ -166,17 +165,17 @@ gridding_emissions_fin <- ceds_gridding_mapping %>%
   dplyr::rename( sector = CEDS_final_gridding_sector_short ) %>%
   dplyr::arrange( sector )
 
-# manually add in all 0 lines for 'NRTR', 'RCOC', 'RCOO', 'RCOR', 'ROAD', 'SHP' because they only have emissions from combustion sources
-temp_matrix <- matrix( 0, 5, length( year_list ) )
+# manually add in all 0 lines for AGR, SLV, and WST because they only have emissions from 'process' emissions
+temp_matrix <- matrix( 0, 3, length( year_list ) )
 temp_df <- data.frame( temp_matrix )
-temp_df$sector <- c( 'NRTR', 'RCOC', 'RCOO', 'RCOR', 'ROAD')
+temp_df$sector <- c( 'AGR', 'SLV', 'WST' )
 names( temp_df ) <- c( paste0( 'X', year_list ), 'sector' )
 temp_df <- temp_df[ ,c( 'sector', paste0( 'X', year_list ) ) ]
 gridding_emissions_fin <- rbind( gridding_emissions_fin, temp_df)
 gridding_emissions_fin <- gridding_emissions_fin[ order( gridding_emissions_fin$sector ), ]
 
 # consolidate different checksum files to have total emissions by sector by year
-checksum_df <- list.files( output_dir, paste0( '_', VOC_em, '_ranthro.*[.]csv' ), full.names = TRUE ) %>%
+checksum_df <- list.files( output_dir, paste0( '_', VOC_em, '_liquid_gas.*[.]csv' ), full.names = TRUE ) %>%
   lapply( read.csv ) %>%
   dplyr::bind_rows() %>%
   dplyr::group_by( sector, year ) %>%
@@ -196,9 +195,9 @@ diag_per_df[ is.nan.df( diag_per_df ) ] <- NA
 # -----------------------------------------------------------------------------
 # 5. Write-out and Stop
 
-out_name <- paste0( 'G.', VOC_em, '_rbulk_emissions_checksum_comparison_diff' )
+out_name <- paste0( 'G.', VOC_em, '_liquid_gas_emissions_checksum_comparison_diff' )
 writeData( diag_diff_df, "DIAG_OUT", out_name )
-out_name <- paste0( 'G.', VOC_em, '_rbulk_emissions_checksum_comparison_per' )
+out_name <- paste0( 'G.', VOC_em, '_liquid_gas_emissions_checksum_comparison_per' )
 writeData( diag_per_df, "DIAG_OUT", out_name )
 
 logStop()
