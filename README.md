@@ -1,9 +1,10 @@
 # CEDS - GBD-MAPS README
 
-# CEDS Code Developed for the Global Burden of Disease - Major Air Pollution Sources (GBD-MAPS) Project
+CEDS Code Developed for the Global Burden of Disease - Major Air Pollution Sources (GBD-MAPS) Project
 (https://sites.wustl.edu/acag/datasets/gbd-maps/)
 
-* System provides gridded (0.5x0.5) global emission fluxes (kg/m2/s) of NOx, SO2, CO, 25 NMVOCs, NH3, BC, OC for 1970 - 2017 as a function of 11 emission source sectors (agriculture, energy, industry, on-road transportation, off-road/non-road transportation, residential combustion, commerical combustion, other combustion, solvent use, waste handing and disposal, international shipping) and 4 fuel groups (total coal, solid biofuel, the sum of liquid fuel and natural gas combustion, as well as remaining CEDS 'process-level' sources). Annual country total emissions for NOx (as NO2), SO2, CO, total NMVOCs, NH3, BC, and OC are also produced from this system. 
+***
+CEDS-GBD-MAPS provides gridded (0.5x0.5) global emission fluxes (kg/m2/s) of NOx, SO2, CO, 25 NMVOCs, NH3, BC, OC for 1970 - 2017 as a function of 11 emission source sectors (agriculture, energy, industry, on-road transportation, off-road/non-road transportation, residential combustion, commerical combustion, other combustion, solvent use, waste handing and disposal, international shipping) and 4 fuel groups (total coal, solid biofuel, the sum of liquid fuel and natural gas combustion, as well as remaining CEDS 'process-level' sources). Annual country total emissions for NOx (as NO2), SO2, CO, total NMVOCs, NH3, BC, and OC are also produced from this system. 
 
 * Major updates relative to the CEDSv2019-12-23 system include:
 	1) Updated IEA activity data (extended to 2017) - requires purchase of IEA World Energy Statistics ()
@@ -13,8 +14,11 @@
 	4) Disaggregation of gridded emissions into 4 fuel categories (3 combustion fuels + remaining emissions)
 	5) Disagregation of gridded TRA sector into on-road and non-road contributions and RCO sector into residential, commerical, and other contributions.
 
-# * CEDS_GBD-MAPS data files are avialble at: with the following doi:
-# * CEDS_GBD-MAPS system is described in:
+NOTE: IEA energy data must be purchased and formatted prior to running CEDS_GBD-MAPS
+
+The CEDS_GBD-MAPS emission inventory files are avialble at: with the following doi:
+
+The CEDS_GBD-MAPS system is described in:
 McDuffie, E. E., S. J. Smith, P. O'Rourke, K. Tibrewal, C. Venkataraman, E. A. Marais, B. Zheng, M. Crippa, M. Brauer, R. V. Martin, A global anthropogenic emissions inventory of atmospheric pollutants from sector- and fuel- specific sources (1970- 2017): An application of the Community Emissions Data System (CEDS), In preparation.
 
 
