@@ -1,3 +1,27 @@
+# CEDS - GBD-MAPS README
+
+# CEDS Code Developed for the Global Burden of Disease - Major Air Pollution Sources (GBD-MAPS) Project
+(https://sites.wustl.edu/acag/datasets/gbd-maps/)
+
+* System provides gridded (0.5x0.5) global emission fluxes (kg/m2/s) of NOx, SO2, CO, 25 NMVOCs, NH3, BC, OC for 1970 - 2017 as a function of 11 emission source sectors (agriculture, energy, industry, on-road transportation, off-road/non-road transportation, residential combustion, commerical combustion, other combustion, solvent use, waste handing and disposal, international shipping) and 4 fuel groups (total coal, solid biofuel, the sum of liquid fuel and natural gas combustion, as well as remaining CEDS 'process-level' sources). Annual country total emissions for NOx (as NO2), SO2, CO, total NMVOCs, NH3, BC, and OC are also produced from this system. 
+
+* Major updates relative to the CEDSv2019-12-23 system include:
+	1) Updated IEA activity data (extended to 2017) - requires purchase of IEA World Energy Statistics ()
+	2) Updated EDGAR v4.3.2 and regional/national inventories used for emission calibration
+	3) Now calibrate country-level BC and OC emissions to regional inventories
+	4) Updated gridding proxies that use EDGAR v4.3.2 emissions (availble upon request)
+	4) Disaggregation of gridded emissions into 4 fuel categories (3 combustion fuels + remaining emissions)
+	5) Disagregation of gridded TRA sector into on-road and non-road contributions and RCO sector into residential, commerical, and other contributions.
+
+# * CEDS_GBD-MAPS data files are avialble at: with the following doi:
+# * CEDS_GBD-MAPS system is described in:
+McDuffie, E. E., S. J. Smith, P. O'Rourke, K. Tibrewal, C. Venkataraman, E. A. Marais, B. Zheng, M. Crippa, M. Brauer, R. V. Martin, A global anthropogenic emissions inventory of atmospheric pollutants from sector- and fuel- specific sources (1970- 2017): An application of the Community Emissions Data System (CEDS), In preparation.
+
+
+
+# CEDS Core System README
+from: (https://github.com/JGCRI/CEDS)
+
 # CEDS
 The Community Emissions Data System (CEDS) produces consistent estimates of global air emissions species over the industrial era (1750 - present). The system is written in R and uses open-source data (with the exception of the IEA energy statistics which must be purchased from IEA). CEDS is publicly available through an [Open Source License](#license-section).
 
@@ -51,15 +75,4 @@ All rights reserved.
     * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution. 
     * Other than as used herein, neither the name Battelle Memorial Institute or Battelle may be used in any form whatsoever without the express written consent of Battelle.
 
-2.	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL BATTELLE OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
-**CEDS_GDB-MAPS Version:** Feb 19, 2020. The current code in the repository is updates as described in McDuffie et al., 2020.
-* Gridded (0.5x0.5) global emissions of NOx, SO2, CO, NMVOCs, NH3, BC, OC for 1970 - 2017
-* Major Updates include:
-	1) Updated IEA activity data (extended to 2017)
-	2) Updated EDGAR v4.3.2 and regional inventories (used for calibration)
-	3) Added India and Africa regional emission inventories to calibration
-	4) Now calibrate BC and OC to regional inventories
-	5) Updated aggregation steps to disaggregate TRA and RCO sectors as well as coal, biofuel, and remaining fuel types. 
-* NOTE: Diagnostic files are not updated relative to CEDS August 25, 2019 pre-release * 
-	
+2.	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL BATTELLE OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.	
