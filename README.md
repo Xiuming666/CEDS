@@ -21,7 +21,8 @@ The CEDS_GBD-MAPS emission inventory files are available at: with the following 
 The CEDS_GBD-MAPS system is described in:
 McDuffie, E. E., S. J. Smith, P. O'Rourke, K. Tibrewal, C. Venkataraman, E. A. Marais, B. Zheng, M. Crippa, M. Brauer, R. V. Martin, A global anthropogenic emissions inventory of atmospheric pollutants from sector- and fuel- specific sources (1970- 2017): An application of the Community Emissions Data System (CEDS), In preparation.
 
-
+# Data Reference
+Reference for this data version (2020_v1): McDuffie, E. E., S. J. Smith, P. O'Rourke, K. Tibrewal, C. Venkataraman, E. A. Marais, B. Zheng, M. Crippa, M. Brauer, R. V. Martin (2020, April 18). Community Emissions Data System_GBD-MAPS (Version 2020_v1) Zenodo. http://doi.org/10.5281/zenodo.3754964.
 *****
 
 # CEDS Core System README
