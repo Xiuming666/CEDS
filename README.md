@@ -16,8 +16,6 @@ CEDS-GBD-MAPS provides gridded (0.5x0.5) global emission fluxes (kg/m2/s) of NOx
 
 NOTE: IEA energy data must be purchased and formatted prior to running CEDS_GBD-MAPS
 
-The CEDS_GBD-MAPS emission inventory files are available at: with the following doi:
-
 The CEDS_GBD-MAPS system is described in:
 McDuffie, E. E., S. J. Smith, P. O'Rourke, K. Tibrewal, C. Venkataraman, E. A. Marais, B. Zheng, M. Crippa, M. Brauer, R. V. Martin, A global anthropogenic emissions inventory of atmospheric pollutants from sector- and fuel- specific sources (1970- 2017): An application of the Community Emissions Data System (CEDS), In preparation.
 
