@@ -14,10 +14,12 @@ CEDS-GBD-MAPS provides gridded (0.5x0.5) global emission fluxes (kg/m2/s) of NOx
 	4) Disaggregation of gridded emissions into 4 fuel categories (3 combustion fuels + remaining emissions)
 	5) Disagregation of gridded TRA sector into on-road and non-road contributions and RCO sector into residential, commerical, and other contributions.
 
-NOTE: IEA energy data must be purchased and formatted prior to running CEDS_GBD-MAPS
+NOTES: 
+	1. IEA energy data must be purchased and formatted prior to running CEDS_GBD-MAPS
+	2. To run on non-OSX systems, "Fig3_MEIC_detail_Zheng_etal_2018-metadata.csv" may need to be resaved as a regular CSV file. 
 
 The CEDS_GBD-MAPS system is described in:
-McDuffie, E. E., S. J. Smith, P. O'Rourke, K. Tibrewal, C. Venkataraman, E. A. Marais, B. Zheng, M. Crippa, M. Brauer, R. V. Martin, A global anthropogenic emissions inventory of atmospheric pollutants from sector- and fuel- specific sources (1970- 2017): An application of the Community Emissions Data System (CEDS), In preparation.
+McDuffie, E. E., S. J. Smith, P. O'Rourke, K. Tibrewal, C. Venkataraman, E. A. Marais, B. Zheng, M. Crippa, M. Brauer, R. V. Martin, A global anthropogenic emissions inventory of atmospheric pollutants from sector- and fuel- specific sources (1970- 2017): An application of the Community Emissions Data System (CEDS), Earth System Science Data Discussions, https://doi.org/10.5194/essd-2020-103, in review.
 
 # Data Reference
 Reference for this data version (2020_v1): McDuffie, E. E., S. J. Smith, P. O'Rourke, K. Tibrewal, C. Venkataraman, E. A. Marais, B. Zheng, M. Crippa, M. Brauer, R. V. Martin (2020, April 18). CEDS_GBD-MAPS: Anthropogenic Emission Inventory of NOx, SO2, CO, NH3, NMVOCs, BC, and OC from 1970-2017 (2020_v1) (Version 2020_v1) Zenodo. http://doi.org/10.5281/zenodo.3754964.
